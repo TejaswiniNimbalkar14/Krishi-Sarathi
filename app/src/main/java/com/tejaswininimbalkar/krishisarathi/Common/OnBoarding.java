@@ -24,42 +24,6 @@ public class OnBoarding extends AppCompatActivity {
     TextView[] dots;
     Animation animation;
     int curPos;
-    //To change the color of dots when page is changed
-    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
-        @Override
-        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-        }
-
-        @Override
-        public void onPageSelected(int position) {
-            addDots(position);
-            curPos = position;
-
-            //To make 'Get Started' button visible only at last slide
-            //and to make next, '>' button invisible at last slide
-            if (position == 0) {
-                activityOnBoardingBinding.getStartedBtn.setVisibility(View.INVISIBLE);
-                activityOnBoardingBinding.nextBtn.setVisibility(View.VISIBLE);
-            } else if (position == 1) {
-                activityOnBoardingBinding.getStartedBtn.setVisibility(View.INVISIBLE);
-                activityOnBoardingBinding.nextBtn.setVisibility(View.VISIBLE);
-            } else if (position == 2) {
-                activityOnBoardingBinding.getStartedBtn.setVisibility(View.INVISIBLE);
-                activityOnBoardingBinding.nextBtn.setVisibility(View.VISIBLE);
-            } else {
-                animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
-                activityOnBoardingBinding.getStartedBtn.setAnimation(animation);
-                activityOnBoardingBinding.getStartedBtn.setVisibility(View.VISIBLE);
-                activityOnBoardingBinding.nextBtn.setVisibility(View.INVISIBLE);
-            }
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int state) {
-
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,4 +74,41 @@ public class OnBoarding extends AppCompatActivity {
             dots[pos].setTextColor(getResources().getColor(R.color.darkPink));
         }
     }
+
+    //To change the color of dots when page is changed
+    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            addDots(position);
+            curPos = position;
+
+            //To make 'Get Started' button visible only at last slide
+            //and to make next, '>' button invisible at last slide
+            if (position == 0) {
+                activityOnBoardingBinding.getStartedBtn.setVisibility(View.INVISIBLE);
+                activityOnBoardingBinding.nextBtn.setVisibility(View.VISIBLE);
+            } else if (position == 1) {
+                activityOnBoardingBinding.getStartedBtn.setVisibility(View.INVISIBLE);
+                activityOnBoardingBinding.nextBtn.setVisibility(View.VISIBLE);
+            } else if (position == 2) {
+                activityOnBoardingBinding.getStartedBtn.setVisibility(View.INVISIBLE);
+                activityOnBoardingBinding.nextBtn.setVisibility(View.VISIBLE);
+            } else {
+                animation = AnimationUtils.loadAnimation(OnBoarding.this, R.anim.bottom_anim);
+                activityOnBoardingBinding.getStartedBtn.setAnimation(animation);
+                activityOnBoardingBinding.getStartedBtn.setVisibility(View.VISIBLE);
+                activityOnBoardingBinding.nextBtn.setVisibility(View.INVISIBLE);
+            }
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
 }

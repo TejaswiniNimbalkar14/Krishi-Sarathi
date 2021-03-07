@@ -38,10 +38,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:includeFontPadding="false"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/cardViewImage"
                 android:fontFamily="serif"
-                android:includeFontPadding="false"
                 android:text="Full Name"
                 android:textSize="20sp"/>
 
@@ -49,21 +49,21 @@
                 android:id="@+id/userName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/userFullName"
                 android:layout_marginLeft="10dp"
                 android:layout_toRightOf="@id/cardViewImage"
                 android:includeFontPadding="false"
                 android:text="user_name"
+                android:layout_below="@id/userFullName"
                 android:textSize="14sp"/>
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
                 android:background="#00000000"
                 android:drawableEnd="@drawable/settings_icon"
                 android:drawableRight="@drawable/settings_icon"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:paddingRight="10dp"/>
 
 
@@ -74,9 +74,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="350dp"
+        android:layout_marginBottom="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
         android:padding="20dp">
         
 
@@ -87,8 +87,8 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
         android:padding="20dp">
 
         
