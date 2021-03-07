@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Krishi Sarathi</string>
+    <string name="slide1_title">Slide 1</string>
+    <string name="slide2_title">Slide 2</string>
+    <string name="slide3_title">Slide 3</string>
+    <string name="slide4_title">Slide 4</string>
+    <string name="get_started">Get started</string>
+    <string name="skip_btn">SKIP</string>
+</resources>
