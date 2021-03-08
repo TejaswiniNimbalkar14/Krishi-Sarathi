@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:onClick="skip"
         android:padding="10dp"
-        android:text="@string/skip_btn"
+        android:text="@string/skip"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="#00000000"
         android:drawableEnd="@drawable/skip_icon"

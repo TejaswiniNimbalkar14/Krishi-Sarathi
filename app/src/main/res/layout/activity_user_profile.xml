@@ -7,6 +7,242 @@
     android:orientation="vertical"
     tools:context=".User.UserProfile">
 
+    <RelativeLayout
+        android:id="@+id/userProfileRL"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/profileEditBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:background="#00000000"
+            android:drawableEnd="@drawable/edit_icon"
+            android:drawableRight="@drawable/edit_icon"
+            android:drawableTint="@color/black"
+            android:paddingTop="0dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileImageCard"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="50dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/profile_image" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/profileFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileImageCard"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:fontFamily="serif"
+            android:text="Full Name"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileFullName"
+            android:layout_centerHorizontal="true"
+            android:text="1234567890"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="-10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:padding="10dp">
+
+            <Button
+                android:id="@+id/locationBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:drawableTop="@drawable/location_icon"
+                android:drawableTint="@color/black"
+                android:text="@string/location"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/paymentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/locationBtn"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:drawableTop="@drawable/payments_icon"
+                android:drawableTint="@color/black"
+                android:text="@string/payment"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/notificationBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/paymentBtn"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:drawableTop="@drawable/notification_icon"
+                android:drawableTint="@color/black"
+                android:text="@string/notification"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+            <Button
+                android:id="@+id/settingsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/notificationBtn"
+                android:layout_weight="1"
+                android:background="#00000000"
+                android:drawableTop="@drawable/settings_icon"
+                android:drawableTint="@color/black"
+                android:onClick="userSettings"
+                android:text="@string/settings"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <Button
+            android:id="@+id/myOrdersBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableStart="@drawable/my_orders_icon"
+            android:drawableLeft="@drawable/my_orders_icon"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:text="@string/my_orders"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0" />
+
+        <Button
+            android:id="@+id/trackOrderBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableStart="@drawable/track_order"
+            android:drawableLeft="@drawable/track_order"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:text="@string/track_order"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0" />
+
+        <Button
+            android:id="@+id/historyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableStart="@drawable/history_icon"
+            android:drawableLeft="@drawable/history_icon"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:text="@string/history"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0" />
+
+        <Button
+            android:id="@+id/getHelpBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableStart="@drawable/help_icon"
+            android:drawableLeft="@drawable/help_icon"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:text="@string/get_online_ordering_help"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#c0c0c0" />
+
+        <Button
+            android:id="@+id/aboutBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableStart="@drawable/about_icon"
+            android:drawableLeft="@drawable/about_icon"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:text="@string/about_btn"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

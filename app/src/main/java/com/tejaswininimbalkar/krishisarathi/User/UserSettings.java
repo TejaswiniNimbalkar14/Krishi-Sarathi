@@ -7,16 +7,17 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.UserProfile;
 
-public class UserProfile extends AppCompatActivity {
+public class UserSettings extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_profile);
+        setContentView(R.layout.activity_user_settings);
     }
 
-    public void userSettings(View view) {
-        startActivity(new Intent(this, UserSettings.class));
+    public void goBack(View view) {
+        startActivity(new Intent(this, UserProfile.class));
     }
 }
