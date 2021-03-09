@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.tejaswininimbalkar.krishisarathi.HelperClasses.SliderAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.UserProfile;
+import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityOnBoardingBinding;
 
 public class OnBoarding extends AppCompatActivity {
@@ -43,7 +43,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, SelectLanguage.class));
         finish();   //To finish current activity if user wants to skip
     }
 
@@ -52,7 +52,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void getStarted(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, SelectLanguage.class));
         finish();
     }
 
@@ -71,7 +71,7 @@ public class OnBoarding extends AppCompatActivity {
         }
         //We will get 'pos' from 'onPageChangeListener'
         if (dots.length > 0) {
-            dots[pos].setTextColor(getResources().getColor(R.color.darkPink));
+            dots[pos].setTextColor(getResources().getColor(R.color.purple_500));
         }
     }
 

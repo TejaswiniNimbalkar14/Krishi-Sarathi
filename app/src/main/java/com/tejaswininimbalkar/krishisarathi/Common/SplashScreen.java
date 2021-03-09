@@ -55,7 +55,7 @@ public class SplashScreen extends AppCompatActivity {
                 //If it is not first time it will set the value as 'false' of the
                 // already created 'firstTime' variable
 
-                if (isFirstTime) {
+                 if (isFirstTime) {
 
                     //To allow to edit 'onBoardingScreen'
                     SharedPreferences.Editor editor = onBoardingScreen.edit();

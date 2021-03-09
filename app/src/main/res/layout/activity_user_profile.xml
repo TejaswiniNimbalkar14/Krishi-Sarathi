@@ -163,9 +163,7 @@
             android:textColor="@color/black" />
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0" />
+            style="@style/Divider" />
 
         <Button
             android:id="@+id/trackOrderBtn"
@@ -183,9 +181,7 @@
             android:textColor="@color/black" />
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0" />
+            style="@style/Divider" />
 
         <Button
             android:id="@+id/historyBtn"
@@ -203,9 +199,7 @@
             android:textColor="@color/black" />
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0" />
+            style="@style/Divider" />
 
         <Button
             android:id="@+id/getHelpBtn"
@@ -223,9 +217,7 @@
             android:textColor="@color/black" />
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0" />
+            style="@style/Divider" />
 
         <Button
             android:id="@+id/aboutBtn"

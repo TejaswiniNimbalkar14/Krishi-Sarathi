@@ -2,15 +2,23 @@
     <!-- Base application theme. -->
     <style name="Theme.KrishiSarathi" parent="Theme.MaterialComponents.DayNight.NoActionBar.Bridge">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/lighterPink</item>
-        <item name="colorPrimaryVariant">@color/lightPink</item>
-        <item name="colorOnPrimary">@color/darkPink</item>
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/lightBlue</item>
-        <item name="colorSecondaryVariant">@color/white</item>
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Divider" parent="Theme.KrishiSarathi">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">#20979797</item>
+
+    </style>
+
 </resources>

@@ -45,7 +45,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="getStarted"
-            android:background="@color/lighterPink"
+            android:background="@color/purple_500"
+            android:textColor="@color/white"
             android:text="@string/get_started"
             android:visibility="invisible"/>
 

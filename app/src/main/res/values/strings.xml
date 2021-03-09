@@ -28,4 +28,6 @@
     <string name="notification_settings_desc">Change app notifications</string>
     <string name="delete_account_desc">Delete your account</string>
     <string name="logout_desc">Logout from the current device</string>
+    <string name="select_language">Please select your language</string>
+    <string name="next">Next</string>
 </resources>
