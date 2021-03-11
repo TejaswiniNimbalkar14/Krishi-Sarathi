@@ -2,7 +2,6 @@ package com.tejaswininimbalkar.krishisarathi.User;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.tejaswininimbalkar.krishisarathi.HelperClasses.LanguageAdapter;
-import com.tejaswininimbalkar.krishisarathi.User.UserProfile;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySelectLanguageBinding;
 
 import java.util.ArrayList;

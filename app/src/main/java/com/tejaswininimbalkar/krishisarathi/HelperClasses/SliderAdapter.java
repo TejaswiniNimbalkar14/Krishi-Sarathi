@@ -22,13 +22,13 @@ public class SliderAdapter extends PagerAdapter {
     Context context;
     LayoutInflater layoutInflater;
     //Arrays of the data to display
-    int images[] = {
+    int[] images = {
             R.drawable.tractor,
             R.drawable.image2,
             R.drawable.image3,
             R.drawable.image4
     };
-    int headings[] = {
+    int[] headings = {
             R.string.slide1_title,
             R.string.slide2_title,
             R.string.slide3_title,
@@ -59,7 +59,7 @@ public class SliderAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
         //Request system to use service of the design(layout)
-        layoutInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //pointing to the layout that we want to use(slides_layout)
         View view = layoutInflater.inflate(R.layout.slides_layout, container, false);
 

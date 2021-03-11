@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".User.UserProfile">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".User.UserProfileFragment">
 
     <RelativeLayout
         android:id="@+id/userProfileRL"
@@ -67,12 +66,14 @@
     </RelativeLayout>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/userProfileCV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="-10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_below="@id/userProfileRL"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp">
 
@@ -88,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00000000"
-                android:drawableTop="@drawable/location_icon"
+                android:drawableTop="@drawable/edit_location_icon"
                 android:drawableTint="@color/black"
                 android:text="@string/location"
                 android:textAllCaps="false"
@@ -129,7 +130,6 @@
                 android:background="#00000000"
                 android:drawableTop="@drawable/settings_icon"
                 android:drawableTint="@color/black"
-                android:onClick="userSettings"
                 android:text="@string/settings"
                 android:textAllCaps="false"
                 android:textColor="@color/black" />
@@ -144,6 +144,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"
+        android:layout_below="@id/userProfileCV"
         android:orientation="vertical"
         android:padding="20dp">
 
@@ -171,8 +172,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableStart="@drawable/track_order"
-            android:drawableLeft="@drawable/track_order"
+            android:drawableStart="@drawable/location_icon"
+            android:drawableLeft="@drawable/location_icon"
             android:drawablePadding="10dp"
             android:drawableTint="@color/black"
             android:text="@string/track_order"
@@ -236,5 +237,4 @@
 
     </LinearLayout>
 
-
-</LinearLayout>
+</RelativeLayout>

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.UserProfile;
 
 public class UserSettings extends AppCompatActivity {
 
@@ -18,6 +17,6 @@ public class UserSettings extends AppCompatActivity {
     }
 
     public void goBack(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, UserProfileFragment.class));
     }
 }

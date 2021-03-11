@@ -19,7 +19,7 @@ public class UserLogin extends AppCompatActivity {
     }
 
     public void skipLogin(View view) {
-        startActivity(new Intent(this, UserProfile.class));
+        startActivity(new Intent(this, ContainerActivity.class));
         finish();
     }
 }

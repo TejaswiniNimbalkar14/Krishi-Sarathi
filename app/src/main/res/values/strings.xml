@@ -18,9 +18,9 @@
     <string name="about_btn">About</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="edit_profile_desc">Edit your profile photo, name, contact and location</string>
-    <string name="change_password">Change Password</string>
+    <string name="reset_password">Change Password</string>
     <string name="change_password_desc">Change current password</string>
-    <string name="change_language">Change Language</string>
+    <string name="change_language">Reset Language</string>
     <string name="change_langauge_desc">Change app language</string>
     <string name="notification_settings">Notification Settings</string>
     <string name="delete_account">Delete Account</string>
@@ -30,4 +30,10 @@
     <string name="logout_desc">Logout from the current device</string>
     <string name="select_language">Please select your language</string>
     <string name="next">Next</string>
+    <string name="home">Home</string>
+    <string name="weather">Weather</string>
+    <string name="profile">Profile</string>
+    <string name="equipment">Equipment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

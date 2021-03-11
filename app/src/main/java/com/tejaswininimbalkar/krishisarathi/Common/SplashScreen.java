@@ -11,12 +11,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.UserProfile;
+import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static int SPLASH_TIMER = 5000;
+    private static final int SPLASH_TIMER = 5000;
 
     //viewBinding
     ActivitySplashScreenBinding splashScreenBinding;
@@ -67,7 +67,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else {
                     //When it is not first time
-                    startActivity(new Intent(SplashScreen.this, UserProfile.class));
+                    startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
                     finish();
                 }
             }
