@@ -18,9 +18,9 @@
     <string name="about_btn">About</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="edit_profile_desc">Edit your profile photo, name, contact and location</string>
-    <string name="reset_password">Change Password</string>
+    <string name="reset_password">Reset Password</string>
     <string name="change_password_desc">Change current password</string>
-    <string name="change_language">Reset Language</string>
+    <string name="change_language">Change Language</string>
     <string name="change_langauge_desc">Change app language</string>
     <string name="notification_settings">Notification Settings</string>
     <string name="delete_account">Delete Account</string>

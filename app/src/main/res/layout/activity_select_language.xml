@@ -8,6 +8,18 @@
     tools:context=".User.SelectLanguage">
 
     <Button
+        android:id="@+id/languageBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:drawableLeft="@drawable/arrow_back_icon"
+        android:drawableTint="@color/black"
+        android:onClick="goBack"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/skipSelectLanguageBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +28,7 @@
         android:drawableRight="@drawable/skip_icon"
         android:onClick="skipSelectLanguage"
         android:padding="10dp"
+        android:visibility="visible"
         android:text="@string/skip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -14,6 +14,7 @@ import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding
 public class ContainerActivity extends AppCompatActivity {
 
     ActivityContainerBinding activityContainerBinding;
+    String extra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,16 @@ public class ContainerActivity extends AppCompatActivity {
         activityContainerBinding = ActivityContainerBinding.inflate(getLayoutInflater());
         setContentView(activityContainerBinding.getRoot());
 
+//        if(getIntent() != null) {
+//            extra = getIntent().getStringExtra("settings");
+//        }
+//        System.out.print(extra);
+//
+//        if(extra == "Settings") {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new UserProfileFragment()).commit();
+//        } else {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new UserDashboardFragment()).commit();
+//        }
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new UserDashboardFragment()).commit();
 
         activityContainerBinding.bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
