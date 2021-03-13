@@ -38,13 +38,6 @@ public class SelectLanguage extends AppCompatActivity {
         //Setting adapter to the recycler view to display languages list
         LanguageAdapter languageAdapter = new LanguageAdapter(languageList);
         activitySelectLanguageBinding.languageRV.setAdapter(languageAdapter);
-
-//        if(getIntent() != null) {
-//            extra = getIntent().getStringExtra("changeBtns");
-//            if(extra == "Change Buttons") {
-//                activitySelectLanguageBinding.languageBackBtn.setVisibility(View.VISIBLE);
-//            }
-//        }
     }
 
     public void skipSelectLanguage(View view) {
