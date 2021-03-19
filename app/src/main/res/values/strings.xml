@@ -36,4 +36,34 @@
     <string name="equipment">Equipment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- TODO: login required  this string text -->
+
+    <string name="app_name">Login</string>
+    <string name="login">Login</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="create_account">Create New Account</string>
+    <string name="already_account">Already Have Account</string>
+    <string name="forgot_pass">Forgot Password</string>
+    <string name="new_pass">New Password</string>
+    <string name="confm_pass">Confirm Password</string>
+    <string name="username">Username</string>
+    <string name="enter_password">Password</string>
+    <string name="remember_me">Remember Me</string>
+    <string name="mobile_verification">Mobile Verification</string>
+    <string name="enter_your_country_code_and_phone_number">Enter Your Country Code And Phone Number To Create Account</string>
+    <string name="enter_mobile_number">Enter mobile Number</string>
+    <string name="already_have_account">Already Have Account</string>
+    <string name="enter_the_otp_sent_to">Enter the OTP sent to</string>
+    <string name="verify">Verify</string>
+    <string name="don_t_receive_the_otp">Don\'t Receive the OTP?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email_id">Email ID</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="provide_your_email_account">Provide your Email account for associated\n with your account</string>
+    <string name="your_password_has_been_updated">Your password has been updated</string>
+    <string name="password_nupdated">Password\nUpdated</string>
 </resources>
