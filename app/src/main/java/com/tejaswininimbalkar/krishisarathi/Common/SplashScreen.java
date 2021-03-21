@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreen extends AppCompatActivity {
@@ -24,7 +25,7 @@ public class SplashScreen extends AppCompatActivity {
     //Animations
     Animation sideAnim, bottomAnim;
 
-    SharedPreferences onBoardingScreen;
+    SharedPreferences selectLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,21 +49,21 @@ public class SplashScreen extends AppCompatActivity {
 
                 //If the app is compiled for first time, a 'SharedPreferences'
                 //called 'onBoardingScreen' will be created
-                onBoardingScreen = getSharedPreferences("onBoardingScreen", MODE_PRIVATE);
+                selectLanguage = getSharedPreferences("selectLanguage", MODE_PRIVATE);
                 //And then as it is compiles first time it will create variable with name
                 //'firstTime' and will set it to 'true'
-                boolean isFirstTime = onBoardingScreen.getBoolean("firstTime" ,true);
+                boolean isFirstTime = selectLanguage.getBoolean("firstTime" ,true);
                 //If it is not first time it will set the value as 'false' of the
                 // already created 'firstTime' variable
 
-                 if (isFirstTime) {
+                if (isFirstTime) {
 
                     //To allow to edit 'onBoardingScreen'
-                    SharedPreferences.Editor editor = onBoardingScreen.edit();
+                    SharedPreferences.Editor editor = selectLanguage.edit();
                     editor.putBoolean("firstTime", false);  //since it will not be first time
                     editor.commit();
 
-                    startActivity(new Intent(SplashScreen.this, OnBoarding.class));
+                    startActivity(new Intent(SplashScreen.this, SelectLanguage.class));
                     finish();   //to finish current activity once application is ran
                 }
                 else {

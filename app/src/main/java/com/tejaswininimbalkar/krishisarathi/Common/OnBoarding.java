@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.tejaswininimbalkar.krishisarathi.HelperClasses.SliderAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
+import com.tejaswininimbalkar.krishisarathi.User.UserLogin;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityOnBoardingBinding;
 
 public class OnBoarding extends AppCompatActivity {
@@ -43,7 +44,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view) {
-        startActivity(new Intent(this, SelectLanguage.class));
+        startActivity(new Intent(this, UserLogin.class));
         finish();   //To finish current activity if user wants to skip
     }
 
@@ -52,7 +53,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void getStarted(View view) {
-        startActivity(new Intent(this, SelectLanguage.class));
+        startActivity(new Intent(this, UserLogin.class));
         finish();
     }
 
