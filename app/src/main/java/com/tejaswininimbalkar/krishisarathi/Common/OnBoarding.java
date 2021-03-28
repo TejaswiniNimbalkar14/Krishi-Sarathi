@@ -18,6 +18,10 @@ import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.User.UserLogin;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityOnBoardingBinding;
 
+/*
+ * @author Tejaswini Nimbalkar
+*/
+
 public class OnBoarding extends AppCompatActivity {
 
     ActivityOnBoardingBinding activityOnBoardingBinding;
