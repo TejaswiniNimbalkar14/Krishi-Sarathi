@@ -12,6 +12,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class ContainerActivity extends AppCompatActivity {
 
     ActivityContainerBinding activityContainerBinding;

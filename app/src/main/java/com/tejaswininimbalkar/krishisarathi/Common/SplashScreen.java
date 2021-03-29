@@ -15,6 +15,10 @@ import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBinding;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class SplashScreen extends AppCompatActivity {
 
     private static final int SPLASH_TIMER = 5000;

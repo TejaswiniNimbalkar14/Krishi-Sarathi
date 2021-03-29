@@ -16,6 +16,10 @@ import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySelectLanguageBi
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class SelectLanguage extends AppCompatActivity {
 
     ActivitySelectLanguageBinding activitySelectLanguageBinding;

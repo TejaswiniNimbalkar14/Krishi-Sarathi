@@ -13,6 +13,10 @@ import androidx.fragment.app.Fragment;
 
 import com.tejaswininimbalkar.krishisarathi.R;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class UserProfileFragment extends Fragment {
 
     @Nullable

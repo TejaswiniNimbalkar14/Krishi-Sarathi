@@ -10,6 +10,10 @@ import android.widget.Button;
 
 import com.tejaswininimbalkar.krishisarathi.R;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class UserSettings extends AppCompatActivity {
 
     @Override
