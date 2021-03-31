@@ -11,7 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.tejaswininimbalkar.krishisarathi.EditProfileActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
+
+/*
+ * @author Tejaswini Nimbalkar
+ */
 
 public class UserProfileFragment extends Fragment {
 
@@ -21,11 +26,19 @@ public class UserProfileFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
         Button settings = (Button) view.findViewById(R.id.settingsBtn);
+        Button editProfile = (Button) view.findViewById(R.id.profileEditBtn);
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getActivity(), UserSettings.class));
+            }
+        });
+
+        editProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), EditProfileActivity.class));
             }
         });
 
