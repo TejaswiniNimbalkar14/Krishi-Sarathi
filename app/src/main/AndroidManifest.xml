@@ -9,7 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KrishiSarathi">
+      //Jayesh_code
+        <activity android:name=".Common.LoginSignup.User_Forgot_Page" />
+        <activity android:name=".Common.LoginSignup.Successful_create" />
+        <activity android:name=".Common.LoginSignup.Reset_Password" />
+        <activity android:name=".Common.LoginSignup.Forgot_Selection" />
+        <activity android:name=".Common.LoginSignup.User_SignUp" />
+        <activity android:name=".Common.LoginSignup.Verify_Otp_page" />
+        <activity android:name=".Common.LoginSignup.Send_Otp_Page" />
+        <activity android:name=".Common.LoginSignup.UserSignIn_page" />
+        //Jayesh_code
         <activity android:name=".EditProfileActivity"></activity>
+        //master
         <activity android:name=".User.ContainerActivity" />
         <activity android:name=".User.UserLogin" />
         <activity android:name=".User.SelectLanguage" />
@@ -22,6 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
