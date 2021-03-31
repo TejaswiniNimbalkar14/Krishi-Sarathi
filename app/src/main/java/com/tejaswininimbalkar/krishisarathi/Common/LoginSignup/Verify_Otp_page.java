@@ -71,9 +71,9 @@ public class Verify_Otp_page extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }else if (p.equals("Reset_Password")){
-//                    intent = new Intent(getApplicationContext(),User_Forgot_Page.class);
-//                    startActivity(intent);
-//                    finish();
+                    intent = new Intent(getApplicationContext(),User_Forgot_Page.class);
+                    startActivity(intent);
+                    finish();
                 }
 
             }
