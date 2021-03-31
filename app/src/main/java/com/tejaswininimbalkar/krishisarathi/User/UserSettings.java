@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.tejaswininimbalkar.krishisarathi.EditProfileActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 /*
@@ -32,6 +33,11 @@ public class UserSettings extends AppCompatActivity {
         Intent i = new Intent(this, SelectLanguage.class);
         i.putExtra("changeBtns", "Change Buttons");
         startActivity(i);
+        finish();
+    }
+
+    public void editProfile(View view) {
+        startActivity(new Intent(this, EditProfileActivity.class));
         finish();
     }
 

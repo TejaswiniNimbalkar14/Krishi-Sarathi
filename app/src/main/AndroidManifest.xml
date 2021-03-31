@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KrishiSarathi">
-        <activity android:name=".User.ContainerActivity"></activity>
+        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".User.ContainerActivity" />
         <activity android:name=".User.UserLogin" />
         <activity android:name=".User.SelectLanguage" />
         <activity android:name=".User.UserSettings" />
