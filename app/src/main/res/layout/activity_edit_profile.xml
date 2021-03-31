@@ -59,6 +59,7 @@
             android:layout_alignBottom="@id/profileImageCard"
             android:backgroundTint="@color/white"
             android:elevation="1dp"
+            android:onClick="selectPicture"
             android:scaleType="centerInside"
             android:src="@drawable/camera_icon"
             android:tint="@color/black"

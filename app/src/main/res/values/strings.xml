@@ -40,4 +40,7 @@
     <string name="phone_no" translatable="false">Phone No.</string>
     <string name="cancel" translatable="false">Cancel</string>
     <string name="save" translatable="false">Save</string>
+    <string name="gallery" translatable="false">Gallery</string>
+    <string name="camera" translatable="false">Camera</string>
+    <string name="delete_photo" translatable="false">Delete</string>
 </resources>
