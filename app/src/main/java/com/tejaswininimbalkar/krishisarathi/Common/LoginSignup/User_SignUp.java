@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import androidx.annotation.NonNull;
@@ -39,7 +40,7 @@ public class User_SignUp extends AppCompatActivity {
     Button submitToLogin;
     ImageView backBtn;
     String phoneNo,gender;
-    //User_Data userData;
+    User_Data userData;
     String email;
     Intent intent;
     RadioGroup radioGroup;

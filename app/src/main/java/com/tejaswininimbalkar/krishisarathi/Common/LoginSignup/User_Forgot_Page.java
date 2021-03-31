@@ -27,7 +27,7 @@ public class User_Forgot_Page extends AppCompatActivity {
     Button next;
     TextInputLayout email;
     String emailId;
-    //User_Data userData;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +63,16 @@ public class User_Forgot_Page extends AppCompatActivity {
 //                    if (snapshot.exists()){
 //                        email.setError(null);
 //                        email.setErrorEnabled(false);
+
 //                        String uid = emailId.substring(0,emailId.indexOf('@'));
 //                        String phoneNo = snapshot.child(uid).child("phone_num").getValue(String.class);
-//                        //userData = new User_Data(emailId,phoneNo);
+//
 //                        Intent intent = new Intent(getApplicationContext(), Forgot_Selection.class);
 //                        intent.putExtra("phone",phoneNo);
 //                        intent.putExtra("email",emailId);
 //                        startActivity(intent);
 //                        finish();
+
 //                    }else
 //                        Toast.makeText(User_Forgot_Page.this, "User Not Exist!", Toast.LENGTH_SHORT).show();
 //                }
