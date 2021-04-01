@@ -63,7 +63,7 @@
 
 
 
-            <com.chaos.view.PinView
+            <!--<com.chaos.view.PinView
                 android:layout_width="wrap_content"
                 android:id="@+id/otp_code"
                 android:layout_height="wrap_content"
@@ -79,12 +79,11 @@
                 app:cursorColor="@color/black"
                 app:hideLineWhenFilled="true"
                 app:itemRadius="5dp"
-                app:lineColor="#2B2B2B"/>
+                app:lineColor="#2B2B2B"/> -->
 
             <Button
                 android:layout_width="match_parent"
                 android:id="@+id/btn_verify"
-                android:onClick="btnVerify"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:text="@string/verify"

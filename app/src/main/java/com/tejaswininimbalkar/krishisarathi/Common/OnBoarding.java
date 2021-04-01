@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
 import com.tejaswininimbalkar.krishisarathi.HelperClasses.SliderAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
@@ -48,7 +49,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void skip(View view) {
-        startActivity(new Intent(this, UserLogin.class));
+        startActivity(new Intent(this, UserSignIn_page.class));
         finish();   //To finish current activity if user wants to skip
     }
 
@@ -57,7 +58,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void getStarted(View view) {
-        startActivity(new Intent(this, UserLogin.class));
+        startActivity(new Intent(this, UserSignIn_page.class));
         finish();
     }
 

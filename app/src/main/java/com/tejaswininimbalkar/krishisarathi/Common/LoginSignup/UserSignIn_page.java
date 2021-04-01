@@ -24,6 +24,7 @@ import com.google.android.material.textfield.TextInputLayout;
 //import com.google.firebase.database.Query;
 //import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
 
 public class UserSignIn_page extends AppCompatActivity {
@@ -67,9 +68,9 @@ public class UserSignIn_page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //this page move on Dashboard
-//                intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-//                finish();
+                intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 

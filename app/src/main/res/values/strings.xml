@@ -35,42 +35,42 @@
     <string name="profile" translatable="false">Profile</string>
     <string name="equipment" translatable="false">Equipment</string>
     <!-- TODO: Remove or change this placeholder text -->
-    //Jayesh_code
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
 
     <!-- TODO: login required  this string text -->
 
-    <string name="app_name">Login</string>
-    <string name="login">Login</string>
-    <string name="send_otp">Send OTP</string>
-    <string name="create_account">Create New Account</string>
-    <string name="already_account">Already Have Account</string>
-    <string name="forgot_pass">Forgot Password</string>
-    <string name="new_pass">New Password</string>
-    <string name="confm_pass">Confirm Password</string>
-    <string name="username">Username</string>
-    <string name="enter_password">Password</string>
-    <string name="remember_me">Remember Me</string>
-    <string name="mobile_verification">Mobile Verification</string>
-    <string name="enter_your_country_code_and_phone_number">Enter Your Country Code And Phone Number To Create Account</string>
-    <string name="enter_mobile_number">Enter mobile Number</string>
-    <string name="already_have_account">Already Have Account</string>
-    <string name="enter_the_otp_sent_to">Enter the OTP sent to</string>
-    <string name="verify">Verify</string>
-    <string name="don_t_receive_the_otp">Don\'t Receive the OTP?</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="enter_first_name">First Name</string>
-    <string name="last_name">Last Name</string>
-    <string name="email_id">Email ID</string>
-    <string name="female">Female</string>
-    <string name="male">Male</string>
-    <string name="provide_your_email_account">Provide your Email account for associated\n with your account</string>
-    <string name="your_password_has_been_updated">Your password has been updated</string>
-    <string name="password_nupdated">Password\nUpdated</string>
-    <string name="full_name">Full Name</string>
-    //Jayesh_code
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
+    <!-- //Jayesh_code<string name="app_name">Login</string> -->
+    <string name="login" translatable="false">Login</string>
+    <string name="send_otp" translatable="false">Send OTP</string>
+    <string name="create_account" translatable="false">Create New Account</string>
+    <string name="already_account" translatable="false">Already Have Account</string>
+    <string name="forgot_pass" translatable="false">Forgot Password</string>
+    <string name="new_pass" translatable="false">New Password</string>
+    <string name="confm_pass" translatable="false">Confirm Password</string>
+    <string name="username" translatable="false">Username</string>
+    <string name="enter_password" translatable="false">Password</string>
+    <string name="remember_me" translatable="false">Remember Me</string>
+    <string name="mobile_verification" translatable="false">Mobile Verification</string>
+    <string name="enter_your_country_code_and_phone_number" translatable="false">Enter Your Country Code And Phone Number To Create Account</string>
+    <string name="enter_mobile_number" translatable="false">Enter mobile Number</string>
+    <string name="already_have_account" translatable="false">Already Have Account</string>
+    <string name="enter_the_otp_sent_to" translatable="false">Enter the OTP sent to</string>
+    <string name="verify" translatable="false">Verify</string>
+    <string name="don_t_receive_the_otp" translatable="false">Don\'t Receive the OTP?</string>
+    <string name="sign_up" translatable="false">Sign Up</string>
+    <string name="enter_first_name" translatable="false">First Name</string>
+    <string name="last_name" translatable="false">Last Name</string>
+    <string name="email_id" translatable="false">Email ID</string>
+    <string name="female" translatable="false">Female</string>
+    <string name="male" translatable="false">Male</string>
+    <string name="provide_your_email_account" translatable="false">Provide your Email account for associated\n with your account</string>
+    <string name="your_password_has_been_updated" translatable="false">Your password has been updated</string>
+    <string name="password_nupdated" translatable="false">Password\nUpdated</string>
     <string name="full_name" translatable="false">Full Name</string>
+
+    <!-- //Jayesh_code<string name="hello_blank_fragment" translatable="false">Hello blank fragment</string> -->
+    <!--<string name="full_name" translatable="false">Full Name</string> -->
     <string name="phone_no" translatable="false">Phone No.</string>
     <string name="cancel" translatable="false">Cancel</string>
     <string name="save" translatable="false">Save</string>

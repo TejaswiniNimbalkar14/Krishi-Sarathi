@@ -16,7 +16,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.chaos.view.PinView;
+//import com.chaos.view.PinView;
 import com.tejaswininimbalkar.krishisarathi.R;
 //import com.google.android.gms.tasks.OnCompleteListener;
 //import com.google.android.gms.tasks.Task;
@@ -39,7 +39,7 @@ public class Verify_Otp_page extends AppCompatActivity {
     Button btn_verify;
     Intent intent;
     String phone_no, codeBySystem, p;
-    PinView pinView;
+    //PinView pinView;
 
     //private FirebaseAuth mAuth;
 
@@ -54,7 +54,7 @@ public class Verify_Otp_page extends AppCompatActivity {
         //Declare xml id in global variable
         btn_verify = findViewById(R.id.btn_verify);
         get_no = findViewById(R.id.get_no);
-        pinView = findViewById(R.id.otp_code);
+        //pinView = findViewById(R.id.otp_code);
         //mAuth = FirebaseAuth.getInstance();
 
         phone_no = "+91" + getIntent().getStringExtra("mobile");
@@ -126,7 +126,7 @@ public class Verify_Otp_page extends AppCompatActivity {
 //                }
 //            };
 
-    private void verifyCode(String code) {
+    //private void verifyCode(String code) {
 //        try {
 //            PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem, code);
 //            signInWithPhoneAuthCredential(credential);
@@ -165,10 +165,10 @@ public class Verify_Otp_page extends AppCompatActivity {
 //        });
 //    }
 
-    public void btnVerify(View view) {
-        String code = pinView.getText().toString();
-        if (!code.isEmpty()) {
-            verifyCode(code);
-        }
-    }
-}
+//    public void btnVerify(View view) {
+//        String code = pinView.getText().toString();
+//        if (!code.isEmpty()) {
+//            verifyCode(code);
+//        }
+//    }
+//}

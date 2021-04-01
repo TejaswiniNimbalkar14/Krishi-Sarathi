@@ -10,6 +10,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
@@ -72,7 +73,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else {
                     //When it is not first time
-                    startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
+                    startActivity(new Intent(SplashScreen.this, UserSignIn_page.class));
                     finish();
                 }
             }
