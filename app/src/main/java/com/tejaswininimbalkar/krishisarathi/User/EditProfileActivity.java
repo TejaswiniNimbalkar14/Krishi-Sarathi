@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi;
+package com.tejaswininimbalkar.krishisarathi.User;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,6 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+
+import com.tejaswininimbalkar.krishisarathi.R;
+
+/*
+ * @author Tejaswini Nimbalkar
+ */
 
 public class EditProfileActivity extends AppCompatActivity {
 

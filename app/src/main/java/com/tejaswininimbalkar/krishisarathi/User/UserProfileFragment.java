@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.tejaswininimbalkar.krishisarathi.EditProfileActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 /*

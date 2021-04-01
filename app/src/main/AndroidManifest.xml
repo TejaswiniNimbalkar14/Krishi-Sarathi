@@ -19,7 +19,7 @@
         <activity android:name=".Common.LoginSignup.Send_Otp_Page" />
         <activity android:name=".Common.LoginSignup.UserSignIn_page" />
         <!--//Jayesh_code -->
-        <activity android:name=".EditProfileActivity"></activity>
+        <activity android:name=".User.EditProfileActivity"></activity>
         <!--//master -->
         <activity android:name=".User.ContainerActivity" />
         <activity android:name=".User.UserLogin" />
