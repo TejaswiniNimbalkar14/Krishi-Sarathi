@@ -13,14 +13,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseError;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.Query;
-//import com.google.firebase.database.ValueEventListener;
-//import com.swami.login.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class Send_Otp_Page extends AppCompatActivity {
@@ -75,33 +73,33 @@ public class Send_Otp_Page extends AppCompatActivity {
     //Here check user is already available or not
     private void checkUser() {
         String val = "+91"+mobile_no.getEditText().getText().toString();
-//        try {
-//            Query checkPhoneNo = FirebaseDatabase.getInstance()
-//                    .getReference("User").orderByChild("phone_num")
-//                    .equalTo(val);
-//
-//            checkPhoneNo.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    if (!snapshot.exists()){
-//                        intent = new Intent(getApplicationContext(),Verify_Otp_page.class);
-//                        intent.putExtra("mobile",mobile_no.getEditText().getText().toString().replace(" ",""));
-//                        intent.putExtra("class","User_SignUp");
-//                        startActivity(intent);
-//                        finish();
-//                    }else
-//                        Toast.makeText(Send_Otp_Page.this, "Already have account", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    Toast.makeText(Send_Otp_Page.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-//
-//                }
-//            });
-//        }catch (Exception e){
-//            Toast.makeText(Send_Otp_Page.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
+        try {
+            Query checkPhoneNo = FirebaseDatabase.getInstance()
+                    .getReference("User").orderByChild("phone_num")
+                    .equalTo(val);
+
+            checkPhoneNo.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (!snapshot.exists()){
+                        intent = new Intent(getApplicationContext(),Verify_Otp_page.class);
+                        intent.putExtra("mobile",mobile_no.getEditText().getText().toString().replace(" ",""));
+                        intent.putExtra("class","User_SignUp");
+                        startActivity(intent);
+                        finish();
+                    }else
+                        Toast.makeText(Send_Otp_Page.this, "Already have account", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Send_Otp_Page.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(Send_Otp_Page.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean validNumber(){

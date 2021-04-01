@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.tejaswininimbalkar.krishisarathi.R;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Reset_Password extends AppCompatActivity {
 
@@ -47,17 +47,17 @@ public class Reset_Password extends AppCompatActivity {
     }
 
     private void updateData() {
-//        try {
-//            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
-//            reference.child(uid).child("password").setValue(newPass.getEditText().getText().toString());
-//            Intent intent = new Intent(getApplicationContext(),Successful_create.class);
-//            intent.putExtra("textUpdate","Password\nUpdated");
-//            intent.putExtra("massage", "Your password has been updated");
-//            startActivity(intent);
-//            finish();
-//        }catch (Exception e){
-//            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
+        try {
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
+            reference.child(uid).child("password").setValue(newPass.getEditText().getText().toString());
+            Intent intent = new Intent(getApplicationContext(),Successful_create.class);
+            intent.putExtra("textUpdate","Password\nUpdated");
+            intent.putExtra("massage", "Your password has been updated");
+            startActivity(intent);
+            finish();
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
     }
 

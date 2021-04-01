@@ -15,11 +15,11 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.tejaswininimbalkar.krishisarathi.R;
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseError;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.Query;
-//import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class User_Forgot_Page extends AppCompatActivity {
@@ -54,37 +54,37 @@ public class User_Forgot_Page extends AppCompatActivity {
     private void checkDatabase() {
         emailId = email.getEditText().getText().toString().trim();
 
-//        try {
-//            Query checkEmail = FirebaseDatabase.getInstance().getReference("User").orderByChild("email_id").equalTo(emailId);
-//
-//            checkEmail.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    if (snapshot.exists()){
-//                        email.setError(null);
-//                        email.setErrorEnabled(false);
+        try {
+            Query checkEmail = FirebaseDatabase.getInstance().getReference("User").orderByChild("email_id").equalTo(emailId);
 
-//                        String uid = emailId.substring(0,emailId.indexOf('@'));
-//                        String phoneNo = snapshot.child(uid).child("phone_num").getValue(String.class);
-//
-//                        Intent intent = new Intent(getApplicationContext(), Forgot_Selection.class);
-//                        intent.putExtra("phone",phoneNo);
-//                        intent.putExtra("email",emailId);
-//                        startActivity(intent);
-//                        finish();
+            checkEmail.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()){
+                        email.setError(null);
+                        email.setErrorEnabled(false);
 
-//                    }else
-//                        Toast.makeText(User_Forgot_Page.this, "User Not Exist!", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//
-//                }
-//            });
-//        }catch (Exception e){
-//            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
+                        String uid = emailId.substring(0,emailId.indexOf('@'));
+                        String phoneNo = snapshot.child(uid).child("phone_num").getValue(String.class);
+
+                        Intent intent = new Intent(getApplicationContext(), Forgot_Selection.class);
+                        intent.putExtra("phone",phoneNo);
+                        intent.putExtra("email",emailId);
+                        startActivity(intent);
+                        finish();
+
+                    }else
+                        Toast.makeText(User_Forgot_Page.this, "User Not Exist!", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean validEmail(){

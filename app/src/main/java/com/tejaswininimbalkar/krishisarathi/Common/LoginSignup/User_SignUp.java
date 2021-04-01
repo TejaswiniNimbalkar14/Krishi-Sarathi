@@ -24,12 +24,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseError;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.Query;
-//import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 
@@ -168,55 +168,55 @@ public class User_SignUp extends AppCompatActivity {
     //here store data on firebase database
     private void storeNewData() {
 
-//        try {
-//            FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
-//            DatabaseReference reference = rootNode.getReference();
-//
-//            email = email.substring(0,email.indexOf('@'));
-//
-//            Query checkEmail = FirebaseDatabase.getInstance()
-//                    .getReference("User").orderByChild("email_id")
-//                    .equalTo(emailId.getEditText().getText().toString());
-//
-//            checkEmail.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                    if (!snapshot.exists()){
-//                        userData = new User_Data(
-//                                fullName.getEditText().getText().toString(),
-//                                emailId.getEditText().getText().toString(),
-//                                password.getEditText().getText().toString(),
-//                                phoneNo,
-//                                gender,
-//                                false
-//                        );
-//
-//
-//                        reference.child("User").child(email).setValue(userData);
-//
-//                        new Handler().postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                intent = new Intent(getApplicationContext(), Successful_create.class);
-//                                intent.putExtra("textUpdate","Account Create");
-//                                intent.putExtra("massage", "Your account has been created");
-//                                startActivity(intent);
-//                                finish();
-//                            }
-//                        },2000);
-//                    }else
-//                        Toast.makeText(User_SignUp.this, "Already have this Email Id", Toast.LENGTH_SHORT).show();
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError error) {
-//                    Toast.makeText(User_SignUp.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//
-//        }catch (Exception e){
-//            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
+        try {
+            FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
+            DatabaseReference reference = rootNode.getReference();
+
+            email = email.substring(0,email.indexOf('@'));
+
+            Query checkEmail = FirebaseDatabase.getInstance()
+                    .getReference("User").orderByChild("email_id")
+                    .equalTo(emailId.getEditText().getText().toString());
+
+            checkEmail.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (!snapshot.exists()){
+                        userData = new User_Data(
+                                fullName.getEditText().getText().toString(),
+                                emailId.getEditText().getText().toString(),
+                                password.getEditText().getText().toString(),
+                                phoneNo,
+                                gender,
+                                false
+                        );
+
+
+                        reference.child("User").child(email).setValue(userData);
+
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                intent = new Intent(getApplicationContext(), Successful_create.class);
+                                intent.putExtra("textUpdate","Account Create");
+                                intent.putExtra("massage", "Your account has been created");
+                                startActivity(intent);
+                                finish();
+                            }
+                        },2000);
+                    }else
+                        Toast.makeText(User_SignUp.this, "Already have this Email Id", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(User_SignUp.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
 
     }
 }
