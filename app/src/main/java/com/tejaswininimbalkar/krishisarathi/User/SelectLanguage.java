@@ -1,6 +1,7 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Intent;
@@ -34,6 +35,9 @@ public class SelectLanguage extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activitySelectLanguageBinding = ActivitySelectLanguageBinding.inflate(getLayoutInflater());
         setContentView(activitySelectLanguageBinding.getRoot());
+
+        //set a light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         activitySelectLanguageBinding.languageRV.setLayoutManager(new LinearLayoutManager(this));
         activitySelectLanguageBinding.languageRV.setHasFixedSize(true);

@@ -3,6 +3,7 @@ package com.tejaswininimbalkar.krishisarathi.User;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
@@ -26,6 +27,9 @@ public class ContainerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityContainerBinding = ActivityContainerBinding.inflate(getLayoutInflater());
         setContentView(activityContainerBinding.getRoot());
+
+        //set a light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
 //        if(getIntent() != null) {
 //            extra = getIntent().getStringExtra("settings");

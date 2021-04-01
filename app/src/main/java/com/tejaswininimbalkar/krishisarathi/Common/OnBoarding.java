@@ -1,6 +1,7 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
@@ -38,6 +39,9 @@ public class OnBoarding extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activityOnBoardingBinding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(activityOnBoardingBinding.getRoot());
+
+        //set a light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //Call adapter
         sliderAdapter = new SliderAdapter(this);

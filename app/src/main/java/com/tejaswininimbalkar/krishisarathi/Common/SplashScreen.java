@@ -1,6 +1,7 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -39,6 +40,9 @@ public class SplashScreen extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         splashScreenBinding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
         setContentView(splashScreenBinding.getRoot());
+
+        //set a light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //Animations
         sideAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);

@@ -2,6 +2,7 @@ package com.tejaswininimbalkar.krishisarathi.User;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +21,8 @@ public class UserSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_settings);
+        //set a light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
     public void goBack(View view) {
