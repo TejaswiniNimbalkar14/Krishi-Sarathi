@@ -37,7 +37,6 @@ public class EditProfileActivity extends AppCompatActivity {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.profile_picture_source, null);
-        dialog.setCancelable(false);
         dialog.setView(dialogView);
 
         AlertDialog alertDialog = dialog.create();

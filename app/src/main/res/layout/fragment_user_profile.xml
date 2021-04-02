@@ -1,88 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:tag="userProfile"
     tools:context=".User.UserProfileFragment">
 
-    <RelativeLayout
-        android:id="@+id/userProfileRL"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:padding="20dp">
+    <Button
+        android:id="@+id/profileEditBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:drawableRight="@drawable/edit_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <Button
-            android:id="@+id/profileEditBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="0dp"
-            android:background="#00000000"
-            android:drawableEnd="@drawable/edit_icon"
-            android:drawableRight="@drawable/edit_icon"
-            android:drawableTint="@color/black"
-            android:paddingTop="0dp" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/profileImageCard"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileEditBtn">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/profileImageCard"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            app:cardCornerRadius="50dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/profile_image" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/profile_image" />
+    </androidx.cardview.widget.CardView>
 
-        </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/profileFullName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="Full Name"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileImageCard" />
 
-        <TextView
-            android:id="@+id/profileFullName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profileImageCard"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:fontFamily="serif"
-            android:text="Full Name"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/profileContact"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/profileFullName"
-            android:layout_centerHorizontal="true"
-            android:text="1234567890"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/profileContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profileFullName"
+        android:text="1234567890"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profileFullName" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/userProfileCV"
+        android:id="@+id/materialCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="-10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@id/userProfileRL"
+        android:layout_marginTop="20dp"
         app:cardCornerRadius="5dp"
-        app:cardElevation="10dp">
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileContact">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:padding="10dp">
+            android:layout_height="70dp"
+            android:gravity="center">
 
             <Button
                 android:id="@+id/locationBtn"
@@ -100,7 +90,6 @@
                 android:id="@+id/paymentBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/locationBtn"
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:drawableTop="@drawable/payments_icon"
@@ -113,7 +102,6 @@
                 android:id="@+id/notificationBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/paymentBtn"
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:drawableTop="@drawable/notification_icon"
@@ -126,7 +114,6 @@
                 android:id="@+id/settingsBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/notificationBtn"
                 android:layout_weight="1"
                 android:background="#00000000"
                 android:drawableTop="@drawable/settings_icon"
@@ -143,11 +130,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
         android:layout_marginRight="10dp"
-        android:layout_below="@id/userProfileCV"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:padding="20dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
         <Button
             android:id="@+id/myOrdersBtn"
@@ -164,8 +151,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black" />
 
-        <View
-            style="@style/Divider" />
+        <View style="@style/Divider" />
 
         <Button
             android:id="@+id/trackOrderBtn"
@@ -182,8 +168,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black" />
 
-        <View
-            style="@style/Divider" />
+        <View style="@style/Divider" />
 
         <Button
             android:id="@+id/historyBtn"
@@ -200,8 +185,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black" />
 
-        <View
-            style="@style/Divider" />
+        <View style="@style/Divider" />
 
         <Button
             android:id="@+id/getHelpBtn"
@@ -218,8 +202,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black" />
 
-        <View
-            style="@style/Divider" />
+        <View style="@style/Divider" />
 
         <Button
             android:id="@+id/aboutBtn"
@@ -238,4 +221,4 @@
 
     </LinearLayout>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
