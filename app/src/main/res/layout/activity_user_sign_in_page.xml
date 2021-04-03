@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Common.LoginSignup.UserSignIn_page"
-    >
+    tools:context=".Common.LoginSignup.UserSignIn_page">
 
     <ImageView
         android:id="@+id/sign_in_back_button"

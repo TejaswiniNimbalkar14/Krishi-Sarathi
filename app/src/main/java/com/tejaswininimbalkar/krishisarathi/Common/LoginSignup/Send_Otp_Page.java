@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,13 +21,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
 public class Send_Otp_Page extends AppCompatActivity {
 
-    Button sent_otp,already_acc;
+    Button sent_otp,already_acc, skip;
     TextInputLayout mobile_no;
     Intent intent;
     boolean flg=true;
+
+    //for first time install
+    SharedPreferences sendOtp;
+    boolean isFirstTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,7 @@ public class Send_Otp_Page extends AppCompatActivity {
 
         sent_otp = findViewById(R.id.btn_send_otp);
         already_acc = findViewById(R.id.btn_already_account);
+        skip = findViewById(R.id.skipSignUpBtn);
 
         findViewById(R.id.send_otp_back_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +73,28 @@ public class Send_Otp_Page extends AppCompatActivity {
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(),UserSignIn_page.class);
                 startActivity(intent);
+                finish();
+            }
+        });
+
+        //Shared preferences
+        sendOtp = getSharedPreferences("userSignUp", MODE_PRIVATE);
+        isFirstTime = sendOtp.getBoolean("firstTime", true);
+
+        if(isFirstTime) {
+            SharedPreferences.Editor editor = sendOtp.edit();
+            editor.putBoolean("sendOtp", false);
+            editor.commit();
+
+            skip.setVisibility(View.VISIBLE);
+        }else {
+            skip.setVisibility(View.INVISIBLE);
+        }
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), ContainerActivity.class));
                 finish();
             }
         });

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import android.app.ActivityOptions;
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -31,7 +32,7 @@ import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 public class UserSignIn_page extends AppCompatActivity {
 
     Intent intent;
-    Button btnCreateAccount, forgot_pass, login;
+    Button btnCreateAccount, forgot_pass, login, skip;
     TextInputLayout email, password;
     String emailId, pass;
 
