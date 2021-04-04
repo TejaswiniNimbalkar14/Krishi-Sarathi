@@ -42,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(splashScreenBinding.getRoot());
 
         //set a light mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //Animations
         sideAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);

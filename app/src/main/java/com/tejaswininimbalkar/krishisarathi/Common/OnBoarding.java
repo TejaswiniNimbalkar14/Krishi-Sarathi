@@ -42,7 +42,7 @@ public class OnBoarding extends AppCompatActivity {
         setContentView(activityOnBoardingBinding.getRoot());
 
         //set a light mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //Call adapter
         sliderAdapter = new SliderAdapter(this);

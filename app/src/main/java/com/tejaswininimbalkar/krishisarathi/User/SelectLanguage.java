@@ -37,7 +37,7 @@ public class SelectLanguage extends AppCompatActivity {
         setContentView(activitySelectLanguageBinding.getRoot());
 
         //set a light mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         activitySelectLanguageBinding.languageRV.setLayoutManager(new LinearLayoutManager(this));
         activitySelectLanguageBinding.languageRV.setHasFixedSize(true);
