@@ -13,6 +13,10 @@ import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.List;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.LanguageViewHolder> {
 
     List<String> language_list;

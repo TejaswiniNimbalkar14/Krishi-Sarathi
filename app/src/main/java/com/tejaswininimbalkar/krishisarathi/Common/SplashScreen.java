@@ -23,7 +23,7 @@ import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBind
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static final int SPLASH_TIMER = 5000;
+    private static final int SPLASH_TIMER = 2000;
 
     //viewBinding
     ActivitySplashScreenBinding splashScreenBinding;
@@ -61,15 +61,14 @@ public class SplashScreen extends AppCompatActivity {
                 splashScreen = getSharedPreferences("splashScreen", MODE_PRIVATE);
                 //And then as it is compiles first time it will create variable with name
                 //'firstTime' and will set it to 'true'
-                boolean isFirstTime = splashScreen.getBoolean("firstTime" ,true);
+                boolean isFirstTime = splashScreen.getBoolean("firstTimeSplash" ,true);
                 //If it is not first time it will set the value as 'false' of the
                 // already created 'firstTime' variable
 
                 if (isFirstTime) {
-
                     //To allow to edit 'onBoardingScreen'
                     SharedPreferences.Editor editor = splashScreen.edit();
-                    editor.putBoolean("firstTime", false);  //since it will not be first time
+                    editor.putBoolean("firstTimeSplash", false);  //since it will not be first time
                     editor.commit();
 
                     startActivity(new Intent(SplashScreen.this, SelectLanguage.class));

@@ -16,6 +16,10 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.tejaswininimbalkar.krishisarathi.R;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class SliderAdapter extends PagerAdapter {
 
     //'context' means the activity

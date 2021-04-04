@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -26,6 +27,7 @@ import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 public class Send_Otp_Page extends AppCompatActivity {
 
     Button sent_otp,already_acc, skip;
+    ImageView backBtn;
     TextInputLayout mobile_no;
     Intent intent;
     boolean flg=true;
@@ -46,8 +48,9 @@ public class Send_Otp_Page extends AppCompatActivity {
         sent_otp = findViewById(R.id.btn_send_otp);
         already_acc = findViewById(R.id.btn_already_account);
         skip = findViewById(R.id.skipSignUpBtn);
+        backBtn = findViewById(R.id.send_otp_back_btn);
 
-        findViewById(R.id.send_otp_back_btn).setOnClickListener(new View.OnClickListener() {
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(getApplicationContext(), UserSignIn_page.class);
@@ -71,7 +74,7 @@ public class Send_Otp_Page extends AppCompatActivity {
         already_acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(),UserSignIn_page.class);
+                intent = new Intent(getApplicationContext(), UserSignIn_page.class);
                 startActivity(intent);
                 finish();
             }
@@ -79,16 +82,18 @@ public class Send_Otp_Page extends AppCompatActivity {
 
         //Shared preferences
         sendOtp = getSharedPreferences("userSignUp", MODE_PRIVATE);
-        isFirstTime = sendOtp.getBoolean("firstTime", true);
+        isFirstTime = sendOtp.getBoolean("firstTimeSendOtp", true);
 
         if(isFirstTime) {
             SharedPreferences.Editor editor = sendOtp.edit();
-            editor.putBoolean("sendOtp", false);
+            editor.putBoolean("firstTimeSendOtp", false);
             editor.commit();
 
             skip.setVisibility(View.VISIBLE);
+            backBtn.setVisibility(View.INVISIBLE);
         }else {
             skip.setVisibility(View.INVISIBLE);
+            backBtn.setVisibility(View.VISIBLE);
         }
 
         skip.setOnClickListener(new View.OnClickListener() {

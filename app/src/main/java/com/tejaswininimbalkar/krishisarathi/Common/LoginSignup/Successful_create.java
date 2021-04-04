@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
 
 public class Successful_create extends AppCompatActivity {
@@ -33,9 +34,9 @@ public class Successful_create extends AppCompatActivity {
             @Override
             public void run() {
                 if (textUpdate.getText().toString().equals("Account Create")){
-//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                    startActivity(intent);
-//                    finish();
+                    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                    startActivity(intent);
+                    finish();
                 }else{
                     Intent intent = new Intent(getApplicationContext(), UserSignIn_page.class);
                     startActivity(intent);
