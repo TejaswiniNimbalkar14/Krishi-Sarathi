@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -13,11 +14,11 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.User_SignUp;
 import com.tejaswininimbalkar.krishisarathi.HelperClasses.SliderAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
-import com.tejaswininimbalkar.krishisarathi.User.UserLogin;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityOnBoardingBinding;
 
 /*
@@ -49,11 +50,10 @@ public class OnBoarding extends AppCompatActivity {
 
         addDots(0);     //0 as default position
         activityOnBoardingBinding.slider.addOnPageChangeListener(onPageChangeListener); //To change the color of dots
-
     }
 
     public void skip(View view) {
-        startActivity(new Intent(this, UserSignIn_page.class));
+        startActivity(new Intent(this, Send_Otp_Page.class));
         finish();   //To finish current activity if user wants to skip
     }
 
@@ -62,7 +62,7 @@ public class OnBoarding extends AppCompatActivity {
     }
 
     public void getStarted(View view) {
-        startActivity(new Intent(this, UserSignIn_page.class));
+        startActivity(new Intent(this, Send_Otp_Page.class));
         finish();
     }
 

@@ -31,7 +31,7 @@ public class SplashScreen extends AppCompatActivity {
     //Animations
     Animation sideAnim, bottomAnim;
 
-    SharedPreferences selectLanguage;
+    SharedPreferences splashScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,17 +58,17 @@ public class SplashScreen extends AppCompatActivity {
 
                 //If the app is compiled for first time, a 'SharedPreferences'
                 //called 'onBoardingScreen' will be created
-                selectLanguage = getSharedPreferences("selectLanguage", MODE_PRIVATE);
+                splashScreen = getSharedPreferences("splashScreen", MODE_PRIVATE);
                 //And then as it is compiles first time it will create variable with name
                 //'firstTime' and will set it to 'true'
-                boolean isFirstTime = selectLanguage.getBoolean("firstTime" ,true);
+                boolean isFirstTime = splashScreen.getBoolean("firstTime" ,true);
                 //If it is not first time it will set the value as 'false' of the
                 // already created 'firstTime' variable
 
                 if (isFirstTime) {
 
                     //To allow to edit 'onBoardingScreen'
-                    SharedPreferences.Editor editor = selectLanguage.edit();
+                    SharedPreferences.Editor editor = splashScreen.edit();
                     editor.putBoolean("firstTime", false);  //since it will not be first time
                     editor.commit();
 
@@ -77,7 +77,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else {
                     //When it is not first time
-                    startActivity(new Intent(SplashScreen.this, UserSignIn_page.class));
+                    startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
                     finish();
                 }
             }

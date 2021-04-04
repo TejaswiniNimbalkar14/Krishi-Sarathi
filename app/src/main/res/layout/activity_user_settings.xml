@@ -1,182 +1,223 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp"
-    android:paddingLeft="20dp"
     tools:context=".User.UserSettings">
 
+    <View
+        android:id="@+id/divider"
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintBottom_toTopOf="@id/settingsTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/settingsBackBtn" />
+
     <Button
+        android:id="@+id/settingsBackBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:drawableLeft="@drawable/arrow_back_icon"
         android:drawableTint="@color/black"
-        android:onClick="goBack" />
+        android:onClick="goBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/settingsTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:text="@string/settings"
+        android:layout_marginTop="10dp"
         android:textColor="@color/black"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsBackBtn" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/accountTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="start"
         android:layout_marginTop="10dp"
-        android:onClick="editProfile"
-        android:orientation="vertical">
+        android:background="#00000000"
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/black"
+        android:padding="10dp"
+        android:text="@string/account"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/person_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTv" />
 
-        <TextView
+    <View
+        android:id="@+id/divider2"
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountTv" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2">
+
+        <Button
+            android:id="@+id/editProfileBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableEnd="@drawable/next_btn_icon"
+            android:drawableRight="@drawable/next_btn_icon"
+            android:onClick="editProfile"
             android:text="@string/edit_profile"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
-        <TextView
+        <Button
+            android:id="@+id/resetPassBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/edit_profile_desc"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-    <View
-        style="@style/Divider"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableEnd="@drawable/next_btn_icon"
+            android:drawableRight="@drawable/next_btn_icon"
             android:text="@string/reset_password"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
-        <TextView
+        <Button
+            android:id="@+id/changeLanguageBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/change_password_desc"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-    <View
-        style="@style/Divider"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="changeLanguage"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableEnd="@drawable/next_btn_icon"
+            android:drawableRight="@drawable/next_btn_icon"
+            android:onClick="changeLanguage"
             android:text="@string/change_language"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
-        <TextView
+        <Button
+            android:id="@+id/deleteAccountBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/change_langauge_desc"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-    <View
-        style="@style/Divider"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/notification_settings"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/notification_settings_desc"
-            android:textSize="14sp" />
-
-    </LinearLayout>
-
-    <View
-        style="@style/Divider"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:onClick="deleteAccount"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableEnd="@drawable/next_btn_icon"
+            android:drawableRight="@drawable/next_btn_icon"
+            android:drawableTint="@color/red"
+            android:onClick="deleteAccount"
             android:text="@string/delete_account"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/delete_account_desc"
-            android:textSize="14sp" />
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/red"
+            android:textSize="20sp" />
 
     </LinearLayout>
 
-    <View
-        style="@style/Divider"
-        android:layout_marginTop="5dp" />
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/notificationsTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="start"
         android:layout_marginTop="10dp"
-        android:onClick="logOut"
-        android:orientation="vertical">
+        android:drawablePadding="10dp"
+        android:drawableTint="@color/black"
+        android:padding="10dp"
+        android:text="@string/notification"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:drawableLeftCompat="@drawable/notifications_filled_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"/>
 
-        <TextView
+    <View
+        android:id="@+id/divider3"
+        style="@style/Divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notificationsTv"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3">
+
+        <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/logout"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:padding="10dp"
+            android:text="New for you"
+            android:textSize="20sp"
+            app:thumbTint="@color/switch_color"
+            app:trackTint="@color/switch_color"/>
 
-        <TextView
+        <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/logout_desc"
-            android:textSize="14sp" />
+            android:padding="10dp"
+            android:text="Account activity"
+            android:textSize="20sp"
+            app:thumbTint="@color/switch_color"
+            app:trackTint="@color/switch_color"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Track notifications"
+            android:textSize="20sp"
+            app:thumbTint="@color/switch_color"
+            app:trackTint="@color/switch_color"/>
 
     </LinearLayout>
 
-    <View
-        style="@style/Divider"
-        android:layout_marginTop="5dp" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_shape"
+        android:onClick="logOut"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

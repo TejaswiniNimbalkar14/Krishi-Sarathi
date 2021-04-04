@@ -4,6 +4,7 @@ package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
@@ -30,7 +31,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
+import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.databinding.ActivityUserSignUpBinding;
 
 
 public class User_SignUp extends AppCompatActivity {
@@ -83,7 +85,6 @@ public class User_SignUp extends AppCompatActivity {
                 storeNewData();
             }
         });
-
     }
 
     private boolean validateFullName() {

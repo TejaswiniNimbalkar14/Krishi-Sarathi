@@ -26,7 +26,7 @@ public class SelectLanguage extends AppCompatActivity {
     ActivitySelectLanguageBinding activitySelectLanguageBinding;
     List<String> languageList;
     String extra;
-    SharedPreferences onBoarding;
+    SharedPreferences selectLanguage;
     boolean isFirstTime;
 
     @Override
@@ -51,12 +51,12 @@ public class SelectLanguage extends AppCompatActivity {
         LanguageAdapter languageAdapter = new LanguageAdapter(languageList);
         activitySelectLanguageBinding.languageRV.setAdapter(languageAdapter);
 
-        onBoarding = getSharedPreferences("onBoarding", MODE_PRIVATE);
+        selectLanguage = getSharedPreferences("selectLanguage", MODE_PRIVATE);
 
-        isFirstTime = onBoarding.getBoolean("firstTime", true);
+        isFirstTime = selectLanguage.getBoolean("firstTime", true);
 
         if(isFirstTime) {
-            SharedPreferences.Editor editor = onBoarding.edit();
+            SharedPreferences.Editor editor = selectLanguage.edit();
             editor.putBoolean("firstTime", false);
             editor.commit();
 
