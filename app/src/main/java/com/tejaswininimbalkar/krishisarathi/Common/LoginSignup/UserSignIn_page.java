@@ -69,8 +69,7 @@ public class UserSignIn_page extends AppCompatActivity {
         findViewById(R.id.sign_in_back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //this page move on Dashboard
-                intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                intent = new Intent(getApplicationContext(), Send_Otp_Page.class);
                 startActivity(intent);
                 finish();
             }
@@ -116,8 +115,8 @@ public class UserSignIn_page extends AppCompatActivity {
                             password.setError(null);
                             password.setErrorEnabled(false);
                             Toast.makeText(UserSignIn_page.this, "Login successful", Toast.LENGTH_SHORT).show();
-//                            intent = new Intent(getApplicationContext(), MainActivity.class);
-//                            startActivity(intent);
+                            intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(UserSignIn_page.this, "Password does not match", Toast.LENGTH_SHORT).show();
                         }

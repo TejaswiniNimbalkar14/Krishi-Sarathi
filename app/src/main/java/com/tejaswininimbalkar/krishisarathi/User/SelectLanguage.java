@@ -25,7 +25,7 @@ public class SelectLanguage extends AppCompatActivity {
 
     ActivitySelectLanguageBinding activitySelectLanguageBinding;
     List<String> languageList;
-    String extra;
+    //String extra;
     SharedPreferences selectLanguage;
     boolean isFirstTime;
 
@@ -53,11 +53,11 @@ public class SelectLanguage extends AppCompatActivity {
 
         selectLanguage = getSharedPreferences("selectLanguage", MODE_PRIVATE);
 
-        isFirstTime = selectLanguage.getBoolean("firstTime", true);
+        isFirstTime = selectLanguage.getBoolean("firstTimeSelect", true);
 
         if(isFirstTime) {
             SharedPreferences.Editor editor = selectLanguage.edit();
-            editor.putBoolean("firstTime", false);
+            editor.putBoolean("firstTimeSelect", false);
             editor.commit();
 
             activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.VISIBLE);
@@ -80,6 +80,7 @@ public class SelectLanguage extends AppCompatActivity {
         }
         else {
             startActivity(new Intent(this, UserSettings.class));
+            finish();
         }
     }
 
