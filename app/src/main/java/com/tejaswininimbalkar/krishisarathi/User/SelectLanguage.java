@@ -3,15 +3,21 @@ package com.tejaswininimbalkar.krishisarathi.User;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.tejaswininimbalkar.krishisarathi.Common.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.Common.OnBoarding;
 import com.tejaswininimbalkar.krishisarathi.HelperClasses.LanguageAdapter;
+import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySelectLanguageBinding;
 
 import java.util.ArrayList;
@@ -25,19 +31,19 @@ public class SelectLanguage extends AppCompatActivity {
 
     ActivitySelectLanguageBinding activitySelectLanguageBinding;
     List<String> languageList;
-    //String extra;
-    SharedPreferences selectLanguage;
-    boolean isFirstTime;
+    boolean isFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        IntroPref pref = new IntroPref(this);
+        isFirst = pref.isFirstTimeSelect();
+        //set a light mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         activitySelectLanguageBinding = ActivitySelectLanguageBinding.inflate(getLayoutInflater());
         setContentView(activitySelectLanguageBinding.getRoot());
-
-        //set a light mode
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         activitySelectLanguageBinding.languageRV.setLayoutManager(new LinearLayoutManager(this));
         activitySelectLanguageBinding.languageRV.setHasFixedSize(true);
@@ -51,15 +57,8 @@ public class SelectLanguage extends AppCompatActivity {
         LanguageAdapter languageAdapter = new LanguageAdapter(languageList);
         activitySelectLanguageBinding.languageRV.setAdapter(languageAdapter);
 
-        selectLanguage = getSharedPreferences("selectLanguage", MODE_PRIVATE);
-
-        isFirstTime = selectLanguage.getBoolean("firstTimeSelect", true);
-
-        if(isFirstTime) {
-            SharedPreferences.Editor editor = selectLanguage.edit();
-            editor.putBoolean("firstTimeSelect", false);
-            editor.commit();
-
+        if(isFirst) {
+            pref.setIsFirstTimeSelect(false);
             activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.VISIBLE);
         }
         else {
@@ -74,14 +73,13 @@ public class SelectLanguage extends AppCompatActivity {
     }
 
     public void nextSelectLanguage(View view) {
-        if(isFirstTime) {
+        if(isFirst) {
             startActivity(new Intent(this, OnBoarding.class));
-            finish();
         }
         else {
             startActivity(new Intent(this, UserSettings.class));
-            finish();
         }
+        finish();
     }
 
     public void goBack(View view) {
