@@ -116,8 +116,9 @@ public class UserSignIn_page extends AppCompatActivity {
                             password.setError(null);
                             password.setErrorEnabled(false);
                             Toast.makeText(UserSignIn_page.this, "Login successful", Toast.LENGTH_SHORT).show();
-//                            intent = new Intent(getApplicationContext(), MainActivity.class);
-//                            startActivity(intent);
+                            // when user login successful then move to ContainerActivity
+                            intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                            startActivity(intent);
                         } else {
                             Toast.makeText(UserSignIn_page.this, "Password does not match", Toast.LENGTH_SHORT).show();
                         }
