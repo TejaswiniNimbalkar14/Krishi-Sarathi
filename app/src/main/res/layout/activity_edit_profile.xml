@@ -149,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:background="@color/purple_500"
+            android:backgroundTint="@color/purple_500"
             android:onClick="cancelEdit"
             android:text="@string/cancel"
             android:textAllCaps="false"
@@ -160,7 +160,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:background="@color/purple_500"
+            android:backgroundTint="@color/purple_500"
             android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"/>
