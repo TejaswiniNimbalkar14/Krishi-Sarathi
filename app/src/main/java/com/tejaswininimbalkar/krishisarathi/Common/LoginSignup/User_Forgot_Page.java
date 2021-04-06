@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -26,6 +27,7 @@ public class User_Forgot_Page extends AppCompatActivity {
 
     Button next;
     TextInputLayout email;
+    ImageView back_btn;
     String emailId;
 
 
@@ -37,6 +39,15 @@ public class User_Forgot_Page extends AppCompatActivity {
 
         next = findViewById(R.id.forgot_next_page);
         email = findViewById(R.id.check_email_id);
+        back_btn = findViewById(R.id.forgot_back_btn);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),UserSignIn_page.class));
+                finish();
+            }
+        });
 
         next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +60,13 @@ public class User_Forgot_Page extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(),UserSignIn_page.class));
+        finish();
     }
 
     private void checkDatabase() {

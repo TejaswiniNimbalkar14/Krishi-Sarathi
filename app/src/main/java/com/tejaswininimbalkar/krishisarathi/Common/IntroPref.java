@@ -12,6 +12,7 @@ public class IntroPref {
     private static final String PREF_NAME = "xyz";
     private static final String IS_FIRST_TIME_LAUNCH = "firstTimeLaunch";
     private static final String IS_FIRST_TIME_SELECT = "firstTimeSelect";
+    private static final String IS_CANCEL = "isCancel";
 
     public IntroPref(Context context) {
         this.context = context;
@@ -29,11 +30,20 @@ public class IntroPref {
         editor.commit();
     }
 
+    public void setIsCancel(boolean firstTimeSelect){
+        editor.putBoolean(IS_CANCEL,firstTimeSelect);
+        editor.commit();
+    }
+
     public boolean isFirstTimeLaunch(){
         return preferences.getBoolean(IS_FIRST_TIME_LAUNCH,true);
     }
 
     public boolean isFirstTimeSelect(){
         return preferences.getBoolean(IS_FIRST_TIME_SELECT,true);
+    }
+
+    public boolean isCancel(){
+        return preferences.getBoolean(IS_CANCEL,true);
     }
 }

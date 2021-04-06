@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +20,8 @@ public class Forgot_Selection extends AppCompatActivity {
     Button phone_auth,email_auth;
     Intent intent;
     String phoneNo,emailId;
-   TextView p,e;
+    TextView p,e;
+    ImageView back_btn;
     //User_Data userData = new User_Data();
 
 
@@ -32,6 +34,8 @@ public class Forgot_Selection extends AppCompatActivity {
 
         phone_auth = findViewById(R.id.forgot_via_sms);
         email_auth = findViewById(R.id.forgot_via_mail);
+        back_btn = findViewById(R.id.selection_back_btn);
+
         p = findViewById(R.id.phone);
         e = findViewById(R.id.emailId);
 
@@ -53,6 +57,15 @@ public class Forgot_Selection extends AppCompatActivity {
 
         //Toast.makeText(this, userData.getEmail_id(), Toast.LENGTH_SHORT).show();
 
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(),User_Forgot_Page.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         phone_auth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,5 +77,11 @@ public class Forgot_Selection extends AppCompatActivity {
                 finish();
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(),User_Forgot_Page.class));
+        finish();
     }
 }

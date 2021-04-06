@@ -129,6 +129,7 @@ public class Verify_Otp_page extends AppCompatActivity {
     private void verifyCode(String code) {
         try {
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem, code);
+            //Toast.makeText(this, "Verify()code", Toast.LENGTH_SHORT).show();
             signInWithPhoneAuthCredential(credential);
         } catch (Exception e) {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
@@ -167,6 +168,7 @@ public class Verify_Otp_page extends AppCompatActivity {
 
     public void btnVerify(View view) {
         String code = pinView.getText().toString();
+        //Toast.makeText(this, "Verify()", Toast.LENGTH_SHORT).show();
         if (!code.isEmpty()) {
             verifyCode(code);
         }
