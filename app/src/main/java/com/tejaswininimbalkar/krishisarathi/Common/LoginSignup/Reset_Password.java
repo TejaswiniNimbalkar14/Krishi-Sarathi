@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Reset_Password extends AppCompatActivity {
 
     Button reset;
+    ImageView back_btn;
     TextInputLayout newPass, conPass;
     String uid;
 
@@ -30,9 +32,18 @@ public class Reset_Password extends AppCompatActivity {
 
         newPass = findViewById(R.id.rest_new_password);
         conPass = findViewById(R.id.rest_con_password);
+        back_btn = findViewById(R.id.reset_back_btn);
 
         reset = findViewById(R.id.reset_next_page);
         uid = getIntent().getStringExtra("uid");
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),User_Forgot_Page.class));
+                finish();
+            }
+        });
 
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +55,14 @@ public class Reset_Password extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(getApplicationContext(),User_Forgot_Page.class));
+        finish();
     }
 
     private void updateData() {

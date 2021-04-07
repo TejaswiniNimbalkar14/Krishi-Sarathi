@@ -85,7 +85,10 @@
                 android:layout_width="match_parent"
                 android:id="@+id/btn_verify"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="@color/white"
                 android:layout_marginTop="30dp"
+                android:onClick="btnVerify"
                 android:text="@string/verify"
                 android:textAllCaps="false" />
 

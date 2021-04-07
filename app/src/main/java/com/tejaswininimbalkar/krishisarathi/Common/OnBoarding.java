@@ -35,6 +35,8 @@ public class OnBoarding extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         super.onCreate(savedInstanceState);
         //Fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -42,7 +44,7 @@ public class OnBoarding extends AppCompatActivity {
         setContentView(activityOnBoardingBinding.getRoot());
 
         //set a light mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
         //Call adapter
         sliderAdapter = new SliderAdapter(this);

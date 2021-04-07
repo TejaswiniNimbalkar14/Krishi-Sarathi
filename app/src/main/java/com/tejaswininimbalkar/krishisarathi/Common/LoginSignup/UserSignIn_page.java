@@ -69,7 +69,8 @@ public class UserSignIn_page extends AppCompatActivity {
         findViewById(R.id.sign_in_back_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), Send_Otp_Page.class);
+                //this page move on Dashboard
+                intent = new Intent(getApplicationContext(), ContainerActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -115,6 +116,7 @@ public class UserSignIn_page extends AppCompatActivity {
                             password.setError(null);
                             password.setErrorEnabled(false);
                             Toast.makeText(UserSignIn_page.this, "Login successful", Toast.LENGTH_SHORT).show();
+                            // when user login successful then move to ContainerActivity
                             intent = new Intent(getApplicationContext(), ContainerActivity.class);
                             startActivity(intent);
                         } else {
