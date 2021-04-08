@@ -3,6 +3,7 @@ package com.tejaswininimbalkar.krishisarathi.User;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,19 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(getIntent().getStringExtra("cameFrom") == "userProfile"){
+            startActivity(new Intent(this, UserProfileFragment.class));
+            finish();
+        }
+        else if(getIntent().getStringExtra("cameFrom1") == "userSettings") {
+            startActivity(new Intent(this, UserSettings.class));
+            finish();
+        }
     }
 
     public void goBack(View view) {

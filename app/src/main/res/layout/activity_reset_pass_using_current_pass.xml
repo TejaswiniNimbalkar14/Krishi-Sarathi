@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResetPassUsingOldPass">
+    tools:context=".ResetPassUsingCurrentPass">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:padding="5dp"
+            android:onClick="goBack"
             android:src="@drawable/general_back_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:hint="@string/old_pass"
+                    android:hint="@string/current_pass"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
                     app:boxStrokeWidthFocused="2dp"
@@ -129,15 +130,18 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"
                     android:background="#00000000"
-                    android:onClick="forgotOldPass"
+                    android:onClick="forgotCurrentPass"
                     android:paddingRight="0dp"
-                    android:text="@string/forgot_old_pass"
+                    android:text="@string/forgot_current_pass"
                     android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/reset_next_page"
-                    android:layout_width="150dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/purple_500"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
                     android:text="@string/next"/>

@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:background="#00000000"
         android:drawablePadding="10dp"
         android:drawableTint="@color/black"
@@ -104,6 +104,7 @@
             android:background="#00000000"
             android:drawableEnd="@drawable/next_btn_icon"
             android:drawableRight="@drawable/next_btn_icon"
+            android:onClick="resetPassword"
             android:text="@string/reset_password"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
@@ -129,9 +130,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableEnd="@drawable/next_btn_icon"
-            android:drawableRight="@drawable/next_btn_icon"
-            android:drawableTint="@color/red"
             android:onClick="deleteAccount"
             android:text="@string/delete_account"
             android:textAlignment="viewStart"
@@ -149,7 +147,7 @@
         android:layout_marginTop="10dp"
         android:drawablePadding="10dp"
         android:drawableTint="@color/black"
-        android:padding="10dp"
+        android:padding="8dp"
         android:text="@string/notification"
         android:textAlignment="viewStart"
         android:textColor="@color/black"
@@ -182,29 +180,29 @@
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:thumb="@drawable/switch_thumb"
             android:padding="10dp"
             android:text="New for you"
-            android:textSize="20sp"
-            app:thumbTint="@color/switch_color"
-            app:trackTint="@color/switch_color"/>
+            app:track="@drawable/track_selector" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Account Activity"
+            android:textSize="20sp"
             android:padding="10dp"
-            android:text="Account activity"
-            android:textSize="20sp"
-            app:thumbTint="@color/switch_color"
-            app:trackTint="@color/switch_color"/>
+            android:thumb="@drawable/switch_thumb"
+            app:track="@drawable/track_selector" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:thumb="@drawable/switch_thumb"
             android:padding="10dp"
             android:text="Track notifications"
-            android:textSize="20sp"
-            app:thumbTint="@color/switch_color"
-            app:trackTint="@color/switch_color"/>
+            app:track="@drawable/track_selector" />
 
     </LinearLayout>
 

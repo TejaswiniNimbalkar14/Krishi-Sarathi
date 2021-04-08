@@ -78,6 +78,6 @@
     <string name="camera" translatable="false">Camera</string>
     <string name="delete_photo" translatable="false">Delete</string>
     <string name="account" translatable="false">Account</string>
-    <string name="old_pass" translatable="false">Old Password</string>
-    <string name="forgot_old_pass" translatable="false">Forgot Old Password?</string>
+    <string name="current_pass" translatable="false">Current Password</string>
+    <string name="forgot_current_pass" translatable="false">Forgot Current Password?</string>
 </resources>

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
 
 /*
  * @author Tejaswini Nimbalkar
@@ -37,7 +38,14 @@ public class UserSettings extends AppCompatActivity {
     }
 
     public void editProfile(View view) {
-        startActivity(new Intent(this, EditProfileActivity.class));
+        Intent i = new Intent(this, EditProfileActivity.class);
+        i.putExtra("cameFrom1", "userSettings");
+        startActivity(i);
+        finish();
+    }
+
+    public void resetPassword(View view) {
+        startActivity(new Intent(this, ResetPassUsingCurrentPass.class));
         finish();
     }
 

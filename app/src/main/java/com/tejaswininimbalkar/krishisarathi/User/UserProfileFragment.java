@@ -37,7 +37,9 @@ public class UserProfileFragment extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), EditProfileActivity.class));
+                Intent i = new Intent(getContext(), EditProfileActivity.class);
+                i.putExtra("cameFrom", "userProfile");
+                startActivity(i);
             }
         });
 
