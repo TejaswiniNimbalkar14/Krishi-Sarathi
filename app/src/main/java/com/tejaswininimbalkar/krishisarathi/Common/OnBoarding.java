@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.view.View;
@@ -15,8 +14,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.User_SignUp;
 import com.tejaswininimbalkar.krishisarathi.HelperClasses.SliderAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityOnBoardingBinding;
@@ -35,16 +32,16 @@ public class OnBoarding extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //set no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         super.onCreate(savedInstanceState);
-        //Fullscreen
+
+        //For fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         activityOnBoardingBinding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(activityOnBoardingBinding.getRoot());
-
-        //set a light mode
-
 
         //Call adapter
         sliderAdapter = new SliderAdapter(this);

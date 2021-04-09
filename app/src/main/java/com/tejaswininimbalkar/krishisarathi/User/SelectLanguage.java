@@ -35,13 +35,19 @@ public class SelectLanguage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //For first time set 'isFirst' to 'true' and 'false' afterwards
         IntroPref pref = new IntroPref(this);
         isFirst = pref.isFirstTimeSelect();
-        //set a light mode
+
+        //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         super.onCreate(savedInstanceState);
+
+        //For fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //ViewBinding
         activitySelectLanguageBinding = ActivitySelectLanguageBinding.inflate(getLayoutInflater());
         setContentView(activitySelectLanguageBinding.getRoot());
 
@@ -58,6 +64,7 @@ public class SelectLanguage extends AppCompatActivity {
         activitySelectLanguageBinding.languageRV.setAdapter(languageAdapter);
 
         if(isFirst) {
+            //If activity is running first time, set variable to 'false'
             pref.setIsFirstTimeSelect(false);
             activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.VISIBLE);
         }

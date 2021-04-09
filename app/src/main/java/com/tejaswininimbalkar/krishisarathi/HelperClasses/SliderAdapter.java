@@ -50,7 +50,7 @@ public class SliderAdapter extends PagerAdapter {
     }
 
     //To check whether the Viewpager is form ConstraintLayout
-    //(view is from an object)
+    //(is view from an object)
     //1.Set the view
     @Override
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {

@@ -26,7 +26,9 @@ public class EditProfileActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         if(getIntent().getStringExtra("cameFrom") == "userProfile"){
-            startActivity(new Intent(this, UserProfileFragment.class));
+            Intent i = new Intent(this, ContainerActivity.class);
+            i.putExtra("fromEditProfile", "FromEditProfile");
+            startActivity(i);
             finish();
         }
         else if(getIntent().getStringExtra("cameFrom1") == "userSettings") {

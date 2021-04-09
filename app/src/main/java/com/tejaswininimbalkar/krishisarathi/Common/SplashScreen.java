@@ -30,50 +30,47 @@ public class SplashScreen extends AppCompatActivity {
     ActivitySplashScreenBinding splashScreenBinding;
 
     //Animations
-    Animation sideAnim, bottomAnim;
-    TextView splashScreenAppName;
+    Animation bottomAnim;
 
     boolean isFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //If the app is compiled for first time, a 'SharedPreferences'
-        //called 'onBoardingScreen' will be created
+        //Calling 'IntroPref' SharedPreferences
         IntroPref pref = new IntroPref(this);
-        //'isFirst' and will set it to 'true'
+        //The variable 'isFirst' will be set to 'true' for first time and 'false' afterwards
         isFirst = pref.isFirstTimeLaunch();
-        //set a light mode
+
+        //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         super.onCreate(savedInstanceState);
-        //Fullscreen
+
+        //For fullscreen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        //View Binding
         splashScreenBinding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
         setContentView(splashScreenBinding.getRoot());
 
 
         //Animations
-        sideAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);
+        //sideAnim = AnimationUtils.loadAnimation(this, R.anim.side_anim);
         bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_anim);
 
         //Set animations on elements
         splashScreenBinding.splashScreenAppName.setAnimation(bottomAnim);
 
-        //Splash screen to next screen
+        //Splash screen to next screen automatically after few seconds(described)
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //And then as it is compiles first time it will create variable with name
-                //If it is not first time it will set the value as 'false' of the
-                // already created 'firstTime' variable
-
                 if (!isFirst) {
                     //When it is not first time
                     startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
                 }
                 else {
-                    //To allow to edit 'SelectLanguage'
+                    //When it is first time, set the variable 'isFirst' to 'false'
                     pref.setIsFirstTimeLaunch(false);
                     startActivity(new Intent(SplashScreen.this, SelectLanguage.class));
                 }

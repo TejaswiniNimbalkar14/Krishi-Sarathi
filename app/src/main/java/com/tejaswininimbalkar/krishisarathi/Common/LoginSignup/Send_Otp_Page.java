@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Common.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
@@ -32,13 +33,14 @@ public class Send_Otp_Page extends AppCompatActivity {
     Intent intent;
     boolean flg=true;
 
-    //for first time install
-    SharedPreferences sendOtp;
     boolean isFirstTime;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        IntroPref pref = new IntroPref(this);
+        isFirstTime = pref.isFirstTimeSendOtp();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send__otp__page);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -80,15 +82,7 @@ public class Send_Otp_Page extends AppCompatActivity {
             }
         });
 
-        //Shared preferences
-        sendOtp = getSharedPreferences("userSignUp", MODE_PRIVATE);
-        isFirstTime = sendOtp.getBoolean("firstTimeSendOtp", true);
-
         if(isFirstTime) {
-            SharedPreferences.Editor editor = sendOtp.edit();
-            editor.putBoolean("firstTimeSendOtp", false);
-            editor.commit();
-
             skip.setVisibility(View.VISIBLE);
             backBtn.setVisibility(View.INVISIBLE);
         }else {

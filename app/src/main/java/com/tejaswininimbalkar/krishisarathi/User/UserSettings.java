@@ -22,7 +22,8 @@ public class UserSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_settings);
-        //set a light mode
+
+        //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
     }
 
@@ -64,6 +65,7 @@ public class UserSettings extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startActivity(new Intent(getApplicationContext(), ContainerActivity.class));
+                finish();
             }
         });
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -84,6 +86,7 @@ public class UserSettings extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 startActivity(new Intent(getApplicationContext(), ContainerActivity.class));
+                finish();
             }
         });
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

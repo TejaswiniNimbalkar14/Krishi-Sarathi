@@ -3,6 +3,8 @@ package com.tejaswininimbalkar.krishisarathi.Common;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+//Jayesh Pravin Borase
+
 public class IntroPref {
 
     SharedPreferences preferences;
@@ -12,6 +14,7 @@ public class IntroPref {
     private static final String PREF_NAME = "xyz";
     private static final String IS_FIRST_TIME_LAUNCH = "firstTimeLaunch";
     private static final String IS_FIRST_TIME_SELECT = "firstTimeSelect";
+    private static final String IS_FIRST_TIME_SEND_OTP = "firstTimeSendOtp";
     private static final String IS_CANCEL = "isCancel";
 
     public IntroPref(Context context) {
@@ -30,8 +33,13 @@ public class IntroPref {
         editor.commit();
     }
 
-    public void setIsCancel(boolean firstTimeSelect){
-        editor.putBoolean(IS_CANCEL,firstTimeSelect);
+    public void setIsFirstTimeSendOtp(boolean firstTimeSendOtp) {
+        editor.putBoolean(IS_FIRST_TIME_SEND_OTP, firstTimeSendOtp);
+        editor.commit();
+    }
+
+    public void setIsCancel(boolean cancel){
+        editor.putBoolean(IS_CANCEL,cancel);
         editor.commit();
     }
 
@@ -42,6 +50,8 @@ public class IntroPref {
     public boolean isFirstTimeSelect(){
         return preferences.getBoolean(IS_FIRST_TIME_SELECT,true);
     }
+
+    public boolean isFirstTimeSendOtp() { return preferences.getBoolean(IS_FIRST_TIME_SEND_OTP, true); }
 
     public boolean isCancel(){
         return preferences.getBoolean(IS_CANCEL,true);
