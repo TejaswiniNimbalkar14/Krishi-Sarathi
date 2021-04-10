@@ -3,19 +3,19 @@ package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
 //Jayesh pravin borase
 
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.ActivityOptions;
-import android.app.DownloadManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Pair;
+import android.provider.Settings;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
@@ -54,6 +55,10 @@ public class UserSignIn_page extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Check internet connection
+                if (!isConnected(UserSignIn_page.this)) {
+                    showConnectionDialog();
+                }
                 if (!validEmail() | !validPass()) {
                     return;
                 }
@@ -116,6 +121,18 @@ public class UserSignIn_page extends AppCompatActivity {
                             password.setError(null);
                             password.setErrorEnabled(false);
                             Toast.makeText(UserSignIn_page.this, "Login successful", Toast.LENGTH_SHORT).show();
+
+                            //Get user's data from firebase database
+                            String _emailId = snapshot.child(emailId).child("email_id").getValue(String.class);
+                            String _phoneNo = snapshot.child(emailId).child("phone_num").getValue(String.class);
+                            String _gender = snapshot.child(emailId).child("gender").getValue(String.class);
+                            String _fullName = snapshot.child(emailId).child("fullName").getValue(String.class);
+                            Boolean _equiOwner = snapshot.child(emailId).child("equipment_owner").getValue(Boolean.class);
+
+                            //Create a login session
+                            SessionManager sessionManager = new SessionManager(UserSignIn_page.this);
+                            sessionManager.createLoginSession(_fullName, _emailId, _phoneNo, _gender, systemPass, _equiOwner);
+
                             // when user login successful then move to ContainerActivity
                             intent = new Intent(getApplicationContext(), ContainerActivity.class);
                             startActivity(intent);
@@ -159,5 +176,39 @@ public class UserSignIn_page extends AppCompatActivity {
             password.setErrorEnabled(false);
             return true;
         }
+    }
+
+    //Method to check internet connection
+    private boolean isConnected(UserSignIn_page userSignInPage) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) userSignInPage.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserSignIn_page.this);
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
     }
 }

@@ -8,7 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,7 +19,6 @@ import com.chaos.view.PinView;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -159,7 +157,7 @@ public class Verify_Otp_page extends AppCompatActivity {
                 }
                 else {
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
-                        Toast.makeText(Verify_Otp_page.this, "Verification if failed !try again", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Verify_Otp_page.this, "Verification is failed! Try again", Toast.LENGTH_SHORT).show();
                     }
                 }
             }

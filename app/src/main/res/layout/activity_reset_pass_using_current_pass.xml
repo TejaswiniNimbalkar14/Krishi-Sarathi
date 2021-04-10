@@ -40,7 +40,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="100dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/padlock"/>
+                    android:src="@drawable/reset_pass"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,7 +81,7 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="15dp"
                     android:hint="@string/new_pass"
                     android:textColorHint="@color/black"
                     app:boxStrokeColor="@color/black"
@@ -137,7 +137,7 @@
 
                 <Button
                     android:id="@+id/reset_next_page"
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_500"
                     android:textAllCaps="false"

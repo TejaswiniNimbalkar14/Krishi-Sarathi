@@ -4,18 +4,15 @@ package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
@@ -31,9 +28,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
-import com.tejaswininimbalkar.krishisarathi.databinding.ActivityUserSignUpBinding;
-
 
 public class User_SignUp extends AppCompatActivity {
 
@@ -132,7 +126,7 @@ public class User_SignUp extends AppCompatActivity {
             password.setError("Field can not be empty");
             return false;
         } else if (!val.matches(checkPassword)) {
-            password.setError("Password should contain 6 characters!");
+            password.setError("Password should contain at least one special character!"); //changed
             return false;
         } else {
             password.setError(null);

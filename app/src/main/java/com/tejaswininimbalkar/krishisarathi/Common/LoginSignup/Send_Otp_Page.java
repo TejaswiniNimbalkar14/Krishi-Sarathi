@@ -27,7 +27,7 @@ import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
 public class Send_Otp_Page extends AppCompatActivity {
 
-    Button sent_otp,already_acc, skip;
+    Button sent_otp, already_acc, skip;
     ImageView backBtn;
     TextInputLayout mobile_no;
     Intent intent;
@@ -46,7 +46,6 @@ public class Send_Otp_Page extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         mobile_no = findViewById(R.id.mobile_number);
-
         sent_otp = findViewById(R.id.btn_send_otp);
         already_acc = findViewById(R.id.btn_already_account);
         skip = findViewById(R.id.skipSignUpBtn);

@@ -8,7 +8,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.databinding.ActivityEditProfileBinding;
+
+import java.util.HashMap;
 
 /*
  * @author Tejaswini Nimbalkar
@@ -16,10 +20,23 @@ import com.tejaswininimbalkar.krishisarathi.R;
 
 public class EditProfileActivity extends AppCompatActivity {
 
+    ActivityEditProfileBinding activityEditProfileBinding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        activityEditProfileBinding = ActivityEditProfileBinding.inflate(getLayoutInflater());
+        setContentView(activityEditProfileBinding.getRoot());
+
+        SessionManager sessionManager = new SessionManager(this);
+        HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
+
+        String name = stringUserData.get(SessionManager.KEY_FULLNAME);
+        String phone = stringUserData.get(SessionManager.KEY_PHONE_NO);
+
+        activityEditProfileBinding.editFullName.getEditText().setText(name);
+        activityEditProfileBinding.editPhoneNo.getEditText().setText(phone);
+
     }
 
     @Override
