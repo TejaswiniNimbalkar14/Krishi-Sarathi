@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
 
@@ -34,6 +35,15 @@ public class ContainerActivity extends AppCompatActivity {
 
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        SessionManager sessionManager = new SessionManager(this);
+
+        if(!sessionManager.checkLogin()) {
+            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation_logged_out);
+        }
+        else {
+            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
+        }
 
         //Add fragment to frame of container activity
         FragmentManager fragmentManager = getSupportFragmentManager();

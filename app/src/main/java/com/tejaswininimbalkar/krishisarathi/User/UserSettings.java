@@ -8,7 +8,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
+import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
 
@@ -85,8 +87,7 @@ public class UserSettings extends AppCompatActivity {
         dialog.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                startActivity(new Intent(getApplicationContext(), ContainerActivity.class));
-                finish();
+                logoutUser();
             }
         });
         dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -98,5 +99,14 @@ public class UserSettings extends AppCompatActivity {
 
         AlertDialog alertDialog = dialog.create();
         alertDialog.show();
+    }
+
+    private void logoutUser() {
+        SessionManager sessionManager = new SessionManager(UserSettings.this);
+        sessionManager.logoutUserFromSession();
+        Intent i = new Intent(UserSettings.this, ContainerActivity.class);
+        startActivity(i);
+        finish();
+        Toast.makeText(this, "You have been logged out!", Toast.LENGTH_SHORT).show();
     }
 }

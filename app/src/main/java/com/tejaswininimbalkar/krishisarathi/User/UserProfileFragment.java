@@ -36,14 +36,17 @@ public class UserProfileFragment extends Fragment {
         //Get access to login session
         SessionManager sessionManager = new SessionManager(getActivity());
 
-        //Get String type data from login session
-        HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
+        if(sessionManager.checkLogin()) {
+            //Get String type data from login session
+            HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
 
-        String name = stringUserData.get(SessionManager.KEY_FULLNAME);
-        String phone = stringUserData.get(SessionManager.KEY_PHONE_NO);
+            String name = stringUserData.get(SessionManager.KEY_FULLNAME);
+            String phone = stringUserData.get(SessionManager.KEY_PHONE_NO);
 
-        fullName.setText(name);
-        phoneNo.setText(phone);
+            fullName.setText(name);
+            phoneNo.setText(phone);
+        }
+
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override

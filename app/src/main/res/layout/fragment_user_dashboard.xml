@@ -10,7 +10,19 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_gravity="center"
+       android:text="Welcome"
        android:textSize="20sp"
        android:textStyle="bold" />
+
+   <ImageView
+       android:id="@+id/enterUserSession"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="end"
+       android:layout_margin="20dp"
+       android:backgroundTint="#00000000"
+       android:src="@drawable/person_icon"
+       android:visibility="invisible" />
+
 
 </FrameLayout>

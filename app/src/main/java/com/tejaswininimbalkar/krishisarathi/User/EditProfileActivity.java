@@ -29,13 +29,16 @@ public class EditProfileActivity extends AppCompatActivity {
         setContentView(activityEditProfileBinding.getRoot());
 
         SessionManager sessionManager = new SessionManager(this);
-        HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
 
-        String name = stringUserData.get(SessionManager.KEY_FULLNAME);
-        String phone = stringUserData.get(SessionManager.KEY_PHONE_NO);
+        if(sessionManager.checkLogin()) {
+            HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
 
-        activityEditProfileBinding.editFullName.getEditText().setText(name);
-        activityEditProfileBinding.editPhoneNo.getEditText().setText(phone);
+            String name = stringUserData.get(SessionManager.KEY_FULLNAME);
+            String phone = stringUserData.get(SessionManager.KEY_PHONE_NO);
+
+            activityEditProfileBinding.editFullName.getEditText().setText(name);
+            activityEditProfileBinding.editPhoneNo.getEditText().setText(phone);
+        }
 
     }
 

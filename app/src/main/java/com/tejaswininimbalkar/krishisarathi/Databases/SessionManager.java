@@ -1,7 +1,13 @@
 package com.tejaswininimbalkar.krishisarathi.Databases;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 import android.content.Context;
 import android.content.SharedPreferences;
+
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 
 import java.util.HashMap;
 
@@ -15,6 +21,7 @@ public class SessionManager {
     public static final String KEY_EQUI_OWNER = "equiOwner";
     //private because user should not have access of it
     private static final String IS_LOGIN = "IsLoggedIn";
+    String SHARED_PREF_NAME = "userLoginSession";
     SharedPreferences userSession;
     SharedPreferences.Editor editor;
     //Which activity is calling this class
@@ -24,7 +31,7 @@ public class SessionManager {
         context = _context;
 
         //This will check whether "userLoginSession" is created, if not it will create one
-        userSession = context.getSharedPreferences("userLoginSession", Context.MODE_PRIVATE);
+        userSession = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
 
         editor = userSession.edit();
     }
@@ -75,7 +82,7 @@ public class SessionManager {
         //Following 'true' does not set "IS_LOGIN" to true,
         //the following statement will just return true if user is logged in
         //else false
-        if (userSession.getBoolean(IS_LOGIN, true)) {
+        if (userSession.getBoolean(IS_LOGIN, false)) {
             return true;
         } else {
             return false;
