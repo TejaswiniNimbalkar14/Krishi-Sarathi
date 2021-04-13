@@ -24,5 +24,4 @@
        android:src="@drawable/person_icon"
        android:visibility="invisible" />
 
-
 </FrameLayout>

@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 
 
 public class Successful_create extends AppCompatActivity {
@@ -37,7 +38,12 @@ public class Successful_create extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
                     startActivity(intent);
                     finish();
-                }else{
+                }else if (textUpdate.getText().toString().equals("Password\nChanged")) {
+                    Intent intent = new Intent(getApplicationContext(), UserSettings.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else{
                     Intent intent = new Intent(getApplicationContext(), UserSignIn_page.class);
                     startActivity(intent);
                     finish();

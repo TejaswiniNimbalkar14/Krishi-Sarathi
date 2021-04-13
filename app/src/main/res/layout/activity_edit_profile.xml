@@ -57,9 +57,10 @@
             app:cardCornerRadius="60dp">
 
             <ImageView
+                android:id="@+id/editProfileImage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/profile_image" />
+                android:src="@drawable/default_profile_picture" />
 
         </androidx.cardview.widget.CardView>
 

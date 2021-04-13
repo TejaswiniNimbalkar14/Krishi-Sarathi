@@ -53,7 +53,7 @@
                     android:textSize="30dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/resetPassOld"
+                    android:id="@+id/resetPassCurrent"
                     style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,6 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/muli"
+                        android:inputType="textPassword"
                         android:textColor="@color/black"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -96,6 +97,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/muli"
+                        android:inputType="textPassword"
                         android:textColor="@color/black"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -119,12 +121,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:fontFamily="@font/muli"
+                        android:inputType="textPassword"
                         android:textColor="@color/black"/>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/resetForgotOldBtn"
+                    android:id="@+id/resetForgotCurrentBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -141,6 +144,7 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/purple_500"
                     android:textAllCaps="false"
+                    android:onClick="resetPassUsingCurrentPass"
                     android:textColor="@color/white"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"

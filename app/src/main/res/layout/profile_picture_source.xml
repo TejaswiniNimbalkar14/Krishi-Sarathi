@@ -22,18 +22,20 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cameraPictureSource"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:outlineAmbientShadowColor="@color/purple_200"
+                android:backgroundTint="@color/purple_200"
+                app:cardElevation="2dp"
                 app:cardCornerRadius="30dp">
 
                 <ImageView
+                    android:id="@+id/cameraPictureSource"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/camera_icon"/>
+                    android:src="@drawable/camera_icon"
+                    app:tint="@color/black" />
 
             </androidx.cardview.widget.CardView>
 
@@ -55,20 +57,22 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/libraryPictureSource"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_weight="1"
-                android:outlineAmbientShadowColor="@color/purple_200"
+                android:backgroundTint="@color/purple_200"
+                app:cardElevation="2dp"
                 app:cardCornerRadius="30dp">
 
                 <ImageView
+                    android:id="@+id/libraryPictureSource"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/photo_library_icon" />
+                    android:src="@drawable/photo_library_icon"
+                    app:tint="@color/black" />
 
             </androidx.cardview.widget.CardView>
 
@@ -90,18 +94,20 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/deletePicture"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
-                android:outlineAmbientShadowColor="@color/purple_200"
+                android:backgroundTint="@color/red"
+                app:cardElevation="2dp"
                 app:cardCornerRadius="30dp">
 
                 <ImageView
+                    android:id="@+id/deletePicture"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/delete_icon"/>
+                    android:src="@drawable/delete_icon"
+                    app:tint="@color/black" />
 
             </androidx.cardview.widget.CardView>
 
@@ -110,7 +116,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="@string/delete_photo"
-                android:textColor="@color/black"
+                android:textColor="@color/red"
                 android:textSize="15sp" />
 
         </LinearLayout>
