@@ -19,11 +19,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.internal.Storage;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,7 +44,10 @@ import java.util.HashMap;
 public class EditProfileActivity extends AppCompatActivity {
 
     ActivityEditProfileBinding activityEditProfileBinding;
-    private static final String TAG = EditProfileActivity.class.getName();
+    //SessionManager sessionManager;
+    String _NAME, _PHONE, _EMAIL, email;
+    StorageReference storageReference;
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,17 +55,26 @@ public class EditProfileActivity extends AppCompatActivity {
         activityEditProfileBinding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(activityEditProfileBinding.getRoot());
 
-        SessionManager sessionManager = new SessionManager(this);
+//        sessionManager = new SessionManager(this);
+//
+//        HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
+//        HashMap<String, Boolean> booleanUserData = sessionManager.getBooleanDataFromSession();
+//
+//        _NAME = stringUserData.get(SessionManager.KEY_FULLNAME);
+//        _PHONE = stringUserData.get(SessionManager.KEY_PHONE_NO);
+//        _EMAIL = stringUserData.get(SessionManager.KEY_EMAIL_ID);
+//        email = _EMAIL.substring(0, _EMAIL.indexOf("@"));
+        //email = getIntent().getStringExtra("email");
 
-        if(sessionManager.checkLogin()) {
-            HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
+//        _NAME = reference.child(email).child("fullName").get().toString();
+//        _PHONE = reference.child(email).child("phone_num").get().toString();
+//
+//        activityEditProfileBinding.editFullName.getEditText().setText(_NAME);
+//        activityEditProfileBinding.editPhoneNo.getEditText().setText(_PHONE);
 
-            String name = stringUserData.get(SessionManager.KEY_FULLNAME);
-            String phone = stringUserData.get(SessionManager.KEY_PHONE_NO);
+        //storageReference = FirebaseStorage.getInstance().getReference();
 
-            activityEditProfileBinding.editFullName.getEditText().setText(name);
-            activityEditProfileBinding.editPhoneNo.getEditText().setText(phone);
-        }
+        reference = FirebaseDatabase.getInstance().getReference("User");
     }
 
     @Override
@@ -83,6 +98,72 @@ public class EditProfileActivity extends AppCompatActivity {
 
     public void cancelEdit(View view) {
         onBackPressed();
+    }
+
+    public void updateProfile(View view) {
+        if(!validateFullName() || !validatePhone()) {
+            return;
+        }
+        updateData();
+    }
+
+    public void updateData() {
+        if(isNameChanged() || isPhoneChanged()) {
+            String updatedName = activityEditProfileBinding.editFullName.getEditText().getText().toString();
+            String updatedPhone = activityEditProfileBinding.editPhoneNo.getEditText().getText().toString();
+            Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
+        }
+        else Toast.makeText(this, "Data is same and cannot be updated!", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isNameChanged() {
+        String updatedName = activityEditProfileBinding.editFullName.getEditText().getText().toString();
+        if(!_NAME.equals(updatedName)) {
+            reference.child(email).child("fullName").setValue(updatedName);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private boolean isPhoneChanged() {
+        String updatedPhone = activityEditProfileBinding.editPhoneNo.getEditText().getText().toString();
+        _PHONE = "+91" + _PHONE;
+        if(!_PHONE.equals(updatedPhone)) {
+            reference.child(email).child("phone_num").setValue(updatedPhone);
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    private boolean validateFullName() {
+        if (_NAME.isEmpty()) {
+            activityEditProfileBinding.editFullName.setError("Field can not be empty");
+            return false;
+        } else {
+            activityEditProfileBinding.editFullName.setError(null);
+            activityEditProfileBinding.editFullName.setErrorEnabled(false);
+            return true;
+        }
+    }
+
+    private boolean validatePhone(){
+        _PHONE = _PHONE.substring(3);
+        if (_PHONE.isEmpty()) {
+            activityEditProfileBinding.editPhoneNo.setError("Field can not be empty");
+            return false;
+        } else if (_PHONE.length() != 10){
+            activityEditProfileBinding.editPhoneNo.setError("Enter Valid Number");
+            return false;
+        }else {
+            activityEditProfileBinding.editPhoneNo.setError(null);
+            activityEditProfileBinding.editPhoneNo.setErrorEnabled(false);
+            return true;
+        }
     }
 
     public void selectPicture(View view) {
@@ -145,6 +226,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 if(resultCode == RESULT_OK && data != null && data.getData() != null) {
                     Uri selectedImageUri = data.getData();
                     activityEditProfileBinding.editProfileImage.setImageURI(selectedImageUri);
+                    //uploadImagetoFirebase(selectedImageUri);
                 }
                 break;
             case 2:     //from camera
@@ -152,7 +234,7 @@ public class EditProfileActivity extends AppCompatActivity {
                     Bundle bundle = data.getExtras();
                     Bitmap bitmap = (Bitmap) bundle.get("data");
                     activityEditProfileBinding.editProfileImage.setImageBitmap(bitmap);
-                    //uploadImageBitmap(bitmap);
+                    uploadImageBitmap(bitmap);
                 }
         }
     }
@@ -181,6 +263,20 @@ public class EditProfileActivity extends AppCompatActivity {
         else Toast.makeText(EditProfileActivity.this, "Permission not granted!", Toast.LENGTH_SHORT).show();
     }
 
+    private void uploadImagetoFirebase(Uri uri) {
+        StorageReference fileRef = storageReference.child("userProfileImages");
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(EditProfileActivity.this, "Picture updated", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(EditProfileActivity.this, "Upload failed!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     private void uploadImageBitmap(Bitmap bitmap) {
         //The bitmap is thumbnail of image, no actual image
@@ -188,11 +284,9 @@ public class EditProfileActivity extends AppCompatActivity {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
 
-        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         StorageReference reference = FirebaseStorage.getInstance().getReference()
                 .child("userProfileImages")
-                .child(uid + ".jpeg");
+                .child(email + ".jpeg");
 
         reference.putBytes(baos.toByteArray())
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {

@@ -36,14 +36,16 @@ public class ContainerActivity extends AppCompatActivity {
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        SessionManager sessionManager = new SessionManager(this);
+//        SessionManager sessionManager = new SessionManager(this);
+//
+//        if(!sessionManager.checkLogin()) {
+//            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation_logged_out);
+//        }
+//        else {
+//            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
+//        }
 
-        if(!sessionManager.checkLogin()) {
-            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation_logged_out);
-        }
-        else {
-            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
-        }
+        activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
 
         //Add fragment to frame of container activity
         FragmentManager fragmentManager = getSupportFragmentManager();

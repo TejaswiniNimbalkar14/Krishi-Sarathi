@@ -31,25 +31,25 @@ public class UserDashboardFragment extends Fragment {
         enterSession = (ImageView) view.findViewById(R.id.enterUserSession);
 
 
-        //Get access to login session
-        SessionManager sessionManager = new SessionManager(getActivity());
-
-        if(sessionManager.checkLogin()) {
-
-            //Get String type data stored in the session
-            HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
-
-            String fullName = stringUserData.get(SessionManager.KEY_FULLNAME);
-
-            String name = fullName.substring(0, fullName.indexOf(" "));
-
-            wlcmMsg.setText("Welcome " + name + "!");
-
-        }
-        else {
-            enterSession.setVisibility(View.VISIBLE);
-            enterUserSession();
-        }
+//        //Get access to login session
+//        SessionManager sessionManager = new SessionManager(getActivity());
+//
+//        if(sessionManager.checkLogin()) {
+//
+//            //Get String type data stored in the session
+//            HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
+//
+//            String fullName = stringUserData.get(SessionManager.KEY_FULLNAME);
+//
+//            String name = fullName.substring(0, fullName.indexOf(" "));
+//
+//            wlcmMsg.setText("Welcome " + name + "!");
+//
+//        }
+//        else {
+//            enterSession.setVisibility(View.VISIBLE);
+//            enterUserSession();
+//        }
 
         return view;
     }

@@ -123,18 +123,18 @@ public class UserSignIn_page extends AppCompatActivity {
                             password.setErrorEnabled(false);
                             Toast.makeText(UserSignIn_page.this, "Login successful", Toast.LENGTH_SHORT).show();
 
-                            //Get user's data from firebase database
-                            String _emailId = snapshot.child(emailId).child("email_id").getValue(String.class);
-                            String _phoneNo = snapshot.child(emailId).child("phone_num").getValue(String.class);
-                            String _gender = snapshot.child(emailId).child("gender").getValue(String.class);
-                            String _fullName = snapshot.child(emailId).child("fullName").getValue(String.class);
-                            Boolean _equiOwner = snapshot.child(emailId).child("equipment_owner").getValue(Boolean.class);
-
-                            //User_Data userData = new User_Data(_fullName, _emailId, systemPass, _phoneNo, _gender, _equiOwner);
-
-                            //Create a login session
-                            SessionManager sessionManager = new SessionManager(UserSignIn_page.this);
-                            sessionManager.createLoginSession(_fullName, _emailId, _phoneNo, _gender, systemPass, _equiOwner);
+//                            //Get user's data from firebase database
+//                            String _emailId = snapshot.child(emailId).child("email_id").getValue(String.class);
+//                            String _phoneNo = snapshot.child(emailId).child("phone_num").getValue(String.class);
+//                            String _gender = snapshot.child(emailId).child("gender").getValue(String.class);
+//                            String _fullName = snapshot.child(emailId).child("fullName").getValue(String.class);
+//                            Boolean _equiOwner = snapshot.child(emailId).child("equipment_owner").getValue(Boolean.class);
+//
+//                            //User_Data userData = new User_Data(_fullName, _emailId, systemPass, _phoneNo, _gender, _equiOwner);
+//
+//                            //Create a login session
+//                            SessionManager sessionManager = new SessionManager(UserSignIn_page.this);
+//                            sessionManager.createLoginSession(_fullName, _emailId, _phoneNo, _gender, systemPass, _equiOwner);
                             //sessionManager.createLoginSession(userData);
 
                             // when user login successful then move to ContainerActivity
@@ -159,7 +159,7 @@ public class UserSignIn_page extends AppCompatActivity {
 
     public void moveToContainerActivity() {
         Intent i = new Intent(getApplicationContext(), ContainerActivity.class);
-        //i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.putExtra("email", emailId);
         startActivity(i);
         finish();
     }

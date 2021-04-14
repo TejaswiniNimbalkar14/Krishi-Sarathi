@@ -33,6 +33,8 @@ public class UserProfileFragment extends Fragment {
         TextView fullName = (TextView) view.findViewById(R.id.profileFullName);
         TextView phoneNo = (TextView) view.findViewById(R.id.profileContact);
 
+        String email = getActivity().getIntent().getStringExtra("email");
+
         //Get access to login session
         SessionManager sessionManager = new SessionManager(getActivity());
 
@@ -60,6 +62,7 @@ public class UserProfileFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), EditProfileActivity.class);
                 i.putExtra("cameFrom", "userProfile");
+                i.putExtra("email", email);
                 startActivity(i);
             }
         });

@@ -27,7 +27,6 @@ public class ResetPassUsingCurrentPass extends AppCompatActivity {
     String currentPass, newPass, conPass;
     String email = "";
     String pass = "";
-    boolean state = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,18 +86,16 @@ public class ResetPassUsingCurrentPass extends AppCompatActivity {
     private boolean validateCurPass() {
         if(currentPass.isEmpty()) {
             resetPassUsingCurrentPassBinding.resetPassNew.setError("Field can not be empty");
-            state = false;
+            return false;
         }
         else if(!currentPass.equals(pass)) {
             resetPassUsingCurrentPassBinding.resetPassNew.setError("Current password doesn't match!");
-            state = false;
+            return false;
         }else {
             resetPassUsingCurrentPassBinding.resetPassNew.setError(null);
             resetPassUsingCurrentPassBinding.resetPassNew.setErrorEnabled(false);
-            state = true;
+            return true;
         }
-
-        return state;
     }
 
     private boolean validateNewPass() {
