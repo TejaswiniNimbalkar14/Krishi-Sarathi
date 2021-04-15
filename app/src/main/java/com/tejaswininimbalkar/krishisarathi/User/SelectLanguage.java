@@ -37,7 +37,7 @@ public class SelectLanguage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         //For first time set 'isFirst' to 'true' and 'false' afterwards
         IntroPref pref = new IntroPref(this);
-        isFirst = pref.isFirstTimeSelect();
+
 
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -62,6 +62,7 @@ public class SelectLanguage extends AppCompatActivity {
         //Setting adapter to the recycler view to display languages list
         LanguageAdapter languageAdapter = new LanguageAdapter(languageList);
         activitySelectLanguageBinding.languageRV.setAdapter(languageAdapter);
+        isFirst = pref.isFirstTimeSelect();
 
         if(isFirst) {
             //If activity is running first time, set variable to 'false'
@@ -69,7 +70,7 @@ public class SelectLanguage extends AppCompatActivity {
             activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.VISIBLE);
         }
         else {
-            activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.INVISIBLE);
+            activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.GONE);
             activitySelectLanguageBinding.languageBackBtn.setVisibility(View.VISIBLE);
         }
     }

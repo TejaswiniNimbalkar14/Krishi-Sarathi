@@ -52,7 +52,10 @@
     <string name="enter_password" translatable="false">Password</string>
     <string name="remember_me" translatable="false">Remember Me</string>
     <string name="mobile_verification" translatable="false">Mobile Verification</string>
-    <string name="enter_your_country_code_and_phone_number" translatable="false">Enter Your Country Code And Phone Number To Create Account</string>
+    <string name="enter_your_country_code_and_phone" translatable="false">Enter Your Country Code And Phone</string>
+    <string name="number_to" translatable="false">Number To</string>
+    <string name="create_massage" translatable="false">Create Or Login Account</string>
+    <string name="Login_massage" translatable="false">Login Account</string>
     <string name="enter_mobile_number" translatable="false">Enter mobile Number</string>
     <string name="already_have_account" translatable="false">Already Have Account</string>
     <string name="enter_the_otp_sent_to" translatable="false">Enter the OTP sent to</string>

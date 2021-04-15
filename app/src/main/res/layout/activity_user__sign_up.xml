@@ -8,22 +8,35 @@
     android:transitionName="transition_to_account"
     tools:context="Common.LoginSignup.User_SignUp">
 
-    <ImageView
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:padding="5dp"
-        android:src="@drawable/general_back_icon" />
+        android:weightSum="10"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:fontFamily="@font/muli_black"
-        android:text="@string/sign_up"
-        android:textColor="@color/black"
-        android:textSize="40dp" />
+        >
+        <ImageView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="15dp"
+            android:layout_weight="2"
+            android:padding="5dp"
+            android:src="@drawable/general_back_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="8"
+            android:gravity="right"
+            android:fontFamily="@font/muli_black"
+            android:text="@string/sign_up"
+            android:textColor="@color/gray"
+            android:textSize="30sp" />
+    </LinearLayout>
+
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,8 +54,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/editProfileTv">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImageCard"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_centerHorizontal="true"
+                        app:cardCornerRadius="60dp">
+
+                        <ImageView
+                            android:id="@+id/editProfileImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/default_profile_picture" />
+
+                    </androidx.cardview.widget.CardView>
+
+                    <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@id/profileImageCard"
+                        android:layout_alignRight="@id/profileImageCard"
+                        android:layout_alignBottom="@id/profileImageCard"
+                        android:backgroundTint="@color/white"
+                        android:elevation="1dp"
+                        android:onClick="selectPicture"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/camera_icon"
+                        android:tint="@color/black"
+                        app:borderWidth="0dp"
+                        app:fabSize="mini"/>
+
+                </RelativeLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
 
@@ -90,56 +144,6 @@
                         android:layout_height="match_parent"
                         android:fontFamily="@font/muli"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/black" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/password"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/enter_password"
-                    app:boxStrokeColor="@color/black"
-                    app:boxStrokeWidthFocused="2dp"
-                    app:endIconCheckable="true"
-                    app:endIconMode="password_toggle"
-                    app:endIconTint="@color/black"
-
-                    app:hintTextColor="@color/black"
-                    app:startIconTint="@color/black">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:inputType="textPassword"
-                        android:fontFamily="@font/muli"
-                        android:textColor="@color/black" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/con_password"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:hint="@string/confm_pass"
-                    app:boxStrokeColor="@color/black"
-
-                    app:boxStrokeWidthFocused="2dp"
-                    app:endIconTint="@color/black"
-
-                    app:hintTextColor="@color/black"
-                    app:startIconTint="@color/black">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:fontFamily="@font/muli"
-                        android:inputType="textPassword"
                         android:textColor="@color/black" />
 
                 </com.google.android.material.textfield.TextInputLayout>

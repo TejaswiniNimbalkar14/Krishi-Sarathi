@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
 
 import java.util.concurrent.TimeUnit;
@@ -149,9 +150,9 @@ public class Verify_Otp_page extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                    else if (p.equals("Reset_Password")){
-                        intent = new Intent(getApplicationContext(), Reset_Password.class);
-                        intent.putExtra("uid",getIntent().getStringExtra("uid"));
+                    else if (p.equals("Login")){
+                        intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                        //intent.putExtra("uid",getIntent().getStringExtra("uid"));
                         startActivity(intent);
                         finish();}
                 }

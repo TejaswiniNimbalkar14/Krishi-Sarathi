@@ -24,6 +24,14 @@ public class User_Data {
         this.Equipment_owner = Equipment_owner;
     }
 
+    public User_Data(String fullName, String email_id, String phone_num, String gender, boolean Equipment_owner) {
+        this.fullName = fullName;
+        this.email_id = email_id;
+        this.phone_num = phone_num;
+        this.gender = gender;
+        this.Equipment_owner = Equipment_owner;
+    }
+
     public User_Data() {
     }
 

@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -30,26 +32,35 @@ public class Send_Otp_Page extends AppCompatActivity {
     Button sent_otp, already_acc, skip;
     ImageView backBtn;
     TextInputLayout mobile_no;
+    TextView cre_massage,log_massage;
     Intent intent;
     boolean flg=true;
 
     boolean isFirstTime;
 
+   // DatabaseReference ref;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         IntroPref pref = new IntroPref(this);
-        isFirstTime = pref.isFirstTimeSendOtp();
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send__otp__page);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
         mobile_no = findViewById(R.id.mobile_number);
         sent_otp = findViewById(R.id.btn_send_otp);
-        already_acc = findViewById(R.id.btn_already_account);
+        //already_acc = findViewById(R.id.btn_already_account);
         skip = findViewById(R.id.skipSignUpBtn);
         backBtn = findViewById(R.id.send_otp_back_btn);
+
+        cre_massage = findViewById(R.id.create_massage);
+        //log_massage = findViewById(R.id.login_massage);
+
+        isFirstTime = pref.isFirstTimeSendOtp();
+
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,21 +83,26 @@ public class Send_Otp_Page extends AppCompatActivity {
             }
         });
 
-        already_acc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), UserSignIn_page.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        already_acc.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                intent = new Intent(getApplicationContext(), UserSignIn_page.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         if(isFirstTime) {
             skip.setVisibility(View.VISIBLE);
-            backBtn.setVisibility(View.INVISIBLE);
+            backBtn.setVisibility(View.GONE);
+            //cre_massage.setVisibility(View.VISIBLE);
+            //log_massage.setVisibility(View.GONE);
+            pref.setIsFirstTimeSendOtp(false);
         }else {
-            skip.setVisibility(View.INVISIBLE);
+            skip.setVisibility(View.GONE);
             backBtn.setVisibility(View.VISIBLE);
+            //cre_massage.setVisibility(View.GONE);
+            //log_massage.setVisibility(View.VISIBLE);
         }
 
         skip.setOnClickListener(new View.OnClickListener() {
@@ -115,8 +131,13 @@ public class Send_Otp_Page extends AppCompatActivity {
                         intent.putExtra("class","User_SignUp");
                         startActivity(intent);
                         finish();
-                    }else
-                        Toast.makeText(Send_Otp_Page.this, "Already have account", Toast.LENGTH_SHORT).show();
+                    }else {
+                        intent = new Intent(getApplicationContext(),Verify_Otp_page.class);
+                        intent.putExtra("mobile",mobile_no.getEditText().getText().toString().replace(" ",""));
+                        intent.putExtra("class","Login");
+                        startActivity(intent);
+                        finish();
+                    }
                 }
 
                 @Override
