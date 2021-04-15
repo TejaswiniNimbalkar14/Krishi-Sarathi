@@ -1,4 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Krishi Sarathi</string>
+    <string name="app_name">"कृषी सारथी "</string>
+    <string name="select_to_proceed">"आगे जाने के लिए कृपया अपनी भाषा चुनें "</string>
+    <string name="get_started">शुरू करें</string>
+    <string name="skip">छोड़ें</string>
+    <string name="payment">भुगतान</string>
+    <string name="notification">सूचनाए</string>
+    <string name="settings">समायोजन</string>
+    <string name="location">स्थान</string>
+    <string name="my_orders">मेरे ऑर्डर</string>
+    <string name="history">हिस्ट्री</string>
+    <string name="track_order">ऑर्डर ट्रैक करें</string>
+    <string name="get_online_ordering_help">ऑनलाइन ऑर्डरिंग सहायता प्राप्त करें</string>
+    <string name="my_locations_btn">मेरे स्थान</string>
+    <string name="about_btn">ऐप्लकैशन के बारे मे</string>
+    <string name="edit_profile">प्रोफ़ाइल संपादित करें</string>
+    <string name="reset_password">पासवर्ड बदले</string>
+    <string name="change_language">भाषा बदले</string>
+    <string name="notification_settings">सूचनाए समायोजन</string>
+    <string name="delete_account">अकाउंट हटाए</string>
+    <string name="logout">बाहर निकलें</string>
+    <string name="select_language">कृपया अपनी भाषा चुनें</string>
+    <string name="next">आगे जाए</string>
+    <string name="home">मुखपृष्ठ</string>
+    <string name="weather">मौसम</string>
+    <string name="profile">प्रोफाइल</string>
+    <string name="equipment">उपकरण</string>
+    <string name="login">लॉगिन करें</string>
+    <string name="send_otp">ओटीपी भेजें</string>
+    <string name="create_account">नया अकाउंट बनाए</string>
+    <string name="already_account">पहले से ही अकाउंट ही</string>
+    <string name="forgot_pass">पासवर्ड भूल गए?</string>
+    <string name="new_pass">नया पासवर्ड</string>
+    <string name="confm_pass">पासवर्ड की पुष्टि करें</string>
+    <string name="username">उपयोगकर्ता नाम</string>
+    <string name="enter_password">पासवर्ड</string>
+    <string name="remember_me">मुजे याद रखें</string>
+    <string name="mobile_verification">मोबाईल सत्यापन</string>
+    <string name="enter_your_country_code_and_phone" translatable="false">अपना देश कोड और फ़ोन दर्ज करें</string>
+    <string name="number_to" translatable="false">के लिए नंबर</string>
+    <string name="create_massage">खाता बनाएं या लॉगिन करें</string>
+    <string name="Login_massage">अकाउंट मे लॉगिन करें</string>
+    <string name="enter_mobile_number">मोबाईल नंबर दर्ज करें</string>
+    <string name="enter_the_otp_sent_to" translatable="false">को भेजे गए ओटीपी दर्ज करें</string>
+    <string name="verify">जाँचें</string>
+    <string name="don_t_receive_the_otp">ओटीपी प्राप्त नहीं किया?</string>
+    <string name="sign_up">पंजीकरण करें</string>
+    <string name="enter_first_name">पहला नाम</string>
+    <string name="last_name">आँखरी नाम</string>
+    <string name="email_id">ईमेल आइडी</string>
+    <string name="female">महिला</string>
+    <string name="male">पुरुष</string>
+    <string name="your_password_has_been_updated">आपका पासवर्ड बदला जा चुका ही</string>
+    <string name="password_nupdated" translatable="false">पासवर्ड\\nबदला गया</string>
+    <string name="full_name">पूरा नाम</string>
+    <string name="phone_no">मोबाइल नं.</string>
+    <string name="cancel">रद्द करें</string>
+    <string name="save">सेव्ह करें</string>
+    <string name="gallery">गॅलरी</string>
+    <string name="camera">कैमरा</string>
+    <string name="delete_photo">हटाए</string>
+    <string name="account">अकाउंट</string>
+    <string name="current_pass">वर्तमान पासवर्ड</string>
+    <string name="forgot_current_pass">वर्तमान पासवर्ड भूल गए?</string>
 </resources>

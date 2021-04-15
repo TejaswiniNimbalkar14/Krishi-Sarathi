@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tejaswininimbalkar.krishisarathi.Common.Localization.LanguageDTO;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.List;
@@ -18,11 +20,18 @@ import java.util.List;
  */
 
 public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.LanguageViewHolder> {
+    private ItemClickListener mListener;
 
-    List<String> language_list;
+    private int isSelected = -1;
 
-    public LanguageAdapter(List<String> list) {
-        language_list = list;
+    private List<LanguageDTO> mLanguageList;
+
+    public LanguageAdapter(ItemClickListener listener, int selectedLanguagePosition, List<LanguageDTO> languageList) {
+        if (selectedLanguagePosition > -1) {
+            isSelected = selectedLanguagePosition;
+        }
+        mLanguageList = languageList;
+        mListener = listener;
     }
 
     //1.Create view holder
@@ -39,18 +48,22 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.Langua
     //2.Bind data to holder
     @Override
     public void onBindViewHolder(@NonNull LanguageAdapter.LanguageViewHolder holder, int position) {
-
-        holder.language.setText(language_list.get(position));
-
+        holder.language.setText(mLanguageList.get(position).getLanguageTitle());
+        holder.language.setTextColor(position == isSelected ? ContextCompat.getColor(holder.itemView.getContext(), R.color.purple_700) :
+                ContextCompat.getColor(holder.itemView.getContext(), R.color.black));
     }
 
     @Override
     public int getItemCount() {
-        return language_list.size();
+        return mLanguageList == null ? 0 : mLanguageList.size();
+    }
+
+    public interface ItemClickListener {
+        void onItemClick(int position, String language);
     }
 
     //View holder to hold the language list items
-    public class LanguageViewHolder extends RecyclerView.ViewHolder{
+    public class LanguageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView language;
 
@@ -58,6 +71,16 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.Langua
             super(itemView);
 
             language = itemView.findViewById(R.id.languageTV);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int pos = getLayoutPosition();
+            if(mLanguageList != null && pos != -1 && pos < mLanguageList.size()) {
+                isSelected = pos;
+                mListener.onItemClick(pos, mLanguageList.get(pos).getLanguageTitle());
+            }
         }
     }
 }
