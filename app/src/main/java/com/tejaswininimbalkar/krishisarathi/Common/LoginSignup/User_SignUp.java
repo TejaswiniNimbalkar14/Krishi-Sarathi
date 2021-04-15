@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -37,9 +38,10 @@ public class User_SignUp extends AppCompatActivity {
     ImageView backBtn;
     String phoneNo,gender;
     User_Data userData;
-    String email;
+    //String email;
     Intent intent;
     RadioGroup radioGroup;
+    FirebaseAuth mAuth;
 
 
     @Override
@@ -51,14 +53,16 @@ public class User_SignUp extends AppCompatActivity {
         backBtn = findViewById(R.id.back_btn);
         fullName = findViewById(R.id.fullName);
         emailId = findViewById(R.id.email_id);
-        password = findViewById(R.id.password);
-        conPassword = findViewById(R.id.con_password);
+        //password = findViewById(R.id.password);
+        //conPassword = findViewById(R.id.con_password);
         radioGroup = findViewById(R.id.radioGroup);
         rMale = findViewById(R.id.r_male);
         rFemale = findViewById(R.id.r_female);
         submitToLogin = findViewById(R.id.btn_sign_up);
 
         phoneNo = getIntent().getStringExtra("phone_No");
+
+        mAuth = FirebaseAuth.getInstance();
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,10 +76,10 @@ public class User_SignUp extends AppCompatActivity {
         submitToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validateFullName() | !validateEmail() | !validatePassword() | !validateConPassword() | !validateGender()) {
+                if (!validateFullName() | !validateEmail() | !validateGender()) {
                     return;
                 }
-                email = emailId.getEditText().getText().toString();
+                //email = emailId.getEditText().getText().toString();
                 storeNewData();
             }
         });
@@ -167,7 +171,7 @@ public class User_SignUp extends AppCompatActivity {
             FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
             DatabaseReference reference = rootNode.getReference();
 
-            email = email.substring(0,email.indexOf('@'));
+            //email = email.substring(0,email.indexOf('@'));
 
             Query checkEmail = FirebaseDatabase.getInstance()
                     .getReference("User").orderByChild("email_id")
@@ -180,14 +184,13 @@ public class User_SignUp extends AppCompatActivity {
                         userData = new User_Data(
                                 fullName.getEditText().getText().toString(),
                                 emailId.getEditText().getText().toString(),
-                                password.getEditText().getText().toString(),
                                 phoneNo,
                                 gender,
                                 false
                         );
 
 
-                        reference.child("User").child(email).setValue(userData);
+                        reference.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userData);
 
                         new Handler().postDelayed(new Runnable() {
                             @Override

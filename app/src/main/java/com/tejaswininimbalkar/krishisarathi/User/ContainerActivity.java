@@ -11,8 +11,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
@@ -26,6 +31,21 @@ import java.net.URISyntaxException;
 public class ContainerActivity extends AppCompatActivity {
 
     ActivityContainerBinding activityContainerBinding;
+    FirebaseUser mAuth;
+    boolean isPresent = false;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+//        try {
+//            mAuth = FirebaseAuth.getInstance();
+//            if (mAuth != null){
+//                isPresent = true;
+//            }
+//        }catch (Exception e){
+//            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+//        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +55,32 @@ public class ContainerActivity extends AppCompatActivity {
 
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (mAuth != null){
+            activityContainerBinding.logOut.setVisibility(View.VISIBLE);
+            activityContainerBinding.logIn.setVisibility(View.GONE);
+        }else {
+            activityContainerBinding.logOut.setVisibility(View.GONE);
+            activityContainerBinding.logIn.setVisibility(View.VISIBLE);
+        }
+
+        activityContainerBinding.logIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Send_Otp_Page.class);
+                startActivity(intent);
+            }
+        });
+
+        activityContainerBinding.logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                activityContainerBinding.logOut.setVisibility(View.GONE);
+                activityContainerBinding.logIn.setVisibility(View.VISIBLE);
+            }
+        });
 
 //        SessionManager sessionManager = new SessionManager(this);
 //
