@@ -44,10 +44,10 @@ import java.util.HashMap;
 public class EditProfileActivity extends AppCompatActivity {
 
     ActivityEditProfileBinding activityEditProfileBinding;
-    //SessionManager sessionManager;
-    String _NAME, _PHONE, _EMAIL, email;
+    String _NAME, email;
     StorageReference storageReference;
     DatabaseReference reference;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,41 +55,26 @@ public class EditProfileActivity extends AppCompatActivity {
         activityEditProfileBinding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(activityEditProfileBinding.getRoot());
 
-//        sessionManager = new SessionManager(this);
-//
-//        HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
-//        HashMap<String, Boolean> booleanUserData = sessionManager.getBooleanDataFromSession();
-//
-//        _NAME = stringUserData.get(SessionManager.KEY_FULLNAME);
-//        _PHONE = stringUserData.get(SessionManager.KEY_PHONE_NO);
-//        _EMAIL = stringUserData.get(SessionManager.KEY_EMAIL_ID);
-//        email = _EMAIL.substring(0, _EMAIL.indexOf("@"));
-        //email = getIntent().getStringExtra("email");
+        mAuth = FirebaseAuth.getInstance();
 
-//        _NAME = reference.child(email).child("fullName").get().toString();
-//        _PHONE = reference.child(email).child("phone_num").get().toString();
-//
-//        activityEditProfileBinding.editFullName.getEditText().setText(_NAME);
-//        activityEditProfileBinding.editPhoneNo.getEditText().setText(_PHONE);
-
-        //storageReference = FirebaseStorage.getInstance().getReference();
+        loadUserInformation();
 
         reference = FirebaseDatabase.getInstance().getReference("User");
+    }
+
+    private void loadUserInformation() {
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        if(user != null) {
+            if(user.getDisplayName() != null) {
+                activityEditProfileBinding.editFullName.getEditText().setText(user.getDisplayName());
+            }
+        }
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-//        if(getIntent().getStringExtra("cameFrom") == "userProfile"){
-//            Intent i = new Intent(this, ContainerActivity.class);
-//            i.putExtra("fromEditProfile", "FromEditProfile");
-//            startActivity(i);
-//            finish();
-//        }
-//        else if(getIntent().getStringExtra("cameFrom1") == "userSettings") {
-//            startActivity(new Intent(this, UserSettings.class));
-//            finish();
-//        }
     }
 
     public void goBack(View view) {
@@ -101,16 +86,16 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void updateProfile(View view) {
-        if(!validateFullName() || !validatePhone()) {
+        if(!validateFullName()) {
             return;
         }
         updateData();
     }
 
     public void updateData() {
-        if(isNameChanged() || isPhoneChanged()) {
+        if(isNameChanged()) {
             String updatedName = activityEditProfileBinding.editFullName.getEditText().getText().toString();
-            String updatedPhone = activityEditProfileBinding.editPhoneNo.getEditText().getText().toString();
+            String udatedEmail = activityEditProfileBinding.editEmail.getEditText().getText().toString();
             Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
         }
         else Toast.makeText(this, "Data is same and cannot be updated!", Toast.LENGTH_SHORT).show();
@@ -127,19 +112,6 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    private boolean isPhoneChanged() {
-        String updatedPhone = activityEditProfileBinding.editPhoneNo.getEditText().getText().toString();
-        _PHONE = "+91" + _PHONE;
-        if(!_PHONE.equals(updatedPhone)) {
-            reference.child(email).child("phone_num").setValue(updatedPhone);
-            return true;
-        }
-        else{
-            return false;
-        }
-
-    }
-
     private boolean validateFullName() {
         if (_NAME.isEmpty()) {
             activityEditProfileBinding.editFullName.setError("Field can not be empty");
@@ -151,20 +123,22 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validatePhone(){
-        _PHONE = _PHONE.substring(3);
-        if (_PHONE.isEmpty()) {
-            activityEditProfileBinding.editPhoneNo.setError("Field can not be empty");
-            return false;
-        } else if (_PHONE.length() != 10){
-            activityEditProfileBinding.editPhoneNo.setError("Enter Valid Number");
-            return false;
-        }else {
-            activityEditProfileBinding.editPhoneNo.setError(null);
-            activityEditProfileBinding.editPhoneNo.setErrorEnabled(false);
-            return true;
-        }
-    }
+//    private boolean validateEmail() {
+//        String val = emailId.getEditText().getText().toString().trim();
+//        String checkEmail = "[a-zA-Z0-9._-]+@[a-z]+.+[a-z]+";
+//
+//        if (val.isEmpty()) {
+//            emailId.setError("Field can not be empty");
+//            return false;
+//        } else if (!val.matches(checkEmail)) {
+//            emailId.setError("Invalid Email!");
+//            return false;
+//        } else {
+//            emailId.setError(null);
+//            emailId.setErrorEnabled(false);
+//            return true;
+//        }
+//    }
 
     public void selectPicture(View view) {
         pictureSourceDialog();

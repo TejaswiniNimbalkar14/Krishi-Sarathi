@@ -115,12 +115,12 @@
        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editPhoneNo"
+            android:id="@+id/editEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="@string/phone_no"
+            android:hint="@string/email_id"
             app:boxStrokeColor="@color/black"
             app:boxStrokeWidthFocused="2dp"
             app:endIconMode="clear_text"
@@ -131,29 +131,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
-                android:text="1234567890"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/editLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="@string/location"
-            app:boxStrokeColor="@color/black"
-            app:boxStrokeWidthFocused="2dp"
-            app:endIconMode="clear_text"
-            app:endIconTint="@color/black"
-            app:hintTextColor="@color/gray">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:inputType="text"
-                android:text="@string/location"
+                android:text="email@gmail.com"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
