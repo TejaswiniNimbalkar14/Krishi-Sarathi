@@ -83,4 +83,45 @@
     <string name="current_pass">Current Password</string>
     <string name="forgot_current_pass">Forgot Current Password?</string>
     <string name="select_to_proceed">Please select a language to proceed!</string>
+
+    <!--//Leena_code-->
+   <!-- <string name="app_name">CustumNavigation</string>-->
+
+    <string name="navigation_draw_open" translatable="false">open navigation drawer</string>
+    <string name="navigation_draw_close" translatable="false">close navigation drawer</string>
+    <string name="government_scheme" translatable="false">Government scheme</string>
+    <string name="farmer_guide" translatable="false">Farmer guide</string>
+    <!--<string name="location">Location</string>-->
+    <string name="orders" translatable="false">Orders</string>
+    <string name="help" translatable="false">Help</string>
+    <string name="about_us" translatable="false">About us</string>
+    <string name="rate_us" translatable="false">Rate us</string>
+    <string name="feedback" translatable="false">Feedback</string>
+    <string name="Home" translatable="false">Home</string>
+    <string name="Profile" translatable="false">Profile</string>
+    <string name="communicate" translatable="false">Communicate</string>
+    <string name="share" translatable="false">Share</string>
+    <string name="krishisarathi_com" translatable="false">krishisarathi.com</string>
+    <string name="krishi_sarathi" translatable="false">Krishi Sarathi</string>
+    <string name="krishisarathigmail.con" translatable="false">krishisarathi@gmail.com</string>
+    <string name="todo" translatable="false">TODO</string>
+    <string name="krishisarathi_gmail_con" translatable="false">krishisarathi@gmail.con</string>
+    <string name="government_scheme_fragment" translatable="false">Government scheme fragment</string>
+    <string name="about_us_fragment" translatable="false">About us Fragment</string>
+    <string name="farmer_guide_fragment" translatable="false">Farmer guide fragment</string>
+    <string name="feedback_fragment" translatable="false">Feedback Fragment</string>
+    <string name="help_fragment" translatable="false">Help Fragment</string>
+    <string name="location_fragment" translatable="false">Location Fragment</string>
+    <string name="orders_fragment" translatable="false">Orders Fragment</string>
+    <string name="rate_us_fragment" translatable="false">Rate us Fragment</string>
+    <string name="share_fragment" translatable="false">Share Fragment</string>
+    <string name="Home_fragment" translatable="false">Home Fragment</string>
+    <string name="profile_fragment" translatable="false">profile Fragment </string>
+    <string name="krishisarathi_gmail_com" translatable="false" />
+    <string name="Location" translatable="false" />
+    <string name="equipment_owner" translatable="false">Equipment owner</string>
+    <string name="equipment_ownerfragment" translatable="false" />
+    <string name="equipment_owner_fragment" translatable="false">Equipment owner fragment</string>
+    <string name="krishisarathigmail_com" translatable="false">krishisarathigmail.com</string>
+
 </resources>

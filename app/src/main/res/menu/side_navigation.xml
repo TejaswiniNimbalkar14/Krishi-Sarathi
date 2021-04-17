@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home_icon"
+            android:title="@string/Home">
+
+        </item>
+
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/profile_icon"
+            android:title="@string/Profile">
+
+        </item>
+
+        <item
+            android:id="@+id/location"
+            android:icon="@drawable/location_icon"
+            android:title="@string/location">
+
+        </item>
+
+
+        <item
+            android:id="@+id/orders"
+            android:icon="@drawable/orders_icon"
+            android:title="@string/orders">
+
+        </item>
+
+        <item
+            android:id="@+id/farmer_guide"
+            android:icon="@drawable/farmer_guide_icon"
+            android:title="@string/farmer_guide">
+
+        </item>
+
+        <item
+            android:id="@+id/government_scheme"
+            android:icon="@drawable/government_scheme_icon"
+            android:title="@string/government_scheme">
+
+        </item>
+
+        <item
+            android:id="@+id/equipment_owner"
+            android:icon="@drawable/equipment_owner_icon"
+            android:title="@string/equipment_owner">
+
+        </item>
+
+
+
+        <item
+            android:id="@+id/help"
+            android:icon="@drawable/help_icon"
+            android:title="@string/help">
+
+        </item>
+
+        <item
+            android:id="@+id/about_us"
+            android:icon="@drawable/about_us_icon"
+            android:title="@string/about_us">
+
+        </item>
+
+        <item
+            android:id="@+id/rate_us"
+            android:icon="@drawable/rate_us_icon"
+            android:title="@string/rate_us">
+
+        </item>
+
+        <item
+            android:id="@+id/feedback"
+            android:icon="@drawable/feedback_icon"
+            android:title="@string/feedback">
+
+        </item>
+
+    </group>
+
+
+    <item android:title="@string/communicate">
+
+        <menu>
+            <item
+                android:id="@+id/share"
+                android:icon="@drawable/share_icon"
+                android:title="@string/share">
+
+            </item>
+
+        </menu>
+    </item>
+
+
+</menu>
