@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -19,8 +20,11 @@ import com.tejaswininimbalkar.krishisarathi.R;
 import java.util.HashMap;
 
 public class UserDashboardFragment extends Fragment {
-    TextView wlcmMsg;
-    ImageView enterSession;
+
+    private TextView wlcmMsg;
+    private ImageView enterSession;
+
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override
@@ -30,31 +34,19 @@ public class UserDashboardFragment extends Fragment {
         wlcmMsg = (TextView) view.findViewById(R.id.wlcmMsg);
         enterSession = (ImageView) view.findViewById(R.id.enterUserSession);
 
+        mAuth = FirebaseAuth.getInstance();
 
-//        //Get access to login session
-//        SessionManager sessionManager = new SessionManager(getActivity());
-//
-//        if(sessionManager.checkLogin()) {
-//
-//            //Get String type data stored in the session
-//            HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
-//
-//            String fullName = stringUserData.get(SessionManager.KEY_FULLNAME);
-//
-//            String name = fullName.substring(0, fullName.indexOf(" "));
-//
-//            wlcmMsg.setText("Welcome " + name + "!");
-//
-//        }
-//        else {
-//            enterSession.setVisibility(View.VISIBLE);
-//            enterUserSession();
-//        }
+        if (mAuth.getCurrentUser() == null) {
+            enterSession.setVisibility(View.VISIBLE);
+            enterUserSession();
+        } else {
+            enterSession.setVisibility(View.GONE);
+        }
 
         return view;
     }
 
-    public void enterUserSession() {
+    private void enterUserSession() {
         enterSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

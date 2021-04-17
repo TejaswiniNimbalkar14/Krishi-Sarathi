@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
@@ -20,6 +21,8 @@ import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
 
 public class UserSettings extends AppCompatActivity {
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +30,8 @@ public class UserSettings extends AppCompatActivity {
 
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
     public void goBack(View view) {
@@ -102,8 +107,7 @@ public class UserSettings extends AppCompatActivity {
     }
 
     private void logoutUser() {
-        SessionManager sessionManager = new SessionManager(UserSettings.this);
-        sessionManager.logoutUserFromSession();
+        mAuth.signOut();
         Intent i = new Intent(UserSettings.this, ContainerActivity.class);
         startActivity(i);
         finish();

@@ -1,8 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
-
 //Jayesh pravin borase
-
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,12 +32,13 @@ import java.util.concurrent.TimeUnit;
 
 public class Verify_Otp_page extends AppCompatActivity {
 
-    // Here declare global variable
-    TextView get_no;
-    Button btn_verify;
-    Intent intent;
     String phone_no, codeBySystem, p;
-    PinView pinView;
+    // Here declare global variable
+    private TextView get_no;
+    private PinView pinView;
+    private ProgressBar progressBar;
+
+    Intent intent;
 
     private FirebaseAuth mAuth;
 
@@ -51,38 +51,33 @@ public class Verify_Otp_page extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         //Declare xml id in global variable
-        btn_verify = findViewById(R.id.btn_verify);
         get_no = findViewById(R.id.get_no);
         pinView = findViewById(R.id.otp_code);
+        progressBar = findViewById(R.id.verifyOtpProgress);
+
         mAuth = FirebaseAuth.getInstance();
 
-        phone_no = "+91" + getIntent().getStringExtra("mobile");
-        get_no.setText(phone_no);
+        if (getIntent() != null){
+            phone_no = "+91" + getIntent().getStringExtra("mobile");
+            get_no.setText(phone_no);
 
-        //here get access class name through intent to manege screen
-        p = getIntent().getStringExtra("class");
+            //here get access to class name through intent to manage screen
+            p = getIntent().getStringExtra("class");
+        }
 
         findViewById(R.id.clear_screen).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (p.equals("User_SignUp")){
-                    intent = new Intent(getApplicationContext(), Send_Otp_Page.class);
-                    startActivity(intent);
-                    finish();
-                }else if (p.equals("Reset_Password")){
-                    intent = new Intent(getApplicationContext(),User_Forgot_Page.class);
-                    startActivity(intent);
-                    finish();
-                }
-
+                intent = new Intent(getApplicationContext(), Send_Otp_Page.class);
+                startActivity(intent);
+                finish();
             }
         });
 
-        //The perform resend_otp button
+        //To perform resend otp action
         findViewById(R.id.resend_otp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //
                 sendVerificationCodeToUser(phone_no);
             }
         });
@@ -120,21 +115,20 @@ public class Verify_Otp_page extends AppCompatActivity {
 
                 @Override
                 public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                    //super.onCodeSent(s, forceResendingToken);
                     codeBySystem = s;
                 }
             };
 
     private void verifyCode(String code) {
         try {
+            progressBar.setVisibility(View.VISIBLE);
             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(codeBySystem, code);
-            //Toast.makeText(this, "Verify()code", Toast.LENGTH_SHORT).show();
             signInWithPhoneAuthCredential(credential);
+
         } catch (Exception e) {
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
-
     }
 
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
@@ -142,7 +136,7 @@ public class Verify_Otp_page extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(Verify_Otp_page.this, "Verification Successful", Toast.LENGTH_SHORT).show();
                     if (p.equals("User_SignUp")){
                         intent = new Intent(getApplicationContext(), User_SignUp.class);
@@ -152,7 +146,6 @@ public class Verify_Otp_page extends AppCompatActivity {
                     }
                     else if (p.equals("Login")){
                         intent = new Intent(getApplicationContext(), ContainerActivity.class);
-                        //intent.putExtra("uid",getIntent().getStringExtra("uid"));
                         startActivity(intent);
                         finish();}
                 }
@@ -167,7 +160,6 @@ public class Verify_Otp_page extends AppCompatActivity {
 
     public void btnVerify(View view) {
         String code = pinView.getText().toString();
-        //Toast.makeText(this, "Verify()", Toast.LENGTH_SHORT).show();
         if (!code.isEmpty()) {
             verifyCode(code);
         }
