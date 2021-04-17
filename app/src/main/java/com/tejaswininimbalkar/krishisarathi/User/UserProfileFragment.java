@@ -7,11 +7,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -23,32 +31,24 @@ import java.util.HashMap;
 
 public class UserProfileFragment extends Fragment {
 
+    String uid;
+    private Button settings, editProfile;
+    private TextView fullName, phoneNo;
+    private FirebaseAuth mAuth;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_profile, container, false);
 
-        Button settings = (Button) view.findViewById(R.id.settingsBtn);
-        Button editProfile = (Button) view.findViewById(R.id.profileEditBtn);
-        TextView fullName = (TextView) view.findViewById(R.id.profileFullName);
-        TextView phoneNo = (TextView) view.findViewById(R.id.profileContact);
+        settings = (Button) view.findViewById(R.id.settingsBtn);
+        editProfile = (Button) view.findViewById(R.id.profileEditBtn);
+        fullName = (TextView) view.findViewById(R.id.profileFullName);
+        phoneNo = (TextView) view.findViewById(R.id.profileContact);
 
-        String email = getActivity().getIntent().getStringExtra("email");
+        mAuth = FirebaseAuth.getInstance();
 
-        //Get access to login session
-        SessionManager sessionManager = new SessionManager(getActivity());
-
-        if(sessionManager.checkLogin()) {
-            //Get String type data from login session
-            HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
-
-            String name = stringUserData.get(SessionManager.KEY_FULLNAME);
-            String phone = stringUserData.get(SessionManager.KEY_PHONE_NO);
-
-            fullName.setText(name);
-            phoneNo.setText(phone);
-        }
-
+        uploadUserData();
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,8 +61,6 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), EditProfileActivity.class);
-                i.putExtra("cameFrom", "userProfile");
-                i.putExtra("email", email);
                 startActivity(i);
             }
         });
@@ -70,4 +68,25 @@ public class UserProfileFragment extends Fragment {
         return view;
     }
 
+    private void uploadUserData() {
+        FirebaseUser user = mAuth.getCurrentUser();
+        uid = user.getUid();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference reference = database.getReference().child("User").child(uid);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String name = (String) snapshot.child("fullName").getValue();
+                String phone = (String) snapshot.child("phone_num").getValue();
+                fullName.setText(name);
+                phoneNo.setText(phone);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

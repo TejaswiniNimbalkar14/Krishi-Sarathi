@@ -38,7 +38,6 @@ public class User_SignUp extends AppCompatActivity {
     ImageView backBtn;
     String phoneNo,gender;
     User_Data userData;
-    //String email;
     Intent intent;
     RadioGroup radioGroup;
     FirebaseAuth mAuth;
@@ -171,8 +170,6 @@ public class User_SignUp extends AppCompatActivity {
             FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
             DatabaseReference reference = rootNode.getReference();
 
-            //email = email.substring(0,email.indexOf('@'));
-
             Query checkEmail = FirebaseDatabase.getInstance()
                     .getReference("User").orderByChild("email_id")
                     .equalTo(emailId.getEditText().getText().toString());
@@ -186,7 +183,7 @@ public class User_SignUp extends AppCompatActivity {
                                 emailId.getEditText().getText().toString(),
                                 phoneNo,
                                 gender,
-                                false
+                                false, "null"
                         );
 
 

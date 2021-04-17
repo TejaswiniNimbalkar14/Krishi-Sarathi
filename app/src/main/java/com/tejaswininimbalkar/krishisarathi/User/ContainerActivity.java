@@ -31,21 +31,10 @@ import java.net.URISyntaxException;
 public class ContainerActivity extends AppCompatActivity {
 
     ActivityContainerBinding activityContainerBinding;
-    FirebaseUser mAuth;
-    boolean isPresent = false;
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-//        try {
-//            mAuth = FirebaseAuth.getInstance();
-//            if (mAuth != null){
-//                isPresent = true;
-//            }
-//        }catch (Exception e){
-//            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-//        }
-    }
+    private FirebaseAuth mAuth;
+
+    private FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,43 +44,16 @@ public class ContainerActivity extends AppCompatActivity {
 
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        mAuth = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (mAuth != null){
-            activityContainerBinding.logOut.setVisibility(View.VISIBLE);
-            activityContainerBinding.logIn.setVisibility(View.GONE);
-        }else {
-            activityContainerBinding.logOut.setVisibility(View.GONE);
-            activityContainerBinding.logIn.setVisibility(View.VISIBLE);
+        mAuth = FirebaseAuth.getInstance();
+
+        user = mAuth.getCurrentUser();
+
+        if (user != null) {
+            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
+        } else {
+            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation_logged_out);
         }
-
-        activityContainerBinding.logIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Send_Otp_Page.class);
-                startActivity(intent);
-            }
-        });
-
-        activityContainerBinding.logOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                activityContainerBinding.logOut.setVisibility(View.GONE);
-                activityContainerBinding.logIn.setVisibility(View.VISIBLE);
-            }
-        });
-
-//        SessionManager sessionManager = new SessionManager(this);
-//
-//        if(!sessionManager.checkLogin()) {
-//            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation_logged_out);
-//        }
-//        else {
-//            activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
-//        }
-
-        activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
 
         //Add fragment to frame of container activity
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -123,6 +85,5 @@ public class ContainerActivity extends AppCompatActivity {
                 return true;
             }
         });
-
     }
 }

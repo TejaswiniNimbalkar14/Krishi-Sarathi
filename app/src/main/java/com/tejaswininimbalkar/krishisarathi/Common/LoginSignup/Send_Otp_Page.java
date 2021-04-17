@@ -33,13 +33,10 @@ public class Send_Otp_Page extends AppCompatActivity {
     private ImageView backBtn;
     private TextInputLayout mobile_no;
     private TextView cre_massage;
+
     Intent intent;
-    boolean flg=true;
 
     boolean isFirstTime;
-
-   // DatabaseReference ref;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +67,9 @@ public class Send_Otp_Page extends AppCompatActivity {
         sent_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (!validNumber()){
                     return;
                 }
-
                 checkUser();
             }
         });
@@ -97,9 +92,9 @@ public class Send_Otp_Page extends AppCompatActivity {
         });
     }
 
-    //Here check user is already available or not
+    //Here check user if is already registered or not
     private void checkUser() {
-        String val = "+91"+mobile_no.getEditText().getText().toString();
+        String val = "+91" + mobile_no.getEditText().getText().toString();
         try {
             Query checkPhoneNo = FirebaseDatabase.getInstance()
                     .getReference("User").orderByChild("phone_num")
@@ -109,15 +104,15 @@ public class Send_Otp_Page extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (!snapshot.exists()){
-                        intent = new Intent(getApplicationContext(),Verify_Otp_page.class);
-                        intent.putExtra("mobile",mobile_no.getEditText().getText().toString().replace(" ",""));
-                        intent.putExtra("class","User_SignUp");
+                        intent = new Intent(getApplicationContext(), Verify_Otp_page.class);
+                        intent.putExtra("mobile", mobile_no.getEditText().getText().toString().replace(" ",""));
+                        intent.putExtra("class", "User_SignUp");
                         startActivity(intent);
                         finish();
                     }else {
-                        intent = new Intent(getApplicationContext(),Verify_Otp_page.class);
-                        intent.putExtra("mobile",mobile_no.getEditText().getText().toString().replace(" ",""));
-                        intent.putExtra("class","Login");
+                        intent = new Intent(getApplicationContext(), Verify_Otp_page.class);
+                        intent.putExtra("mobile", mobile_no.getEditText().getText().toString().replace(" ",""));
+                        intent.putExtra("class", "Login");
                         startActivity(intent);
                         finish();
                     }

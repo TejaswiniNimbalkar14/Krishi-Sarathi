@@ -39,7 +39,6 @@ public class SelectLanguage extends AppCompatActivity {
         //For first time set 'isFirst' to 'true' and 'false' afterwards
         IntroPref pref = new IntroPref(this);
 
-
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
@@ -51,6 +50,8 @@ public class SelectLanguage extends AppCompatActivity {
         //ViewBinding
         activitySelectLanguageBinding = ActivitySelectLanguageBinding.inflate(getLayoutInflater());
         setContentView(activitySelectLanguageBinding.getRoot());
+
+        isFirst = pref.isFirstTimeSelect();
 
         if(isFirst) {
             //If activity is running first time, set variable to 'false'

@@ -109,7 +109,6 @@
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:inputType="text"
-               android:text="@string/full_name"
                android:textColor="@color/black" />
 
        </com.google.android.material.textfield.TextInputLayout>
@@ -130,12 +129,31 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="phone"
-                android:text="email@gmail.com"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/editPhone"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:enabled="false"
+            android:hint="@string/phone_no"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:hintTextColor="@color/gray">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="phone"
+                android:enabled="false"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
 
@@ -164,7 +182,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:backgroundTint="@color/purple_500"
-
+            android:onClick="updateProfile"
             android:text="@string/save"
             android:textAllCaps="false"
             android:textColor="@color/white"/>
