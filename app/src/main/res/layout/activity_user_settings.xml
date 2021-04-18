@@ -96,19 +96,6 @@
             android:textAllCaps="false"
             android:textSize="20sp" />
 
-        <Button
-            android:id="@+id/resetPassBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="#00000000"
-            android:drawableEnd="@drawable/next_btn_icon"
-            android:drawableRight="@drawable/next_btn_icon"
-            android:onClick="resetPassword"
-            android:text="@string/reset_password"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textSize="20sp" />
 
         <Button
             android:id="@+id/changeLanguageBtn"

@@ -1,18 +1,26 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -20,6 +28,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Verify_Otp_page;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -34,6 +44,7 @@ public class UserProfileFragment extends Fragment {
     String uid;
     private Button settings, editProfile;
     private TextView fullName, phoneNo;
+    private ImageView profileImage;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -45,6 +56,7 @@ public class UserProfileFragment extends Fragment {
         editProfile = (Button) view.findViewById(R.id.profileEditBtn);
         fullName = (TextView) view.findViewById(R.id.profileFullName);
         phoneNo = (TextView) view.findViewById(R.id.profileContact);
+        profileImage = (ImageView) view.findViewById(R.id.profileImage);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -69,6 +81,9 @@ public class UserProfileFragment extends Fragment {
     }
 
     private void uploadUserData() {
+//        if (!isConnected(ContainerActivity.this) {
+//            showConnectionDialog();
+//        }
         FirebaseUser user = mAuth.getCurrentUser();
         uid = user.getUid();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -79,8 +94,11 @@ public class UserProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = (String) snapshot.child("fullName").getValue();
                 String phone = (String) snapshot.child("phone_num").getValue();
+                String url = (String) snapshot.child("profile_img_url").getValue();
+
                 fullName.setText(name);
                 phoneNo.setText(phone);
+                Glide.with(UserProfileFragment.this).load(url).into(profileImage);
             }
 
             @Override
@@ -88,5 +106,38 @@ public class UserProfileFragment extends Fragment {
                 Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean isConnected(ContainerActivity containerActivity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) containerActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
     }
 }

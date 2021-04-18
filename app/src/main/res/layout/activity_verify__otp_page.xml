@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:elevation="10dp"
-                    android:progressTint="@color/purple_200"
+                    android:background="@drawable/progress"
                     android:visibility="gone"/>
 
             </RelativeLayout>

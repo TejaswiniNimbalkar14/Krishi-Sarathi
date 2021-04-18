@@ -4,45 +4,43 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.app.Activity;
+
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.internal.Storage;
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.databinding.ActivityEditProfileBinding;
 
-import java.io.ByteArrayOutputStream;
-import java.util.HashMap;
+import java.util.UUID;
 
 /*
  * @author Tejaswini Nimbalkar
@@ -50,14 +48,14 @@ import java.util.HashMap;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    TextInputLayout fullName, phoneNo, emailId;
-    ImageView profileImage;
-
-    String name, email, phone, uid, updatedName, updatedEmail;
-
-    private StorageReference storageReference;
-    DatabaseReference reference;
-    FirebaseAuth mAuth;
+    String name, email, phone, uid, updatedName, updatedEmail, url;
+    StorageReference storageReference;
+    Uri galleryImageUri;
+    private TextInputLayout fullName, phoneNo, emailId;
+    private ImageView profileImage;
+    private ProgressBar imageProgressBar, progressBar;
+    private DatabaseReference reference;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +66,13 @@ public class EditProfileActivity extends AppCompatActivity {
         phoneNo = (TextInputLayout) findViewById(R.id.editPhone);
         emailId = (TextInputLayout) findViewById(R.id.editEmail);
         profileImage = findViewById(R.id.editProfileImage);
+        imageProgressBar = findViewById(R.id.editImageProgress);
+        progressBar = findViewById(R.id.editProgressBar);
 
         mAuth = FirebaseAuth.getInstance();
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null){
             uid = user.getUid();
@@ -79,22 +82,25 @@ public class EditProfileActivity extends AppCompatActivity {
 
         reference = FirebaseDatabase.getInstance().getReference().child("User").child(uid);
 
-        storageReference = FirebaseStorage.getInstance().getReference();
-
         loadUserInformation();
     }
 
     private void loadUserInformation() {
+        if (!isConnected(EditProfileActivity.this)) {
+            showConnectionDialog();
+        }
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 name = (String) snapshot.child("fullName").getValue();
                 phone = (String) snapshot.child("phone_num").getValue();
                 email = (String) snapshot.child("email_id").getValue();
+                url = (String) snapshot.child("profile_img_url").getValue();
 
                 fullName.getEditText().setText(name);
                 phoneNo.getEditText().setText(phone);
                 emailId.getEditText().setText(email);
+                Glide.with(EditProfileActivity.this).load(url).into(profileImage);
             }
 
             @Override
@@ -102,6 +108,39 @@ public class EditProfileActivity extends AppCompatActivity {
                 Toast.makeText(EditProfileActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private boolean isConnected(EditProfileActivity editProfileActivity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) editProfileActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(EditProfileActivity.this);
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
     }
 
     @Override
@@ -118,6 +157,9 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void updateProfile(View view) {
+        if (!isConnected(EditProfileActivity.this)) {
+            showConnectionDialog();
+        }
         if(!validateFullName() || !validateEmail()) {
             return;
         }
@@ -125,12 +167,18 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     public void updateData() {
-        if(isNameChanged() || isEmailChanged()) {
-            reference.child("fullName").setValue(fullName.getEditText().getText().toString());
-            reference.child("email_id").setValue(emailId.getEditText().getText().toString());
-            Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
+        if (isConnected(EditProfileActivity.this)) {
+            progressBar.setVisibility(View.VISIBLE);
+            if(isNameChanged() || isEmailChanged()) {
+                reference.child("fullName").setValue(fullName.getEditText().getText().toString());
+                reference.child("email_id").setValue(emailId.getEditText().getText().toString());
+                Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                Toast.makeText(this, "Data is same and cannot be updated!", Toast.LENGTH_SHORT).show();
+            }
         }
-        else Toast.makeText(this, "Data is same and cannot be updated!", Toast.LENGTH_SHORT).show();
+        progressBar.setVisibility(View.GONE);
     }
 
     private boolean isNameChanged() {
@@ -180,54 +228,9 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
-    public void selectPicture(View view) {
-        pictureSourceDialog();
-    }
-
-    //Dialog to select picture source, camera, gallery or delete picture
-    private void pictureSourceDialog() {
-        //inflate the design on dialog
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.profile_picture_source, null);
-        ImageView cameraAsSource = (ImageView) dialogView.findViewById(R.id.cameraPictureSource);
-        ImageView libraryAsSource = (ImageView) dialogView.findViewById(R.id.libraryPictureSource);
-
-        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
-        dialog.setCancelable(false);
-        dialog.setView(dialogView);
-
-        final AlertDialog alertDialog = dialog.create();
-        alertDialog.show();
-
-        cameraAsSource.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(checkAndRequestPermission()){
-                    takeFromCamera();
-                    alertDialog.cancel();
-                }
-            }
-        });
-
-        libraryAsSource.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                selectFromLibrary();
-                alertDialog.cancel();
-            }
-        });
-    }
-
-    public void selectFromLibrary(){
+    public void selectPicture(View view){
         Intent pickPicture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickPicture, 1);
-    }
-
-    private void takeFromCamera() {
-        Intent takePicture = new Intent((MediaStore.ACTION_IMAGE_CAPTURE));
-        if(takePicture.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(takePicture, 2);
-        }
     }
 
     //result by an activity
@@ -235,42 +238,46 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch (requestCode) {
-            case 1:     //from library
-                if(resultCode == RESULT_OK && data != null && data.getData() != null) {
-                    Uri selectedImageUri = data.getData();
-                    profileImage.setImageURI(selectedImageUri);
-                }
-                break;
-            case 2:     //from camera
-                if(resultCode == Activity.RESULT_OK){
-                    Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-                    profileImage.setImageBitmap(bitmap);
-                }
-        }
-    }
-
-    //manual setting of camera permission for some sdk versions
-    private boolean checkAndRequestPermission() {
-        if(Build.VERSION.SDK_INT >= 23) {
-            //for camera permission
-            int cameraPermission = ActivityCompat.checkSelfPermission(EditProfileActivity.this, Manifest.permission.CAMERA);
-            if(cameraPermission == PackageManager.PERMISSION_DENIED) {
-                //if permission is denied request for it
-                ActivityCompat.requestPermissions(EditProfileActivity.this, new String[] { Manifest.permission.CAMERA }, 20);
-                return false;
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                galleryImageUri = data.getData();
+                profileImage.setImageURI(galleryImageUri);
+                uploadGalleryImage();
             }
         }
-        return true;
     }
 
-    //request result
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == 20 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            takeFromCamera();
-        }
-        else Toast.makeText(EditProfileActivity.this, "Permission not granted!", Toast.LENGTH_SHORT).show();
+    private void uploadGalleryImage() {
+        final String randaomKey = UUID.randomUUID().toString();
+        StorageReference stoRef = storageReference.child("userProfileImages/" + randaomKey);
+
+        stoRef.putFile(galleryImageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(EditProfileActivity.this, "Image uploaded", Toast.LENGTH_SHORT).show();
+                        stoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                imageProgressBar.setVisibility(View.GONE);
+                                reference.child("profile_img_url").setValue(uri.toString());
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                imageProgressBar.setVisibility(View.GONE);
+                Toast.makeText(EditProfileActivity.this, "not uploaded", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                imageProgressBar.setVisibility(View.VISIBLE);
+                if (!isConnected(EditProfileActivity.this)) {
+                    showConnectionDialog();
+                }
+            }
+        });
     }
 }

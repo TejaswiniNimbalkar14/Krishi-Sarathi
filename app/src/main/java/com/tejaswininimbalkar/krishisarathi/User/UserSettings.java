@@ -4,13 +4,19 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Verify_Otp_page;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
@@ -49,11 +55,6 @@ public class UserSettings extends AppCompatActivity {
         Intent i = new Intent(this, EditProfileActivity.class);
         i.putExtra("cameFrom1", "userSettings");
         startActivity(i);
-        finish();
-    }
-
-    public void resetPassword(View view) {
-        startActivity(new Intent(this, ResetPassUsingCurrentPass.class));
         finish();
     }
 
@@ -107,10 +108,46 @@ public class UserSettings extends AppCompatActivity {
     }
 
     private void logoutUser() {
+        if (!isConnected(UserSettings.this)) {
+            showConnectionDialog();
+        }
         mAuth.signOut();
         Intent i = new Intent(UserSettings.this, ContainerActivity.class);
         startActivity(i);
         finish();
         Toast.makeText(this, "You have been logged out!", Toast.LENGTH_SHORT).show();
+    }
+
+    private boolean isConnected(UserSettings userSettings) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) userSettings.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(UserSettings.this);
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
     }
 }

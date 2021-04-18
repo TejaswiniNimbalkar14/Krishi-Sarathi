@@ -13,7 +13,7 @@ public class User_Data {
     private String phone_num;
     private String gender;
     private String address;
-    private boolean Equipment_owner;
+    private boolean equipment_owner;
 
     public User_Data(String fullName, String email_id, String password, String phone_num, String gender, boolean Equipment_owner) {
         this.fullName = fullName;
@@ -21,7 +21,7 @@ public class User_Data {
         this.password = password;
         this.phone_num = phone_num;
         this.gender = gender;
-        this.Equipment_owner = Equipment_owner;
+        this.equipment_owner = Equipment_owner;
     }
 
     public User_Data(String fullName, String email_id, String phone_num, String gender, boolean Equipment_owner, String profile_img_url) {
@@ -30,7 +30,7 @@ public class User_Data {
         this.email_id = email_id;
         this.phone_num = phone_num;
         this.gender = gender;
-        this.Equipment_owner = Equipment_owner;
+        this.equipment_owner = Equipment_owner;
     }
 
     public User_Data() {
@@ -68,11 +68,11 @@ public class User_Data {
     }
 
     public boolean isEquipment_owner() {
-        return Equipment_owner;
+        return equipment_owner;
     }
 
     public void setEquipment_owner(boolean equipment_owner) {
-        Equipment_owner = equipment_owner;
+        this.equipment_owner = equipment_owner;
     }
 
     public String getProfile_img() {

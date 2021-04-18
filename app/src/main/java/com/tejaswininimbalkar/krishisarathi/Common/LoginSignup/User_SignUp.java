@@ -1,23 +1,46 @@
-
 //Jayesh pravin borase
 package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.provider.MediaStore;
+import android.provider.Settings;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -29,19 +52,26 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.User.EditProfileActivity;
+
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.UUID;
 
 public class User_SignUp extends AppCompatActivity {
 
-    TextInputLayout fullName,emailId,password,conPassword;
+    TextInputLayout fullName,emailId;
     RadioButton rMale,rFemale;
-    Button submitToLogin;
-    ImageView backBtn;
-    String phoneNo,gender;
+    Button submitToLogin, backBtn;
+    ImageView profileImage;
+    String phoneNo,gender, imageUrl;
     User_Data userData;
     Intent intent;
     RadioGroup radioGroup;
+    Uri galleryImageUri;
     FirebaseAuth mAuth;
-
+    private ProgressBar progressBar, imageProgressBar;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +82,19 @@ public class User_SignUp extends AppCompatActivity {
         backBtn = findViewById(R.id.back_btn);
         fullName = findViewById(R.id.fullName);
         emailId = findViewById(R.id.email_id);
-        //password = findViewById(R.id.password);
-        //conPassword = findViewById(R.id.con_password);
         radioGroup = findViewById(R.id.radioGroup);
         rMale = findViewById(R.id.r_male);
         rFemale = findViewById(R.id.r_female);
         submitToLogin = findViewById(R.id.btn_sign_up);
+        profileImage = findViewById(R.id.signUpProfileImage);
+        progressBar = findViewById(R.id.signUpProgressBar);
+        imageProgressBar = findViewById(R.id.signUpImageProgress);
 
         phoneNo = getIntent().getStringExtra("phone_No");
 
         mAuth = FirebaseAuth.getInstance();
+
+        storageReference = FirebaseStorage.getInstance().getReference();
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,13 +108,48 @@ public class User_SignUp extends AppCompatActivity {
         submitToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!isConnected(User_SignUp.this)) {
+                    showConnectionDialog();
+                }
                 if (!validateFullName() | !validateEmail() | !validateGender()) {
                     return;
                 }
-                //email = emailId.getEditText().getText().toString();
                 storeNewData();
             }
         });
+    }
+
+    private boolean isConnected(User_SignUp user_signUp) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) user_signUp.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(User_SignUp.this);
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
     }
 
     private boolean validateFullName() {
@@ -113,42 +181,6 @@ public class User_SignUp extends AppCompatActivity {
         }
     }
 
-    private boolean validatePassword() {
-        String val = password.getEditText().getText().toString().trim();
-        String checkPassword = "^" +
-                //"(?=.*[0-9])" +         //at least 1 digit
-                //"(?=.*[a-z])" +         //at least 1 lower case letter
-                //"(?=.*[A-Z])" +         //at least 1 upper case letter
-                "(?=.*[a-zA-Z])" +      //any letter
-                "(?=.*[@#$%^&+=])" +    //at least 1 special character
-                "(?=\\S+$)" +           //no white spaces
-                ".{6,}" +               //at least 4 characters
-                "$";
-
-        if (val.isEmpty()) {
-            password.setError("Field can not be empty");
-            return false;
-        } else if (!val.matches(checkPassword)) {
-            password.setError("Password should contain at least one special character!"); //changed
-            return false;
-        } else {
-            password.setError(null);
-            password.setErrorEnabled(false);
-            return true;
-        }
-    }
-
-    private boolean validateConPassword() {
-        if (!password.getEditText().getText().toString().equals(conPassword.getEditText().getText().toString())) {
-            conPassword.setError("Can't match password");
-            return false;
-        } else {
-            conPassword.setError(null);
-            conPassword.setErrorEnabled(false);
-            return true;
-        }
-    }
-
     private boolean validateGender() {
         if (radioGroup.getCheckedRadioButtonId() == -1) {
             Toast.makeText(this, "Please Select Gender", Toast.LENGTH_SHORT).show();
@@ -163,9 +195,63 @@ public class User_SignUp extends AppCompatActivity {
         }
     }
 
+    public void selectPicture(View view){
+        Intent pickPicture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(pickPicture, 1);
+    }
+
+    //result by an activity
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                galleryImageUri = data.getData();
+                profileImage.setImageURI(galleryImageUri);
+                uploadGalleryImage();
+            }
+        }
+    }
+
+    private void uploadGalleryImage() {
+        final String randaomKey = UUID.randomUUID().toString();
+        StorageReference stoRef = storageReference.child("userProfileImages/" + randaomKey);
+
+        stoRef.putFile(galleryImageUri)
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(User_SignUp.this, "Image uploaded", Toast.LENGTH_SHORT).show();
+                        stoRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                            @Override
+                            public void onSuccess(Uri uri) {
+                                imageProgressBar.setVisibility(View.GONE);
+                                imageUrl = uri.toString();
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                imageProgressBar.setVisibility(View.GONE);
+                Toast.makeText(User_SignUp.this, "not uploaded", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
+                if (!isConnected(User_SignUp.this)) {
+                    showConnectionDialog();
+                }
+                imageProgressBar.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
     //here store data on firebase database
     private void storeNewData() {
-
+        progressBar.setVisibility(View.VISIBLE);
+        String profile_image_url;
         try {
             FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
             DatabaseReference reference = rootNode.getReference();
@@ -173,6 +259,11 @@ public class User_SignUp extends AppCompatActivity {
             Query checkEmail = FirebaseDatabase.getInstance()
                     .getReference("User").orderByChild("email_id")
                     .equalTo(emailId.getEditText().getText().toString());
+            if (imageUrl != null) {
+                profile_image_url = imageUrl;
+            } else {
+                profile_image_url = "";
+            }
 
             checkEmail.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -183,15 +274,15 @@ public class User_SignUp extends AppCompatActivity {
                                 emailId.getEditText().getText().toString(),
                                 phoneNo,
                                 gender,
-                                false, "null"
+                                false, profile_image_url
                         );
-
 
                         reference.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userData);
 
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                progressBar.setVisibility(View.GONE);
                                 intent = new Intent(getApplicationContext(), Successful_create.class);
                                 intent.putExtra("textUpdate","Account Create");
                                 intent.putExtra("massage", "Your account has been created");

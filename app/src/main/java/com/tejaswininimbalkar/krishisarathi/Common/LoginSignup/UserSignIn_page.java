@@ -34,7 +34,7 @@ import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 public class UserSignIn_page extends AppCompatActivity {
 
     Intent intent;
-    Button btnCreateAccount, forgot_pass, login, skip;
+    Button btnCreateAccount, forgot_pass, login;
     TextInputLayout email, password;
     String emailId, pass;
 

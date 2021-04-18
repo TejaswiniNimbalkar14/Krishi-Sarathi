@@ -105,16 +105,6 @@ public class SelectLanguage extends AppCompatActivity {
         activitySelectLanguageBinding.languageRV.setAdapter(languageAdapter);
     }
 
-//    public void nextSelectLanguage(View view) {
-//        if(isFirst) {
-//            startActivity(new Intent(this, OnBoarding.class));
-//        }
-//        else {
-//            startActivity(new Intent(this, UserSettings.class));
-//        }
-//        finish();
-//    }
-
     public void goBack(View view) {
         onBackPressed();
     }

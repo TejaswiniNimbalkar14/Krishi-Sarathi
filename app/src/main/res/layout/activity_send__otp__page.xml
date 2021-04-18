@@ -13,13 +13,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <ImageView
+        <Button
             android:id="@+id/send_otp_back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
             android:padding="5dp"
-            android:src="@drawable/general_back_icon" />
+            android:background="#00000000"
+            android:drawableStart="@drawable/arrow_back_icon"
+            android:drawableLeft="@drawable/arrow_back_icon"
+            android:drawableTint="@color/black"/>
 
         <Button
             android:id="@+id/skipSignUpBtn"
@@ -166,28 +169,31 @@
 
 
 
-            <Button
-                android:id="@+id/btn_send_otp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="30dp"
-                android:backgroundTint="@color/purple_500"
-                android:text="@string/send_otp"
-                android:textAllCaps="false"
-                android:textColor="@color/white" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-<!--            <Button-->
-<!--                android:id="@+id/btn_already_account"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:background="#00000000"-->
-<!--                android:text="@string/already_have_account"-->
-<!--                android:layout_marginBottom="30dp"-->
-<!--                android:textColor="@color/black" />-->
+                <Button
+                    android:id="@+id/btn_send_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="@color/purple_500"
+                    android:text="@string/send_otp"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white" />
 
+                <ProgressBar
+                    android:id="@+id/otpProgressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/progress"
+                    android:elevation="10dp"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
 
 
         </LinearLayout>

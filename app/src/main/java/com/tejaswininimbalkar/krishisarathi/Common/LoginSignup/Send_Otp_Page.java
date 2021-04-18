@@ -4,15 +4,22 @@ package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 //Jayesh pravin borase
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +36,9 @@ import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
 public class Send_Otp_Page extends AppCompatActivity {
 
-    private Button sent_otp, skip;
-    private ImageView backBtn;
+    private Button sent_otp, skip, backBtn;
     private TextInputLayout mobile_no;
-    private TextView cre_massage;
+    private ProgressBar progressBar;
 
     Intent intent;
 
@@ -50,15 +56,14 @@ public class Send_Otp_Page extends AppCompatActivity {
         sent_otp = findViewById(R.id.btn_send_otp);
         skip = findViewById(R.id.skipSignUpBtn);
         backBtn = findViewById(R.id.send_otp_back_btn);
-
-        cre_massage = findViewById(R.id.create_massage);
+        progressBar = findViewById(R.id.otpProgressBar);
 
         isFirstTime = pref.isFirstTimeSendOtp();
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(), UserSignIn_page.class);
+                intent = new Intent(getApplicationContext(), ContainerActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -67,6 +72,9 @@ public class Send_Otp_Page extends AppCompatActivity {
         sent_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!isConnected(Send_Otp_Page.this)) {
+                    showConnectionDialog();
+                }
                 if (!validNumber()){
                     return;
                 }
@@ -92,8 +100,42 @@ public class Send_Otp_Page extends AppCompatActivity {
         });
     }
 
+    private boolean isConnected(Send_Otp_Page send_otp_page) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) send_otp_page.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Send_Otp_Page.this);
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
+    }
+
     //Here check user if is already registered or not
     private void checkUser() {
+        progressBar.setVisibility(View.VISIBLE);
         String val = "+91" + mobile_no.getEditText().getText().toString();
         try {
             Query checkPhoneNo = FirebaseDatabase.getInstance()
@@ -103,6 +145,7 @@ public class Send_Otp_Page extends AppCompatActivity {
             checkPhoneNo.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    progressBar.setVisibility(View.GONE);
                     if (!snapshot.exists()){
                         intent = new Intent(getApplicationContext(), Verify_Otp_page.class);
                         intent.putExtra("mobile", mobile_no.getEditText().getText().toString().replace(" ",""));
@@ -120,6 +163,7 @@ public class Send_Otp_Page extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(Send_Otp_Page.this, error.getMessage(), Toast.LENGTH_SHORT).show();
 
                 }

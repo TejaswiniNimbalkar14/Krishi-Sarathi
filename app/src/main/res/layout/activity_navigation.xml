@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".navigation"
+    tools:context=".Common.Navigation.navigation"
     tools:openDrawer="start"
     android:fitsSystemWindows="true"
     android:id="@+id/nav_view">
@@ -40,7 +40,7 @@
         android:layout_height="match_parent"
         android:id="@+id/navigation_view"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/Side_navigation"
+        app:menu="@menu/side_navigation"
         android:layout_gravity="start"
         xmlns:app="http://schemas.android.com/apk/res-auto">
 

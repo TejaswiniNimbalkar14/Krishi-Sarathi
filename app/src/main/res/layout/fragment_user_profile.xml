@@ -28,6 +28,7 @@
         app:layout_constraintTop_toBottomOf="@+id/profileEditBtn">
 
         <ImageView
+            android:id="@+id/profileImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/default_profile_picture" />
