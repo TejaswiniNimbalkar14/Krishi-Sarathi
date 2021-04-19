@@ -94,7 +94,7 @@ public class UserProfileFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String name = (String) snapshot.child("fullName").getValue();
                 String phone = (String) snapshot.child("phone_num").getValue();
-                String url = (String) snapshot.child("profile_img_url").getValue();
+                String url = (String) snapshot.child("profile_img").getValue();
 
                 fullName.setText(name);
                 phoneNo.setText(phone);

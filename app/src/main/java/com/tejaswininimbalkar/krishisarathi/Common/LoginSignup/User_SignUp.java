@@ -110,6 +110,7 @@ public class User_SignUp extends AppCompatActivity {
             public void onClick(View v) {
                 if (!isConnected(User_SignUp.this)) {
                     showConnectionDialog();
+                    progressBar.setVisibility(View.GONE);
                 }
                 if (!validateFullName() | !validateEmail() | !validateGender()) {
                     return;
@@ -251,7 +252,7 @@ public class User_SignUp extends AppCompatActivity {
     //here store data on firebase database
     private void storeNewData() {
         progressBar.setVisibility(View.VISIBLE);
-        String profile_image_url;
+        String profile_image;
         try {
             FirebaseDatabase rootNode = FirebaseDatabase.getInstance();
             DatabaseReference reference = rootNode.getReference();
@@ -260,9 +261,9 @@ public class User_SignUp extends AppCompatActivity {
                     .getReference("User").orderByChild("email_id")
                     .equalTo(emailId.getEditText().getText().toString());
             if (imageUrl != null) {
-                profile_image_url = imageUrl;
+                profile_image = imageUrl;
             } else {
-                profile_image_url = "";
+                profile_image = "";
             }
 
             checkEmail.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -274,7 +275,7 @@ public class User_SignUp extends AppCompatActivity {
                                 emailId.getEditText().getText().toString(),
                                 phoneNo,
                                 gender,
-                                false, profile_image_url
+                                false, profile_image
                         );
 
                         reference.child("User").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(userData);
@@ -290,12 +291,15 @@ public class User_SignUp extends AppCompatActivity {
                                 finish();
                             }
                         },2000);
-                    }else
+                    }else {
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(User_SignUp.this, "Already have this Email Id", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(User_SignUp.this, error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

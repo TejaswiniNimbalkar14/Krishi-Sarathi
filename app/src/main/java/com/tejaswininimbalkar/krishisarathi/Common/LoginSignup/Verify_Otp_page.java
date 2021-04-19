@@ -164,6 +164,7 @@ public class Verify_Otp_page extends AppCompatActivity {
     private void verifyCode(String code) {
         if (!isConnected(Verify_Otp_page.this)) {
             showConnectionDialog();
+            progressBar.setVisibility(View.GONE);
         }
         try {
             progressBar.setVisibility(View.VISIBLE);
@@ -171,6 +172,7 @@ public class Verify_Otp_page extends AppCompatActivity {
             signInWithPhoneAuthCredential(credential);
 
         } catch (Exception e) {
+            progressBar.setVisibility(View.GONE);
             Toast.makeText(this, "error", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
@@ -180,8 +182,8 @@ public class Verify_Otp_page extends AppCompatActivity {
         mAuth.signInWithCredential(credential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
-                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(Verify_Otp_page.this, "Verification Successful", Toast.LENGTH_SHORT).show();
                     if (p.equals("User_SignUp")){
                         intent = new Intent(getApplicationContext(), User_SignUp.class);
@@ -195,6 +197,7 @@ public class Verify_Otp_page extends AppCompatActivity {
                         finish();}
                 }
                 else {
+                    progressBar.setVisibility(View.GONE);
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                         Toast.makeText(Verify_Otp_page.this, "Verification is failed! Try again", Toast.LENGTH_SHORT).show();
                     }
@@ -206,6 +209,7 @@ public class Verify_Otp_page extends AppCompatActivity {
     public void btnVerify(View view) {
         if (!isConnected(Verify_Otp_page.this)) {
             showConnectionDialog();
+            progressBar.setVisibility(View.GONE);
         }
         String code = pinView.getText().toString();
         if (!code.isEmpty()) {

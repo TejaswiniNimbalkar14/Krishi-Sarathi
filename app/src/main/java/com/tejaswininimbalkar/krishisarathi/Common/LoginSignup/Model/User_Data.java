@@ -4,7 +4,7 @@ package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model;
 
 public class User_Data {
 
-    private String profile_img_url;
+    private String profile_img;
     private String first_name;
     private String last_name;
     private String fullName;
@@ -24,8 +24,8 @@ public class User_Data {
         this.equipment_owner = Equipment_owner;
     }
 
-    public User_Data(String fullName, String email_id, String phone_num, String gender, boolean Equipment_owner, String profile_img_url) {
-        this.profile_img_url = profile_img_url;
+    public User_Data(String fullName, String email_id, String phone_num, String gender, boolean Equipment_owner, String profile_img) {
+        this.profile_img = profile_img;
         this.fullName = fullName;
         this.email_id = email_id;
         this.phone_num = phone_num;
@@ -42,7 +42,7 @@ public class User_Data {
     }
 
     public User_Data(String profile_img, String first_name, String last_name, String email_id, String password, String phone_num, String address) {
-        this.profile_img_url = profile_img;
+        this.profile_img = profile_img;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email_id = email_id;
@@ -76,11 +76,11 @@ public class User_Data {
     }
 
     public String getProfile_img() {
-        return profile_img_url;
+        return profile_img;
     }
 
-    public void setProfile_img(String profile_img_url) {
-        this.profile_img_url = profile_img_url;
+    public void setProfile_img(String profile_img) {
+        this.profile_img = profile_img;
     }
 
     public String getFirst_name() {

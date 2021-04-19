@@ -74,6 +74,7 @@ public class Send_Otp_Page extends AppCompatActivity {
             public void onClick(View v) {
                 if (!isConnected(Send_Otp_Page.this)) {
                     showConnectionDialog();
+                    progressBar.setVisibility(View.GONE);
                 }
                 if (!validNumber()){
                     return;
@@ -135,6 +136,9 @@ public class Send_Otp_Page extends AppCompatActivity {
 
     //Here check user if is already registered or not
     private void checkUser() {
+        if (!isConnected(Send_Otp_Page.this)) {
+            progressBar.setVisibility(View.GONE);
+        }
         progressBar.setVisibility(View.VISIBLE);
         String val = "+91" + mobile_no.getEditText().getText().toString();
         try {

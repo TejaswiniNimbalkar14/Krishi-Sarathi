@@ -95,7 +95,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 name = (String) snapshot.child("fullName").getValue();
                 phone = (String) snapshot.child("phone_num").getValue();
                 email = (String) snapshot.child("email_id").getValue();
-                url = (String) snapshot.child("profile_img_url").getValue();
+                url = (String) snapshot.child("profile_img").getValue();
 
                 fullName.getEditText().setText(name);
                 phoneNo.getEditText().setText(phone);
@@ -159,6 +159,7 @@ public class EditProfileActivity extends AppCompatActivity {
     public void updateProfile(View view) {
         if (!isConnected(EditProfileActivity.this)) {
             showConnectionDialog();
+            progressBar.setVisibility(View.GONE);
         }
         if(!validateFullName() || !validateEmail()) {
             return;
@@ -260,7 +261,7 @@ public class EditProfileActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 imageProgressBar.setVisibility(View.GONE);
-                                reference.child("profile_img_url").setValue(uri.toString());
+                                reference.child("profile_img").setValue(uri.toString());
                             }
                         });
                     }

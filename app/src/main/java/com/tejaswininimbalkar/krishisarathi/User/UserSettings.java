@@ -12,6 +12,7 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +29,7 @@ import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
 public class UserSettings extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,8 @@ public class UserSettings extends AppCompatActivity {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         mAuth = FirebaseAuth.getInstance();
+
+        progressBar = findViewById(R.id.settingsProgressBar);
     }
 
     public void goBack(View view) {
@@ -110,7 +114,9 @@ public class UserSettings extends AppCompatActivity {
     private void logoutUser() {
         if (!isConnected(UserSettings.this)) {
             showConnectionDialog();
+            progressBar.setVisibility(View.GONE);
         }
+        else progressBar.setVisibility(View.VISIBLE);
         mAuth.signOut();
         Intent i = new Intent(UserSettings.this, ContainerActivity.class);
         startActivity(i);

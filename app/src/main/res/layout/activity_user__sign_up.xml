@@ -88,7 +88,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/progress"
                         android:elevation="10dp"
                         android:visibility="gone"/>
 
@@ -204,7 +203,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
-                        android:background="@drawable/progress"
                         android:elevation="10dp"
                         android:visibility="gone"/>
 

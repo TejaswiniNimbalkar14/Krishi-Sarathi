@@ -126,24 +126,39 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/notificationsTv"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layout_marginTop="10dp"
-        android:drawablePadding="10dp"
-        android:drawableTint="@color/black"
-        android:padding="8dp"
-        android:text="@string/notification"
-        android:textAlignment="viewStart"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:drawableLeftCompat="@drawable/notifications_filled_icon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+
+        <TextView
+            android:id="@+id/notificationsTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:padding="8dp"
+            android:text="@string/notification"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:drawableLeftCompat="@drawable/notifications_filled_icon" />
+
+        <ProgressBar
+            android:id="@+id/settingsProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="10dp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <View
         android:id="@+id/divider3"
@@ -152,7 +167,7 @@
         android:layout_height="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/notificationsTv"/>
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"/>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
