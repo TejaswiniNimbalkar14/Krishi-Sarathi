@@ -30,11 +30,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
-public class Send_Otp_Page extends AppCompatActivity {
+public class Send_Otp_Page extends AppCompat {
 
     private Button sent_otp, skip, backBtn;
     private TextInputLayout mobile_no;

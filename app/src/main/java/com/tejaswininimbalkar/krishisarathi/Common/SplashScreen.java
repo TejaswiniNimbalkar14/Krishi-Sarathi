@@ -22,7 +22,7 @@ import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBind
  * @author Tejaswini Nimbalkar
  */
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends AppCompat {
 
     private static final int SPLASH_TIMER = 2000;
 

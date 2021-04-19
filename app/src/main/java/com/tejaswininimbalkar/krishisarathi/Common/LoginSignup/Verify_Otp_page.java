@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chaos.view.PinView;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,7 +37,7 @@ import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 
 import java.util.concurrent.TimeUnit;
 
-public class Verify_Otp_page extends AppCompatActivity {
+public class Verify_Otp_page extends AppCompat {
 
     String phone_no, codeBySystem, p;
     // Here declare global variable

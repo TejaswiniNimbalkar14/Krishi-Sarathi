@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -28,7 +29,7 @@ import java.net.URISyntaxException;
  * @author Tejaswini Nimbalkar
  */
 
-public class ContainerActivity extends AppCompatActivity {
+public class ContainerActivity extends AppCompat {
 
     ActivityContainerBinding activityContainerBinding;
 

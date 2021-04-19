@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.LanguageDTO;
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.LanguageList;
@@ -26,18 +27,19 @@ import java.util.List;
  * @author Tejaswini Nimbalkar
  */
 
-public class SelectLanguage extends AppCompatActivity {
+public class SelectLanguage extends AppCompat {
 
     ActivitySelectLanguageBinding activitySelectLanguageBinding;
     private LanguageAdapter languageAdapter;
     private int selectedLanguagePosition = -1;
     private LocaleManager localeManager;
     boolean isFirst;
+    private IntroPref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //For first time set 'isFirst' to 'true' and 'false' afterwards
-        IntroPref pref = new IntroPref(this);
+        pref = new IntroPref(this);
 
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -81,6 +83,7 @@ public class SelectLanguage extends AppCompatActivity {
                 String code = languageList.get(selectedLanguagePosition).getLanguageCode();
                 localeManager.updateResources(code);
                 recreate();
+                pref.setLanguageCode(code);
                 if(isFirst) {
                     startActivity(new Intent(this, OnBoarding.class));
                 }

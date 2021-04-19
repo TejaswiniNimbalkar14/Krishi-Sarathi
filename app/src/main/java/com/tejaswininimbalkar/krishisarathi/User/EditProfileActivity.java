@@ -35,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
@@ -46,7 +47,7 @@ import java.util.UUID;
  * @author Tejaswini Nimbalkar
  */
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditProfileActivity extends AppCompat {
 
     String name, email, phone, uid, updatedName, updatedEmail, url;
     StorageReference storageReference;

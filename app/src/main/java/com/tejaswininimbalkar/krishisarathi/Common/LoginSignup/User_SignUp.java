@@ -25,6 +25,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -58,7 +59,7 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.UUID;
 
-public class User_SignUp extends AppCompatActivity {
+public class User_SignUp extends AppCompat {
 
     TextInputLayout fullName,emailId;
     RadioButton rMale,rFemale;

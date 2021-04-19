@@ -14,6 +14,6 @@ public class AppCompat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         LocaleManager localeManager = new LocaleManager(this);
-        //localeManager.updateResources(pref.getLanguageCode());
+        localeManager.updateResources(pref.getLanguageCode());
     }
 }

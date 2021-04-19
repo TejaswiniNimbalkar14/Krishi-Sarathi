@@ -10,12 +10,13 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 
 
-public class Successful_create extends AppCompatActivity {
+public class Successful_create extends AppCompat {
 
     TextView textUpdate, massage;
 

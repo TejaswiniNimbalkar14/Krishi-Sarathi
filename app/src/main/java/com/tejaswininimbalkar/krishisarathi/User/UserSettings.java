@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Verify_Otp_page;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
@@ -26,7 +27,7 @@ import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
  * @author Tejaswini Nimbalkar
  */
 
-public class UserSettings extends AppCompatActivity {
+public class UserSettings extends AppCompat {
 
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;

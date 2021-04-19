@@ -16,6 +16,7 @@ public class IntroPref {
     private static final String IS_FIRST_TIME_SELECT = "firstTimeSelect";
     private static final String IS_FIRST_TIME_SEND_OTP = "firstTimeSendOtp";
     private static final String IS_CANCEL = "isCancel";
+    private static final String LANGUAGE_CODE = "languageCode";
 
     public IntroPref(Context context) {
         this.context = context;
@@ -40,6 +41,13 @@ public class IntroPref {
 
     public void setIsCancel(boolean cancel){
         editor.putBoolean(IS_CANCEL,cancel);
+        editor.commit();
+    }
+
+    public String getLanguageCode() { return preferences.getString(LANGUAGE_CODE, "en"); }
+
+    public void setLanguageCode(String languageCode) {
+        editor.putString(LANGUAGE_CODE, languageCode);
         editor.commit();
     }
 
