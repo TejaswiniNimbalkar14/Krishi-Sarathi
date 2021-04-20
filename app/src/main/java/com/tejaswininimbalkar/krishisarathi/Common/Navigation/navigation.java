@@ -53,12 +53,12 @@ public class navigation extends AppCompatActivity implements NavigationView.OnNa
 
 
         switch (menuItem.getItemId ( )) {
-            case R.id.home:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new homefragment ( ) ).commit ( );
-                break;
-            case R.id.profile:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new profilefragment ( ) ).commit ( );
-                break;
+//            case R.id.home:
+//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new homefragment ( ) ).commit ( );
+//                break;
+//            case R.id.profile:
+//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new profilefragment ( ) ).commit ( );
+//                break;
             case R.id.government_scheme:
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new government_schemefragment ( ) ).commit ( );
                 break;
@@ -66,12 +66,12 @@ public class navigation extends AppCompatActivity implements NavigationView.OnNa
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new farmer_guidefragment ( ) ).commit ( );
                 break;
 
-            case R.id.location:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new locationfragment ( ) ).commit ( );
-                break;
-            case R.id.orders:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new ordersfragment ( ) ).commit ( );
-                break;
+//            case R.id.location:
+//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new locationfragment ( ) ).commit ( );
+//                break;
+//            case R.id.orders:
+//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new ordersfragment ( ) ).commit ( );
+//                break;
             case R.id.help:
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new helpfragment ( ) ).commit ( );
                 break;
