@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Common.Dashboard.Dashboard">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/colorPrimaryLight"
+        tools:ignore="ContentDescription,MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp"
+        tools:targetApi="lollipop" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTrendingEnd"
+        android:padding="20dp">
+
+
+        <TextView
+            android:id="@+id/textKrishi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/krishi_sarthi"
+            android:textColor="@color/colorWhite"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/icon_notification"
+            app:layout_constraintStart_toEndOf="@+id/imageMenu"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteY="-6dp" />
+
+        <ImageView
+            android:id="@+id/icon_notification"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/notifications_icon"
+            app:layout_constraintBottom_toBottomOf="@id/textKrishi"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_goneMarginEnd="15dp"
+            app:tint="@color/black"
+            tools:ignore="MissingConstraints">
+
+        </ImageView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/white_rectangle_background"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageMenu"
+            app:layout_constraintVertical_bias="0.09"
+            tools:ignore="UnknownId"
+            tools:layout_editor_absoluteX="9dp">
+
+            <ImageView
+                android:layout_width="63dp"
+                android:layout_height="40dp"
+                android:background="@drawable/search_icon_background"
+
+                android:contentDescription="@string/todo"
+                android:padding="6dp"
+                android:src="@drawable/search_icon"
+                app:tint="@color/colorPrimary" />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Search elements"
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:paddingStart="15dp"
+                android:paddingLeft="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,RtlSymmetry" />
+
+            <ImageView
+                android:layout_width="63dp"
+                android:layout_height="40dp"
+                android:background="@drawable/mic_icon_background"
+
+                android:contentDescription="@string/todo"
+                android:padding="6dp"
+                android:src="@drawable/mic_icon"
+                app:tint="@color/colorPrimary" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageMenu"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/menu_icon"
+            app:layout_constraintBottom_toBottomOf="@id/textKrishi"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/textKrishi"
+            app:layout_goneMarginStart="15dp"
+            app:tint="@color/black"
+            tools:ignore="MissingConstraints,UnknownId"
+            tools:layout_editor_absoluteX="3dp"
+            tools:layout_editor_absoluteY="2p" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.smarteist.autoimageslider.SliderView
+        android:id="@+id/imageSlider"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:sliderAnimationDuration="3000"
+        app:sliderAutoCycleDirection="back_and_forth"
+        app:sliderAutoCycleEnabled="true"
+        app:sliderIndicatorAnimationDuration="3000"
+        app:sliderIndicatorGravity="center_horizontal|bottom"
+        app:sliderIndicatorMargin="15dp"
+        app:sliderIndicatorOrientation="horizontal"
+        app:sliderIndicatorPadding="3dp"
+        app:sliderIndicatorRadius="2dp"
+        app:sliderIndicatorSelectedColor="#5A5A5A"
+        app:sliderIndicatorUnselectedColor="#FFF"
+        app:sliderScrollTimeInSec="1"
+        app:sliderStartAutoCycle="true"
+        android:layout_below="@id/layoutHeader"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/imageSlider">
+
+        <GridView
+            android:layout_height="match_parent"
+            android:id="@+id/gridView1"
+            android:layout_width="match_parent"
+            android:numColumns="2"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"
+            android:elevation="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="40dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:backgroundTint="@color/colorTrendingEnd"
+            tools:ignore="UnusedAttribute">
+        </GridView>
+    </LinearLayout>
+
+</RelativeLayout>

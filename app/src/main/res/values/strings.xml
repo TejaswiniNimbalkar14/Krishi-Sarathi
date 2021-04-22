@@ -124,4 +124,12 @@
     <string name="equipment_owner_fragment" translatable="false">Equipment owner fragment</string>
     <string name="krishisarathigmail_com" translatable="false">krishisarathigmail.com</string>
 
+    <!--//Leena_code-->
+    <!-- <string name="app_name">Dashboard</string>-->
+
+    <string name="krishi_sarthi" translatable="false">Krishi sarthi</string>
+    <string name="textview" translatable="false">TextView</string>
+    <string name="farmer" translatable="false">Farmer</string>
+
+
 </resources>
