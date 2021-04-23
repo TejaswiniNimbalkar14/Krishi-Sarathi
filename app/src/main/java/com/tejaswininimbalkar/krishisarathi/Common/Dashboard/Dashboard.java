@@ -51,7 +51,7 @@ public class Dashboard extends Activity {
         prepareList();
 
         // prepared arraylist and passed it to the Adapter class
-        mAdapter = new GridviewAdapter(this,listTitle, listImage);
+        //mAdapter = new GridviewAdapter(,listTitle, listImage);
 
 
         // Set custom adapter to gridview

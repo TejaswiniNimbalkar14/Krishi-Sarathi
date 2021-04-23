@@ -40,7 +40,7 @@ public class SliderAdapter extends SliderViewAdapter<com.tejaswininimbalkar.kris
     }
 
     //  public class Holder extends  SliderViewAdapter.ViewHolder{
-    public static class Holder extends  SliderViewAdapter.ViewHolder{
+    public static class Holder extends SliderViewAdapter.ViewHolder{
 
         ImageView imageView;
 

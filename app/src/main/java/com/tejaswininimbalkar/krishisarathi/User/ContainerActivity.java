@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -38,6 +39,9 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
+
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
+import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 import java.net.URISyntaxException;
 
@@ -73,6 +77,26 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
         } else {
             activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation_logged_out);
         }
+
+        //To hide bottom navigation when onscreen keyboard opens up
+        //and display when closes
+        KeyboardVisibilityEvent.setEventListener(
+                this,
+                new KeyboardVisibilityEventListener() {
+                    @Override
+                    public void onVisibilityChanged(boolean isOpen) {
+                        Log.d("tag","onVisibilityChanged: Keyboard visibility changed");
+                        if(isOpen){
+                            Log.d("tag", "onVisibilityChanged: Keyboard is open");
+                            activityContainerBinding.bottomNavigation.setVisibility(View.INVISIBLE);
+                            Log.d("tag", "onVisibilityChanged: NavBar got Invisible");
+                        }else{
+                            Log.d("tag", "onVisibilityChanged: Keyboard is closed");
+                            activityContainerBinding.bottomNavigation.setVisibility(View.VISIBLE);
+                            Log.d("tag", "onVisibilityChanged: NavBar got Visible");
+                        }
+                    }
+                });
 
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigation_view);

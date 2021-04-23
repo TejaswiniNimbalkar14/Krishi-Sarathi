@@ -164,8 +164,8 @@
             android:elevation="8dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="40dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:backgroundTint="@color/colorTrendingEnd"
             tools:ignore="UnusedAttribute">
         </GridView>

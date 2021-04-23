@@ -13,15 +13,13 @@
 
         <Button
             android:id="@+id/menuBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
             android:background="#00000000"
             android:drawableStart="@drawable/menu_icon"
-            android:drawableLeft="@drawable/menu_icon"
-            android:drawableTint="@color/black"
             app:layout_constraintStart_toStartOf="parent"
+            android:drawableLeft="@drawable/menu_icon"
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout

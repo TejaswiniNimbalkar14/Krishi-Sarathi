@@ -23,9 +23,10 @@
         <activity android:name=".Common.LoginSignup.Send_Otp_Page" />
         <activity android:name=".Common.LoginSignup.UserSignIn_page" />
         <activity android:name=".User.EditProfileActivity" />
-        <activity android:name=".User.ContainerActivity" />
+        <activity android:name=".User.ContainerActivity" android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".User.SelectLanguage" />
         <activity android:name=".User.UserSettings" />
+        <activity android:name=".Common.Dashboard.GridItemActivity" />
         <activity android:name=".Common.OnBoarding" />
         <activity android:name=".Common.SplashScreen">
             <intent-filter>

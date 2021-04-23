@@ -9,19 +9,23 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.ArrayList;
 import com.tejaswininimbalkar.krishisarathi.R;
 public class GridviewAdapter extends BaseAdapter
 {
     private final ArrayList<String> listTitle;
     private final ArrayList<Integer> listImage;
-    private final Activity activity;
+    //private final Activity activity;
+    private final Fragment fragment;
 
-    public GridviewAdapter(Activity activity,ArrayList<String> listTitle, ArrayList<Integer> listImage) {
+    public GridviewAdapter(Fragment fragment, ArrayList<String> listTitle, ArrayList<Integer> listImage) {
         super();
         this.listTitle = listTitle;
         this.listImage = listImage;
-        this.activity = activity;
+        this.fragment = fragment;
+        //this.activity = activity;
     }
 
     @Override
@@ -53,7 +57,7 @@ public class GridviewAdapter extends BaseAdapter
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
         ViewHolder view;
-        LayoutInflater inflator = activity.getLayoutInflater();
+        LayoutInflater inflator = fragment.getLayoutInflater();
 
         if(convertView==null)
         {
