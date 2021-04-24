@@ -1,5 +1,9 @@
 package com.tejaswininimbalkar.krishisarathi.Common.Localization;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class LanguageDTO {
     private String languageCode, languageTitle;
 

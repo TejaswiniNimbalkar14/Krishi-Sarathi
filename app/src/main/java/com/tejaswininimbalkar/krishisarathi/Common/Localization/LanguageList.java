@@ -3,6 +3,10 @@ package com.tejaswininimbalkar.krishisarathi.Common.Localization;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class LanguageList {
 
     public static List<LanguageDTO> getLanguageList() {

@@ -18,45 +18,73 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profileImageCard"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="50dp"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileEditBtn">
 
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/default_profile_picture" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileImageCard"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="50dp">
 
-    </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/default_profile_picture" />
 
-    <TextView
-        android:id="@+id/profileFullName"
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/imageProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="10dp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImageCard" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
-    <TextView
-        android:id="@+id/profileContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profileFullName"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileFullName" />
+        <TextView
+            android:id="@+id/profileFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileFullName"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <ProgressBar
+            android:id="@+id/infoProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -67,7 +95,7 @@
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileContact">
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout1">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -7,6 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.LocaleManager;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class AppCompat extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
