@@ -13,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KrishiSarathi">
-        <activity android:name=".ResetPassUsingCurrentPass"></activity>
+        <activity android:name=".ResetPassUsingCurrentPass"/>
         <activity android:name=".Common.LoginSignup.User_Forgot_Page" />
         <activity android:name=".Common.LoginSignup.Successful_create" />
         <activity android:name=".Common.LoginSignup.Reset_Password" />
@@ -35,6 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Owner.OwnerLoginActivity"/>
+        <activity android:name=".Owner.Owner_RegistrationActivity"/>
+        <activity android:name=".Owner.Owner_Welcome"/>
+        <activity android:name=".Owner.Equipment.Equipment_Add"/>
+        <activity android:name=".Owner.Equipment.EquipmentGetInfoFromOwner"/>
 
         <meta-data
             android:name="preloaded_fonts"
