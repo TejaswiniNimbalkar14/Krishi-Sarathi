@@ -7,6 +7,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
+
+/*
+ * @author Leena Bhadane and Bhagyashri Bharule
+ */
+
 public class GridItemActivity extends AppCompatActivity {
 
     TextView Title;

@@ -7,6 +7,10 @@ import android.content.res.Resources;
 
 import java.util.Locale;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 public class LocaleManager {
     private Context context;
 

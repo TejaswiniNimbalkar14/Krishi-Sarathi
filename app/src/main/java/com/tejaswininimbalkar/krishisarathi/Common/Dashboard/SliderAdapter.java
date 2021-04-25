@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 
+/*
+ * @author Leena Bhadane and Bhagyashri Bharule
+ */
 
 public class SliderAdapter extends SliderViewAdapter<com.tejaswininimbalkar.krishisarathi.Common.Dashboard.SliderAdapter.Holder> {
 

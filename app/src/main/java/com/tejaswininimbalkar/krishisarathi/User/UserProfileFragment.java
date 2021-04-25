@@ -1,5 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +49,7 @@ public class UserProfileFragment extends Fragment {
     private Button settings, editProfile;
     private TextView fullName, phoneNo;
     private ImageView profileImage;
+    private ProgressBar imageProgress, infoProgress;
     private FirebaseAuth mAuth;
 
     @Nullable
@@ -59,6 +62,11 @@ public class UserProfileFragment extends Fragment {
         fullName = (TextView) view.findViewById(R.id.profileFullName);
         phoneNo = (TextView) view.findViewById(R.id.profileContact);
         profileImage = (ImageView) view.findViewById(R.id.profileImage);
+        imageProgress = (ProgressBar) view.findViewById(R.id.imageProgressBar);
+        infoProgress = (ProgressBar) view.findViewById(R.id.infoProgress);
+
+        imageProgress.setVisibility(View.VISIBLE);
+        infoProgress.setVisibility(View.VISIBLE);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -83,9 +91,9 @@ public class UserProfileFragment extends Fragment {
     }
 
     private void uploadUserData() {
-//        if (!isConnected(ContainerActivity.this) {
-//            showConnectionDialog();
-//        }
+        if (!isConnected(getActivity())){
+            showConnectionDialog();
+        }
         FirebaseUser user = mAuth.getCurrentUser();
         uid = user.getUid();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -101,6 +109,8 @@ public class UserProfileFragment extends Fragment {
                 fullName.setText(name);
                 phoneNo.setText(phone);
                 Glide.with(UserProfileFragment.this).load(url).into(profileImage);
+                imageProgress.setVisibility(View.GONE);
+                infoProgress.setVisibility(View.GONE);
             }
 
             @Override
@@ -110,8 +120,8 @@ public class UserProfileFragment extends Fragment {
         });
     }
 
-    private boolean isConnected(ContainerActivity containerActivity) {
-        ConnectivityManager connectivityManager = (ConnectivityManager) containerActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+    private boolean isConnected(Activity activity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
 
         NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
