@@ -102,10 +102,16 @@ public class EquipmentGetInfoFromOwner extends AppCompatActivity {
                 //OwnerData ownerData = new OwnerData("Deva@2000");
                 HashMap<String,String> map = new HashMap<>();
                 map.put("owner_Name",uid);
-                reference.child("Equipment").child(data.getEquipment_name()).child("Owner Name").child(uid).setValue(map);
-                Toast.makeText(EquipmentGetInfoFromOwner.this, "Success", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(EquipmentGetInfoFromOwner.this,Equipment_Add.class));
-                finish();
+                reference.child("Equipment").child(data.getEquipment_name()).child("Owner Name").child(uid).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Intent intent = new Intent(EquipmentGetInfoFromOwner.this,Equipment_Add.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
+
             }
         });
     }

@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,8 +25,8 @@ public class OwnerLoginActivity extends AppCompatActivity {
 
     Intent intent;
     Button  forgot_pass, btn_login;
-    TextInputLayout owner_id, password;
-    String ownerId, pass;
+    TextInputLayout owner_id, owner_pass;
+    String ownerId, pass,uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +37,10 @@ public class OwnerLoginActivity extends AppCompatActivity {
         forgot_pass = findViewById(R.id.btn_forgot_pass);
         btn_login = findViewById(R.id.btn_login);
         owner_id = findViewById(R.id.owner_id);
-        password = findViewById(R.id.password);
+        owner_pass = findViewById(R.id.password);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        uid = user.getUid();
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,11 +66,11 @@ public class OwnerLoginActivity extends AppCompatActivity {
                     owner_id.setError(null);
                     owner_id.setErrorEnabled(false);
 
-                    String systemPass = snapshot.child(ownerId).child("password").getValue(String.class);
+                    String systemPass = snapshot.child(uid).child("password").getValue(String.class);
 
                     if (systemPass.equals(pass)) {
-                        password.setError(null);
-                        password.setErrorEnabled(false);
+                        owner_pass.setError(null);
+                        owner_pass.setErrorEnabled(false);
                         Toast.makeText(OwnerLoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                         //moveToContainerActivity();
                     } else {
@@ -84,8 +89,8 @@ public class OwnerLoginActivity extends AppCompatActivity {
     }
 
     private boolean validOwner() {
-        String val = owner_id.getEditText().getText().toString().trim();
-        if (val.isEmpty()) {
+       ownerId = owner_id.getEditText().getText().toString().trim();
+        if (ownerId.isEmpty()) {
             owner_id.setError("Field can not be empty");
             return false;
         } else {
@@ -96,14 +101,19 @@ public class OwnerLoginActivity extends AppCompatActivity {
     }
 
     private boolean validPass() {
-        String val = password.getEditText().getText().toString().trim();
-        if (val.isEmpty()) {
-            password.setError("Field can not be empty");
+        try {
+            pass = owner_pass.getEditText().getText().toString();
+            if (pass.isEmpty()) {
+                owner_pass.setError("Field can not be empty");
+                return false;
+            } else {
+                owner_pass.setError(null);
+                owner_pass.setErrorEnabled(false);
+                return true;
+            }
+        }catch (Exception e){
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             return false;
-        } else {
-            password.setError(null);
-            password.setErrorEnabled(false);
-            return true;
         }
     }
 }

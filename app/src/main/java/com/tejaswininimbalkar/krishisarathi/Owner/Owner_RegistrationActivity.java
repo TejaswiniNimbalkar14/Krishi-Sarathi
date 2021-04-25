@@ -10,6 +10,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -104,7 +105,9 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
                     return;
                 }
 
-                date = dob.getDayOfMonth()+"/"+dob.getMonth()+"/"+dob.getYear();
+                int month = dob.getMonth()+1;
+
+                date = dob.getDayOfMonth()+"/"+Integer.toString(month)+"/"+dob.getYear();
 
                 //OwnerData data = new OwnerData(true);
                 reference.child("User").child(uid).child("equipment_owner").setValue(true);
@@ -168,10 +171,18 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
             public void onSuccess(Void aVoid) {
                 HashMap<String,Object> map = new HashMap<>();
                 map.put("owner_Id",user_name.getEditText().getText().toString());
-                root.child("User").child(uid).updateChildren(map);
+                root.child("User").child(uid).updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Toast.makeText(Owner_RegistrationActivity.this, "To Equipment Add", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(Owner_RegistrationActivity.this,Equipment_Add.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                        finish();
+                    }
+                });
 
-                startActivity(new Intent(getApplicationContext(), Equipment_Add.class));
-                finish();
+
             }
         });
     }
@@ -206,10 +217,11 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
          if (val.isEmpty()){
              password.setError("Field can not be empty");
              return false;
-         }else if (val.length()<7){
+         }else if (val.length()<6){
              password.setError("At least 6 Number");
              return false;
          }else {
+             password.setError(null);
              return true;
          }
     }
@@ -219,6 +231,7 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         int userAge = dob.getYear();
 
         if ((currentYear-userAge) < 18){
+            Toast.makeText(this, (currentYear-userAge)+" You are not Elligible", Toast.LENGTH_SHORT).show();
             return false;
         }else
             return true;
