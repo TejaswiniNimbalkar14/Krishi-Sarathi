@@ -23,6 +23,12 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.Equipment_owner;
@@ -38,6 +44,9 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.profilefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.rate_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
 import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
+import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
+import com.tejaswininimbalkar.krishisarathi.Owner.Owner_RegistrationActivity;
+import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
 
@@ -60,6 +69,8 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
 
     private FirebaseUser user;
 
+    private DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +86,7 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
 
         if (user != null) {
             activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation);
+            reference = FirebaseDatabase.getInstance().getReference("User").child(user.getUid());
         } else {
             activityContainerBinding.bottomNavigation.inflateMenu(R.menu.bottom_navigation_logged_out);
         }
@@ -204,10 +216,40 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
             //case R.id.equipment_owner:
             //  getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new Fragment () ).commit ( );
             //  break;
-//            case R.id.equipment_owner:
-//                Intent intent=new Intent ( this, Equipment_owner.class );
-//                startActivity (intent);
-//                break;
+            case R.id.equipment_owner:
+                if (user != null){
+
+                    Query query = reference.orderByChild("equipment_owner").equalTo(true);
+
+                    query.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            //boolean equipment_owner = snapshot.child("equipment_owner").getValue(Boolean.class);
+                            if (snapshot.exists()){
+                                Intent intent = new Intent(ContainerActivity.this, OwnerLoginActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish();
+                            }else {
+                                Intent intent = new Intent(ContainerActivity.this, Owner_Welcome.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(ContainerActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else {
+                    Toast.makeText(this, "First of all Login", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this,Send_Otp_Page.class));
+                    finish();
+                }
+                break;
 
         }
         drawerLayout.closeDrawer ( GravityCompat.START );
