@@ -37,7 +37,7 @@ import com.tejaswininimbalkar.krishisarathi.R;
 import java.io.InputStream;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class GetDataActivity extends AppCompatActivity {
     private EditText machineName,machineDescription,machinePrice;
     private Button addInfo,showBtn,browse;
     private ImageView imageView;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         browse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dexter.withActivity(MainActivity.this)
+                Dexter.withActivity(GetDataActivity.this)
                         .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
                         .withListener(new PermissionListener() {
                             @Override
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         showBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ShowActivity.class));
+                startActivity(new Intent(GetDataActivity.this,ShowActivity.class));
             }
         });
 
