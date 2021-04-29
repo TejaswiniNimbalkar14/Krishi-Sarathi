@@ -29,7 +29,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
 
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position, @NonNull MyModel myModel) {
-        myViewHolder.name.setText(myModel.getEquipment_name());
+        myViewHolder.name.setText(myModel.getEquip_name());
        /* myViewHolder.price.setText(myModel.getMachine_Price());
         myViewHolder.description.setText(myModel.getDescp());*/
         Glide.with(myViewHolder.img.getContext()).load(myModel.getEquip_img_Url()).into(myViewHolder.img);
@@ -39,7 +39,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.wrapper, new DetailsFragment(myModel.getEquipment_name()
+                        .replace(R.id.wrapper, new DetailsFragment(myModel.getEquip_name()
                                 ,myModel.getEquip_img_Url())).addToBackStack(null).commit();
             }
         });
