@@ -160,13 +160,16 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
     private void createOwner() {
         //OwnerData data1 = ;
         DatabaseReference root = FirebaseDatabase.getInstance().getReference();
+
+
         root.child("Owner").child(uid).setValue(new OwnerData(
                 true,
                 user_name.getEditText().getText().toString(),
                 date,
                 tractor_count.getText().toString().trim(),
                 equipment_count.getText().toString().trim(),
-                password.getEditText().getText().toString().trim())).addOnSuccessListener(new OnSuccessListener<Void>() {
+                password.getEditText().getText().toString().trim(),
+               /*here add user uid*/ uid)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 HashMap<String,Object> map = new HashMap<>();

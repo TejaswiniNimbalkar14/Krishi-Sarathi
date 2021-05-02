@@ -12,6 +12,7 @@ import android.view.animation.AnimationUtils;
 import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
+
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBinding;
 
 /*

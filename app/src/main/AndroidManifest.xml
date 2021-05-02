@@ -24,7 +24,9 @@
         <activity android:name=".Common.LoginSignup.UserSignIn_page" />
         <activity android:name=".User.EditProfileActivity" />
         <activity android:name=".Common.ContainerActivity" android:windowSoftInputMode="stateHidden"/>
+
         <activity android:name=".Common.Localization.SelectLanguage" />
+
         <activity android:name=".User.UserSettings" />
         <activity android:name=".Common.Dashboard.GridItemActivity" />
         <activity android:name=".Common.OnBoarding.OnBoarding" />

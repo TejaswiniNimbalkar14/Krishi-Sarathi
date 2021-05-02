@@ -41,7 +41,7 @@ public class Equip_add_adapter extends RecyclerView.Adapter<Equip_add_adapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.equip_name.setText(list.get(position).getEquipment_name());
+        holder.equip_name.setText(list.get(position).getEquip_name());
         //holder.equip_img.setImageResource(list.get(position).getEquipment_img());
         Picasso.get().load(list.get(position).getEquip_img_Url()).into(holder.equip_img);
     }
@@ -71,7 +71,7 @@ public class Equip_add_adapter extends RecyclerView.Adapter<Equip_add_adapter.Vi
                     Toast.makeText(context, equip_name.getText(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, EquipmentGetInfoFromOwner.class);
                     intent.putExtra("Equip_img",temp.getEquip_img_Url());
-                    intent.putExtra("Equip_name",temp.getEquipment_name());
+                    intent.putExtra("Equip_name",temp.getEquip_name());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
