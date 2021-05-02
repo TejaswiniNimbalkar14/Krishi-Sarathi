@@ -1,5 +1,5 @@
 //This adapter class will allow to bind the data to recycler view
-package com.tejaswininimbalkar.krishisarathi.HelperClasses;
+package com.tejaswininimbalkar.krishisarathi.Common.Localization;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tejaswininimbalkar.krishisarathi.Common.Localization.LanguageDTO;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.List;

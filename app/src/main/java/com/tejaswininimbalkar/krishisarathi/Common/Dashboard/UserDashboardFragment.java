@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.User;
+package com.tejaswininimbalkar.krishisarathi.Common.Dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,20 +14,13 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
-import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.Dashboard;
-import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.GridItemActivity;
-import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.GridviewAdapter;
-import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.SliderAdapter;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /*
  * @author Leena Bhadane and Tejaswini Nimbalkar
@@ -38,12 +30,12 @@ public class UserDashboardFragment extends Fragment {
 
     int[] images = {
 
-            R.drawable.first_image,
-            R.drawable.second_image,
-            R.drawable.third_image,
-            R.drawable.fourth_image,
-            R.drawable.fifth_image,
-            R.drawable.sixth_image
+            R.drawable.image_field,
+            R.drawable.image_seed_fertilizer,
+            R.drawable.image_plant_growing,
+            R.drawable.image_agri,
+            R.drawable.image_vegetables,
+            R.drawable.image_agri_money
     };
     //private TextView wlcmMsg;
     private ImageView enterSession, notification;
@@ -120,11 +112,11 @@ public class UserDashboardFragment extends Fragment {
         listTitle.add("Transportation");
 
         listImage = new ArrayList<> ( );
-        listImage.add(R.drawable.farmer_image);
-        listImage.add(R.drawable.equipments_image );
-        listImage.add(R.drawable.fertilizer_image);
-        listImage.add(R.drawable.marketpr_image);
-        listImage.add(R.drawable.seed_image);
-        listImage.add(R.drawable.transportation_image);
+        listImage.add(R.drawable.image_farmer);
+        listImage.add(R.drawable.image_equipment);
+        listImage.add(R.drawable.image_fertilizer);
+        listImage.add(R.drawable.image_market_price);
+        listImage.add(R.drawable.image_seed);
+        listImage.add(R.drawable.image_transportation);
     }
 }

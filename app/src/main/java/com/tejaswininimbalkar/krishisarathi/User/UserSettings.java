@@ -1,9 +1,5 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,13 +11,14 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Verify_Otp_page;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
+import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
 
 /*
  * @author Tejaswini Nimbalkar
@@ -116,8 +113,7 @@ public class UserSettings extends AppCompat {
         if (!isConnected(UserSettings.this)) {
             showConnectionDialog();
             progressBar.setVisibility(View.GONE);
-        }
-        else progressBar.setVisibility(View.VISIBLE);
+        } else progressBar.setVisibility(View.VISIBLE);
         mAuth.signOut();
         Intent i = new Intent(UserSettings.this, ContainerActivity.class);
         startActivity(i);
@@ -131,12 +127,7 @@ public class UserSettings extends AppCompat {
         NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected());
     }
 
     private void showConnectionDialog() {

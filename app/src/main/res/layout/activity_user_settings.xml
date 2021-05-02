@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
-        android:drawableLeft="@drawable/arrow_back_icon"
+        android:drawableLeft="@drawable/icon_back_arrow"
         android:drawableTint="@color/black"
         android:onClick="goBack"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:drawableStartCompat="@drawable/person_icon"
+        app:drawableStartCompat="@drawable/icon_person"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settingsTv" />
@@ -88,8 +88,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableEnd="@drawable/next_btn_icon"
-            android:drawableRight="@drawable/next_btn_icon"
+            android:drawableEnd="@drawable/icon_next"
+            android:drawableRight="@drawable/icon_next"
             android:onClick="editProfile"
             android:text="@string/edit_profile"
             android:textAlignment="viewStart"
@@ -103,8 +103,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableEnd="@drawable/next_btn_icon"
-            android:drawableRight="@drawable/next_btn_icon"
+            android:drawableEnd="@drawable/icon_next"
+            android:drawableRight="@drawable/icon_next"
             android:onClick="changeLanguage"
             android:text="@string/change_language"
             android:textAlignment="viewStart"
@@ -148,7 +148,7 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:drawableLeftCompat="@drawable/notifications_filled_icon" />
+            app:drawableLeftCompat="@drawable/icon_notifications" />
 
         <ProgressBar
             android:id="@+id/settingsProgressBar"
@@ -186,7 +186,7 @@
             android:thumb="@drawable/switch_thumb"
             android:padding="10dp"
             android:text="New for you"
-            app:track="@drawable/track_selector" />
+            app:track="@drawable/switch_track" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
@@ -195,7 +195,7 @@
             android:textSize="20sp"
             android:padding="10dp"
             android:thumb="@drawable/switch_thumb"
-            app:track="@drawable/track_selector" />
+            app:track="@drawable/switch_track" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
@@ -204,14 +204,14 @@
             android:thumb="@drawable/switch_thumb"
             android:padding="10dp"
             android:text="Track notifications"
-            app:track="@drawable/track_selector" />
+            app:track="@drawable/switch_track" />
 
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/button_shape"
+        android:background="@drawable/shape_button_round_corners"
         android:onClick="logOut"
         android:text="@string/logout"
         android:textAllCaps="false"

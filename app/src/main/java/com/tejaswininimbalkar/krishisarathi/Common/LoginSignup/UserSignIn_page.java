@@ -25,10 +25,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 
 
 public class UserSignIn_page extends AppCompatActivity {

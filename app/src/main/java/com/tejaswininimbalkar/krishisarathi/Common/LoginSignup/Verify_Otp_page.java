@@ -4,7 +4,6 @@ package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
@@ -15,7 +14,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
-import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 
 
 import java.util.concurrent.TimeUnit;

@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/arrow_back_icon"
+        android:src="@drawable/icon_back_arrow"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/back_btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -152,7 +152,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/add_circle_outline_icon"/>
+                            android:src="@drawable/icon_add_outlined"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -177,7 +177,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/minus_circle_outline_icon"/>
+                            android:src="@drawable/icon_minus_outlined"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -252,7 +252,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/add_circle_outline_icon"/>
+                            android:src="@drawable/icon_add_outlined"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -277,7 +277,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/minus_circle_outline_icon"/>
+                            android:src="@drawable/icon_minus_outlined"/>
 
                     </androidx.cardview.widget.CardView>
 

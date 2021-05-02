@@ -48,7 +48,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/arrow_back_icon_d" />
+                            android:src="@drawable/icon_back_arrow" />
 
                         <Button
                             android:id="@+id/back_icon"
@@ -72,7 +72,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/shopping_cart_icon_d" />
+                            android:src="@drawable/icon_shopping_cart" />
 
                         <Button
                             android:id="@+id/shopping_card"
@@ -90,7 +90,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginEnd="100dp"
                         android:layout_marginBottom="30dp"
-                        android:src="@drawable/caltivator_d"
+                        android:src="@drawable/image_cultivator_d"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +146,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
-                                android:drawableLeft="@drawable/star_icon_d"
+                                android:drawableLeft="@drawable/icon_star_d"
                                 android:fontFamily="@font/roboto_medium"
                                 android:text="4.4"
                                 android:textColor="@color/black"

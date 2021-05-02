@@ -1,6 +1,5 @@
-package com.tejaswininimbalkar.krishisarathi.User;
+package com.tejaswininimbalkar.krishisarathi.Common.Localization;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -11,16 +10,12 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.IntroPref;
-import com.tejaswininimbalkar.krishisarathi.Common.Localization.LanguageDTO;
-import com.tejaswininimbalkar.krishisarathi.Common.Localization.LanguageList;
-import com.tejaswininimbalkar.krishisarathi.Common.Localization.LocaleManager;
-import com.tejaswininimbalkar.krishisarathi.Common.OnBoarding;
-import com.tejaswininimbalkar.krishisarathi.HelperClasses.LanguageAdapter;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
+import com.tejaswininimbalkar.krishisarathi.Common.OnBoarding.OnBoarding;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySelectLanguageBinding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /*

@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.LocaleManager;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 
 /*
  * @author Tejaswini Nimbalkar

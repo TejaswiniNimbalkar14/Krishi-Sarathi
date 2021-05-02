@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:layout_margin="15dp"
-        android:src="@drawable/general_back_icon" />
+        android:src="@drawable/icon_back_arrow" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
-                    app:startIconDrawable="@drawable/username_icon"
+                    app:startIconDrawable="@drawable/icon_person"
                     app:startIconTint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -79,7 +79,7 @@
                     app:endIconMode="password_toggle"
                     app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
-                    app:startIconDrawable="@drawable/password_icon"
+                    app:startIconDrawable="@drawable/icon_password"
                     app:startIconTint="@color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
