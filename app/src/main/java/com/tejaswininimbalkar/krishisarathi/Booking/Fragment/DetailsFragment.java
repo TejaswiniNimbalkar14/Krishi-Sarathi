@@ -1,5 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.Booking.Fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,11 +19,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Booking.Adapter.MyAdapter;
 import com.tejaswininimbalkar.krishisarathi.Booking.Adapter.OwnerAdapter;
+import com.tejaswininimbalkar.krishisarathi.Booking.Model.MyModel;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
 
+import java.security.acl.Owner;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,12 +50,17 @@ public class DetailsFragment extends Fragment {
 
 
     // TODO: Rename and change types of parameters
-    RecyclerView recycler;
-    LinearLayoutManager layout;
-    List<OwnerModel> userList;
+    RecyclerView recyclerView;
+    LinearLayoutManager linearLayoutManager;
+    ArrayList<OwnerModel> mList;
+
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = db.getReference();
     OwnerAdapter ownerAdapter;
+
     private String mParam1;
     private String mParam2;
+    
 
     public DetailsFragment() {
         // Required empty public constructor
@@ -95,26 +111,24 @@ public class DetailsFragment extends Fragment {
         TextView textView,textView1,textView2;
         Button bookNow,backIcon;
 
-
-
-
-
-
         backIcon = view.findViewById(R.id.back_icon);
+        textView = view.findViewById(R.id.equipment_name1);
+        textView.setText(Machine_name);
+        Glide.with(getContext()).load(imageUri).into(imageView);
+
+
+
+
         //bookNow = view.findViewById(R.id.bookNow);
 
-        textView = view.findViewById(R.id.equipment_name1);
-       /* textView1 = view.findViewById(R.id.priceHolder);
+       /*textView1 = view.findViewById(R.id.priceHolder);
         textView2 = view.findViewById(R.id.decpHolder);*/
 
 
-        textView.setText(Machine_name);
        // textView1.setText(Machine_Price);
         //textView2.setText(Descp);
 
-        textView1 =view.findViewById(R.id.owner_count);
 
-        Glide.with(getContext()).load(imageUri).into(imageView);
 
       /*  bookNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,19 +144,55 @@ public class DetailsFragment extends Fragment {
         });*/
 
 
+        recyclerView = view.findViewById(R.id.ownerRec1);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        recycler = view.findViewById(R.id.ownerRec1);
-        layout = new LinearLayoutManager(getContext());
-        layout.setOrientation(RecyclerView.VERTICAL);
+        mList = new ArrayList<>();
+        ownerAdapter = new OwnerAdapter(getContext(), mList);
+
+        recyclerView.setAdapter(ownerAdapter);
+
+        databaseReference.child("Equipment").child(Machine_name).child("Owner Name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        String id = dataSnapshot.getKey();
+                        databaseReference.child("Owner")
+                                .child(id)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                OwnerModel model = snapshot.getValue(OwnerModel.class);
+                                Toast.makeText(getActivity(),model.getOwner_Name(),Toast.LENGTH_LONG).show();
+                                mList.add(model);
+                                ownerAdapter.notifyDataSetChanged();
+
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+
+                        });
+                    }
 
 
-        FirebaseRecyclerOptions<OwnerModel> opt = new FirebaseRecyclerOptions.Builder<OwnerModel>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Equipment"), OwnerModel.class)
-                .build();
+                }else{
+                    Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
+                }
+            }
 
-        ownerAdapter = new OwnerAdapter(opt);
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-        recycler.setAdapter(ownerAdapter);
+            }
+        });
+
+
+
 
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override

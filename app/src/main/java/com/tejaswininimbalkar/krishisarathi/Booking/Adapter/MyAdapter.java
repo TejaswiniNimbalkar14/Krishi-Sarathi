@@ -1,5 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.Booking.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,10 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.tejaswininimbalkar.krishisarathi.Booking.Fragment.DetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.MyModel;
+import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
+
+import java.util.ArrayList;
 
 public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyViewHolder> {
 
@@ -26,6 +30,8 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
     public MyAdapter(@NonNull FirebaseRecyclerOptions<MyModel> options) {
         super(options);
     }
+
+
 
     @Override
     protected void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int position, @NonNull MyModel myModel) {
