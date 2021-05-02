@@ -1,8 +1,7 @@
-package com.tejaswininimbalkar.krishisarathi.User;
+package com.tejaswininimbalkar.krishisarathi.Common;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
@@ -28,31 +27,25 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.Equipment_owner;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.about_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.farmer_guidefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.feedbackfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.government_schemefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.helpfragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.homefragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.locationfragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.ordersfragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.profilefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.rate_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
-import com.tejaswininimbalkar.krishisarathi.Owner.Owner_RegistrationActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.AgriEquipmentFragment;
+import com.tejaswininimbalkar.krishisarathi.User.UserDashboardFragment;
+import com.tejaswininimbalkar.krishisarathi.User.UserProfileFragment;
+import com.tejaswininimbalkar.krishisarathi.User.WeatherFragment;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
-
-import java.net.URISyntaxException;
 
 /*
  * @author Tejaswini Nimbalkar

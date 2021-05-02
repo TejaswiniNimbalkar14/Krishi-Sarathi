@@ -1,7 +1,7 @@
 package com.tejaswininimbalkar.krishisarathi.Owner.Model;
 
 public class Equipment_add_model {
-    private String equip_name;  // here change field name
+    private String equip_name;
     private String equip_img_Url;
 
 
@@ -9,7 +9,7 @@ public class Equipment_add_model {
     }
 
     public Equipment_add_model(String equip_name, String equip_img_Url) {
-        this.equip_name = equip_name;  //and also here
+        this.equip_name = equip_name;
         this.equip_img_Url = equip_img_Url;
     }
 

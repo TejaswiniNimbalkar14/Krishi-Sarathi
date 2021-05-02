@@ -1,7 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Context;
@@ -17,11 +16,8 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Verify_Otp_page;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
+import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.ResetPassUsingCurrentPass;
 
 /*
  * @author Tejaswini Nimbalkar
