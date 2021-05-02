@@ -30,14 +30,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.IntroPref;
-import com.tejaswininimbalkar.krishisarathi.Common.Localization.LocaleManager;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Verify_Otp_page;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.R;
 
-import java.util.HashMap;
+
 
 /*
  * @author Tejaswini Nimbalkar
@@ -91,7 +86,7 @@ public class UserProfileFragment extends Fragment {
     }
 
     private void uploadUserData() {
-        if (!isConnected(getActivity())){
+        if (!isConnected(getActivity())) {
             showConnectionDialog();
         }
         FirebaseUser user = mAuth.getCurrentUser();
@@ -126,12 +121,7 @@ public class UserProfileFragment extends Fragment {
         NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected());
     }
 
     private void showConnectionDialog() {

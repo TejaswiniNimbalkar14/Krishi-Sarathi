@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common;
+package com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -7,12 +7,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 
 

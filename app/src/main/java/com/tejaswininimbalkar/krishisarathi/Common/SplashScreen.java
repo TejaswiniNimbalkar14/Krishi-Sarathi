@@ -1,21 +1,17 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.ContainerActivity;
-import com.tejaswininimbalkar.krishisarathi.User.SelectLanguage;
+import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBinding;
 
 /*

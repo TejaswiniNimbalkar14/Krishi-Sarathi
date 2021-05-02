@@ -1,7 +1,7 @@
 //Adapter classes allow us to bind data to a design(activity)
 //This class will bind data on on slides of the 'OnBoarding'
 
-package com.tejaswininimbalkar.krishisarathi.HelperClasses;
+package com.tejaswininimbalkar.krishisarathi.Common.OnBoarding;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -27,10 +27,10 @@ public class SliderAdapter extends PagerAdapter {
     LayoutInflater layoutInflater;
     //Arrays of the data to display
     int[] images = {
-            R.drawable.tractor,
-            R.drawable.image2,
-            R.drawable.image3,
-            R.drawable.image4
+            R.drawable.image_onboarding1,
+            R.drawable.image_onboarding2,
+            R.drawable.image_onboarding3,
+            R.drawable.image_onboarding4
     };
     int[] headings = {
             R.string.slide1_title,

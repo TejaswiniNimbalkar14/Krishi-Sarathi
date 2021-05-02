@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common;
+package com.tejaswininimbalkar.krishisarathi.Common.OnBoarding;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -14,7 +14,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.HelperClasses.SliderAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityOnBoardingBinding;
 

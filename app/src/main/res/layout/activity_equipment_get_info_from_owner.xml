@@ -9,7 +9,7 @@
     <ImageView
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:src="@drawable/arrow_back_icon"
+        android:src="@drawable/icon_back_arrow"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/back_btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,7 +18,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/cultivator"
+        android:src="@drawable/image_cultivator"
         android:id="@+id/equip_img"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"

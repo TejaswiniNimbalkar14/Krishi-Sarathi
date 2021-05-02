@@ -11,11 +11,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Successful_create;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.User_Forgot_Page;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityResetPassUsingCurrentPassBinding;
 
-import java.util.HashMap;
 
 /*
  * @author Tejaswini Nimbalkar
@@ -38,11 +36,11 @@ public class ResetPassUsingCurrentPass extends AppCompatActivity {
         newPass = resetPassUsingCurrentPassBinding.resetPassNew.getEditText().getText().toString();
         conPass = resetPassUsingCurrentPassBinding.resetPassConfirm.getEditText().getText().toString();
 
-        SessionManager sessionManager = new SessionManager(this);
-        HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
-        email = stringUserData.get(sessionManager.KEY_EMAIL_ID);
+        //SessionManager sessionManager = new SessionManager(this);
+        //HashMap<String, String> stringUserData = sessionManager.getStringDataFromSession();
+        //email = stringUserData.get(sessionManager.KEY_EMAIL_ID);
         email = email.substring(0, email.indexOf("@"));
-        pass = stringUserData.get(SessionManager.KEY_PASSWORD);
+        //pass = stringUserData.get(SessionManager.KEY_PASSWORD);
     }
 
     @Override

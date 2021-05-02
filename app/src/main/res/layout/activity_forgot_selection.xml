@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:padding="5dp"
-        android:src="@drawable/general_back_icon" />
+        android:src="@drawable/icon_back_arrow" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -54,13 +54,13 @@
                     android:layout_marginTop="20dp"
                     android:elevation="5dp"
                     android:padding="5dp"
-                    android:background="@drawable/selection_background">
+                    android:background="@drawable/background_selection">
 
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:id="@+id/phone_icon"
-                        android:src="@drawable/phone_android"/>
+                        android:src="@drawable/icon_phone"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -111,13 +111,13 @@
                     android:layout_marginBottom="10dp"
                     android:elevation="5dp"
                     android:padding="5dp"
-                    android:background="@drawable/selection_background">
+                    android:background="@drawable/background_selection">
 
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="match_parent"
                         android:id="@+id/email_icon"
-                        android:src="@drawable/email_icon"/>
+                        android:src="@drawable/icon_email"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

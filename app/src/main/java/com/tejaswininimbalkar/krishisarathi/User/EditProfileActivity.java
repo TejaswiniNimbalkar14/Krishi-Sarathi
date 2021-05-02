@@ -1,11 +1,5 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -19,6 +13,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -36,9 +34,6 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.UserSignIn_page;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.UUID;
@@ -75,7 +70,7 @@ public class EditProfileActivity extends AppCompat {
         storageReference = FirebaseStorage.getInstance().getReference();
 
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null){
+        if (user != null) {
             uid = user.getUid();
         } else {
             Toast.makeText(this, "not working", Toast.LENGTH_SHORT).show();
@@ -117,12 +112,7 @@ public class EditProfileActivity extends AppCompat {
         NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return (wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected());
     }
 
     private void showConnectionDialog() {
@@ -162,7 +152,7 @@ public class EditProfileActivity extends AppCompat {
             showConnectionDialog();
             progressBar.setVisibility(View.GONE);
         }
-        if(!validateFullName() || !validateEmail()) {
+        if (!validateFullName() || !validateEmail()) {
             return;
         }
         updateData();
@@ -171,12 +161,11 @@ public class EditProfileActivity extends AppCompat {
     public void updateData() {
         if (isConnected(EditProfileActivity.this)) {
             progressBar.setVisibility(View.VISIBLE);
-            if(isNameChanged() || isEmailChanged()) {
+            if (isNameChanged() || isEmailChanged()) {
                 reference.child("fullName").setValue(fullName.getEditText().getText().toString());
                 reference.child("email_id").setValue(emailId.getEditText().getText().toString());
                 Toast.makeText(this, "Data has been updated", Toast.LENGTH_SHORT).show();
-            }
-            else {
+            } else {
                 Toast.makeText(this, "Data is same and cannot be updated!", Toast.LENGTH_SHORT).show();
             }
         }
@@ -185,20 +174,12 @@ public class EditProfileActivity extends AppCompat {
 
     private boolean isNameChanged() {
         updatedName = fullName.getEditText().getText().toString();
-        if(!updatedName.equals(name)) {
-            return true;
-        } else {
-            return false;
-        }
+        return !updatedName.equals(name);
     }
 
     private boolean isEmailChanged() {
         updatedEmail = emailId.getEditText().getText().toString();
-        if(!updatedEmail.equals(email)) {
-            return true;
-        } else {
-            return false;
-        }
+        return !updatedEmail.equals(email);
     }
 
     private boolean validateFullName() {
@@ -230,7 +211,7 @@ public class EditProfileActivity extends AppCompat {
         }
     }
 
-    public void selectPicture(View view){
+    public void selectPicture(View view) {
         Intent pickPicture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickPicture, 1);
     }

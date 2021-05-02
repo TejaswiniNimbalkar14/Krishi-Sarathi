@@ -14,7 +14,7 @@
         android:id="@+id/clear_screen"
         android:padding="5dp"
         android:layout_margin="15dp"
-        android:src="@drawable/clear_icon" />
+        android:src="@drawable/icon_clear" />
 
     <ScrollView
         android:layout_width="match_parent"

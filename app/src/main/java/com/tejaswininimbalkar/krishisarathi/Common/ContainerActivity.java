@@ -1,8 +1,7 @@
-package com.tejaswininimbalkar.krishisarathi.User;
+package com.tejaswininimbalkar.krishisarathi.Common;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
@@ -16,7 +15,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -29,31 +27,23 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
+import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.UserDashboardFragment;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.Equipment_owner;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.about_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.farmer_guidefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.feedbackfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.government_schemefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.helpfragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.homefragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.locationfragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.ordersfragment;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.profilefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.rate_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
-import com.tejaswininimbalkar.krishisarathi.Databases.SessionManager;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
-import com.tejaswininimbalkar.krishisarathi.Owner.Owner_RegistrationActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.UserProfileFragment;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
-
-import java.net.URISyntaxException;
 
 /*
  * @author Tejaswini Nimbalkar and Leena Bhadane
@@ -171,13 +161,6 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId ( )) {
-//            case R.id.home:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new homefragment( ) ).commit ( );
-//                activityContainerBinding.menuBtn.setVisibility(View.GONE);
-//                break;
-//            case R.id.profile:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new profilefragment( ) ).commit ( );
-//                break;
             case R.id.government_scheme:
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new government_schemefragment( ) ).commit ( );
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
@@ -187,12 +170,6 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
 
-//            case R.id.location:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new locationfragment( ) ).commit ( );
-//                break;
-//            case R.id.orders:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new ordersfragment( ) ).commit ( );
-//                break;
             case R.id.help:
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new helpfragment( ) ).commit ( );
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
@@ -213,9 +190,6 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new sharefragment( ) ).commit ( );
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
-            //case R.id.equipment_owner:
-            //  getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new Fragment () ).commit ( );
-            //  break;
             case R.id.equipment_owner:
                 if (user != null){
 
@@ -224,7 +198,6 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            //boolean equipment_owner = snapshot.child("equipment_owner").getValue(Boolean.class);
                             if (snapshot.exists()){
                                 Intent intent = new Intent(ContainerActivity.this, OwnerLoginActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
