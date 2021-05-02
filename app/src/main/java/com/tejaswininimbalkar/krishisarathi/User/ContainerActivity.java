@@ -72,12 +72,13 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //set a no night mode
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         activityContainerBinding = ActivityContainerBinding.inflate(getLayoutInflater());
         setContentView(activityContainerBinding.getRoot());
 
-        //set a no night mode
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -212,18 +213,14 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new sharefragment( ) ).commit ( );
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
-            //case R.id.equipment_owner:
-            //  getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.Fragment_container, new Fragment () ).commit ( );
-            //  break;
             case R.id.equipment_owner:
                 if (user != null){
-
-                    Query query = reference.orderByChild("equipment_owner").equalTo(true);
+                   DatabaseReference root = FirebaseDatabase.getInstance().getReference("Owner");  // make a new Database Reference
+                    Query query = root.orderByChild("owner_ID").equalTo(user.getUid());  // here check this login user present in owner child
 
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            //boolean equipment_owner = snapshot.child("equipment_owner").getValue(Boolean.class);
                             if (snapshot.exists()){
                                 Intent intent = new Intent(ContainerActivity.this, OwnerLoginActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

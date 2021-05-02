@@ -1,25 +1,25 @@
 package com.tejaswininimbalkar.krishisarathi.Owner.Model;
 
 public class Equipment_add_model {
-    private String equipment_name;
+    private String equip_name;  // here change field name
     private String equip_img_Url;
 
 
     public Equipment_add_model() {
     }
 
-    public Equipment_add_model(String equipment_name, String equip_img_Url) {
-        this.equipment_name = equipment_name;
+    public Equipment_add_model(String equip_name, String equip_img_Url) {
+        this.equip_name = equip_name;  //and also here
         this.equip_img_Url = equip_img_Url;
     }
 
-
-    public String getEquipment_name() {
-        return equipment_name;
+    //here get method
+    public String getEquip_name() {
+        return equip_name;
     }
 
-    public void setEquipment_name(String equipment_name) {
-        this.equipment_name = equipment_name;
+    public void setEquip_name(String equip_name) {
+        this.equip_name = equip_name;
     }
 
     public String getEquip_img_Url() {
