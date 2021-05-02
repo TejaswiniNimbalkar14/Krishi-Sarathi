@@ -8,6 +8,7 @@ public class Equipment_add_model {
     public Equipment_add_model() {
     }
 
+
     public Equipment_add_model(String equip_name, String equip_img_Url) {
         this.equip_name = equip_name;
         this.equip_img_Url = equip_img_Url;
@@ -20,6 +21,7 @@ public class Equipment_add_model {
 
     public void setEquip_name(String equip_name) {
         this.equip_name = equip_name;
+
     }
 
     public String getEquip_img_Url() {

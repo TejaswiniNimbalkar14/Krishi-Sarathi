@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".User.UserDashboardFragment">
+    tools:context=".Common.Dashboard.UserDashboardFragment">
 
    <RelativeLayout
        android:layout_width="match_parent"
@@ -52,7 +52,7 @@
              android:layout_width="30dp"
              android:layout_height="30dp"
              android:contentDescription="@string/app_name"
-             android:src="@drawable/notifications_icon"
+             android:src="@drawable/icon_notifications"
              android:visibility="gone"
              app:layout_constraintBottom_toBottomOf="@id/textKrishi"
              app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +66,7 @@
              android:id="@+id/enterUserSession"
              android:layout_width="30dp"
              android:layout_height="30dp"
-             android:src="@drawable/person_icon"
+             android:src="@drawable/icon_person"
              android:visibility="visible"
              app:layout_constraintBottom_toBottomOf="@id/textKrishi"
              app:layout_constraintEnd_toEndOf="parent"
@@ -78,7 +78,7 @@
              android:layout_width="match_parent"
              android:layout_height="40dp"
              android:layout_marginTop="15dp"
-             android:background="@drawable/white_rectangle_background"
+             android:background="@drawable/backgorund_white_round_corners"
              android:orientation="horizontal"
              app:layout_constraintBottom_toBottomOf="parent"
              app:layout_constraintTop_toBottomOf="@id/textKrishi"
@@ -89,11 +89,11 @@
             <ImageView
                 android:layout_width="63dp"
                 android:layout_height="40dp"
-                android:background="@drawable/search_icon_background"
+                android:background="@drawable/backgound_for_icon"
 
                 android:contentDescription="@string/todo"
                 android:padding="6dp"
-                android:src="@drawable/search_icon"
+                android:src="@drawable/icon_search"
                 app:tint="@color/colorPrimary" />
 
             <EditText
@@ -116,11 +116,11 @@
             <ImageView
                 android:layout_width="63dp"
                 android:layout_height="40dp"
-                android:background="@drawable/mic_icon_background"
+                android:background="@drawable/backgound_for_icon"
 
                 android:contentDescription="@string/todo"
                 android:padding="6dp"
-                android:src="@drawable/mic_icon"
+                android:src="@drawable/icon_mic"
                 app:tint="@color/colorPrimary" />
 
          </LinearLayout>

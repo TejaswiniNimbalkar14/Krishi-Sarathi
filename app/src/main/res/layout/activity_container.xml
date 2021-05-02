@@ -17,9 +17,9 @@
             android:layout_height="40dp"
             android:layout_margin="20dp"
             android:background="#00000000"
-            android:drawableStart="@drawable/menu_icon"
+            android:drawableStart="@drawable/icon_menu"
             app:layout_constraintStart_toStartOf="parent"
-            android:drawableLeft="@drawable/menu_icon"
+            android:drawableLeft="@drawable/icon_menu"
             app:layout_constraintTop_toTopOf="parent" />
 
         <FrameLayout
@@ -31,7 +31,7 @@
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/round_corners"
+            android:background="@drawable/background_bottom_nav"
             app:itemIconTint="@color/item_color"
             app:itemRippleColor="@color/white"
             app:itemTextColor="@color/item_color"

@@ -27,6 +27,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.UserDashboardFragment;
+
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.about_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.farmer_guidefragment;
@@ -38,17 +41,18 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.AgriEquipmentFragment;
-import com.tejaswininimbalkar.krishisarathi.User.UserDashboardFragment;
+
 import com.tejaswininimbalkar.krishisarathi.User.UserProfileFragment;
-import com.tejaswininimbalkar.krishisarathi.User.WeatherFragment;
+
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 /*
- * @author Tejaswini Nimbalkar
+
+ * @author Tejaswini Nimbalkar and Leena Bhadane
+
  */
 
 public class ContainerActivity extends AppCompat implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,13 +69,14 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
         super.onCreate(savedInstanceState);
         activityContainerBinding = ActivityContainerBinding.inflate(getLayoutInflater());
         setContentView(activityContainerBinding.getRoot());
-
-
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -164,13 +169,7 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId ( )) {
-//            case R.id.home:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new homefragment( ) ).commit ( );
-//                activityContainerBinding.menuBtn.setVisibility(View.GONE);
-//                break;
-//            case R.id.profile:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new profilefragment( ) ).commit ( );
-//                break;
+
             case R.id.government_scheme:
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new government_schemefragment( ) ).commit ( );
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
@@ -180,12 +179,7 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
 
-//            case R.id.location:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new locationfragment( ) ).commit ( );
-//                break;
-//            case R.id.orders:
-//                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new ordersfragment( ) ).commit ( );
-//                break;
+
             case R.id.help:
                 getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new helpfragment( ) ).commit ( );
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
@@ -208,8 +202,10 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 break;
             case R.id.equipment_owner:
                 if (user != null){
+
                    DatabaseReference root = FirebaseDatabase.getInstance().getReference("Owner");  // make a new Database Reference
                     Query query = root.orderByChild("owner_ID").equalTo(user.getUid());  // here check this login user present in owner child
+
 
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override

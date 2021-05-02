@@ -26,7 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.IntroPref;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 

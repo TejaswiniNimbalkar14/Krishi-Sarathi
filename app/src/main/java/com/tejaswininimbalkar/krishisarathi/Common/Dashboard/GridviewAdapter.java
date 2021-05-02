@@ -1,7 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.Common.Dashboard;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,11 @@ import androidx.fragment.app.Fragment;
 
 import java.util.ArrayList;
 import com.tejaswininimbalkar.krishisarathi.R;
+
+/*
+ * @author Leena Bhadane and Bhagyashri Bharule
+ */
+
 public class GridviewAdapter extends BaseAdapter
 {
     private final ArrayList<String> listTitle;

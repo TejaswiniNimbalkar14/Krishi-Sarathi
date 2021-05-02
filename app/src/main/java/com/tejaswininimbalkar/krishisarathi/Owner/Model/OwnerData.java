@@ -3,7 +3,7 @@ package com.tejaswininimbalkar.krishisarathi.Owner.Model;
 public class OwnerData {
     private boolean equipment_owner;
     private String userName;
-    private String Date_of_Birthday;
+    private String date_of_Birthday;
     private String no_of_Tractor;
     private String no_of_Equipment;
     private String fullName;
@@ -19,7 +19,7 @@ public class OwnerData {
     public OwnerData(boolean equipment_owner, String userName, String date_of_Birthday, String no_of_Tractor, String no_of_Equipment, String password, String owner_ID) {
         this.equipment_owner = equipment_owner;
         this.userName = userName;
-        this.Date_of_Birthday = date_of_Birthday;
+        this.date_of_Birthday = date_of_Birthday;
         this.no_of_Tractor = no_of_Tractor;
         this.no_of_Equipment = no_of_Equipment;
         this.password = password;
@@ -78,11 +78,11 @@ public class OwnerData {
     }
 
     public String getDate_of_Birthday() {
-        return Date_of_Birthday;
+        return date_of_Birthday;
     }
 
     public void setDate_of_Birthday(String date_of_Birthday) {
-        Date_of_Birthday = date_of_Birthday;
+        date_of_Birthday = date_of_Birthday;
     }
 
     public String getNo_of_Tractor() {

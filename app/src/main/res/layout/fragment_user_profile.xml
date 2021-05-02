@@ -13,50 +13,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
-        android:drawableRight="@drawable/edit_icon"
+        android:drawableRight="@drawable/icon_edit"
         android:drawableTint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profileImageCard"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:cardCornerRadius="50dp"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profileEditBtn">
 
-        <ImageView
-            android:id="@+id/profileImage"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/default_profile_picture" />
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profileImageCard"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:cardCornerRadius="50dp">
 
-    </androidx.cardview.widget.CardView>
+            <ImageView
+                android:id="@+id/profileImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/image_default_profile" />
 
-    <TextView
-        android:id="@+id/profileFullName"
+        </androidx.cardview.widget.CardView>
+
+        <ProgressBar
+            android:id="@+id/imageProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:elevation="10dp"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileImageCard" />
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
-    <TextView
-        android:id="@+id/profileContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profileFullName"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileFullName" />
+        <TextView
+            android:id="@+id/profileFullName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/profileContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/profileFullName"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <ProgressBar
+            android:id="@+id/infoProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
@@ -67,7 +95,7 @@
         app:cardElevation="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profileContact">
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -80,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00000000"
-                android:drawableTop="@drawable/edit_location_icon"
+                android:drawableTop="@drawable/icon_edit_location"
                 android:drawableTint="@color/black"
                 android:text="@string/location"
                 android:textAllCaps="false"
@@ -92,7 +120,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00000000"
-                android:drawableTop="@drawable/payments_icon"
+                android:drawableTop="@drawable/icon_payments"
                 android:drawableTint="@color/black"
                 android:text="@string/payment"
                 android:textAllCaps="false"
@@ -104,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00000000"
-                android:drawableTop="@drawable/notification_icon"
+                android:drawableTop="@drawable/icon_notifications"
                 android:drawableTint="@color/black"
                 android:text="@string/notification"
                 android:textAllCaps="false"
@@ -116,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="#00000000"
-                android:drawableTop="@drawable/settings_icon"
+                android:drawableTop="@drawable/icon_settings"
                 android:drawableTint="@color/black"
                 android:text="@string/settings"
                 android:textAllCaps="false"
@@ -142,8 +170,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableStart="@drawable/my_orders_icon"
-            android:drawableLeft="@drawable/my_orders_icon"
+            android:drawableStart="@drawable/icon_my_orders"
+            android:drawableLeft="@drawable/icon_my_orders"
             android:drawablePadding="10dp"
             android:drawableTint="@color/black"
             android:text="@string/my_orders"
@@ -159,8 +187,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableStart="@drawable/location_icon"
-            android:drawableLeft="@drawable/location_icon"
+            android:drawableStart="@drawable/icon_location"
+            android:drawableLeft="@drawable/icon_location"
             android:drawablePadding="10dp"
             android:drawableTint="@color/black"
             android:text="@string/track_order"
@@ -176,8 +204,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableStart="@drawable/history_icon"
-            android:drawableLeft="@drawable/history_icon"
+            android:drawableStart="@drawable/icon_history"
+            android:drawableLeft="@drawable/icon_history"
             android:drawablePadding="10dp"
             android:drawableTint="@color/black"
             android:text="@string/history"
@@ -193,8 +221,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableStart="@drawable/help_icon"
-            android:drawableLeft="@drawable/help_icon"
+            android:drawableStart="@drawable/icon_help"
+            android:drawableLeft="@drawable/icon_help"
             android:drawablePadding="10dp"
             android:drawableTint="@color/black"
             android:text="@string/get_online_ordering_help"
@@ -210,8 +238,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableStart="@drawable/about_icon"
-            android:drawableLeft="@drawable/about_icon"
+            android:drawableStart="@drawable/icon_about"
+            android:drawableLeft="@drawable/icon_about"
             android:drawablePadding="10dp"
             android:drawableTint="@color/black"
             android:text="@string/about_btn"
