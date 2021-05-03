@@ -1,108 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    android:layout_height="144dp"
+    >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/con_parent"
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/owner_cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="5dp">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_img"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="15dp"
-            app:cardCornerRadius="99dp"
-            app:cardElevation="10dp"
-            app:layout_constraintBottom_toBottomOf="@id/con_parent"
-            app:layout_constraintStart_toStartOf="@id/con_parent"
-            app:layout_constraintTop_toTopOf="@id/con_parent">
-
-            <ImageView
-                android:id="@+id/owner_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@mipmap/ic_launcher" />
-
-        </com.google.android.material.card.MaterialCardView>
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginRight="8dp"
+        app:cardCornerRadius="5dp">
 
         <LinearLayout
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
-            app:layout_constraintEnd_toEndOf="@id/con_parent"
-            app:layout_constraintTop_toTopOf="@id/con_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Available" />
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/image_person"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="2dp" />
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/owner_status"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_margin="5dp"
-                app:cardBackgroundColor="#008C33"
-                app:cardCornerRadius="99dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/owner_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Name"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Rent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="User Information"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:stepSize="0.5"/>
+
+            </LinearLayout>
         </LinearLayout>
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            app:layout_constraintEnd_toEndOf="@id/con_parent"
-            app:layout_constraintStart_toEndOf="@id/card_img"
-            app:layout_constraintTop_toTopOf="@id/con_parent">
-
-            <TextView
-                android:id="@+id/owner_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Owner Name"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/owner_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/owner_name"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/roboto_medium"
-                android:text="Here Owner Imformation"
-                android:textSize="18dp" />
-
-            <RatingBar
-                android:id="@+id/rating"
-                style="?android:attr/ratingBarStyleIndicator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/owner_info"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="0dp"
-                android:clickable="false"
-                android:isIndicator="true"
-                android:numStars="5"
-                android:stepSize="1" />
-
-        </RelativeLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</com.google.android.material.card.MaterialCardView>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
