@@ -30,6 +30,11 @@
         <activity android:name=".Common.Dashboard.GridItemActivity"/>
         <activity android:name=".Common.OnBoarding"/>
         <activity android:name=".Common.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 
         </activity>
 
