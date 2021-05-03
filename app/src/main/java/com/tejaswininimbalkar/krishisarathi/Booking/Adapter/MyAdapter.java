@@ -17,6 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.tejaswininimbalkar.krishisarathi.Booking.Fragment.DetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.MyModel;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
+import com.tejaswininimbalkar.krishisarathi.Common.EquiDetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyViewHolder> {
@@ -38,7 +39,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
             public void onClick(View v) {
                 AppCompat activity = (AppCompat) v.getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.drawerLayout, new DetailsFragment(myModel.getEquipment_name()
+                        .replace(R.id.fragmentContainer, new EquiDetailsFragment(myModel.getEquipment_name()
                                 , myModel.getEquip_img_Url())).addToBackStack(null).commit();
             }
         });

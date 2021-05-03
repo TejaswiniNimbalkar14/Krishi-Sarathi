@@ -19,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.tejaswininimbalkar.krishisarathi.Booking.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
+import com.tejaswininimbalkar.krishisarathi.Common.EquiDetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.List;
