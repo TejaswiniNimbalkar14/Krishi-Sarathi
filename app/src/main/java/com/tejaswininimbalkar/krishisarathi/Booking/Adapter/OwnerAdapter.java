@@ -26,8 +26,10 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     Context context;
 
     public OwnerAdapter( Context context, ArrayList<OwnerModel> mList) {
-        this.mList = mList;
+
         this.context = context;
+        this.mList = mList;
+
     }
 
     @NonNull

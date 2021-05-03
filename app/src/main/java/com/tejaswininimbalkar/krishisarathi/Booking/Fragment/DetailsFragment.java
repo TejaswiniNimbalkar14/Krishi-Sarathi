@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,14 +17,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Booking.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.EquiDetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -43,7 +49,7 @@ public class DetailsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     RecyclerView recyclerView;
     LinearLayoutManager layout;
-    List<OwnerModel> mList;
+    ArrayList<OwnerModel> mList;
     OwnerAdapter ownerAdapter;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = db.getReference();
@@ -129,19 +135,51 @@ public class DetailsFragment extends Fragment {
             }
         });*/
 
-
         recyclerView = view.findViewById(R.id.ownerRec1);
-        layout = new LinearLayoutManager(getContext());
-        layout.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-
-        FirebaseRecyclerOptions<OwnerModel> opt = new FirebaseRecyclerOptions.Builder<OwnerModel>()
-                .setQuery(FirebaseDatabase.getInstance().getReference().child("Equipment"), OwnerModel.class)
-                .build();
-
-        ownerAdapter = new OwnerAdapter(opt);
+        mList = new ArrayList<>();
+        ownerAdapter = new OwnerAdapter(getContext(), mList);
 
         recyclerView.setAdapter(ownerAdapter);
+
+        databaseReference.child("Equipment").child(Machine_name).child("Owner Name").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        String id = dataSnapshot.getKey();
+                        databaseReference.child("Owner")
+                                .child(id)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        OwnerModel model = snapshot.getValue(OwnerModel.class);
+                                        mList.add(model);
+                                        ownerAdapter.notifyDataSetChanged();
+
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+
+                                });
+                    }
+
+
+                }else{
+                    Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
