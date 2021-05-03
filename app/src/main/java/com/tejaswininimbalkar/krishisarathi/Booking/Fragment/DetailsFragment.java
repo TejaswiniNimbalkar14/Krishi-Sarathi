@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tejaswininimbalkar.krishisarathi.Booking.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
@@ -40,10 +41,12 @@ public class DetailsFragment extends Fragment {
 
 
     // TODO: Rename and change types of parameters
-    RecyclerView recycler;
+    RecyclerView recyclerView;
     LinearLayoutManager layout;
-    List<OwnerModel> userList;
+    List<OwnerModel> mList;
     OwnerAdapter ownerAdapter;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = db.getReference();
     private String mParam1;
     private String mParam2;
 
@@ -127,7 +130,7 @@ public class DetailsFragment extends Fragment {
         });*/
 
 
-        recycler = view.findViewById(R.id.ownerRec1);
+        recyclerView = view.findViewById(R.id.ownerRec1);
         layout = new LinearLayoutManager(getContext());
         layout.setOrientation(RecyclerView.VERTICAL);
 
@@ -138,7 +141,7 @@ public class DetailsFragment extends Fragment {
 
         ownerAdapter = new OwnerAdapter(opt);
 
-        recycler.setAdapter(ownerAdapter);
+        recyclerView.setAdapter(ownerAdapter);
 
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
