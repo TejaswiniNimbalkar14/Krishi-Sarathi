@@ -27,7 +27,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/caltivator_d" />
+                app:srcCompat="@drawable/image_caltivator" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,7 +37,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Name"
+                    android:id="@+id/owner_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"

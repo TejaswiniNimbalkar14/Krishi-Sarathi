@@ -57,6 +57,7 @@ public class DetailsFragment extends Fragment {
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = db.getReference();
     OwnerAdapter ownerAdapter;
+    String id;
 
     private String mParam1;
     private String mParam2;
@@ -73,6 +74,8 @@ public class DetailsFragment extends Fragment {
         Descp = descp;*/
         this.imageUri = imageUri;
     }
+
+
 
     /**
      * Use this factory method to create a new instance of
@@ -159,14 +162,13 @@ public class DetailsFragment extends Fragment {
 
                 if(snapshot.exists()){
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                        String id = dataSnapshot.getKey();
+                        id = dataSnapshot.getKey();
                         databaseReference.child("Owner")
                                 .child(id)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 OwnerModel model = snapshot.getValue(OwnerModel.class);
-                                Toast.makeText(getActivity(),model.getOwner_Name(),Toast.LENGTH_LONG).show();
                                 mList.add(model);
                                 ownerAdapter.notifyDataSetChanged();
 
@@ -190,6 +192,8 @@ public class DetailsFragment extends Fragment {
 
             }
         });
+
+
 
 
 

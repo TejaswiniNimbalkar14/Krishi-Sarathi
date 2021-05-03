@@ -48,7 +48,7 @@
                             android:layout_width="30dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/arrow_back_icon_d" />
+                            android:src="@drawable/icon_arrow_back" />
 
                         <Button
                             android:id="@+id/back_icon"
@@ -90,7 +90,7 @@
                         android:layout_marginTop="40dp"
                         android:layout_marginEnd="100dp"
                         android:layout_marginBottom="30dp"
-                        android:src="@drawable/caltivator_d"
+                        android:src="@drawable/image_caltivator"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -237,7 +237,7 @@
                     android:layout_height="match_parent"
                     tools:layout_editor_absoluteX="0dp"
                     tools:layout_editor_absoluteY="62dp"
-                    tools:listitem="@layout/owner_card_d" />
+                    tools:listitem="@layout/card_owner" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

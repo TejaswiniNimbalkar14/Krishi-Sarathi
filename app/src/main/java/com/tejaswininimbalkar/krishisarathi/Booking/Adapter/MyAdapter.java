@@ -1,6 +1,5 @@
 package com.tejaswininimbalkar.krishisarathi.Booking.Adapter;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +17,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.tejaswininimbalkar.krishisarathi.Booking.Fragment.DetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.MyModel;
-import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
-
-import java.util.ArrayList;
 
 public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyViewHolder> {
 
@@ -55,7 +51,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.item_d, parent, false);
+        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.card_equipment, parent, false);
         return new MyViewHolder(view);
     }
 
@@ -69,7 +65,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
             super(itemView);
             cardView = itemView.findViewById(R.id.cardView);
             img = itemView.findViewById(R.id.machineImg);
-            name = itemView.findViewById(R.id.Name);
+            name = itemView.findViewById(R.id.owner_name);
             price = itemView.findViewById(R.id.Price);
             description = itemView.findViewById(R.id.Description);
 
