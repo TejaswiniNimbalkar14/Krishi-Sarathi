@@ -3,18 +3,30 @@ package com.tejaswininimbalkar.krishisarathi.Booking.Model;
 public class OwnerModel {
 
 
-    String owner_Name;
+    String userName,owner_ID;
 
-    public OwnerModel(String owner_Name) {
-        this.owner_Name = owner_Name;
+    public OwnerModel() {
     }
 
-    public String getOwner_name() {
-        return owner_Name;
+    public OwnerModel(String userName, String owner_ID) {
+        this.userName = userName;
+        this.owner_ID = owner_ID;
     }
 
-    public void setOwner_name(String owner_Name) {
-        this.owner_Name = owner_Name;
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getOwner_ID() {
+        return owner_ID;
+    }
+
+    public void setOrder_ID(String owner_ID) {
+        this.owner_ID = owner_ID;
     }
 }
 

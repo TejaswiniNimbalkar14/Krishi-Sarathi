@@ -1,50 +1,82 @@
 package com.tejaswininimbalkar.krishisarathi.Booking.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.tejaswininimbalkar.krishisarathi.Booking.BookingActivity;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
 
-public class OwnerAdapter extends FirebaseRecyclerAdapter<OwnerModel, OwnerAdapter.ViewHolder> {
+import java.util.ArrayList;
 
+public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> {
 
-    public OwnerAdapter(@NonNull FirebaseRecyclerOptions<OwnerModel> options) {
-        super(options);
-    }
+    ArrayList<OwnerModel> mList;
+    Context context;
 
-    @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull OwnerModel model) {
-        holder.name.setText(model.getOwner_name());
-
+    public OwnerAdapter( Context context, ArrayList<OwnerModel> mList) {
+        this.mList = mList;
+        this.context = context;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.owner_card_d, parent, false);
-        return new ViewHolder(view);
+    public OwnerAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(context).inflate(R.layout.card_owner, parent ,false);
+        return new ViewHolder(v);
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    @Override
+    public void onBindViewHolder(@NonNull OwnerAdapter.ViewHolder holder, int position) {
+        OwnerModel ownerModel = mList.get(position);
+        holder.ownerName.setText(ownerModel.getUserName());
 
-        TextView name;
+        holder.ownerCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity activity = (AppCompatActivity)view.getContext();
+
+                Intent intent = new Intent(context, BookingActivity.class);
+
+                intent.putExtra("key",ownerModel.getOwner_ID());
+
+                activity.startActivity(intent);
+
+            }
+        });
+    }
+
+    @Override
+    public int getItemCount() {
+        return mList.size();
+    }
+
+
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+
+        TextView ownerName;
+        CardView ownerCardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            name = itemView.findViewById(R.id.owner_name);
+            ownerName = itemView.findViewById(R.id.owner_name);
+            ownerCardView = itemView.findViewById(R.id.owner_cardView);
 
 
         }
-
-
     }
+
+
+
 }
