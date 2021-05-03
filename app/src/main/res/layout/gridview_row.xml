@@ -1,52 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="400dp"
-    android:background="@color/colorDivider"
-    app:layout_constraintCircleRadius="88dp"
-
-    android:padding="20dp"
-    android:layout_marginBottom="20dp"
-    android:layout_marginRight="20dp"
+    android:layout_below="@+id/imageSlider"
     android:layout_marginLeft="20dp"
-    android:layout_below="@+id/imageSlider">
+
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="20dp"
+    android:background="@color/colorDivider"
+    android:padding="20dp"
+    app:layout_constraintCircleRadius="88dp">
 
 
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="TODO"
+        android:src="@drawable/menu"
+        tools:ignore="ContentDescription,HardcodedText">
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/menu"
-            android:contentDescription="TODO"
-            tools:ignore="ContentDescription,HardcodedText">
+    </ImageView>
 
-        </ImageView>
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="2dp"
+        android:ellipsize="marquee"
+        android:fontFamily="serif"
+        android:text="@string/textview"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold">
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="2dp"
-            android:ellipsize="marquee"
-            android:text="@string/textview"
-            android:textSize="15sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:fontFamily="serif">
-
-        </TextView>
-
+    </TextView>
 
 
 </RelativeLayout>

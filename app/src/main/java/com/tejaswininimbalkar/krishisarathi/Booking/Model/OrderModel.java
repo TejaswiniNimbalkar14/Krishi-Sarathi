@@ -2,7 +2,7 @@ package com.tejaswininimbalkar.krishisarathi.Booking.Model;
 
 public class OrderModel {
 
-    String pname,paddress,pphone;
+    String pname, paddress, pphone;
     String order_name;
 
     public OrderModel(String order_name, String pname, String paddress, String pphone) {

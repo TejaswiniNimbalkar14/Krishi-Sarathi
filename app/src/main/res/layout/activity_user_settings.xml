@@ -33,8 +33,8 @@
         android:id="@+id/settingsTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings"
         android:layout_marginTop="10dp"
+        android:text="@string/settings"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -156,7 +156,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:elevation="10dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -167,7 +167,7 @@
         android:layout_height="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout"/>
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -182,28 +182,28 @@
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:thumb="@drawable/switch_thumb"
             android:padding="10dp"
             android:text="New for you"
+            android:textSize="20sp"
+            android:thumb="@drawable/switch_thumb"
             app:track="@drawable/switch_track" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
             android:text="Account Activity"
             android:textSize="20sp"
-            android:padding="10dp"
             android:thumb="@drawable/switch_thumb"
             app:track="@drawable/switch_track" />
 
         <androidx.appcompat.widget.SwitchCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:thumb="@drawable/switch_thumb"
             android:padding="10dp"
             android:text="Track notifications"
+            android:textSize="20sp"
+            android:thumb="@drawable/switch_thumb"
             app:track="@drawable/switch_track" />
 
     </LinearLayout>

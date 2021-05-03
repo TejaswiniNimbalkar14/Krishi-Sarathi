@@ -3,9 +3,10 @@ package com.tejaswininimbalkar.krishisarathi.Booking.Model;
 public class MyModel {
 
     String equipment_name;
-    String equip_img_Url ;
+    String equip_img_Url;
 
-    public MyModel(){ }
+    public MyModel() {
+    }
 
     public MyModel(String equipment_name, String equip_img_Url) {
         this.equipment_name = equipment_name;

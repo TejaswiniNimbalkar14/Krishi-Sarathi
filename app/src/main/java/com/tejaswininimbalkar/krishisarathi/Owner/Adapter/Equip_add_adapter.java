@@ -23,8 +23,8 @@ import java.util.ArrayList;
 
 public class Equip_add_adapter extends RecyclerView.Adapter<Equip_add_adapter.ViewHolder> {
 
-   Context context;
-   ArrayList<Equipment_add_model> list;
+    Context context;
+    ArrayList<Equipment_add_model> list;
 
     public Equip_add_adapter(Context context, ArrayList<Equipment_add_model> list) {
         this.context = context;
@@ -34,7 +34,7 @@ public class Equip_add_adapter extends RecyclerView.Adapter<Equip_add_adapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_equipment_card,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.add_equipment_card, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
@@ -51,7 +51,7 @@ public class Equip_add_adapter extends RecyclerView.Adapter<Equip_add_adapter.Vi
         return list.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder {
 
         ImageView equip_img;
         TextView equip_name;
@@ -70,8 +70,8 @@ public class Equip_add_adapter extends RecyclerView.Adapter<Equip_add_adapter.Vi
                     final Equipment_add_model temp = list.get(getAdapterPosition());
                     Toast.makeText(context, equip_name.getText(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, EquipmentGetInfoFromOwner.class);
-                    intent.putExtra("Equip_img",temp.getEquip_img_Url());
-                    intent.putExtra("Equip_name",temp.getEquip_name());
+                    intent.putExtra("Equip_img", temp.getEquip_img_Url());
+                    intent.putExtra("Equip_name", temp.getEquip_name());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }

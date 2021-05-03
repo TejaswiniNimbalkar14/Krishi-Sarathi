@@ -76,7 +76,7 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.Langua
         @Override
         public void onClick(View view) {
             int pos = getLayoutPosition();
-            if(mLanguageList != null && pos != -1 && pos < mLanguageList.size()) {
+            if (mLanguageList != null && pos != -1 && pos < mLanguageList.size()) {
                 isSelected = pos;
                 mListener.onItemClick(pos, mLanguageList.get(pos).getLanguageTitle());
             }

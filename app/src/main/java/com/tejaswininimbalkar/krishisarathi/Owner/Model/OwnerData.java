@@ -15,7 +15,6 @@ public class OwnerData {
     }
 
 
-
     public OwnerData(boolean equipment_owner, String userName, String date_of_Birthday, String no_of_Tractor, String no_of_Equipment, String password, String owner_ID) {
         this.equipment_owner = equipment_owner;
         this.userName = userName;

@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -28,16 +27,14 @@ public class recFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
     RecyclerView recView;
     MyAdapter adapter;
     String equipment_name;
     String equip_img_Url;
     DatabaseReference root = FirebaseDatabase.getInstance().getReference("Equipment");
-
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
 
 
     public recFragment() {
@@ -78,12 +75,10 @@ public class recFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_rec_d, container, false);
 
 
-
-
-        recView = (RecyclerView)view.findViewById(R.id.recyclerView);
+        recView = (RecyclerView) view.findViewById(R.id.recyclerView);
         recView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-       FirebaseRecyclerOptions<MyModel> options = new FirebaseRecyclerOptions.Builder<MyModel>()
+        FirebaseRecyclerOptions<MyModel> options = new FirebaseRecyclerOptions.Builder<MyModel>()
                 .setQuery(FirebaseDatabase.getInstance().getReference().child("Equipment"), MyModel.class)
                 .build();
         adapter = new MyAdapter(options);

@@ -7,35 +7,35 @@
     tools:context=".Owner.Equipment.EquipmentGetInfoFromOwner">
 
     <ImageView
+        android:id="@+id/back_btn"
         android:layout_width="30dp"
         android:layout_height="30dp"
+        android:layout_margin="15dp"
         android:src="@drawable/icon_back_arrow"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/back_btn"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="15dp"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
+        android:id="@+id/equip_img"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/image_cultivator"
-        android:id="@+id/equip_img"
         android:layout_marginTop="10dp"
+        android:src="@drawable/image_cultivator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/back_btn" />
 
     <TextView
+        android:id="@+id/equip_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cultivator"
-        android:id="@+id/equip_name"
-        app:layout_constraintTop_toBottomOf="@+id/equip_img"
-        app:layout_constraintStart_toStartOf="parent"
-        android:textSize="18dp"
-        android:textColor="@color/black"
         android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:text="Cultivator"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/equip_img" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -50,11 +50,11 @@
         app:layout_constraintTop_toBottomOf="@id/equip_name">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/model_company_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:id="@+id/model_company_name"
             android:hint="@string/machine_company_name"
             app:endIconMode="clear_text">
 
@@ -70,31 +70,29 @@
             android:layout_marginTop="10dp"
             android:text="@string/which_year_of_model"
             android:textColor="@color/black"
-            android:textSize="20dp"/>
+            android:textSize="20dp" />
 
         <NumberPicker
             android:id="@+id/num_picker"
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
 
 
     </LinearLayout>
 
     <Button
+        android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/purple_500"
         android:text="@string/submit"
-        android:id="@+id/submit"
-        android:textColor="@color/white"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -65,28 +65,28 @@ public class UserDashboardFragment extends Fragment {
             notification.setVisibility(View.VISIBLE);
         }
 
-        SliderView sliderView = (SliderView) view.findViewById ( R.id.imageSlider );
+        SliderView sliderView = (SliderView) view.findViewById(R.id.imageSlider);
 
-        SliderAdapter sliderAdapter = new SliderAdapter ( images );
-        sliderView.setSliderAdapter ( sliderAdapter );
-        sliderView.setIndicatorAnimation ( IndicatorAnimationType.WORM );
-        sliderView.setSliderTransformAnimation ( SliderAnimations.DEPTHTRANSFORMATION );
-        sliderView.startAutoCycle ( );
+        SliderAdapter sliderAdapter = new SliderAdapter(images);
+        sliderView.setSliderAdapter(sliderAdapter);
+        sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        sliderView.setSliderTransformAnimation(SliderAnimations.DEPTHTRANSFORMATION);
+        sliderView.startAutoCycle();
 
         prepareList();
 
         mAdapter = new GridviewAdapter(this, listTitle, listImage);
 
-        GridView gridView = (GridView) view.findViewById ( R.id.gridView1 );
+        GridView gridView = (GridView) view.findViewById(R.id.gridView1);
         gridView.setAdapter(mAdapter);
 
-        gridView.setOnItemClickListener( (arg0, arg1, position, arg3) -> {
-            Toast.makeText( getContext(), mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent ( getContext(), GridItemActivity.class );
+        gridView.setOnItemClickListener((arg0, arg1, position, arg3) -> {
+            Toast.makeText(getContext(), mAdapter.getItem(position), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getContext(), GridItemActivity.class);
             intent.putExtra("Title", mAdapter.getItem(position));
-            startActivity (intent);
+            startActivity(intent);
 
-        } );
+        });
 
         return view;
     }
@@ -101,9 +101,8 @@ public class UserDashboardFragment extends Fragment {
         });
     }
 
-    public void prepareList()
-    {
-        listTitle = new ArrayList<> ( );
+    public void prepareList() {
+        listTitle = new ArrayList<>();
         listTitle.add("Farmer");
         listTitle.add("Equipments");
         listTitle.add("Fertilisers");
@@ -111,7 +110,7 @@ public class UserDashboardFragment extends Fragment {
         listTitle.add("Seeds");
         listTitle.add("Transportation");
 
-        listImage = new ArrayList<> ( );
+        listImage = new ArrayList<>();
         listImage.add(R.drawable.image_farmer);
         listImage.add(R.drawable.image_equipment);
         listImage.add(R.drawable.image_fertilizer);

@@ -1,21 +1,20 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
@@ -27,9 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.UserDashboardFragment;
-
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.about_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.farmer_guidefragment;
@@ -41,9 +38,7 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
-
 import com.tejaswininimbalkar.krishisarathi.User.UserProfileFragment;
-
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivityContainerBinding;
 
 import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
@@ -96,12 +91,12 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 new KeyboardVisibilityEventListener() {
                     @Override
                     public void onVisibilityChanged(boolean isOpen) {
-                        Log.d("tag","onVisibilityChanged: Keyboard visibility changed");
-                        if(isOpen){
+                        Log.d("tag", "onVisibilityChanged: Keyboard visibility changed");
+                        if (isOpen) {
                             Log.d("tag", "onVisibilityChanged: Keyboard is open");
                             activityContainerBinding.bottomNavigation.setVisibility(View.INVISIBLE);
                             Log.d("tag", "onVisibilityChanged: NavBar got Invisible");
-                        }else{
+                        } else {
                             Log.d("tag", "onVisibilityChanged: Keyboard is closed");
                             activityContainerBinding.bottomNavigation.setVisibility(View.VISIBLE);
                             Log.d("tag", "onVisibilityChanged: NavBar got Visible");
@@ -115,8 +110,8 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_draw_open, R.string.navigation_draw_close);
-        drawerLayout.addDrawerListener ( toggle );
-        toggle.syncState ( );
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         //Add fragment to frame of container activity
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -168,54 +163,52 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId ( )) {
+        switch (item.getItemId()) {
 
             case R.id.government_scheme:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new government_schemefragment( ) ).commit ( );
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new government_schemefragment()).commit();
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.farmer_guide:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new farmer_guidefragment( ) ).commit ( );
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new farmer_guidefragment()).commit();
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
-
-
             case R.id.help:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new helpfragment( ) ).commit ( );
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new helpfragment()).commit();
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.about_us:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new about_usfragment( ) ).commit ( );
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new about_usfragment()).commit();
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.rate_us:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new rate_usfragment( ) ).commit ( );
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new rate_usfragment()).commit();
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.feedback:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new feedbackfragment( ) ).commit ( );
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new feedbackfragment()).commit();
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.share:
-                getSupportFragmentManager ( ).beginTransaction ( ).replace ( R.id.fragmentContainer, new sharefragment( ) ).commit ( );
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new sharefragment()).commit();
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.equipment_owner:
-                if (user != null){
+                if (user != null) {
 
-                   DatabaseReference root = FirebaseDatabase.getInstance().getReference("Owner");  // make a new Database Reference
+                    DatabaseReference root = FirebaseDatabase.getInstance().getReference("Owner");  // make a new Database Reference
                     Query query = root.orderByChild("owner_ID").equalTo(user.getUid());  // here check this login user present in owner child
 
 
                     query.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (snapshot.exists()){
+                            if (snapshot.exists()) {
                                 Intent intent = new Intent(ContainerActivity.this, OwnerLoginActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 finish();
-                            }else {
+                            } else {
                                 Intent intent = new Intent(ContainerActivity.this, Owner_Welcome.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
@@ -231,24 +224,24 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                     });
                 } else {
                     Toast.makeText(this, "First of all Login", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this,Send_Otp_Page.class));
+                    startActivity(new Intent(this, Send_Otp_Page.class));
                     finish();
                 }
                 break;
 
         }
-        drawerLayout.closeDrawer ( GravityCompat.START );
+        drawerLayout.closeDrawer(GravityCompat.START);
 
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen ( GravityCompat.START )) {
-            drawerLayout.closeDrawer ( GravityCompat.START );
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
         } else {
 
-            super.onBackPressed ( );
+            super.onBackPressed();
         }
     }
 }

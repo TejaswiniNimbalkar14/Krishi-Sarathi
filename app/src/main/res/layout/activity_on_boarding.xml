@@ -21,15 +21,15 @@
 
     <Button
         android:id="@+id/skipBtn"
-        android:drawableEnd="@drawable/icon_skip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:drawableEnd="@drawable/icon_skip"
+        android:drawableRight="@drawable/icon_skip"
         android:onClick="skip"
         android:padding="10dp"
         android:text="@string/skip"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="#00000000"
-        android:drawableRight="@drawable/icon_skip"
         app:layout_constraintTop_toTopOf="parent" />
 
     <RelativeLayout
@@ -44,11 +44,11 @@
             android:id="@+id/getStartedBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="getStarted"
             android:backgroundTint="@color/purple_500"
-            android:textColor="@color/white"
+            android:onClick="getStarted"
             android:text="@string/get_started"
-            android:visibility="invisible"/>
+            android:textColor="@color/white"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:id="@+id/dots"
@@ -60,8 +60,6 @@
 
         <Button
             android:id="@+id/next_btn"
-            android:onClick="next"
-            android:paddingBottom="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -69,6 +67,8 @@
             android:background="#00000000"
             android:drawableEnd="@drawable/icon_next"
             android:drawableRight="@drawable/icon_next"
+            android:onClick="next"
+            android:paddingBottom="30dp"
             android:visibility="visible" />
 
     </RelativeLayout>

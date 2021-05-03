@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.OrderModel;
@@ -18,7 +17,7 @@ import com.tejaswininimbalkar.krishisarathi.R;
 public class BookingActivity extends AppCompatActivity {
 
 
-    TextView name,address,phone;
+    TextView name, address, phone;
     TextView order_name;
     Button btn;
 
@@ -37,9 +36,6 @@ public class BookingActivity extends AppCompatActivity {
         phone = findViewById(R.id.pphone);
 
 
-
-
-
         btn = findViewById(R.id.book);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -49,14 +45,13 @@ public class BookingActivity extends AppCompatActivity {
                 FirebaseDatabase db = FirebaseDatabase.getInstance();
                 DatabaseReference root = db.getReference("Order");
 
-                OrderModel myModel = new OrderModel(order_name.getText().toString(),name.getText().toString()
-                        ,address.getText().toString()
-                        ,phone.getText().toString());
+                OrderModel myModel = new OrderModel(order_name.getText().toString(), name.getText().toString()
+                        , address.getText().toString()
+                        , phone.getText().toString());
 
                 root.child(s).push().setValue(myModel);
 
-                Toast.makeText(BookingActivity.this,"Your Order is Booked", Toast.LENGTH_LONG).show();
-
+                Toast.makeText(BookingActivity.this, "Your Order is Booked", Toast.LENGTH_LONG).show();
 
 
             }

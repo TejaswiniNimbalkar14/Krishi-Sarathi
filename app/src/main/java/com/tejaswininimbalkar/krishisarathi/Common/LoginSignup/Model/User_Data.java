@@ -1,4 +1,3 @@
-
 //Jayesh pravin borase
 package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model;
 

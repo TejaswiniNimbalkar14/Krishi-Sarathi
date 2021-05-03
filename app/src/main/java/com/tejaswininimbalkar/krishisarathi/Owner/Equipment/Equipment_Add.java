@@ -48,11 +48,11 @@ public class Equipment_Add extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recycler);
 
-        adapter = new Equip_add_adapter(getApplicationContext(),list);
+        adapter = new Equip_add_adapter(getApplicationContext(), list);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
 
-        reference  = FirebaseDatabase.getInstance().getReference("Equipment");
+        reference = FirebaseDatabase.getInstance().getReference("Equipment");
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
@@ -68,13 +68,14 @@ public class Equipment_Add extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         list.clear();
-                        for (DataSnapshot data : snapshot.getChildren()){
+                        for (DataSnapshot data : snapshot.getChildren()) {
                             Equipment_add_model model = data.getValue(Equipment_add_model.class);
                             //Toast.makeText(Equipment_Add.this, model.getEquipment_name(), Toast.LENGTH_SHORT).show();
                             try {
-                                if (!data.child("Owner Name").child(uid).child("owner_Name").getValue(String.class).equalsIgnoreCase(owner_id)){}
+                                if (!data.child("Owner Name").child(uid).child("owner_Name").getValue(String.class).equalsIgnoreCase(owner_id)) {
+                                }
 
-                            }catch (Exception e){
+                            } catch (Exception e) {
                                 list.add(model);
                             }
 
@@ -94,7 +95,6 @@ public class Equipment_Add extends AppCompatActivity {
                 Toast.makeText(Equipment_Add.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
 
     }

@@ -1,4 +1,3 @@
-
 //Jayesh pravin borase
 package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
@@ -13,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.google.android.material.textfield.TextInputLayout;
-import com.tejaswininimbalkar.krishisarathi.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tejaswininimbalkar.krishisarathi.R;
 
 public class Reset_Password extends AppCompatActivity {
 
@@ -40,7 +39,7 @@ public class Reset_Password extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(),User_Forgot_Page.class));
+                startActivity(new Intent(getApplicationContext(), User_Forgot_Page.class));
                 finish();
             }
         });
@@ -48,7 +47,7 @@ public class Reset_Password extends AppCompatActivity {
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validatePassword() | !validateConPassword()){
+                if (!validatePassword() | !validateConPassword()) {
                     return;
                 }
                 updateData();
@@ -61,7 +60,7 @@ public class Reset_Password extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(),User_Forgot_Page.class));
+        startActivity(new Intent(getApplicationContext(), User_Forgot_Page.class));
         finish();
     }
 
@@ -69,12 +68,12 @@ public class Reset_Password extends AppCompatActivity {
         try {
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("User");
             reference.child(uid).child("password").setValue(newPass.getEditText().getText().toString());
-            Intent intent = new Intent(getApplicationContext(),Successful_create.class);
-            intent.putExtra("textUpdate","Password\nUpdated");
+            Intent intent = new Intent(getApplicationContext(), Successful_create.class);
+            intent.putExtra("textUpdate", "Password\nUpdated");
             intent.putExtra("massage", "Your password has been updated");
             startActivity(intent);
             finish();
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 

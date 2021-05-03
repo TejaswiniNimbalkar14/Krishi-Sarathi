@@ -38,19 +38,19 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
     TextView tractor_count, equipment_count;
     RelativeLayout trac_info, equi_info;
     Button next;
-    RadioGroup trac_r,equi_r;
+    RadioGroup trac_r, equi_r;
     DatePicker dob;
 
     DatabaseReference reference;
 
-    int t_no=0,e_no=0;
-    String date,uid;
+    int t_no = 0, e_no = 0;
+    String date, uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_owner_registration );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_owner_registration);
 
         back_btn = findViewById(R.id.back_btn);
         user_name = findViewById(R.id.username);
@@ -101,13 +101,13 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!validateUserName() | !validateTractor() | !validateEquipment() | !validateDateOfBirth() | !validatePassword()){
+                if (!validateUserName() | !validateTractor() | !validateEquipment() | !validateDateOfBirth() | !validatePassword()) {
                     return;
                 }
 
-                int month = dob.getMonth()+1;
+                int month = dob.getMonth() + 1;
 
-                date = dob.getDayOfMonth()+"/"+Integer.toString(month)+"/"+dob.getYear();
+                date = dob.getDayOfMonth() + "/" + Integer.toString(month) + "/" + dob.getYear();
 
                 //OwnerData data = new OwnerData(true);
                 reference.child("User").child(uid).child("equipment_owner").setValue(true);
@@ -129,7 +129,7 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         equi_decrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (e_no != 1){
+                if (e_no != 1) {
                     e_no = e_no - 1;
                     equipment_count.setText(Integer.toString(e_no));
                 }
@@ -149,7 +149,7 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         trac_decrease.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (t_no != 1){
+                if (t_no != 1) {
                     t_no = t_no - 1;
                     tractor_count.setText(Integer.toString(t_no));
                 }
@@ -169,16 +169,16 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
                 tractor_count.getText().toString().trim(),
                 equipment_count.getText().toString().trim(),
                 password.getEditText().getText().toString().trim(),
-               /*here add user uid*/ uid)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                /*here add user uid*/ uid)).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                HashMap<String,Object> map = new HashMap<>();
-                map.put("owner_Id",user_name.getEditText().getText().toString());
+                HashMap<String, Object> map = new HashMap<>();
+                map.put("owner_Id", user_name.getEditText().getText().toString());
                 root.child("User").child(uid).updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(Owner_RegistrationActivity.this, "To Equipment Add", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(Owner_RegistrationActivity.this,Equipment_Add.class);
+                        Intent intent = new Intent(Owner_RegistrationActivity.this, Equipment_Add.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
@@ -215,34 +215,34 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validatePassword(){
+    private boolean validatePassword() {
         String val = password.getEditText().getText().toString();
-         if (val.isEmpty()){
-             password.setError("Field can not be empty");
-             return false;
-         }else if (val.length()<6){
-             password.setError("At least 6 Number");
-             return false;
-         }else {
-             password.setError(null);
-             return true;
-         }
+        if (val.isEmpty()) {
+            password.setError("Field can not be empty");
+            return false;
+        } else if (val.length() < 6) {
+            password.setError("At least 6 Number");
+            return false;
+        } else {
+            password.setError(null);
+            return true;
+        }
     }
 
-    private boolean validateDateOfBirth(){
+    private boolean validateDateOfBirth() {
         int currentYear = Calendar.getInstance().get(Calendar.YEAR);
         int userAge = dob.getYear();
 
-        if ((currentYear-userAge) < 18){
-            Toast.makeText(this, (currentYear-userAge)+" You are not Elligible", Toast.LENGTH_SHORT).show();
+        if ((currentYear - userAge) < 18) {
+            Toast.makeText(this, (currentYear - userAge) + " You are not Elligible", Toast.LENGTH_SHORT).show();
             return false;
-        }else
+        } else
             return true;
 
     }
 
     private boolean validateTractor() {
-        if (trac_yes.isChecked()){
+        if (trac_yes.isChecked()) {
             return true;
         }
         trac_yes.setError("Please Check");
@@ -250,7 +250,7 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
     }
 
     private boolean validateEquipment() {
-        if (equi_yes.isChecked()){
+        if (equi_yes.isChecked()) {
             return true;
         }
         equi_yes.setError("Please Check");

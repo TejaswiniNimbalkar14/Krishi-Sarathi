@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:transitionName="transition_to_account"
     android:orientation="vertical"
+    android:transitionName="transition_to_account"
     tools:context=".Common.LoginSignup.Send_Otp_Page">
 
     <RelativeLayout
@@ -18,11 +18,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:padding="5dp"
             android:background="#00000000"
             android:drawableStart="@drawable/icon_back_arrow"
             android:drawableLeft="@drawable/icon_back_arrow"
-            android:drawableTint="@color/black"/>
+            android:drawableTint="@color/black"
+            android:padding="5dp" />
 
         <Button
             android:id="@+id/skipSignUpBtn"
@@ -48,10 +48,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp">
-
+            android:layout_marginRight="25dp"
+            android:orientation="vertical">
 
 
             <ImageView
@@ -75,48 +74,49 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <TextView
+                    android:id="@+id/massage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/muli"
                     android:gravity="center_horizontal"
-                    android:id="@+id/massage"
                     android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
                     android:paddingTop="10dp"
+                    android:paddingRight="10dp"
                     android:text="@string/enter_your_country_code_and_phone"
                     android:textSize="16dp" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/massage"
-                    android:paddingRight="5dp"
                     android:gravity="center_horizontal"
                     android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:paddingBottom="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/number_to"
-                        android:textSize="16dp"
                         android:fontFamily="@font/muli"
-                        android:gravity="center_horizontal"/>
+                        android:gravity="center_horizontal"
+                        android:text="@string/number_to"
+                        android:textSize="16dp" />
 
                     <TextView
+                        android:id="@+id/create_massage"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/create_massage"
-                        android:id="@+id/create_massage"
-                        android:paddingLeft="5dp"
-                        android:textSize="18dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"
-                        android:visibility="visible"
                         android:fontFamily="@font/muli"
-                        android:gravity="center_horizontal"/>
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="5dp"
+                        android:text="@string/create_massage"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
 
                 </LinearLayout>
             </LinearLayout>
@@ -124,49 +124,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
                 android:weightSum="2">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    >
+                    android:layout_marginRight="10dp">
+
                     <com.google.android.material.textview.MaterialTextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:textSize="18dp"
                         android:text="+91"
-                        />
+                        android:textSize="18dp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mobile_number"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:id="@+id/mobile_number"
+                    android:layout_weight="0"
                     android:hint="@string/enter_mobile_number"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/black"
-                    app:hintTextColor="@color/black"
-                    android:layout_weight="0">
+                    app:hintTextColor="@color/black">
 
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="number"
-                        android:maxLength="10"/>
+                        android:maxLength="10" />
 
 
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
-
 
 
             <RelativeLayout
@@ -190,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:elevation="10dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
@@ -198,8 +196,6 @@
         </LinearLayout>
 
     </ScrollView>
-
-
 
 
 </LinearLayout>

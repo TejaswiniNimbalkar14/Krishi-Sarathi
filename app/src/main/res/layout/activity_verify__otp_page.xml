@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Common.LoginSignup.Verify_Otp_page">
 
     <ImageView
+        android:id="@+id/clear_screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
-        android:id="@+id/clear_screen"
-        android:padding="5dp"
         android:layout_margin="15dp"
+        android:backgroundTint="@color/black"
+        android:padding="5dp"
         android:src="@drawable/icon_clear" />
 
     <ScrollView
@@ -59,22 +59,22 @@
                 android:textSize="18dp" />
 
             <com.chaos.view.PinView
-                android:layout_width="wrap_content"
                 android:id="@+id/otp_code"
+                style="@style/PinWidget.PinView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:itemCount="6"
-                app:itemWidth="40dp"
-                app:itemHeight="50dp"
-                android:itemBackground="#EDEDED"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
-                android:inputType="number"
-                style="@style/PinWidget.PinView"
                 android:cursorVisible="true"
+                android:inputType="number"
+                android:itemBackground="#EDEDED"
                 app:cursorColor="@color/black"
                 app:hideLineWhenFilled="true"
+                app:itemCount="6"
+                app:itemHeight="50dp"
                 app:itemRadius="5dp"
-                app:lineColor="#2B2B2B"/>
+                app:itemWidth="40dp"
+                app:lineColor="#2B2B2B" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:elevation="10dp"
-                    android:visibility="gone"/>
+                    android:visibility="gone" />
 
             </RelativeLayout>
 
@@ -113,8 +113,8 @@
                     android:text="@string/don_t_receive_the_otp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
                     android:id="@+id/resend_otp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="RESEND OTP"

@@ -17,7 +17,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -38,8 +37,8 @@ import java.io.InputStream;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    private EditText machineName,machineDescription,machinePrice;
-    private Button addInfo,showBtn,browse;
+    private EditText machineName, machineDescription, machinePrice;
+    private Button addInfo, showBtn, browse;
     private ImageView imageView;
     private Uri imageUri;
     private Bitmap bitmap;
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
                                 Intent intent = new Intent(Intent.ACTION_PICK);
                                 intent.setType("image/*");
-                                startActivityForResult(Intent.createChooser(intent, "Select Image File"),1);
+                                startActivityForResult(Intent.createChooser(intent, "Select Image File"), 1);
                             }
 
                             @Override
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         showBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this,ShowActivity.class));
+                startActivity(new Intent(MainActivity.this, ShowActivity.class));
             }
         });
 
@@ -105,16 +104,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        if(requestCode == 1 && resultCode == RESULT_OK){
+        if (requestCode == 1 && resultCode == RESULT_OK) {
 
             imageUri = data.getData();
             try {
 
-                InputStream inputStream  = getContentResolver().openInputStream(imageUri);
+                InputStream inputStream = getContentResolver().openInputStream(imageUri);
                 bitmap = BitmapFactory.decodeStream(inputStream);
                 imageView.setImageBitmap(bitmap);
 
-            }catch (Exception e){
+            } catch (Exception e) {
 
             }
 
@@ -145,18 +144,18 @@ public class MainActivity extends AppCompatActivity {
                             public void onSuccess(Uri uri) {
 
                                 progressDialog.dismiss();
-                                 FirebaseDatabase db = FirebaseDatabase.getInstance();
-                                 DatabaseReference root = db.getReference("Equipment");
+                                FirebaseDatabase db = FirebaseDatabase.getInstance();
+                                DatabaseReference root = db.getReference("Equipment");
 
-                                 MyModel myModel = new MyModel(machineName.getText().toString(),uri.toString());
+                                MyModel myModel = new MyModel(machineName.getText().toString(), uri.toString());
 
-                                 root.push().setValue(myModel);
+                                root.push().setValue(myModel);
 
-                                 machineName.setText("");
-                                 machinePrice.setText("");
-                                 machineDescription.setText("");
-                                 imageView.setImageResource(R.drawable.ic_launcher_background_d);
-                                 Toast.makeText(getApplicationContext(),"Uploaded", Toast.LENGTH_SHORT).show();
+                                machineName.setText("");
+                                machinePrice.setText("");
+                                machineDescription.setText("");
+                                imageView.setImageResource(R.drawable.ic_launcher_background_d);
+                                Toast.makeText(getApplicationContext(), "Uploaded", Toast.LENGTH_SHORT).show();
 
                             }
                         });
@@ -164,17 +163,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                   @Override
+                    @Override
                     public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
 
-                       float percent = (100 * snapshot.getBytesTransferred())/snapshot.getTotalByteCount();
-                       progressDialog.setMessage("Uploaded :"+(int)percent+"%");
+                        float percent = (100 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
+                        progressDialog.setMessage("Uploaded :" + (int) percent + "%");
                     }
                 });
 
         System.out.println("Hello");
     }
-
 
 
 }

@@ -18,9 +18,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
-
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
-
 import com.tejaswininimbalkar.krishisarathi.R;
 
 /*

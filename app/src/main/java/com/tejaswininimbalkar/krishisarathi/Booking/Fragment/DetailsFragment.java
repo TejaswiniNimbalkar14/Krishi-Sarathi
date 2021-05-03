@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
 import com.tejaswininimbalkar.krishisarathi.Booking.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.List;
@@ -35,7 +35,7 @@ public class DetailsFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    String Machine_name,Machine_Price,Descp,imageUri;
+    String Machine_name, Machine_Price, Descp, imageUri;
 
 
     // TODO: Rename and change types of parameters
@@ -92,12 +92,8 @@ public class DetailsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_details_d, container, false);
 
         ImageView imageView = view.findViewById(R.id.equipment_img1);
-        TextView textView,textView1,textView2;
-        Button bookNow,backIcon;
-
-
-
-
+        TextView textView, textView1, textView2;
+        Button bookNow, backIcon;
 
 
         backIcon = view.findViewById(R.id.back_icon);
@@ -109,10 +105,10 @@ public class DetailsFragment extends Fragment {
 
 
         textView.setText(Machine_name);
-       // textView1.setText(Machine_Price);
+        // textView1.setText(Machine_Price);
         //textView2.setText(Descp);
 
-        textView1 =view.findViewById(R.id.owner_count);
+        textView1 = view.findViewById(R.id.owner_count);
 
         Glide.with(getContext()).load(imageUri).into(imageView);
 
@@ -128,7 +124,6 @@ public class DetailsFragment extends Fragment {
 
             }
         });*/
-
 
 
         recycler = view.findViewById(R.id.ownerRec1);
@@ -147,16 +142,14 @@ public class DetailsFragment extends Fragment {
         backIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity)getContext();
+                AppCompat activity = (AppCompat) getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.wrapper, new recFragment()).addToBackStack(null).commit();
+                        .replace(R.id.drawerLayout, new recFragment()).addToBackStack(null).commit();
             }
         });
 
         return view;
     }
-
-
 
 
 }
