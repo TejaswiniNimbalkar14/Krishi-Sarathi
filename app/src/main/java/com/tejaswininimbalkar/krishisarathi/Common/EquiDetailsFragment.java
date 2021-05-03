@@ -21,7 +21,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter.OwnerAdapter;
-import com.tejaswininimbalkar.krishisarathi.Common.Booking.Fragment.DetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
 
