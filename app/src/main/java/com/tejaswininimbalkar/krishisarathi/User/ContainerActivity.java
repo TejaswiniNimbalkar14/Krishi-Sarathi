@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Booking.Fragment.recFragment;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.Equipment_owner;
@@ -145,7 +146,7 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                         activityContainerBinding.menuBtn.setVisibility(View.GONE);
                         break;
                     case R.id.agriIcon:
-                        selectedFragment = new AgriEquipmentFragment();
+                        selectedFragment = new recFragment();
                         activityContainerBinding.menuBtn.setVisibility(View.GONE);
                         break;
                     case R.id.profileIcon:

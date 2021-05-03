@@ -41,7 +41,7 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity)v.getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.wrapper, new DetailsFragment(myModel.getEquip_name()
+                        .replace(R.id.fragmentContainer, new DetailsFragment(myModel.getEquip_name()
                                 ,myModel.getEquip_img_Url())).addToBackStack(null).commit();
             }
         });

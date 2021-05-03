@@ -203,7 +203,7 @@ public class DetailsFragment extends Fragment {
             public void onClick(View v) {
                 AppCompatActivity activity = (AppCompatActivity)getContext();
                 activity.getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.wrapper, new recFragment()).addToBackStack(null).commit();
+                        .replace(R.id.fragmentContainer, new recFragment()).addToBackStack(null).commit();
             }
         });
 
