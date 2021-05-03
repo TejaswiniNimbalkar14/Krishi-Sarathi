@@ -25,7 +25,7 @@ public class BookingActivity extends AppCompatActivity {
     TextView order_name,owner_userID;
     Button btn;
     FirebaseDatabase db = FirebaseDatabase.getInstance();
-    DatabaseReference root = db.getReference();
+    DatabaseReference root = db.getReference().child("Owner");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +36,6 @@ public class BookingActivity extends AppCompatActivity {
         String s = i.getStringExtra("key");
 
         order_name = findViewById(R.id.order_name);
-        order_name.setText(s);
         name = findViewById(R.id.pname);
         address = findViewById(R.id.paddress);
         phone = findViewById(R.id.pphone);
