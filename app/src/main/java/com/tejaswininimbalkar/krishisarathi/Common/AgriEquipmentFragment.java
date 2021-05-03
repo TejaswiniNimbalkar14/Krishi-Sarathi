@@ -14,8 +14,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tejaswininimbalkar.krishisarathi.Booking.Adapter.MyAdapter;
-import com.tejaswininimbalkar.krishisarathi.Booking.Model.MyModel;
+import com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter.MyAdapter;
+import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.MyModel;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class AgriEquipmentFragment extends Fragment {

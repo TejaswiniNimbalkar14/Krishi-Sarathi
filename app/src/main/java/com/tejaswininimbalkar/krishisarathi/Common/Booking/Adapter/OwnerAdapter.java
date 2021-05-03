@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Booking.Adapter;
+package com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,10 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.tejaswininimbalkar.krishisarathi.Booking.BookingActivity;
-import com.tejaswininimbalkar.krishisarathi.Booking.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.Common.BookingActivity;
+import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
@@ -50,9 +48,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
                 Intent intent = new Intent(context, BookingActivity.class);
-
                 intent.putExtra("key",ownerModel.getOwner_ID());
-
                 activity.startActivity(intent);
 
             }

@@ -46,6 +46,7 @@
         <activity android:name=".Owner.Owner_Welcome" />
         <activity android:name=".Owner.Equipment.Equipment_Add" />
         <activity android:name=".Owner.Equipment.EquipmentGetInfoFromOwner" />
+        <activity android:name=".Common.BookingActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

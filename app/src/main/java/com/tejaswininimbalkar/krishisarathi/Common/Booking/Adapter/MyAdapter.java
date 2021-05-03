@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Booking.Adapter;
+package com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.tejaswininimbalkar.krishisarathi.Booking.Model.MyModel;
+import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.MyModel;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.EquiDetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
