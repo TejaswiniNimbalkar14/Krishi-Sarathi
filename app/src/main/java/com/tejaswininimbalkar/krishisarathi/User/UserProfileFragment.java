@@ -42,7 +42,7 @@ import com.tejaswininimbalkar.krishisarathi.R;
 public class UserProfileFragment extends Fragment {
 
     String uid;
-    private Button settings, editProfile;
+    private Button settings, editProfile, myEquipment;
     private TextView fullName, phoneNo;
     private ImageView profileImage;
     private ProgressBar imageProgress, infoProgress;
@@ -60,6 +60,7 @@ public class UserProfileFragment extends Fragment {
         profileImage = (ImageView) view.findViewById(R.id.profileImage);
         imageProgress = (ProgressBar) view.findViewById(R.id.imageProgressBar);
         infoProgress = (ProgressBar) view.findViewById(R.id.infoProgress);
+        myEquipment = (Button) view.findViewById(R.id.myEquipBtn);
 
         imageProgress.setVisibility(View.VISIBLE);
         infoProgress.setVisibility(View.VISIBLE);
@@ -101,6 +102,8 @@ public class UserProfileFragment extends Fragment {
                 String name = (String) snapshot.child("fullName").getValue();
                 String phone = (String) snapshot.child("phone_num").getValue();
                 String url = (String) snapshot.child("profile_img").getValue();
+                boolean equiOwner = (boolean) snapshot.child("equipment_owner").getValue();
+                if (equiOwner) myEquipment.setVisibility(View.VISIBLE);
 
                 fullName.setText(name);
                 phoneNo.setText(phone);

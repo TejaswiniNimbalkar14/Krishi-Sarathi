@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common;
+package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment;
 
 import android.os.Bundle;
 
@@ -20,8 +20,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter.OwnerAdapter;
-import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;

@@ -35,6 +35,7 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.government_schemef
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.helpfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.rate_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.AgriEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -224,7 +225,9 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                     });
                 } else {
                     Toast.makeText(this, "First of all Login", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, Send_Otp_Page.class));
+                    Intent i = new Intent(this, Send_Otp_Page.class);
+                    i.putExtra("mustLoginFirst", "mustLoginForOwner");
+                    startActivity(i);
                     finish();
                 }
                 break;

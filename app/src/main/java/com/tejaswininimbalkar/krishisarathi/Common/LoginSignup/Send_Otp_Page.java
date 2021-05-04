@@ -37,6 +37,7 @@ public class Send_Otp_Page extends AppCompat {
     private Button sent_otp, skip, backBtn;
     private TextInputLayout mobile_no;
     private ProgressBar progressBar;
+    String extraForMustLogin = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,10 @@ public class Send_Otp_Page extends AppCompat {
         progressBar = findViewById(R.id.otpProgressBar);
 
         isFirstTime = pref.isFirstTimeSendOtp();
+
+        if (getIntent() != null) {
+            extraForMustLogin = getIntent().getStringExtra("mustLoginFirst");
+        }
 
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -147,12 +152,14 @@ public class Send_Otp_Page extends AppCompat {
                         intent = new Intent(getApplicationContext(), Verify_Otp_page.class);
                         intent.putExtra("mobile", mobile_no.getEditText().getText().toString().replace(" ", ""));
                         intent.putExtra("class", "User_SignUp");
+                        intent.putExtra("mustLoginFirst", extraForMustLogin);
                         startActivity(intent);
                         finish();
                     } else {
                         intent = new Intent(getApplicationContext(), Verify_Otp_page.class);
                         intent.putExtra("mobile", mobile_no.getEditText().getText().toString().replace(" ", ""));
                         intent.putExtra("class", "Login");
+                        intent.putExtra("mustLoginFirst", extraForMustLogin);
                         startActivity(intent);
                         finish();
                     }

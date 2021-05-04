@@ -25,18 +25,27 @@ import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
+import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.concurrent.TimeUnit;
 
 public class Verify_Otp_page extends AppCompat {
 
-    String phone_no, codeBySystem, p;
+    String phone_no, codeBySystem, p, forMustLogin;
     Intent intent;
     // Here declare global variable
     private TextView get_no;
@@ -87,6 +96,7 @@ public class Verify_Otp_page extends AppCompat {
 
             //here get access to class name through intent to manage screen
             p = getIntent().getStringExtra("class");
+            forMustLogin = getIntent().getStringExtra("mustLoginFirst");
         }
 
         findViewById(R.id.clear_screen).setOnClickListener(new View.OnClickListener() {
@@ -182,12 +192,45 @@ public class Verify_Otp_page extends AppCompat {
                     if (p.equals("User_SignUp")) {
                         intent = new Intent(getApplicationContext(), User_SignUp.class);
                         intent.putExtra("phone_No", phone_no);
+                        intent.putExtra("mustLoginFirst", forMustLogin);
                         startActivity(intent);
                         finish();
                     } else if (p.equals("Login")) {
-                        intent = new Intent(getApplicationContext(), ContainerActivity.class);
-                        startActivity(intent);
-                        finish();
+                        mAuth = FirebaseAuth.getInstance();
+                        FirebaseUser user = mAuth.getCurrentUser();
+
+                        if(forMustLogin.equals("mustLoginForOwner")) {
+                            if (user != null) {
+                                DatabaseReference root = FirebaseDatabase.getInstance().getReference("Owner");  // make a new Database Reference
+                                Query query = root.orderByChild("owner_ID").equalTo(user.getUid());  // here check this login user present in owner child
+
+                                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        if (snapshot.exists()) {
+                                            Intent intent = new Intent(Verify_Otp_page.this, OwnerLoginActivity.class);
+                                            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        } else {
+                                            Intent intent = new Intent(Verify_Otp_page.this, Owner_Welcome.class);
+                                            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(Verify_Otp_page.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                        } else {
+                            intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     }
                 } else {
                     progressBar.setVisibility(View.GONE);

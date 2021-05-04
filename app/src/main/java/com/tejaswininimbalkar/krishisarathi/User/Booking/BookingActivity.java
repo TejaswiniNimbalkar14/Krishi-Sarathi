@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common;
+package com.tejaswininimbalkar.krishisarathi.User.Booking;
 
 import android.content.Intent;
 import android.os.Bundle;

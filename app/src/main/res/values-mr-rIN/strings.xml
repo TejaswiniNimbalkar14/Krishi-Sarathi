@@ -63,4 +63,5 @@
     <string name="account">अकाउंट</string>
     <string name="current_pass">सध्याचा पासवर्ड</string>
     <string name="forgot_current_pass">सध्याचा पासवर्ड विसरलात?</string>
+    <string name="my_equipment">माझी उपकरणे</string>
 </resources>

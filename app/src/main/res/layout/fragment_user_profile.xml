@@ -165,6 +165,22 @@
         app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
         <Button
+            android:id="@+id/myEquipBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:background="#00000000"
+            android:drawableStart="@drawable/icon_equipment"
+            android:drawableLeft="@drawable/icon_equipment"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/black"
+            android:text="@string/my_equipment"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:visibility="gone" />
+
+        <Button
             android:id="@+id/myOrdersBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -231,21 +247,6 @@
             android:textColor="@color/black" />
 
         <View style="@style/Divider" />
-
-        <Button
-            android:id="@+id/aboutBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:background="#00000000"
-            android:drawableStart="@drawable/icon_about"
-            android:drawableLeft="@drawable/icon_about"
-            android:drawablePadding="10dp"
-            android:drawableTint="@color/black"
-            android:text="@string/about_btn"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textColor="@color/black" />
 
     </LinearLayout>
 

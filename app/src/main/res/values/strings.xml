@@ -144,6 +144,7 @@
     <string name="do_you_have_equipment" translatable="false">Do you have Equipment?</string>
     <string name="registration" translatable="false">Registration</string>
     <string name="hi_do_you_want_to_be_a_partner_in_krishi_sarathi_if_yes_registration_process_as_below" translatable="false">Hi, do you want to be a partner in Krishi Sarathi? If yes, registration process as below</string>
+    <string name="my_equipment">My Equipment</string>
 
 
 </resources>
