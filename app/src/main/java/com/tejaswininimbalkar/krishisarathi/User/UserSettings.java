@@ -51,14 +51,14 @@ public class UserSettings extends AppCompat {
         Intent i = new Intent(this, SelectLanguage.class);
         i.putExtra("changeBtns", "Change Buttons");
         startActivity(i);
-        finish();
+        //finish();
     }
 
     public void editProfile(View view) {
         Intent i = new Intent(this, EditProfileActivity.class);
         i.putExtra("cameFrom1", "userSettings");
         startActivity(i);
-        finish();
+        //finish();
     }
 
     public void deleteAccount(View view) {

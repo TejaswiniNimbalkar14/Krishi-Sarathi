@@ -30,6 +30,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
+import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 
@@ -81,6 +83,13 @@ public class UserProfileFragment extends Fragment {
             public void onClick(View view) {
                 Intent i = new Intent(getContext(), EditProfileActivity.class);
                 startActivity(i);
+            }
+        });
+
+        myEquipment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new MyEquipmentFragment()).addToBackStack(null).commit();
             }
         });
 
