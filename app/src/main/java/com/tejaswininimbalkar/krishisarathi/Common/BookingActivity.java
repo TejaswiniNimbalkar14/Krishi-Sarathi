@@ -1,7 +1,9 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +23,12 @@ public class BookingActivity extends AppCompatActivity {
 
     TextView name,address,phone;
     TextView order_name,owner_ID;
-    Button btn;
+    Button btn,goto_payment;
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference root = db.getReference().child("Owner");
+
+
 
 
     @Override
@@ -59,5 +63,17 @@ public class BookingActivity extends AppCompatActivity {
             }
 
         });*/
+
+        goto_payment = findViewById(R.id.goto_Payment);
+
+        goto_payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+            }
+        });
+
+
+
     }
 }
