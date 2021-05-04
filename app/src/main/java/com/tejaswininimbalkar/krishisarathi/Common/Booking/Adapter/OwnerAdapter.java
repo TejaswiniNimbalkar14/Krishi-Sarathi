@@ -1,5 +1,8 @@
 package com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter;
 
+/*
+ * @author Devendra Kharatmal
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -14,11 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tejaswininimbalkar.krishisarathi.Common.BookingActivity;
 import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.Common.EquiDetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
 
-public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> {
+public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder>  {
 
     ArrayList<OwnerModel> mList;
     Context context;
@@ -48,6 +52,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
                 Intent intent = new Intent(context, BookingActivity.class);
+                intent.putExtra("name",ownerModel.getEquipment_Name());
                 intent.putExtra("key",ownerModel.getOwner_ID());
                 activity.startActivity(intent);
 
@@ -61,10 +66,13 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     }
 
 
+
+
     public static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView ownerName;
         CardView ownerCardView;
+        String s ;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

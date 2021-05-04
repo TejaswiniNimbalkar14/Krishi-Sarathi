@@ -1,5 +1,7 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
-
+/*
+ * @author Devendra Kharatmal
+ */
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -42,8 +44,12 @@ public class EquiDetailsFragment extends Fragment {
     DatabaseReference databaseReference = db.getReference();
 
     String Machine_name, imageUri;
+
+
     private String mParam1;
     private String mParam2;
+
+
 
     public EquiDetailsFragment() {
         // Required empty public constructor
@@ -84,6 +90,10 @@ public class EquiDetailsFragment extends Fragment {
         equiName.setText(Machine_name);
         Glide.with(getContext()).load(imageUri).into(equiImage);
 
+
+
+
+
         recyclerView = view.findViewById(R.id.detailsRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -106,6 +116,7 @@ public class EquiDetailsFragment extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         OwnerModel model = snapshot.getValue(OwnerModel.class);
+                                        model.setEquipment_Name(Machine_name);
                                         mList.add(model);
                                         ownerAdapter.notifyDataSetChanged();
 
@@ -140,4 +151,8 @@ public class EquiDetailsFragment extends Fragment {
 
         return view;
     }
+
+
+
+
 }

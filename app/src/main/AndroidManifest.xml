@@ -32,18 +32,20 @@
         <activity android:name=".User.UserSettings" />
         <activity android:name=".Common.Dashboard.GridItemActivity" />
         <activity android:name=".Common.OnBoarding.OnBoarding" />
-        <activity android:name=".Common.SplashScreen"></activity>
+        <activity android:name=".Common.SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".Owner.OwnerLoginActivity" />
         <activity android:name=".Owner.Owner_RegistrationActivity" />
         <activity android:name=".Owner.Owner_Welcome" />
         <activity android:name=".Owner.Equipment.Equipment_Add" />
         <activity android:name=".Owner.Equipment.EquipmentGetInfoFromOwner" />
         <activity android:name=".Common.BookingActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <meta-data
