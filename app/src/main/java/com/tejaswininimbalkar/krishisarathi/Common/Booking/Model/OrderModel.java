@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Booking.Model;
+package com.tejaswininimbalkar.krishisarathi.Common.Booking.Model;
 
 public class OrderModel {
 

@@ -204,7 +204,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="60dp"
-            tools:listitem="@layout/owner_card_d">
+            tools:listitem="@layout/card_owner">
 
         </androidx.recyclerview.widget.RecyclerView>
 
