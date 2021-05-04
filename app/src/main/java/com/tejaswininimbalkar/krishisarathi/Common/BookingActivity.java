@@ -37,7 +37,7 @@ public class BookingActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(),""+s,Toast.LENGTH_LONG).show();;
 
-        order_name = findViewById(R.id.order_name);
+       /* order_name = findViewById(R.id.order_name);
         order_name.setText(s);
         name = findViewById(R.id.pname);
         address = findViewById(R.id.paddress);
@@ -51,7 +51,6 @@ public class BookingActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 String ownerID = snapshot.child("userName").getValue().toString();
                 owner_ID.setText(ownerID);
-
             }
 
             @Override
@@ -59,6 +58,6 @@ public class BookingActivity extends AppCompatActivity {
 
             }
 
-        });
+        });*/
     }
 }
