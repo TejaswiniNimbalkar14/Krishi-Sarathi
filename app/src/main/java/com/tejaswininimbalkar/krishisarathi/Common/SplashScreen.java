@@ -1,7 +1,5 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
 
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,9 +7,11 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
+import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBinding;
 
 /*
@@ -64,8 +64,7 @@ public class SplashScreen extends AppCompat {
                 if (!isFirst) {
                     //When it is not first time
                     startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
-                }
-                else {
+                } else {
                     //When it is first time, set the variable 'isFirst' to 'false'
                     pref.setIsFirstTimeLaunch(false);
                     startActivity(new Intent(SplashScreen.this, SelectLanguage.class));

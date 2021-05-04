@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="10dp">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -16,46 +15,43 @@
         app:layout_constraintTop_toTopOf="parent">
 
 
-
-            <ImageView
-                android:id="@+id/equip_img"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:src="@drawable/image_cultivator" />
-
-
+        <ImageView
+            android:id="@+id/equip_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/image_cultivator" />
 
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/floating_button"
             android:layout_alignEnd="@id/equip_img"
             android:layout_alignRight="@id/equip_img"
             android:backgroundTint="@color/white"
-            android:elevation="1dp"
             android:clickable="true"
+            android:elevation="1dp"
+            android:focusable="true"
             android:scaleType="centerInside"
             android:src="@drawable/icon_add_outlined"
             android:tint="@color/black"
             app:borderWidth="0dp"
-            app:fabSize="mini"
-            android:focusable="true" />
+            app:fabSize="mini" />
 
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/equip_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Equipment Name"
-        android:textColor="@color/black"
-        android:textAlignment="center"
-        android:id="@+id/equip_name"
         android:layout_marginTop="5dp"
-        app:layout_constraintTop_toBottomOf="@id/relativeLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center_horizontal"
+        android:text="Equipment Name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="18dp"
-        android:gravity="center_horizontal" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/relativeLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

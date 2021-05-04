@@ -1,31 +1,13 @@
 //Jayesh pravin borase
 package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
-import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
-import com.tejaswininimbalkar.krishisarathi.R;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatDelegate;
-
-import android.content.Intent;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -37,23 +19,38 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
+import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.UUID;
 
 public class User_SignUp extends AppCompat {
 
-    TextInputLayout fullName,emailId;
-    RadioButton rMale,rFemale;
+    TextInputLayout fullName, emailId;
+    RadioButton rMale, rFemale;
     Button submitToLogin, backBtn;
     ImageView profileImage;
-    String phoneNo,gender, imageUrl;
+    String phoneNo, gender, imageUrl;
     User_Data userData;
     Intent intent;
     RadioGroup radioGroup;
@@ -115,10 +112,9 @@ public class User_SignUp extends AppCompat {
         NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+        if ((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -176,16 +172,16 @@ public class User_SignUp extends AppCompat {
             Toast.makeText(this, "Please Select Gender", Toast.LENGTH_SHORT).show();
             return false;
         } else {
-            if (rMale.isChecked()){
+            if (rMale.isChecked()) {
                 gender = "Male";
-            }else if (rFemale.isChecked()){
+            } else if (rFemale.isChecked()) {
                 gender = "Female";
             }
             return true;
         }
     }
 
-    public void selectPicture(View view){
+    public void selectPicture(View view) {
         Intent pickPicture = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(pickPicture, 1);
     }
@@ -258,7 +254,7 @@ public class User_SignUp extends AppCompat {
             checkEmail.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    if (!snapshot.exists()){
+                    if (!snapshot.exists()) {
                         userData = new User_Data(
                                 fullName.getEditText().getText().toString(),
                                 emailId.getEditText().getText().toString(),
@@ -274,13 +270,13 @@ public class User_SignUp extends AppCompat {
                             public void run() {
                                 progressBar.setVisibility(View.GONE);
                                 intent = new Intent(getApplicationContext(), Successful_create.class);
-                                intent.putExtra("textUpdate","Account Create");
+                                intent.putExtra("textUpdate", "Account Create");
                                 intent.putExtra("massage", "Your account has been created");
                                 startActivity(intent);
                                 finish();
                             }
-                        },2000);
-                    }else {
+                        }, 2000);
+                    } else {
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(User_SignUp.this, "Already have this Email Id", Toast.LENGTH_SHORT).show();
                     }
@@ -293,7 +289,7 @@ public class User_SignUp extends AppCompat {
                 }
             });
 
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 

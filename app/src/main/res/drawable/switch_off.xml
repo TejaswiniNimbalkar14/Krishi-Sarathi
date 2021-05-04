@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:bottom="@dimen/switch_padding"
+    <item
+        android:bottom="@dimen/switch_padding"
         android:end="@dimen/switch_padding"
         android:gravity="center_vertical|fill_horizontal"
         android:start="@dimen/switch_padding"
@@ -9,8 +10,8 @@
 
         <shape>
 
-            <solid android:color="@color/gray"/>
-            <corners android:radius="@dimen/switch_radius"/>
+            <solid android:color="@color/gray" />
+            <corners android:radius="@dimen/switch_radius" />
             <size android:height="@dimen/switch_size" />
 
         </shape>

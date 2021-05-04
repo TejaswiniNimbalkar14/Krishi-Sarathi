@@ -7,30 +7,30 @@ import android.content.SharedPreferences;
 
 public class IntroPref {
 
-    SharedPreferences preferences;
-    SharedPreferences.Editor editor;
-    Context context;
-    int PRIVATE_MODE = 0;
     private static final String PREF_NAME = "xyz";
     private static final String IS_FIRST_TIME_LAUNCH = "firstTimeLaunch";
     private static final String IS_FIRST_TIME_SELECT = "firstTimeSelect";
     private static final String IS_FIRST_TIME_SEND_OTP = "firstTimeSendOtp";
     private static final String IS_CANCEL = "isCancel";
     private static final String LANGUAGE_CODE = "languageCode";
+    SharedPreferences preferences;
+    SharedPreferences.Editor editor;
+    Context context;
+    int PRIVATE_MODE = 0;
 
     public IntroPref(Context context) {
         this.context = context;
-        preferences = context.getSharedPreferences(PREF_NAME,PRIVATE_MODE);
+        preferences = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
         editor = preferences.edit();
     }
 
-    public void setIsFirstTimeLaunch(boolean firstTimeLaunch){
-        editor.putBoolean(IS_FIRST_TIME_LAUNCH,firstTimeLaunch);
+    public void setIsFirstTimeLaunch(boolean firstTimeLaunch) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, firstTimeLaunch);
         editor.commit();
     }
 
-    public void setIsFirstTimeSelect(boolean firstTimeSelect){
-        editor.putBoolean(IS_FIRST_TIME_SELECT,firstTimeSelect);
+    public void setIsFirstTimeSelect(boolean firstTimeSelect) {
+        editor.putBoolean(IS_FIRST_TIME_SELECT, firstTimeSelect);
         editor.commit();
     }
 
@@ -39,29 +39,33 @@ public class IntroPref {
         editor.commit();
     }
 
-    public void setIsCancel(boolean cancel){
-        editor.putBoolean(IS_CANCEL,cancel);
+    public void setIsCancel(boolean cancel) {
+        editor.putBoolean(IS_CANCEL, cancel);
         editor.commit();
     }
 
-    public String getLanguageCode() { return preferences.getString(LANGUAGE_CODE, "en"); }
+    public String getLanguageCode() {
+        return preferences.getString(LANGUAGE_CODE, "en");
+    }
 
     public void setLanguageCode(String languageCode) {
         editor.putString(LANGUAGE_CODE, languageCode);
         editor.commit();
     }
 
-    public boolean isFirstTimeLaunch(){
-        return preferences.getBoolean(IS_FIRST_TIME_LAUNCH,true);
+    public boolean isFirstTimeLaunch() {
+        return preferences.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
 
-    public boolean isFirstTimeSelect(){
-        return preferences.getBoolean(IS_FIRST_TIME_SELECT,true);
+    public boolean isFirstTimeSelect() {
+        return preferences.getBoolean(IS_FIRST_TIME_SELECT, true);
     }
 
-    public boolean isFirstTimeSendOtp() { return preferences.getBoolean(IS_FIRST_TIME_SEND_OTP, true); }
+    public boolean isFirstTimeSendOtp() {
+        return preferences.getBoolean(IS_FIRST_TIME_SEND_OTP, true);
+    }
 
-    public boolean isCancel(){
-        return preferences.getBoolean(IS_CANCEL,true);
+    public boolean isCancel() {
+        return preferences.getBoolean(IS_CANCEL, true);
     }
 }

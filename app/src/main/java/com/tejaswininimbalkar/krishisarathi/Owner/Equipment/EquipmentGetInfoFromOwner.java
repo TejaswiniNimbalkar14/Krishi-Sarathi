@@ -70,7 +70,7 @@ public class EquipmentGetInfoFromOwner extends AppCompatActivity {
         numberPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
-                num_title.setText("Which year of model: "+Integer.toString(newVal));
+                num_title.setText("Which year of model: " + Integer.toString(newVal));
                 modelYear = newVal;
             }
         });
@@ -79,7 +79,7 @@ public class EquipmentGetInfoFromOwner extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!validateCompany() | !validateYear()){
+                if (!validateCompany() | !validateYear()) {
                     return;
                 }
 
@@ -93,18 +93,18 @@ public class EquipmentGetInfoFromOwner extends AppCompatActivity {
     private void storeEquipment() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 
-        Equipment_info data = new Equipment_info(equipName.getText().toString(),companyName.getEditText().getText().toString(),Integer.toString(modelYear));
+        Equipment_info data = new Equipment_info(equipName.getText().toString(), companyName.getEditText().getText().toString(), Integer.toString(modelYear));
 
         reference.child("Owner").child(uid).child("Equipment_Details").child(data.getEquipment_name()).setValue(data).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
                 //OwnerData ownerData = new OwnerData("Deva@2000");
-                HashMap<String,String> map = new HashMap<>();
-                map.put("owner_Name",uid);
+                HashMap<String, String> map = new HashMap<>();
+                map.put("owner_Name", uid);
                 reference.child("Equipment").child(data.getEquipment_name()).child("Owner Name").child(uid).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Intent intent = new Intent(EquipmentGetInfoFromOwner.this,Equipment_Add.class);
+                        Intent intent = new Intent(EquipmentGetInfoFromOwner.this, Equipment_Add.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
@@ -115,10 +115,10 @@ public class EquipmentGetInfoFromOwner extends AppCompatActivity {
         });
     }
 
-    public boolean validateCompany(){
+    public boolean validateCompany() {
         String val = companyName.getEditText().getText().toString();
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             companyName.setError("Field can not be empty");
             return false;
         }
@@ -126,10 +126,10 @@ public class EquipmentGetInfoFromOwner extends AppCompatActivity {
         return true;
     }
 
-    public boolean validateYear(){
+    public boolean validateYear() {
         String val = Integer.toString(modelYear);
 
-        if (val.isEmpty()){
+        if (val.isEmpty()) {
             num_title.setError("Field can not be empty");
             return false;
         }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Booking.MainActivity" >
+    tools:context=".Common.Booking.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,7 +20,7 @@
             android:id="@+id/uploadImg"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:srcCompat="@android:drawable/ic_menu_crop"/>
+            app:srcCompat="@android:drawable/ic_menu_crop" />
 
         <Button
             android:id="@+id/bImgBtn"
@@ -70,8 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
-            android:text="Add"
-            android:fontFamily="@font/roboto_bold" />
+            android:fontFamily="@font/roboto_bold"
+            android:text="Add" />
 
         <Button
             android:id="@+id/showbtn"

@@ -16,7 +16,7 @@ public class SliderAdapter extends SliderViewAdapter<com.tejaswininimbalkar.kris
 
     int[] images;
 
-    public SliderAdapter(int[] images){
+    public SliderAdapter(int[] images) {
 
         this.images = images;
 
@@ -26,8 +26,8 @@ public class SliderAdapter extends SliderViewAdapter<com.tejaswininimbalkar.kris
     public Holder onCreateViewHolder(ViewGroup parent) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate( R.layout.slider_item,parent, false);
-        return new Holder ( view );
+                .inflate(R.layout.slider_item, parent, false);
+        return new Holder(view);
     }
 
     @Override
@@ -43,13 +43,13 @@ public class SliderAdapter extends SliderViewAdapter<com.tejaswininimbalkar.kris
     }
 
     //  public class Holder extends  SliderViewAdapter.ViewHolder{
-    public static class Holder extends SliderViewAdapter.ViewHolder{
+    public static class Holder extends SliderViewAdapter.ViewHolder {
 
         ImageView imageView;
 
-        public Holder(View itemView){
+        public Holder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById (R.id.image_view);
+            imageView = itemView.findViewById(R.id.image_view);
         }
 
     }

@@ -1,4 +1,3 @@
-
 //Jayesh pravin borase
 package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
@@ -17,13 +16,12 @@ import com.tejaswininimbalkar.krishisarathi.R;
 
 public class Forgot_Selection extends AppCompatActivity {
 
-    Button phone_auth,email_auth;
+    Button phone_auth, email_auth;
     Intent intent;
-    String phoneNo,emailId;
-    TextView p,e;
+    String phoneNo, emailId;
+    TextView p, e;
     ImageView back_btn;
     //User_Data userData = new User_Data();
-
 
 
     @Override
@@ -45,13 +43,12 @@ public class Forgot_Selection extends AppCompatActivity {
         //Toast.makeText(this, emailId.substring(emailId.indexOf('@')-2), Toast.LENGTH_SHORT).show();
 
 
-
         try {
             //+917709608138
-           p.setText("+91"+"xxxxxx"+phoneNo.substring(9));
-           e.setText(emailId.substring(0,2)+"xxxx"+emailId.substring(emailId.indexOf('@')-2));
+            p.setText("+91" + "xxxxxx" + phoneNo.substring(9));
+            e.setText(emailId.substring(0, 2) + "xxxx" + emailId.substring(emailId.indexOf('@') - 2));
             //textEmail.setText(emailId.substring(0,2)+"xxxx"+emailId.substring(emailId.indexOf('@')-2));
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
 
@@ -60,7 +57,7 @@ public class Forgot_Selection extends AppCompatActivity {
         back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(),User_Forgot_Page.class);
+                intent = new Intent(getApplicationContext(), User_Forgot_Page.class);
                 startActivity(intent);
                 finish();
             }
@@ -69,19 +66,20 @@ public class Forgot_Selection extends AppCompatActivity {
         phone_auth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(getApplicationContext(),Verify_Otp_page.class);
-                intent.putExtra("mobile",phoneNo.substring(3));
-                intent.putExtra("uid",emailId.substring(0,emailId.indexOf('@')));
-                intent.putExtra("class","Reset_Password");
+                intent = new Intent(getApplicationContext(), Verify_Otp_page.class);
+                intent.putExtra("mobile", phoneNo.substring(3));
+                intent.putExtra("uid", emailId.substring(0, emailId.indexOf('@')));
+                intent.putExtra("class", "Reset_Password");
                 startActivity(intent);
                 finish();
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(getApplicationContext(),User_Forgot_Page.class));
+        startActivity(new Intent(getApplicationContext(), User_Forgot_Page.class));
         finish();
     }
 }

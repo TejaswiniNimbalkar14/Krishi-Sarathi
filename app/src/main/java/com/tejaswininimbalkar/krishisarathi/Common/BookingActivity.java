@@ -1,26 +1,31 @@
-package com.tejaswininimbalkar.krishisarathi.Booking;
+package com.tejaswininimbalkar.krishisarathi.Common;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.tejaswininimbalkar.krishisarathi.Booking.Model.OrderModel;
+import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class BookingActivity extends AppCompatActivity {
 
 
     TextView name,address,phone;
-    TextView order_name;
+    TextView order_name,owner_ID;
     Button btn;
+
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference root = db.getReference().child("Owner");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,38 +33,32 @@ public class BookingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booking_d);
 
         Intent i = getIntent();
-        String s = i.getStringExtra("name");
+        String s = i.getStringExtra("key");
+
+        Toast.makeText(getApplicationContext(),""+s,Toast.LENGTH_LONG).show();;
 
         order_name = findViewById(R.id.order_name);
         order_name.setText(s);
         name = findViewById(R.id.pname);
         address = findViewById(R.id.paddress);
         phone = findViewById(R.id.pphone);
-
-
-
-
+        owner_ID = findViewById(R.id.owner_userID);
 
         btn = findViewById(R.id.book);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        root.child(s).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-
-                FirebaseDatabase db = FirebaseDatabase.getInstance();
-                DatabaseReference root = db.getReference("Order");
-
-                OrderModel myModel = new OrderModel(order_name.getText().toString(),name.getText().toString()
-                        ,address.getText().toString()
-                        ,phone.getText().toString());
-
-                root.child(s).push().setValue(myModel);
-
-                Toast.makeText(BookingActivity.this,"Your Order is Booked", Toast.LENGTH_LONG).show();
-
-
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String ownerID = snapshot.child("userName").getValue().toString();
+                owner_ID.setText(ownerID);
 
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
         });
     }
 }

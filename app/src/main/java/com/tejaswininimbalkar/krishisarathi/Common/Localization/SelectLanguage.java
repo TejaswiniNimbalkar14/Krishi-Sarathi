@@ -1,17 +1,17 @@
 package com.tejaswininimbalkar.krishisarathi.Common.Localization;
 
-import androidx.appcompat.app.AppCompatDelegate;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.Common.OnBoarding.OnBoarding;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySelectLanguageBinding;
@@ -25,10 +25,10 @@ import java.util.List;
 public class SelectLanguage extends AppCompat {
 
     ActivitySelectLanguageBinding activitySelectLanguageBinding;
+    boolean isFirst;
     private LanguageAdapter languageAdapter;
     private int selectedLanguagePosition = -1;
     private LocaleManager localeManager;
-    boolean isFirst;
     private IntroPref pref;
 
     @Override
@@ -50,12 +50,11 @@ public class SelectLanguage extends AppCompat {
 
         isFirst = pref.isFirstTimeSelect();
 
-        if(isFirst) {
+        if (isFirst) {
             //If activity is running first time, set variable to 'false'
             pref.setIsFirstTimeSelect(false);
             activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.VISIBLE);
-        }
-        else {
+        } else {
             activitySelectLanguageBinding.skipLanguageBtn.setVisibility(View.GONE);
             activitySelectLanguageBinding.languageBackBtn.setVisibility(View.VISIBLE);
         }
@@ -74,15 +73,14 @@ public class SelectLanguage extends AppCompat {
 
     private void onNextClick(List<LanguageDTO> languageList) {
         activitySelectLanguageBinding.nextSelectLanguageBtn.setOnClickListener(view -> {
-            if(selectedLanguagePosition >= 0 && activitySelectLanguageBinding.nextSelectLanguageBtn.isEnabled()) {
+            if (selectedLanguagePosition >= 0 && activitySelectLanguageBinding.nextSelectLanguageBtn.isEnabled()) {
                 String code = languageList.get(selectedLanguagePosition).getLanguageCode();
                 localeManager.updateResources(code);
                 recreate();
                 pref.setLanguageCode(code);
-                if(isFirst) {
+                if (isFirst) {
                     startActivity(new Intent(this, OnBoarding.class));
-                }
-                else {
+                } else {
                     startActivity(new Intent(this, UserSettings.class));
                 }
                 finish();
@@ -99,7 +97,7 @@ public class SelectLanguage extends AppCompat {
             selectedLanguagePosition = position;
             activitySelectLanguageBinding.nextSelectLanguageBtn.setEnabled(true);
             languageAdapter.notifyDataSetChanged();
-        }),selectedLanguagePosition, languageList);
+        }), selectedLanguagePosition, languageList);
         activitySelectLanguageBinding.languageRV.setAdapter(languageAdapter);
     }
 

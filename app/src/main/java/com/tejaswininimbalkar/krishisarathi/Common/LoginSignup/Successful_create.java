@@ -1,4 +1,3 @@
-
 //Jayesh pravin borase
 package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
@@ -10,8 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatDelegate;
 
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 
 
@@ -34,22 +33,21 @@ public class Successful_create extends AppCompat {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                if (textUpdate.getText().toString().equals("Account Create")){
+                if (textUpdate.getText().toString().equals("Account Create")) {
                     Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
                     startActivity(intent);
                     finish();
-                }else if (textUpdate.getText().toString().equals("Password\nChanged")) {
+                } else if (textUpdate.getText().toString().equals("Password\nChanged")) {
                     Intent intent = new Intent(getApplicationContext(), UserSettings.class);
                     startActivity(intent);
                     finish();
-                }
-                else{
+                } else {
                     Intent intent = new Intent(getApplicationContext(), UserSignIn_page.class);
                     startActivity(intent);
                     finish();
                 }
 
             }
-        },3000);
+        }, 3000);
     }
 }

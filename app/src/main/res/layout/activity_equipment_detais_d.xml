@@ -4,12 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Booking.Fragment.DetailsFragment">
+    tools:context=".Common.Booking.Fragment.DetailsFragment">
 
-    <include layout="@layout/equip_img_card"
+    <include
+        layout="@layout/equip_img_card"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ownerRec1"
@@ -20,6 +21,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/equip_img_card"
-        tools:listitem="@layout/owner_card_d" />
+        tools:listitem="@layout/card_owner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,14 +46,14 @@ public class Owner_Welcome extends AppCompatActivity {
         reference.child("User").child(uid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
+                if (snapshot.exists()) {
                     try {
                         OwnerData data = snapshot.getValue(OwnerData.class);
                         user_name.setText(data.getFullName());
                         //name = data.getFullName();
                         //System.out.println(data.getFullName());
                         //Toast.makeText(SplashScreenActivity.this, name, Toast.LENGTH_SHORT).show();
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         Toast.makeText(Owner_Welcome.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
@@ -74,10 +74,10 @@ public class Owner_Welcome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        super.onCreate ( savedInstanceState );
+        super.onCreate(savedInstanceState);
         //Make Fullscreen
-        getWindow ( ).setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
-        setContentView ( R.layout.activity_owner_welcome );
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_owner_welcome);
 
         user_name = findViewById(R.id.user_name);
         reg_btn = findViewById(R.id.register);

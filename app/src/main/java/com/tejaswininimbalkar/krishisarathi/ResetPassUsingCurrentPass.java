@@ -1,11 +1,11 @@
 package com.tejaswininimbalkar.krishisarathi;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -60,7 +60,7 @@ public class ResetPassUsingCurrentPass extends AppCompatActivity {
     }
 
     public void resetPassUsingCurrentPass(View view) {
-        if(!validateCurPass() || !validateNewPass() || !validateConPass()) {
+        if (!validateCurPass() || !validateNewPass() || !validateConPass()) {
             return;
         }
         updatePassword();
@@ -72,24 +72,23 @@ public class ResetPassUsingCurrentPass extends AppCompatActivity {
             reference.child(email).child("password")
                     .setValue(resetPassUsingCurrentPassBinding.resetPassNew.getEditText().getText().toString());
             Intent intent = new Intent(getApplicationContext(), Successful_create.class);
-            intent.putExtra("textUpdate","Password\nChanged");
+            intent.putExtra("textUpdate", "Password\nChanged");
             intent.putExtra("massage", "Your password has been changed");
             startActivity(intent);
             finish();
-        }catch (Exception e) {
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     private boolean validateCurPass() {
-        if(currentPass.isEmpty()) {
+        if (currentPass.isEmpty()) {
             resetPassUsingCurrentPassBinding.resetPassNew.setError("Field can not be empty");
             return false;
-        }
-        else if(!currentPass.equals(pass)) {
+        } else if (!currentPass.equals(pass)) {
             resetPassUsingCurrentPassBinding.resetPassNew.setError("Current password doesn't match!");
             return false;
-        }else {
+        } else {
             resetPassUsingCurrentPassBinding.resetPassNew.setError(null);
             resetPassUsingCurrentPassBinding.resetPassNew.setErrorEnabled(false);
             return true;

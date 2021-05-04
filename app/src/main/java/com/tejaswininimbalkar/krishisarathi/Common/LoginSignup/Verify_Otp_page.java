@@ -2,10 +2,6 @@ package com.tejaswininimbalkar.krishisarathi.Common.LoginSignup;
 
 //Jayesh pravin borase
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatDelegate;
-
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,9 +14,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.chaos.view.PinView;
-import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -30,22 +28,43 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
-
+import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.concurrent.TimeUnit;
 
 public class Verify_Otp_page extends AppCompat {
 
     String phone_no, codeBySystem, p;
+    Intent intent;
     // Here declare global variable
     private TextView get_no;
     private PinView pinView;
     private ProgressBar progressBar;
-
-    Intent intent;
-
     private FirebaseAuth mAuth;
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks =
+            new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+                @Override
+                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
+                    String code = phoneAuthCredential.getSmsCode();
+                    if (code != null) {
+                        pinView.setText(code);
+                        verifyCode(code);
+                    }
+                }
+
+                @Override
+                public void onVerificationFailed(@NonNull FirebaseException e) {
+                    Toast.makeText(Verify_Otp_page.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                    codeBySystem = s;
+                }
+            };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +81,7 @@ public class Verify_Otp_page extends AppCompat {
 
         mAuth = FirebaseAuth.getInstance();
 
-        if (getIntent() != null){
+        if (getIntent() != null) {
             phone_no = "+91" + getIntent().getStringExtra("mobile");
             get_no.setText(phone_no);
 
@@ -99,10 +118,9 @@ public class Verify_Otp_page extends AppCompat {
         NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
-        if((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+        if ((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -137,29 +155,6 @@ public class Verify_Otp_page extends AppCompat {
         PhoneAuthProvider.verifyPhoneNumber(options);
     }
 
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks =
-            new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-                @Override
-                public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                    String code = phoneAuthCredential.getSmsCode();
-                    if (code != null) {
-                        pinView.setText(code);
-                        verifyCode(code);
-                    }
-                }
-
-                @Override
-                public void onVerificationFailed(@NonNull FirebaseException e) {
-                    Toast.makeText(Verify_Otp_page.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                    codeBySystem = s;
-                }
-            };
-
     private void verifyCode(String code) {
         if (!isConnected(Verify_Otp_page.this)) {
             showConnectionDialog();
@@ -184,18 +179,17 @@ public class Verify_Otp_page extends AppCompat {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     Toast.makeText(Verify_Otp_page.this, "Verification Successful", Toast.LENGTH_SHORT).show();
-                    if (p.equals("User_SignUp")){
+                    if (p.equals("User_SignUp")) {
                         intent = new Intent(getApplicationContext(), User_SignUp.class);
                         intent.putExtra("phone_No", phone_no);
                         startActivity(intent);
                         finish();
-                    }
-                    else if (p.equals("Login")){
+                    } else if (p.equals("Login")) {
                         intent = new Intent(getApplicationContext(), ContainerActivity.class);
                         startActivity(intent);
-                        finish();}
-                }
-                else {
+                        finish();
+                    }
+                } else {
                     progressBar.setVisibility(View.GONE);
                     if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
                         Toast.makeText(Verify_Otp_page.this, "Verification is failed! Try again", Toast.LENGTH_SHORT).show();

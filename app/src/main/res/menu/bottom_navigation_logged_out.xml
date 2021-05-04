@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/homeIcon"
+    <item
+        android:id="@+id/homeIcon"
         android:icon="@drawable/icon_home"
         android:title="@string/home" />
 
-    <item android:id="@+id/agriIcon"
+    <item
+        android:id="@+id/agriIcon"
         android:icon="@drawable/icon_equipment"
         android:title="@string/equipment" />
 
-    <item android:id="@+id/weatherIcon"
+    <item
+        android:id="@+id/weatherIcon"
         android:icon="@drawable/icon_weather"
         android:title="@string/weather" />
 

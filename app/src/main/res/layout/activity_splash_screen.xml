@@ -21,7 +21,6 @@
 
     <TextView
         android:id="@+id/splashScreenAppName"
-        app:layout_constraintTop_toBottomOf="@+id/lottieTractor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="serif"
@@ -32,10 +31,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lottieTractor"
         app:layout_constraintVertical_bias="0" />
-
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

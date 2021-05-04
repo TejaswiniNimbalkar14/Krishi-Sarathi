@@ -85,7 +85,7 @@
     <string name="select_to_proceed">Please select a language to proceed!</string>
 
     <!--//Leena_code-->
-   <!-- <string name="app_name">CustumNavigation</string>-->
+    <!-- <string name="app_name">CustumNavigation</string>-->
 
     <string name="navigation_draw_open" translatable="false">open navigation drawer</string>
     <string name="navigation_draw_close" translatable="false">close navigation drawer</string>
@@ -132,7 +132,7 @@
     <string name="farmer" translatable="false">Farmer</string>
 
 
-<!--    Owner string-->
+    <!--    Owner string-->
     <string name="add_equipment" translatable="false">Add Equipment</string>
     <string name="choose_the_equipment_that_you_rent" translatable="false">Choose the equipment that you rent</string>
     <string name="machine_company_name" translatable="false">Machine Company Name</string>

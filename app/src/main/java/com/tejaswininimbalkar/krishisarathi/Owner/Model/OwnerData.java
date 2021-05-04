@@ -9,18 +9,20 @@ public class OwnerData {
     private String fullName;
     private String owner_Name;
     private String password;
+    private String owner_ID;    // add this field
 
     public OwnerData() {
     }
 
 
-    public OwnerData(boolean equipment_owner, String userName, String date_of_Birthday, String no_of_Tractor, String no_of_Equipment, String password) {
+    public OwnerData(boolean equipment_owner, String userName, String date_of_Birthday, String no_of_Tractor, String no_of_Equipment, String password, String owner_ID) {
         this.equipment_owner = equipment_owner;
         this.userName = userName;
         this.date_of_Birthday = date_of_Birthday;
         this.no_of_Tractor = no_of_Tractor;
         this.no_of_Equipment = no_of_Equipment;
         this.password = password;
+        this.owner_ID = owner_ID; // and here also
     }
 
     public OwnerData(String owner_Name) {
@@ -31,6 +33,14 @@ public class OwnerData {
 //        this.fullName = fullName;
 //    }
 
+
+    public String getOwner_ID() {
+        return owner_ID;
+    }
+
+    public void setOwner_ID(String owner_ID) {
+        this.owner_ID = owner_ID;
+    }
 
     public String getPassword() {
         return password;

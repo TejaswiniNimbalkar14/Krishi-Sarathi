@@ -10,15 +10,15 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
 import com.tejaswininimbalkar.krishisarathi.R;
+
+import java.util.ArrayList;
 
 /*
  * @author Leena Bhadane and Bhagyashri Bharule
  */
 
-public class GridviewAdapter extends BaseAdapter
-{
+public class GridviewAdapter extends BaseAdapter {
     private final ArrayList<String> listTitle;
     private final ArrayList<Integer> listImage;
     //private final Activity activity;
@@ -50,12 +50,6 @@ public class GridviewAdapter extends BaseAdapter
         return 0;
     }
 
-    public static class ViewHolder
-    {
-        public ImageView imgViewImage;
-        public TextView txtViewTitle;
-    }
-
     @SuppressLint("InflateParams")
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -63,8 +57,7 @@ public class GridviewAdapter extends BaseAdapter
         ViewHolder view;
         LayoutInflater inflator = fragment.getLayoutInflater();
 
-        if(convertView==null)
-        {
+        if (convertView == null) {
             view = new ViewHolder();
             convertView = inflator.inflate(R.layout.gridview_row, null);
 
@@ -72,9 +65,7 @@ public class GridviewAdapter extends BaseAdapter
             view.imgViewImage = convertView.findViewById(R.id.imageView1);
 
             convertView.setTag(view);
-        }
-        else
-        {
+        } else {
             view = (ViewHolder) convertView.getTag();
         }
 
@@ -82,5 +73,10 @@ public class GridviewAdapter extends BaseAdapter
         view.imgViewImage.setImageResource(listImage.get(position));
 
         return convertView;
+    }
+
+    public static class ViewHolder {
+        public ImageView imgViewImage;
+        public TextView txtViewTitle;
     }
 }

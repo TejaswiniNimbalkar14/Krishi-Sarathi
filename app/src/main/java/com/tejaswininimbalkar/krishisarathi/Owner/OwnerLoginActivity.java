@@ -24,15 +24,15 @@ public class OwnerLoginActivity extends AppCompatActivity {
 
 
     Intent intent;
-    Button  forgot_pass, btn_login;
+    Button forgot_pass, btn_login;
     TextInputLayout owner_id, owner_pass;
-    String ownerId, pass,uid;
+    String ownerId, pass, uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-        super.onCreate ( savedInstanceState );
-        setContentView ( R.layout.activity_owner_login );
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_owner_login);
 
         forgot_pass = findViewById(R.id.btn_forgot_pass);
         btn_login = findViewById(R.id.btn_login);
@@ -89,7 +89,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
     }
 
     private boolean validOwner() {
-       ownerId = owner_id.getEditText().getText().toString().trim();
+        ownerId = owner_id.getEditText().getText().toString().trim();
         if (ownerId.isEmpty()) {
             owner_id.setError("Field can not be empty");
             return false;
@@ -111,7 +111,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
                 owner_pass.setErrorEnabled(false);
                 return true;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
             return false;
         }

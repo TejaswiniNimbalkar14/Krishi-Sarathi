@@ -32,8 +32,8 @@
         android:id="@+id/editProfileTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/edit_profile"
         android:layout_marginTop="10dp"
+        android:text="@string/edit_profile"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:elevation="10dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
             android:src="@drawable/icon_photo_library"
             android:tint="@color/black"
             app:borderWidth="0dp"
-            app:fabSize="mini"/>
+            app:fabSize="mini" />
 
     </RelativeLayout>
 
@@ -93,31 +93,31 @@
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:orientation="vertical"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="20dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/relativeLayout">
 
         <com.google.android.material.textfield.TextInputLayout
-           android:id="@+id/editFullName"
-           style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:hint="@string/full_name"
-           app:boxStrokeColor="@color/black"
-           app:boxStrokeWidthFocused="2dp"
-           app:endIconMode="clear_text"
-           app:endIconTint="@color/black"
-           app:hintTextColor="@color/gray">
+            android:id="@+id/editFullName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/full_name"
+            app:boxStrokeColor="@color/black"
+            app:boxStrokeWidthFocused="2dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/black"
+            app:hintTextColor="@color/gray">
 
-           <com.google.android.material.textfield.TextInputEditText
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:inputType="text"
-               android:textColor="@color/black" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:elevation="10dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </RelativeLayout>
 
@@ -171,8 +171,8 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="phone"
                 android:enabled="false"
+                android:inputType="phone"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -196,7 +196,7 @@
             android:onClick="cancelEdit"
             android:text="@string/cancel"
             android:textAllCaps="false"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/saveEditBtn"
@@ -207,7 +207,7 @@
             android:onClick="updateProfile"
             android:text="@string/save"
             android:textAllCaps="false"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

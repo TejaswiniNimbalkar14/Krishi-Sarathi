@@ -4,45 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".Common.LoginSignup.Successful_create">
 
     <TextView
+        android:id="@+id/textUpdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textUpdate"
-        android:textSize="40dp"
-        android:fontFamily="@font/muli_black"
-        android:textColor="@color/black"
         android:layout_gravity="center"
-        android:textAlignment="center"
+        android:fontFamily="@font/muli_black"
         android:text="@string/password_nupdated"
+        android:textAlignment="center"
         android:textAllCaps="true"
-        />
+        android:textColor="@color/black"
+        android:textSize="40dp" />
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie_success"
         android:layout_width="wrap_content"
         android:layout_height="150dp"
-        android:id="@+id/lottie_success"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         app:lottie_autoPlay="true"
-        app:lottie_rawRes="@raw/successful"
-        />
+        app:lottie_rawRes="@raw/successful" />
 
     <TextView
+        android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18dp"
-        android:id="@+id/message"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/muli"
-        android:textColor="@color/black"
-        android:layout_gravity="center"
-        android:textAlignment="center"
         android:text="@string/your_password_has_been_updated"
-        />
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
 
 
 </LinearLayout>
