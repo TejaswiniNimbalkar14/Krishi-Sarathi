@@ -19,7 +19,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.PaymentActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class BookingActivity extends AppCompatActivity {
