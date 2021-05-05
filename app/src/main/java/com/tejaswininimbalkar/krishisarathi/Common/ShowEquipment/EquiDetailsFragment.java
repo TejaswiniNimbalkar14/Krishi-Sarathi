@@ -95,7 +95,8 @@ public class EquiDetailsFragment extends Fragment {
 
         recyclerView.setAdapter(ownerAdapter);
 
-        databaseReference.child("Equipment").child(Machine_name).child("Owner Name").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Equipment").child(Machine_name).child("Owner Name")
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mList.clear();
@@ -116,7 +117,6 @@ public class EquiDetailsFragment extends Fragment {
                                     public void onCancelled(@NonNull DatabaseError error) {
 
                                     }
-
                                 });
                     }
 
