@@ -44,7 +44,6 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull OwnerAdapter.ViewHolder holder, int position) {
         OwnerModel ownerModel = mList.get(position);
         holder.ownerName.setText(ownerModel.getUserName());
-
         holder.ownerCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -24,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
-import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
@@ -99,7 +98,7 @@ public class EquiDetailsFragment extends Fragment {
         databaseReference.child("Equipment").child(Machine_name).child("Owner Name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                mList.clear();
                 if(snapshot.exists()){
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                         String id = dataSnapshot.getKey();
@@ -112,7 +111,6 @@ public class EquiDetailsFragment extends Fragment {
                                         model.setEquipment_Name(Machine_name);
                                         mList.add(model);
                                         ownerAdapter.notifyDataSetChanged();
-
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
@@ -126,6 +124,7 @@ public class EquiDetailsFragment extends Fragment {
                 }else{
                     Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
                 }
+
             }
 
             @Override
