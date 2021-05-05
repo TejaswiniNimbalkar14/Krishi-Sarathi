@@ -1,5 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.Owner;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,12 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.Owner.Adapter.MyEquiAdapter;
+import com.tejaswininimbalkar.krishisarathi.Owner.Equipment.Equipment_Add;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_info;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
 
 public class MyEquipmentFragment extends Fragment {
+    ImageView addBtn;
     RecyclerView recyclerView;
     MyEquiAdapter adapter;
 
@@ -42,6 +46,7 @@ public class MyEquipmentFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_my_equipment, container, false);
 
+        addBtn = (ImageView) view.findViewById(R.id.addMyEquip);
         recyclerView = (RecyclerView) view.findViewById(R.id.myEquiRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -94,6 +99,15 @@ public class MyEquipmentFragment extends Fragment {
 
             }
         });
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), Equipment_Add.class);
+                startActivity(i);
+            }
+        });
+
         return view;
     }
 }

@@ -36,6 +36,7 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.helpfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.rate_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.AgriEquipmentFragment;
+import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -118,11 +119,8 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-
-        if (savedInstanceState == null) {
-            fragmentTransaction.replace(R.id.fragmentContainer, new UserDashboardFragment()).commit();
-            activityContainerBinding.menuBtn.setVisibility(View.VISIBLE);
-        }
+        fragmentTransaction.replace(R.id.fragmentContainer, new UserDashboardFragment()).commit();
+        activityContainerBinding.menuBtn.setVisibility(View.VISIBLE);
 
         activityContainerBinding.bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
