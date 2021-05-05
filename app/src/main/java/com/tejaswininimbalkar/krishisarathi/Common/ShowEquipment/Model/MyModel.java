@@ -1,4 +1,7 @@
-package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model;
+package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model;/*
+ * @author Devendra Kharatmal
+ */
+
 
 public class MyModel {
 

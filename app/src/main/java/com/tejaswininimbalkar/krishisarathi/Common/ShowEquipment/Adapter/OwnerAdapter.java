@@ -1,5 +1,8 @@
 package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter;
 
+/*
+ * @author Devendra Kharatmal
+ */
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -48,6 +51,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
                 Intent intent = new Intent(context, BookingActivity.class);
+                intent.putExtra("name",ownerModel.getEquipment_Name());
                 intent.putExtra("key",ownerModel.getOwner_ID());
                 activity.startActivity(intent);
 
@@ -65,6 +69,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
 
         TextView ownerName;
         CardView ownerCardView;
+        String s ;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

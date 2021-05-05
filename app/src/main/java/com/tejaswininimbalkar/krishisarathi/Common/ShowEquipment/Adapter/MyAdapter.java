@@ -1,5 +1,9 @@
 package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter;
 
+/*
+ * @author Devendra Kharatmal
+ */
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

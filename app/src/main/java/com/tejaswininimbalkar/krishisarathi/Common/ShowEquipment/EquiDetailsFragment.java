@@ -1,5 +1,7 @@
 package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment;
-
+/*
+ * @author Devendra Kharatmal
+ */
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
@@ -106,6 +109,7 @@ public class EquiDetailsFragment extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         OwnerModel model = snapshot.getValue(OwnerModel.class);
+                                        model.setEquipment_Name(Machine_name);
                                         mList.add(model);
                                         ownerAdapter.notifyDataSetChanged();
 
