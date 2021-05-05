@@ -1,6 +1,6 @@
 package com.tejaswininimbalkar.krishisarathi.Common;
 /*
- * @author Devendra Kharatmal
+ * @author Devendra B Kharatmal
  */
 import androidx.appcompat.app.AppCompatActivity;
 
