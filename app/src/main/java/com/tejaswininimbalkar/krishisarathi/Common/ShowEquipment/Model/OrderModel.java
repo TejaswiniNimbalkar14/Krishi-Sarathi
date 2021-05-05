@@ -1,5 +1,7 @@
-package com.tejaswininimbalkar.krishisarathi.Common.Booking.Model;
-
+package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model;
+/*
+ * @author Devendra Kharatmal
+ */
 public class OrderModel {
 
     String pname, paddress, pphone;
