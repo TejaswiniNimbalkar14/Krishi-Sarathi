@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tejaswininimbalkar.krishisarathi.User.Booking.BookingActivity;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.User.Booking.BookingActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
@@ -25,12 +25,12 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
 
     ArrayList<OwnerModel> mList;
     Context context;
+    String e_name;
 
-    public OwnerAdapter( Context context, ArrayList<OwnerModel> mList) {
-
-        this.context = context;
+    public OwnerAdapter(Context context , ArrayList<OwnerModel> mList , String e_name) {
         this.mList = mList;
-
+        this.context = context;
+        this.e_name = e_name;
     }
 
     @NonNull
@@ -44,14 +44,13 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull OwnerAdapter.ViewHolder holder, int position) {
         OwnerModel ownerModel = mList.get(position);
         holder.ownerName.setText(ownerModel.getUserName());
-
         holder.ownerCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
                 Intent intent = new Intent(context, BookingActivity.class);
-                intent.putExtra("name",ownerModel.getEquipment_Name());
+                intent.putExtra("name",e_name);
                 intent.putExtra("key",ownerModel.getOwner_ID());
                 activity.startActivity(intent);
 
@@ -66,17 +65,12 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-
         TextView ownerName;
         CardView ownerCardView;
-        String s ;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ownerName = itemView.findViewById(R.id.owner_name);
             ownerCardView = itemView.findViewById(R.id.owner_cardView);
-
-
         }
     }
 

@@ -11,6 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_add_model;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_info;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -40,6 +47,23 @@ public class MyEquiAdapter extends RecyclerView.Adapter<MyEquiAdapter.MyEquiView
         holder.equipName.setText(equipment_info.getEquipment_name());
         holder.companyName.setText(equipment_info.getEquipment_company_name());
         holder.modelYear.setText(equipment_info.getModel_year());
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference().child("Equipment").child(equipment_info.getEquipment_name());
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String url = (String) snapshot.child("equip_img_Url").getValue();
+
+                Glide.with(holder.equipImg.getContext()).load(url).into(holder.equipImg);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
 
     @Override

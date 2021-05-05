@@ -25,7 +25,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.Owner.Adapter.MyEquiAdapter;
 import com.tejaswininimbalkar.krishisarathi.Owner.Equipment.Equipment_Add;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_info;
@@ -81,18 +80,14 @@ public class MyEquipmentFragment extends Fragment {
                                         Equipment_info info = snapshot.getValue(Equipment_info.class);
                                         mList.add(info);
                                         adapter.notifyDataSetChanged();
-
                                     }
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
 
                                     }
-
                                 });
                     }
-
-
                 } else {
                     Toast.makeText(getActivity(), "Data is not exist", Toast.LENGTH_LONG).show();
                 }
