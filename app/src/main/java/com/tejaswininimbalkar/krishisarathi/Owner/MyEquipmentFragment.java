@@ -1,5 +1,9 @@
 package com.tejaswininimbalkar.krishisarathi.Owner;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -76,18 +80,14 @@ public class MyEquipmentFragment extends Fragment {
                                         Equipment_info info = snapshot.getValue(Equipment_info.class);
                                         mList.add(info);
                                         adapter.notifyDataSetChanged();
-
                                     }
 
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
 
                                     }
-
                                 });
                     }
-
-
                 } else {
                     Toast.makeText(getActivity(), "Data is not exist", Toast.LENGTH_LONG).show();
                 }

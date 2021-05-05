@@ -1,5 +1,9 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -33,13 +37,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
-
-
-
-
-/*
- * @author Tejaswini Nimbalkar
- */
 
 public class UserProfileFragment extends Fragment {
 

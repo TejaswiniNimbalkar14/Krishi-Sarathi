@@ -97,6 +97,9 @@ public class Verify_Otp_page extends AppCompat {
             //here get access to class name through intent to manage screen
             p = getIntent().getStringExtra("class");
             forMustLogin = getIntent().getStringExtra("mustLoginFirst");
+            if (forMustLogin == null) {
+                forMustLogin = "no";
+            }
         }
 
         findViewById(R.id.clear_screen).setOnClickListener(new View.OnClickListener() {
