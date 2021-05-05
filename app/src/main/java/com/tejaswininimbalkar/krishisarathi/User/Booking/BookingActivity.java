@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common;
+package com.tejaswininimbalkar.krishisarathi.User.Booking;
 /*
  * @author Devendra Kharatmal
  */
@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Common.PaymentActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class BookingActivity extends AppCompatActivity {
@@ -33,8 +34,6 @@ public class BookingActivity extends AppCompatActivity {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference root = db.getReference().child("Owner");
-
-
 
 
     @Override
@@ -56,9 +55,6 @@ public class BookingActivity extends AppCompatActivity {
         user_Address = (EditText)findViewById(R.id.user_Address);
         user_City = (EditText)findViewById(R.id.user_City);
         user_CityCode = (EditText)findViewById(R.id.user_CityCode);
-
-
-
 
 
         Toast.makeText(getApplicationContext(),""+ name , Toast.LENGTH_LONG).show();

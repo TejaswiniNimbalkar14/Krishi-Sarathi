@@ -49,9 +49,23 @@
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/doneBtn"
         app:layout_constraintTop_toBottomOf="@+id/text2"
         app:spanCount="3"
-        tools:listitem="@layout/add_equipment_card" />
+        tools:listitem="@layout/add_equipment_card"/>
+
+    <Button
+        android:id="@+id/doneBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,8 @@
-package com.tejaswininimbalkar.krishisarathi.Common.Booking.Model;
-/*
+package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model;/*
  * @author Devendra Kharatmal
  */
+
+
 public class MyModel {
 
     String equip_name;

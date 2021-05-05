@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common;
+package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment;
 /*
  * @author Devendra Kharatmal
  */
@@ -22,8 +22,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter.OwnerAdapter;
-import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
@@ -44,12 +45,8 @@ public class EquiDetailsFragment extends Fragment {
     DatabaseReference databaseReference = db.getReference();
 
     String Machine_name, imageUri;
-
-
     private String mParam1;
     private String mParam2;
-
-
 
     public EquiDetailsFragment() {
         // Required empty public constructor
@@ -89,10 +86,6 @@ public class EquiDetailsFragment extends Fragment {
 
         equiName.setText(Machine_name);
         Glide.with(getContext()).load(imageUri).into(equiImage);
-
-
-
-
 
         recyclerView = view.findViewById(R.id.detailsRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -151,8 +144,4 @@ public class EquiDetailsFragment extends Fragment {
 
         return view;
     }
-
-
-
-
 }

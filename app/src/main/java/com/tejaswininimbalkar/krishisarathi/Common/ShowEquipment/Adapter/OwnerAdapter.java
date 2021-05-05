@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter;
+package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter;
 
 /*
  * @author Devendra Kharatmal
@@ -15,14 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tejaswininimbalkar.krishisarathi.Common.BookingActivity;
-import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.OwnerModel;
-import com.tejaswininimbalkar.krishisarathi.Common.EquiDetailsFragment;
+import com.tejaswininimbalkar.krishisarathi.User.Booking.BookingActivity;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
 
-public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder>  {
+public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> {
 
     ArrayList<OwnerModel> mList;
     Context context;
@@ -64,8 +63,6 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     public int getItemCount() {
         return mList.size();
     }
-
-
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{

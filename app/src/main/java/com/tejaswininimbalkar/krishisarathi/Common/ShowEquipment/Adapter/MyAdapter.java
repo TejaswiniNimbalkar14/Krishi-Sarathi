@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common.Booking.Adapter;
+package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter;
 
 /*
  * @author Devendra Kharatmal
@@ -17,9 +17,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.tejaswininimbalkar.krishisarathi.Common.Booking.Model.MyModel;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.MyModel;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
-import com.tejaswininimbalkar.krishisarathi.Common.EquiDetailsFragment;
+import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.EquiDetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyViewHolder> {

@@ -1,6 +1,9 @@
 package com.tejaswininimbalkar.krishisarathi.Owner.Equipment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,6 +19,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Adapter.Equip_add_adapter;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_add_model;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -28,6 +32,7 @@ public class Equipment_Add extends AppCompatActivity {
     DatabaseReference reference;
     ArrayList<Equipment_add_model> list = new ArrayList<>();
     Equip_add_adapter adapter;
+    Button done;
     Query checkEquip;
     boolean flg = true;
     String uid, owner_id;
@@ -46,6 +51,7 @@ public class Equipment_Add extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipment_add);
 
+        done = findViewById(R.id.doneBtn);
         recyclerView = findViewById(R.id.recycler);
 
         adapter = new Equip_add_adapter(getApplicationContext(), list);
@@ -96,7 +102,15 @@ public class Equipment_Add extends AppCompatActivity {
             }
         });
 
-
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Equipment_Add.this, ContainerActivity.class);
+                i.putExtra("from", "Equipment_Add");
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
 }

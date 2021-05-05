@@ -51,6 +51,7 @@ public class User_SignUp extends AppCompat {
     Button submitToLogin, backBtn;
     ImageView profileImage;
     String phoneNo, gender, imageUrl;
+    String forMustLogin = "";
     User_Data userData;
     Intent intent;
     RadioGroup radioGroup;
@@ -77,6 +78,7 @@ public class User_SignUp extends AppCompat {
         imageProgressBar = findViewById(R.id.signUpImageProgress);
 
         phoneNo = getIntent().getStringExtra("phone_No");
+        forMustLogin = getIntent().getStringExtra("mustLoginFirst");
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -272,6 +274,7 @@ public class User_SignUp extends AppCompat {
                                 intent = new Intent(getApplicationContext(), Successful_create.class);
                                 intent.putExtra("textUpdate", "Account Create");
                                 intent.putExtra("massage", "Your account has been created");
+                                intent.putExtra("mustLoginFirst", forMustLogin);
                                 startActivity(intent);
                                 finish();
                             }
