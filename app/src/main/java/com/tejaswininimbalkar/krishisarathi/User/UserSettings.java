@@ -1,5 +1,8 @@
 package com.tejaswininimbalkar.krishisarathi.User;
 
+/*
+ * @author Tejaswini Nimbalkar
+ */
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,10 +23,6 @@ import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.R;
-
-/*
- * @author Tejaswini Nimbalkar
- */
 
 public class UserSettings extends AppCompat {
 

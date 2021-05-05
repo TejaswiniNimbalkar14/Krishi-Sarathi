@@ -29,7 +29,7 @@ import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 public class Successful_create extends AppCompat {
 
     TextView textUpdate, massage;
-    String forMustLogin = "";
+    String forMustLogin = "no";
     FirebaseAuth mAuth;
 
     @Override
@@ -45,6 +45,9 @@ public class Successful_create extends AppCompat {
         massage.setText(getIntent().getStringExtra("massage"));
 
         forMustLogin = getIntent().getStringExtra("mustLoginFirst");
+        if (forMustLogin == null) {
+            forMustLogin = "no";
+        }
 
         new Handler().postDelayed(new Runnable() {
             @Override
