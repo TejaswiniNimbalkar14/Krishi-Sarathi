@@ -32,7 +32,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_toLeftOf="@+id/myEquipDltBtn"
-                android:src="@drawable/icon_edit"/>
+                android:src="@drawable/icon_edit"
+                app:tint="@color/black" />
 
             <ImageView
                 android:id="@+id/myEquipDltBtn"
@@ -41,7 +42,8 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_margin="5dp"
-                android:src="@drawable/icon_delete" />
+                android:src="@drawable/icon_delete"
+                app:tint="@color/black" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -56,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:text="Equip_Name"
                     android:textColor="@color/black"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
                     android:textStyle="bold"/>
 
                 <TextView
@@ -65,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:text="Equip_Company_Name"
                     android:textColor="@color/black"
-                    android:textSize="18dp"/>
+                    android:textSize="16dp"/>
 
                 <TextView
                     android:id="@+id/myEquipModelYear"
@@ -73,7 +75,7 @@
                     android:layout_height="wrap_content"
                     android:text="Model_year"
                     android:textColor="@color/black"
-                    android:textSize="18dp"/>
+                    android:textSize="16dp"/>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -86,7 +88,7 @@
                         android:layout_height="wrap_content"
                         android:text="Rent Rs. : "
                         android:textColor="@color/black"
-                        android:textSize="18dp"/>
+                        android:textSize="16dp"/>
 
                     <TextView
                         android:id="@+id/myEquipRent"
@@ -94,7 +96,7 @@
                         android:layout_height="wrap_content"
                         android:text="00"
                         android:textColor="@color/black"
-                        android:textSize="18dp"/>
+                        android:textSize="16dp"/>
 
                 </LinearLayout>
 
