@@ -24,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
-import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Adapter.OwnerAdapter;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
@@ -92,40 +91,37 @@ public class EquiDetailsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mList = new ArrayList<>();
-        ownerAdapter = new OwnerAdapter(getContext(), mList);
+        ownerAdapter = new OwnerAdapter(getContext(), mList, Machine_name);
 
         recyclerView.setAdapter(ownerAdapter);
 
-        databaseReference.child("Equipment").child(Machine_name).child("Owner Name").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("Equipment").child(Machine_name).child("Owner Name")
+                .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                mList.clear();
                 if(snapshot.exists()){
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                        String id = dataSnapshot.getKey();
+                        String ID = dataSnapshot.getKey();
                         databaseReference.child("Owner")
-                                .child(id)
+                                .child(ID)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         OwnerModel model = snapshot.getValue(OwnerModel.class);
-                                        model.setEquipment_Name(Machine_name);
                                         mList.add(model);
                                         ownerAdapter.notifyDataSetChanged();
-
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
 
                                     }
-
                                 });
                     }
-
-
                 }else{
                     Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
                 }
+
             }
 
             @Override
