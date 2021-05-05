@@ -15,8 +15,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tejaswininimbalkar.krishisarathi.User.Booking.BookingActivity;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
+import com.tejaswininimbalkar.krishisarathi.User.Booking.BookingActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
     Context context;
     String e_name;
 
-    public OwnerAdapter(Context context ,ArrayList<OwnerModel> mList ,String e_name) {
+    public OwnerAdapter(Context context , ArrayList<OwnerModel> mList , String e_name) {
         this.mList = mList;
         this.context = context;
         this.e_name = e_name;

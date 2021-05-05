@@ -21,7 +21,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.Owner.Adapter.MyEquiAdapter;
 import com.tejaswininimbalkar.krishisarathi.Owner.Equipment.Equipment_Add;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_info;
