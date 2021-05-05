@@ -1,4 +1,4 @@
-package com.tejaswininimbalkar.krishisarathi.Common;
+package com.tejaswininimbalkar.krishisarathi.User.Booking;
 /*
  * @author Devendra B Kharatmal
  */
