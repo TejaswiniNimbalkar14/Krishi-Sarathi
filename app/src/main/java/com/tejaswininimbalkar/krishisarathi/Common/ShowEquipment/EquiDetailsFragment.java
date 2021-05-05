@@ -91,7 +91,7 @@ public class EquiDetailsFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         mList = new ArrayList<>();
-        ownerAdapter = new OwnerAdapter(getContext(), mList);
+        ownerAdapter = new OwnerAdapter(getContext(), mList, Machine_name);
 
         recyclerView.setAdapter(ownerAdapter);
 
@@ -102,14 +102,13 @@ public class EquiDetailsFragment extends Fragment {
                 mList.clear();
                 if(snapshot.exists()){
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                        String id = dataSnapshot.getKey();
+                        String ID = dataSnapshot.getKey();
                         databaseReference.child("Owner")
-                                .child(id)
+                                .child(ID)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         OwnerModel model = snapshot.getValue(OwnerModel.class);
-                                        model.setEquipment_Name(Machine_name);
                                         mList.add(model);
                                         ownerAdapter.notifyDataSetChanged();
                                     }
@@ -119,8 +118,6 @@ public class EquiDetailsFragment extends Fragment {
                                     }
                                 });
                     }
-
-
                 }else{
                     Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
                 }

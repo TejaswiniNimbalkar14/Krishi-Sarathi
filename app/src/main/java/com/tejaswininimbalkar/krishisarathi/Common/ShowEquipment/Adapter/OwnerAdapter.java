@@ -25,12 +25,12 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
 
     ArrayList<OwnerModel> mList;
     Context context;
+    String e_name;
 
-    public OwnerAdapter( Context context, ArrayList<OwnerModel> mList) {
-
-        this.context = context;
+    public OwnerAdapter(Context context ,ArrayList<OwnerModel> mList ,String e_name) {
         this.mList = mList;
-
+        this.context = context;
+        this.e_name = e_name;
     }
 
     @NonNull
@@ -50,7 +50,7 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
                 AppCompatActivity activity = (AppCompatActivity)view.getContext();
 
                 Intent intent = new Intent(context, BookingActivity.class);
-                intent.putExtra("name",ownerModel.getEquipment_Name());
+                intent.putExtra("name",e_name);
                 intent.putExtra("key",ownerModel.getOwner_ID());
                 activity.startActivity(intent);
 
@@ -65,17 +65,12 @@ public class OwnerAdapter extends RecyclerView.Adapter<OwnerAdapter.ViewHolder> 
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-
         TextView ownerName;
         CardView ownerCardView;
-        String s ;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ownerName = itemView.findViewById(R.id.owner_name);
             ownerCardView = itemView.findViewById(R.id.owner_cardView);
-
-
         }
     }
 
