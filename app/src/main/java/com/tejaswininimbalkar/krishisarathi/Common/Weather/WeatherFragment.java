@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,54 +36,65 @@ import retrofit2.Response;
 
 public class WeatherFragment extends Fragment {
 
-
-    Button getInfo;
-    TextView tempText, descText, cityText, humidityText, lattitude, longitude, loactionTxt, country;
-    String name = "";
+    ImageView weatherImage;
+    TextView locality, desc, minTemp, maxTemp, humidity, wind;
+    String cityName = "";
+    int id = 0;
 
     FusedLocationProviderClient fusedLocationProviderClient;
+
+    public static String updateWeatherInfo(int id) {
+
+        if (id >= 0 && id <= 300) {
+            return "icon_weather_thunderstorm1";
+        } else if (id >= 300 && id <= 500) {
+            return "icon_weather_lightrain";
+        } else if (id >= 501 && id <= 600) {
+            return "icon_weather_shower";
+        } else if (id >= 601 && id <= 700) {
+            return "icon_weather_snow2";
+        } else if (id >= 701 && id <= 771) {
+            return "icon_weather_foggy";
+        } else if (id >= 772 && id <= 799) {
+            return "icon_weather_overcast";
+        } else if (id == 800) {
+            return "icon_weather_sunny";
+        } else if (id >= 801 && id <= 804) {
+            return "icon_weather_cloudy";
+        } else if (id >= 900 && id <= 902) {
+            return "icon_weather_thunderstorm1";
+        } else if (id == 903) {
+            return "icon_weather_snow1";
+        } else if (id == 904) {
+            return "icon_weather_sunny";
+        } else if (id >= 905 && id <= 1000) {
+            return "icon_weather_thunderstorm2";
+        }
+        return "icon_weather";
+    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_weather, container, false);
 
-        cityText = (TextView) view.findViewById(R.id.cityText);
-//        code = (EditText) view.findViewById(R.id.cityCode);
-//        getInfo = (Button) view.findViewById(R.id.getInfoBtn);
-        tempText = (TextView) view.findViewById(R.id.tempText);
-        descText = (TextView) view.findViewById(R.id.descText);
-        humidityText = (TextView) view.findViewById(R.id.humidity);
-//        lattitude = (TextView) view.findViewById(R.id.latitude);
-//        longitude = (TextView) view.findViewById(R.id.longitude);
-//        loactionTxt = (TextView) view.findViewById(R.id.locationText);
-//        country = (TextView) view.findViewById(R.id.country);
+        weatherImage = view.findViewById(R.id.weatherImg);
+        locality = view.findViewById(R.id.cityText);
+        desc = view.findViewById(R.id.descText);
+        minTemp = view.findViewById(R.id.minTempText);
+        maxTemp = view.findViewById(R.id.maxTempText);
+        humidity = view.findViewById(R.id.humidityText);
+        wind = view.findViewById(R.id.windTxt);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
         getLocation();
-        //getWeatherData(name);
-
-
-//        getInfo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getWeatherData(city.getText().toString().trim());
-//                showLocation();
-//            }
-//        });
 
         return view;
     }
 
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
             return;
         }
@@ -95,13 +107,9 @@ public class WeatherFragment extends Fragment {
                     try {
                         List<Address> addressList = geocoder.getFromLocation(location.getLatitude(),
                                 location.getLongitude(), 1);
-//                        lattitude.setText("Lattitude : " + addressList.get(0).getLatitude());
-//                        longitude.setText("Longitude : " + addressList.get(0).getLongitude());
-                        cityText.setText("Location : " + addressList.get(0).getLocality());
-//                        country.setText("Location : " + addressList.get(0).getCountryName());
-                        name = addressList.get(0).getLocality();
-                        getWeatherData(name);
-
+                        locality.setText(addressList.get(0).getLocality() + ", " + addressList.get(0).getCountryName());
+                        cityName = addressList.get(0).getLocality();
+                        getWeatherData(cityName);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -112,23 +120,33 @@ public class WeatherFragment extends Fragment {
         });
     }
 
-    private void getWeatherData(String name) {
+    private void getWeatherData(String city) {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
 
-        Call<Example> call = apiInterface.getWeatherData(name);
+        Call<Example> call = apiInterface.getWeatherData(city);
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
-                tempText.setText(response.body().getMain().getTemp());
-                descText.setText(response.body().getMain().getFeels_like());
-                humidityText.setText(response.body().getMain().getHumidity());
+                minTemp.setText(response.body().getMain().getTemp_min() + "\u00B0" + "C");
+                maxTemp.setText(response.body().getMain().getTemp_max() + "\u00B0" + "C");
+                wind.setText(response.body().getWind().getWind() + " m/s");
+                humidity.setText(response.body().getMain().getHumidity() + " %");
+
+                id = response.body().getMain().getId();
+                String updateWeatherInfo = updateWeatherInfo(id);
+                updateWeatherImage(updateWeatherInfo);
+
+                desc.setText(updateWeatherInfo.split("_",3)[2]);
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
-
             }
         });
     }
 
+    private void updateWeatherImage(String updateWeatherInfo) {
+        int resourceId = getResources().getIdentifier(updateWeatherInfo, "drawable", getContext().getPackageName());
+        weatherImage.setImageResource(resourceId);
+    }
 }

@@ -7,11 +7,20 @@ public class Main {
     @SerializedName("temp")
     String temp;
 
+    @SerializedName("temp_min")
+    String temp_min;
+
+    @SerializedName("temp_max")
+    String temp_max;
+
     @SerializedName("feels_like")
     String feels_like;
 
     @SerializedName("humidity")
     String humidity;
+
+    @SerializedName("id")
+    int id;
 
     public String getTemp() {
         return temp;
@@ -35,5 +44,29 @@ public class Main {
 
     public void setHumidity(String humidity) {
         this.humidity = humidity;
+    }
+
+    public String getTemp_min() {
+        return temp_min;
+    }
+
+    public void setTemp_min(String temp_min) {
+        this.temp_min = temp_min;
+    }
+
+    public String getTemp_max() {
+        return temp_max;
+    }
+
+    public void setTemp_max(String temp_max) {
+        this.temp_max = temp_max;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
