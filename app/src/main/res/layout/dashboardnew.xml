@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Common.DashboardNew.DashboardNew">
+    tools:context=".Common.Dashboard.GridItemActivity">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
