@@ -23,7 +23,6 @@ import com.tejaswininimbalkar.krishisarathi.Owner.Adapter.Equipment_Request_adap
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Booking_request_model;
 
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_info;
-import com.tejaswininimbalkar.krishisarathi.Owner.Model.Request_model;
 
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -39,7 +38,6 @@ public class Equipment_Request_To_Owner extends Fragment {
     public FirebaseAuth mauth;
     public RecyclerView recyclerView;
 
-    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater,  ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -94,8 +92,8 @@ public class Equipment_Request_To_Owner extends Fragment {
                      Booking_request_model model = data.getValue(Booking_request_model.class);
                     Toast.makeText(getContext(), model.getEquipment_name(), Toast.LENGTH_SHORT).show();
                      list.add(model);
-                    equipmentRequestAdapter.notifyDataSetChanged();
                 }
+                equipmentRequestAdapter.notifyDataSetChanged();
 
 
             }
