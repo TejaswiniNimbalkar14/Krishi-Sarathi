@@ -71,7 +71,7 @@ public class PaymentActivity extends AppCompatActivity {
 
 
 
-        Booking_Id = "#KRISHI0000"+ new Random().nextInt(4000);
+        Booking_Id = "KRISHI0000"+ new Random().nextInt(4000);
 
 
 
@@ -113,8 +113,13 @@ public class PaymentActivity extends AppCompatActivity {
                 orderMap.put("Working_Date",Working_Date);
                 orderMap.put("Working_Time",Working_Time);
 
-                ref.child("Owner").child(owner_Id).child("Booking_Request").child(Requester_Id)
+                ref.child("Owner").child(owner_Id).child("Booking_Request").child(Booking_Id)
                         .setValue(orderMap);
+
+
+                ref.child("User").child(Requester_Id).child("Pending Request").child(Booking_Id)
+                        .setValue(orderMap);
+
 
                 Toast.makeText(getApplicationContext(),"You Requested for Equipment",Toast.LENGTH_LONG).show();
 

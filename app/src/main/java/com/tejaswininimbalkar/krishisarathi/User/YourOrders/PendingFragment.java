@@ -83,48 +83,42 @@ public class PendingFragment extends Fragment {
 
         recyclerView.setAdapter( pendingAdapter);
 
+        String userId= auth.getUid();
 
-        databaseReference.child("Owner")
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        mList.clear();
-                        if(snapshot.exists()){
-                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                                String ownerID = dataSnapshot.getKey();
-                                String userId = auth.getUid();
-                                databaseReference
-                                        .child("Owner")
-                                        .child(ownerID)
-                                        .child("Booking_Request")
-                                        .child(userId)
-                                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                                        @Override
-                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                                PendingModel model = snapshot.getValue(PendingModel.class);
-                                                mList.add(model);
-                                                pendingAdapter.notifyDataSetChanged();
-                                        }
+        databaseReference.child("User").child(userId).child("Pending Request").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        String ID = dataSnapshot.getKey();
+                        databaseReference.child("User").child(userId).child("Pending Request")
+                                .child(ID)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                       PendingModel model = snapshot.getValue(PendingModel.class);
+                                        mList.add(model);
+                                        pendingAdapter.notifyDataSetChanged();
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
 
-                                        @Override
-                                        public void onCancelled(@NonNull DatabaseError error) {
-
-                                        }
-                                        });
-
-                            }
-                        }else{
-                            Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
-                        }
-
+                                    }
+                                });
                     }
+                }else{
+                    Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
+                }
+            }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
+            }
+        });
+
+
 
         return  view;
 
