@@ -17,55 +17,72 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Owner.Model.Request_model;
+import com.squareup.picasso.Picasso;
+import com.tejaswininimbalkar.krishisarathi.Owner.Model.Booking_request_model;
 import com.tejaswininimbalkar.krishisarathi.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Equipment_Request_adapter extends RecyclerView.Adapter<Equipment_Request_adapter.RequestHolder> {
 
-    ArrayList<Request_model> list;
     Context context;
+    List<Booking_request_model> list;
 
-    public Equipment_Request_adapter(ArrayList<Request_model> list, Context context) {
-        this.list = list;
+    public Equipment_Request_adapter(Context context, List<Booking_request_model> list) {
         this.context = context;
+        this.list = list;
     }
 
     @NonNull
     @Override
     public RequestHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_equipment_request_to_owner,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.equipment_request_to_rent_card, parent, false);
         RequestHolder requestHolder = new RequestHolder(view);
-
         return requestHolder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RequestHolder holder, int position) {
-        holder.booking_id.setText(list.get(position).getBooking_Id());
+        holder.booking_id.setText("Booking ID :"+list.get(position).getBooking_Id());
         holder.equip_name.setText(list.get(position).getEquipment_name());
-        //holder.working_time.setText(list.get(position).getWorking_Date()+" "+list.get(position).getWorking_Time());
+        holder.working_time.setText(list.get(position).getWorking_Date()+" "+list.get(position).getWorking_Time());
 
-//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-//
-//        reference.child("User").child(list.get(position).getRequester_Id()).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                try {
-//                    String fullName = snapshot.getValue(String.class);
-//                    holder.requester_name.setText(fullName);
-//                }catch (Exception e){
-//                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        Toast.makeText(context, list.get(position).getEquipment_name(), Toast.LENGTH_SHORT).show();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+
+        reference.child("User").child(list.get(position).getRequester_Id()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    String fullName = snapshot.child("fullName").getValue(String.class);
+                    holder.requester_name.setText(fullName);
+
+                }catch (Exception e){
+                    Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        reference.child("Equipment").child(list.get(position).getEquipment_name()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    String equip_img_Url = snapshot.child("equip_img_Url").getValue(String.class);
+                    Picasso.get().load(equip_img_Url).into(holder.equip_img);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
     }
 
@@ -74,11 +91,11 @@ public class Equipment_Request_adapter extends RecyclerView.Adapter<Equipment_Re
         return list.size();
     }
 
-    public class RequestHolder extends RecyclerView.ViewHolder{
+    public class RequestHolder extends RecyclerView.ViewHolder {
 
-        TextView booking_id,equip_name,requester_name,land_address,working_time;
+        TextView booking_id, equip_name, requester_name, land_address, working_time;
         ImageView equip_img;
-        FloatingActionButton conform_request,cancel_request;
+        FloatingActionButton conform_request, cancel_request;
 
         public RequestHolder(@NonNull View itemView) {
             super(itemView);
