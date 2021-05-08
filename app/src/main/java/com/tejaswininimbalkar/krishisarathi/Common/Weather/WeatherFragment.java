@@ -1,22 +1,31 @@
 package com.tejaswininimbalkar.krishisarathi.Common.Weather;
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -38,6 +47,8 @@ public class WeatherFragment extends Fragment {
 
     ImageView weatherImage;
     TextView locality, desc, minTemp, maxTemp, humidity, wind;
+    ProgressBar progressBar;
+    Button reload;
     String cityName = "";
     int id = 0;
 
@@ -45,32 +56,23 @@ public class WeatherFragment extends Fragment {
 
     public static String updateWeatherInfo(int id) {
 
-        if (id >= 0 && id <= 300) {
-            return "icon_weather_thunderstorm1";
-        } else if (id >= 300 && id <= 500) {
+        if (id >= 200 && id <= 232) {
+            return "icon_weather_thunderstorm2";
+        } else if (id >= 300 && id <= 321) {
+            return "icon_weather_drizzle";
+        } else if (id >= 500 && id <= 531) {
             return "icon_weather_lightrain";
-        } else if (id >= 501 && id <= 600) {
-            return "icon_weather_shower";
-        } else if (id >= 601 && id <= 700) {
-            return "icon_weather_snow2";
-        } else if (id >= 701 && id <= 771) {
+        } else if (id >= 600 && id <= 622) {
+            return "icon_weather_snow1";
+        } else if (id >= 701 && id <= 781) {
             return "icon_weather_foggy";
-        } else if (id >= 772 && id <= 799) {
-            return "icon_weather_overcast";
-        } else if (id == 800) {
-            return "icon_weather_sunny";
+        }  else if (id == 800) {
+            return "icon_weather_clear";
         } else if (id >= 801 && id <= 804) {
             return "icon_weather_cloudy";
-        } else if (id >= 900 && id <= 902) {
-            return "icon_weather_thunderstorm1";
-        } else if (id == 903) {
-            return "icon_weather_snow1";
-        } else if (id == 904) {
-            return "icon_weather_sunny";
-        } else if (id >= 905 && id <= 1000) {
-            return "icon_weather_thunderstorm2";
+        } else {
+            return "icon_weather";
         }
-        return "icon_weather";
     }
 
     @Nullable
@@ -85,10 +87,23 @@ public class WeatherFragment extends Fragment {
         maxTemp = view.findViewById(R.id.maxTempText);
         humidity = view.findViewById(R.id.humidityText);
         wind = view.findViewById(R.id.windTxt);
+        progressBar = view.findViewById(R.id.weatherProgress);
+        reload = view.findViewById(R.id.weatherReload);
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
+        if (!isConnected(getActivity())) {
+            showConnectionDialog();
+        }
+
         getLocation();
+
+        reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLocation();
+            }
+        });
 
         return view;
     }
@@ -101,6 +116,7 @@ public class WeatherFragment extends Fragment {
         fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
             @Override
             public void onComplete(@NonNull Task<Location> task) {
+                progressBar.setVisibility(View.VISIBLE);
                 Location location = task.getResult();
                 if (location != null) {
                     Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
@@ -114,7 +130,8 @@ public class WeatherFragment extends Fragment {
                         e.printStackTrace();
                     }
                 } else {
-                    Toast.makeText(getContext(), "Location null error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Please turn on location service", Toast.LENGTH_SHORT).show();
+                    progressBar.setVisibility(View.GONE);
                 }
             }
         });
@@ -132,21 +149,51 @@ public class WeatherFragment extends Fragment {
                 wind.setText(response.body().getWind().getWind() + " m/s");
                 humidity.setText(response.body().getMain().getHumidity() + " %");
 
-                id = response.body().getMain().getId();
+                id = response.body().getWeatherList().get(0).getId();
                 String updateWeatherInfo = updateWeatherInfo(id);
                 updateWeatherImage(updateWeatherInfo);
 
-                desc.setText(updateWeatherInfo.split("_",3)[2]);
+                desc.setText(response.body().getWeatherList().get(0).getDescription());
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<Example> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
             }
         });
     }
 
     private void updateWeatherImage(String updateWeatherInfo) {
-        int resourceId = getResources().getIdentifier(updateWeatherInfo, "drawable", getContext().getPackageName());
+        int resourceId = getResources().getIdentifier(updateWeatherInfo, "drawable", getActivity().getPackageName());
         weatherImage.setImageResource(resourceId);
+    }
+
+    private boolean isConnected(Activity activity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        return (wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected());
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
     }
 }

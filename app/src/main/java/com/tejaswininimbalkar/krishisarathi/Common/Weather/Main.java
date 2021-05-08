@@ -19,9 +19,6 @@ public class Main {
     @SerializedName("humidity")
     String humidity;
 
-    @SerializedName("id")
-    int id;
-
     public String getTemp() {
         return temp;
     }
@@ -62,11 +59,4 @@ public class Main {
         this.temp_max = temp_max;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
