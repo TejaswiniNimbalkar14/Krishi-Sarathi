@@ -24,12 +24,10 @@ import com.tejaswininimbalkar.krishisarathi.R;
 public class BookingActivity extends AppCompatActivity {
 
 
-    EditText  user_Name,user_Phone,user_Address,user_City,user_CityCode;
-    String u_name,u_address,u_phone,u_City,u_CityCode;
     TextView e_Company,e_modelYear,e_Name;
-    TextView order_name,owner_ID;
-    Button goto_payment;
-
+    TextView owner_ID;
+    Button goto_Next;
+    String ownerID;
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference root = db.getReference().child("Owner");
@@ -49,22 +47,10 @@ public class BookingActivity extends AppCompatActivity {
         e_Name = (TextView)findViewById(R.id. e_Name);
         e_modelYear = (TextView)findViewById(R.id.e_modelYear);
 
-        user_Name = (EditText)findViewById(R.id.user_Name);
-        user_Phone= (EditText)findViewById(R.id.user_Phone);
-        user_Address = (EditText)findViewById(R.id.user_Address);
-        user_City = (EditText)findViewById(R.id.user_City);
-        user_CityCode = (EditText)findViewById(R.id.user_CityCode);
-
-
-        Toast.makeText(getApplicationContext(),""+ name , Toast.LENGTH_LONG).show();
-
-
-
-
         root.child(s).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String ownerID = snapshot.child("userName").getValue().toString();
+                ownerID = snapshot.child("userName").getValue().toString();
                 owner_ID.setText(ownerID);
             }
 
@@ -94,26 +80,15 @@ public class BookingActivity extends AppCompatActivity {
 
         });
 
-
-
-        goto_payment = findViewById(R.id.goto_Payment);
-
-        goto_payment.setOnClickListener(new View.OnClickListener() {
+        goto_Next = (Button)findViewById(R.id.goto_next);
+        goto_Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                u_name = user_Name.getText().toString();
-                u_phone = user_Phone.getText().toString();
-                u_address = user_Address.getText().toString();
-                u_City = user_City.getText().toString();
-                u_CityCode = user_CityCode.getText().toString();
-
-                Toast.makeText(getApplicationContext(),""+ u_name, Toast.LENGTH_LONG).show();
-
-                startActivity(new Intent(getApplicationContext(), PaymentActivity.class));
+                Intent intent = new Intent(getApplicationContext(), PaymentActivity.class);
+                intent.putExtra("key",s);
+                intent.putExtra("name",name);
+                startActivity(intent);
             }
         });
-
-
-
     }
 }

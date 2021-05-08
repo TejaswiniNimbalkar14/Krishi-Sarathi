@@ -28,6 +28,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.UserDashboardFragment;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
+import com.tejaswininimbalkar.krishisarathi.Common.Navigation.YourOrdersActivity;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.about_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.farmer_guidefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.feedbackfragment;
@@ -36,7 +37,6 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.helpfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.rate_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.AgriEquipmentFragment;
-import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -190,6 +190,11 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 break;
             case R.id.share:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new sharefragment()).commit();
+                activityContainerBinding.menuBtn.setVisibility(View.GONE);
+                break;
+
+            case R.id.your_Order:
+                startActivity(new Intent(ContainerActivity.this, YourOrdersActivity.class));
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.equipment_owner:

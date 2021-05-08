@@ -110,6 +110,7 @@
     <string name="about_us_fragment" translatable="false">About us Fragment</string>
     <string name="farmer_guide_fragment" translatable="false">Farmer guide fragment</string>
     <string name="feedback_fragment" translatable="false">Feedback Fragment</string>
+    <string name="YourOrders" translatable="false">Your Orders</string>
     <string name="help_fragment" translatable="false">Help Fragment</string>
     <string name="location_fragment" translatable="false">Location Fragment</string>
     <string name="orders_fragment" translatable="false">Orders Fragment</string>
@@ -145,6 +146,9 @@
     <string name="registration" translatable="false">Registration</string>
     <string name="hi_do_you_want_to_be_a_partner_in_krishi_sarathi_if_yes_registration_process_as_below" translatable="false">Hi, do you want to be a partner in Krishi Sarathi? If yes, registration process as below</string>
     <string name="my_equipment">My Equipment</string>
+    <string name="title_activity_tabbed">TabbedActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 
 
 </resources>
