@@ -19,6 +19,7 @@
         android:theme="@style/Theme.KrishiSarathi" >
         
         <activity android:name=".Owner.Dashbord.OwnerContainer"></activity>
+        <activity android:name=".Common.Navigation.YourOrdersActivity" />
         <activity android:name=".ResetPassUsingCurrentPass" />
         <activity android:name=".Common.LoginSignup.User_Forgot_Page" />
         <activity android:name=".Common.LoginSignup.Successful_create" />

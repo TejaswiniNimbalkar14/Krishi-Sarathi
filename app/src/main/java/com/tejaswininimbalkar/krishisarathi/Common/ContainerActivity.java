@@ -28,6 +28,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.Dashboard.UserDashboardFragment;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
+import com.tejaswininimbalkar.krishisarathi.Common.Navigation.YourOrdersActivity;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.about_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.farmer_guidefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.feedbackfragment;
@@ -190,6 +191,11 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 break;
             case R.id.share:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new sharefragment()).commit();
+                activityContainerBinding.menuBtn.setVisibility(View.GONE);
+                break;
+
+            case R.id.your_Order:
+                startActivity(new Intent(ContainerActivity.this, YourOrdersActivity.class));
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
             case R.id.equipment_owner:
