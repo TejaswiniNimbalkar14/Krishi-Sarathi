@@ -55,46 +55,20 @@ public class Equipment_Request_To_Owner extends Fragment {
 
         reference = FirebaseDatabase.getInstance().getReference();
 
-        //list.add(new Booking_request_model("ghggsaguydg","hgggsguga","husguydguga","56454678","RTJYM47hfRPyO5DqQppmGISOf7y1"));
-
         reference.child("Owner").child(uid).child("Booking_Request").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-//                if (snapshot.exists()) {
-//                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//                        String id = dataSnapshot.getKey();
-//                        reference.child("Owner")
-//                                .child(uid)
-//                                .child("Booking_Request")
-//                                .child(id)
-//                                .child("Order No 1")
-//                                .addListenerForSingleValueEvent(new ValueEventListener() {
-//                                    @Override
-//                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                                        Request_model model = snapshot.getValue(Request_model.class);
-//                                        list.add(model);
-//                                        equipmentRequestAdapter.notifyDataSetChanged();
-//                                    }
-//
-//                                    @Override
-//                                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                                    }
-//                                });
-//                    }
-//                } else {
-//                    Toast.makeText(getActivity(), "Data is not exist", Toast.LENGTH_LONG).show();
-//                }
-
-                list.clear();
-                for (DataSnapshot data : snapshot.getChildren()){
-                     Booking_request_model model = data.getValue(Booking_request_model.class);
-                    Toast.makeText(getContext(), model.getEquipment_name(), Toast.LENGTH_SHORT).show();
-                     list.add(model);
+                if (snapshot.exists()) {
+                    list.clear();
+                    for (DataSnapshot data : snapshot.getChildren()){
+                        Booking_request_model model = data.getValue(Booking_request_model.class);
+                        //Toast.makeText(getContext(), model.getEquipment_name(), Toast.LENGTH_SHORT).show();
+                        list.add(model);
+                    }
+                    equipmentRequestAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(getActivity(), "No orders received!", Toast.LENGTH_SHORT).show();
                 }
-                equipmentRequestAdapter.notifyDataSetChanged();
-
 
             }
 

@@ -85,6 +85,9 @@ public class OwnerContainer extends AppCompatActivity implements BottomNavigatio
             case R.id.history:
                 selectedFragment = new History_Of_Working();
                 break;
+            case R.id.settings:
+                selectedFragment = new OwnerSettingsFragment();
+                break;
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();
