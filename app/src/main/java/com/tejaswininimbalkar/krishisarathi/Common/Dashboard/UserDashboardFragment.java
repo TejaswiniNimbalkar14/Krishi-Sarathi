@@ -37,12 +37,12 @@ public class UserDashboardFragment extends Fragment {
 
     int[] images = {
 
-            R.drawable.image_field,
-            R.drawable.image_seed_fertilizer,
-            R.drawable.image_plant_growing,
-            R.drawable.image_agri,
-            R.drawable.image_vegetables,
-            R.drawable.image_agri_money
+            R.drawable.image_slider_one,
+            R.drawable.image_slider_two,
+            R.drawable.image_slider_three,
+            R.drawable.image_slider_four,
+            R.drawable.image_slider_five,
+            R.drawable.image_slider_six
     };
     //private TextView wlcmMsg;
     private ImageView enterSession, notification;
