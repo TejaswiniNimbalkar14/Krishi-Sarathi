@@ -109,21 +109,33 @@
 
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="5dp"
-                android:backgroundTint="@color/purple_500"
-                android:outlineSpotShadowColor="@color/black"
-                android:shadowColor="@color/black"
-                android:text="@string/login"
-                android:textColor="#ffffff"
-                tools:ignore="HardcodedText"
-                tools:targetApi="p" />
+                <Button
+                    android:id="@+id/btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:backgroundTint="@color/purple_500"
+                    android:outlineSpotShadowColor="@color/black"
+                    android:shadowColor="@color/black"
+                    android:text="@string/login"
+                    android:textColor="#ffffff"
+                    tools:ignore="HardcodedText"
+                    tools:targetApi="p" />
 
+                <ProgressBar
+                    android:id="@+id/ownerLoginProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:elevation="10dp"
+                    android:visibility="gone"/>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

@@ -40,7 +40,7 @@
                     android:layout_marginLeft="12dp"
                     android:layout_marginBottom="5dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Name"
+                    android:text="@string/equipment"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -58,7 +58,7 @@
                         android:layout_marginLeft="12dp"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Ranting Prize :"
+                        android:text="@string/renting_price"
                         android:textColor="@color/red"
                         android:textSize="10sp" />
 
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Description"
+                    android:text="@string/desc"
                     android:textSize="10sp" />
 
             </LinearLayout>

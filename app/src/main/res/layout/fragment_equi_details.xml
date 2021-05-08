@@ -102,7 +102,7 @@
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="fill"
-                    android:text="Equipment Name and more"
+                    android:text="@string/equi_name_and_more"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 
@@ -208,6 +208,14 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
+        <ProgressBar
+            android:id="@+id/detailsProgresss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:visibility="gone"/>
 
     </RelativeLayout>
 

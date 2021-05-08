@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/equipment_req"
+        android:icon="@drawable/icon_request"
+        android:title="@string/request" />
+
+    <item
+        android:id="@+id/equipment_add"
+        android:icon="@drawable/icon_equipment"
+        android:title="@string/equipment" />
+
+    <item
+        android:id="@+id/total_income"
+        android:icon="@drawable/icon_payments"
+        android:title="@string/income" />
+
+    <item
+        android:id="@+id/history"
+        android:icon="@drawable/icon_history"
+        android:title="@string/history" />
+
+    <item
+        android:id="@+id/settings"
+        android:icon="@drawable/icon_settings"
+        android:title="@string/settings" />
+
+</menu>

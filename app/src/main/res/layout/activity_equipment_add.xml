@@ -6,12 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".Owner.Equipment.Equipment_Add">
 
-    <ImageView
-        android:id="@+id/back_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="15dp"
-        android:src="@drawable/icon_back_arrow"
+    <Button
+        android:id="@+id/skipAdEquiBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:drawableEnd="@drawable/icon_skip"
+        android:drawableRight="@drawable/icon_skip"
+        android:padding="10dp"
+        android:text="@string/skip"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addEquiBackBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:padding="10dp"
+        android:drawableLeft="@drawable/icon_back_arrow"
+        android:drawableTint="@color/black"
+        android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,14 +35,12 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:layout_marginTop="10dp"
         android:text="@string/add_equipment"
         android:textColor="@color/black"
         android:textSize="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/back_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/addEquiBackBtn" />
 
     <TextView
         android:id="@+id/text2"
@@ -60,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/purple_500"
-        android:text="Done"
+        android:text="@string/done"
         android:textAllCaps="false"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"

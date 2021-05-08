@@ -37,6 +37,7 @@ import com.tejaswininimbalkar.krishisarathi.Common.Navigation.helpfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.rate_usfragment;
 import com.tejaswininimbalkar.krishisarathi.Common.Navigation.sharefragment;
 import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.AgriEquipmentFragment;
+import com.tejaswininimbalkar.krishisarathi.Common.Weather.WeatherFragment;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;

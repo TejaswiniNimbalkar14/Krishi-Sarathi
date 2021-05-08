@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 
 import com.tejaswininimbalkar.krishisarathi.Common.Localization.SelectLanguage;
 import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
+import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.OwnerContainer;
+import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.databinding.ActivitySplashScreenBinding;
 
@@ -28,7 +30,7 @@ public class SplashScreen extends AppCompat {
     //Animations
     Animation bottomAnim;
 
-    boolean isFirst;
+    boolean isFirst, isOwner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,7 @@ public class SplashScreen extends AppCompat {
         IntroPref pref = new IntroPref(this);
         //The variable 'isFirst' will be set to 'true' for first time and 'false' afterwards
         isFirst = pref.isFirstTimeLaunch();
+        isOwner = pref.isOwner();
 
         //set a no night mode
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
@@ -62,8 +65,11 @@ public class SplashScreen extends AppCompat {
             @Override
             public void run() {
                 if (!isFirst) {
-                    //When it is not first time
-                    startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
+                    if (isOwner) {
+                        startActivity(new Intent(SplashScreen.this, OwnerContainer.class));
+                    } else {
+                        startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
+                    }
                 } else {
                     //When it is first time, set the variable 'isFirst' to 'false'
                     pref.setIsFirstTimeLaunch(false);

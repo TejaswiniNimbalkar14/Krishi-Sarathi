@@ -38,7 +38,6 @@
     <string name="remember_me">मुजे याद रखें</string>
     <string name="mobile_verification">मोबाईल सत्यापन</string>
     <string name="enter_your_country_code_and_phone" translatable="false">अपना देश कोड और फ़ोन दर्ज करें</string>
-    <string name="number_to" translatable="false">के लिए नंबर</string>
     <string name="create_massage">खाता बनाएं या लॉगिन करें</string>
     <string name="Login_massage">अकाउंट मे लॉगिन करें</string>
     <string name="enter_mobile_number">मोबाईल नंबर दर्ज करें</string>

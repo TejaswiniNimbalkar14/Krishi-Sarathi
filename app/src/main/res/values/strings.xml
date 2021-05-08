@@ -52,8 +52,7 @@
     <string name="enter_password">Password</string>
     <string name="remember_me">Remember Me</string>
     <string name="mobile_verification">Mobile Verification</string>
-    <string name="enter_your_country_code_and_phone">Enter Your Country Code And Phone</string>
-    <string name="number_to">Number To</string>
+    <string name="enter_your_country_code_and_phone">Enter Your Country Code And Phone Number to Signup or Login</string>
     <string name="create_massage">Create Or Login Account</string>
     <string name="Login_massage">Login Account</string>
     <string name="enter_mobile_number">Enter mobile Number</string>
@@ -149,6 +148,42 @@
     <string name="title_activity_tabbed">TabbedActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
-
-
+    <string name="owner_details" translatable="false">Owner Details :</string>
+    <string name="owner_id" translatable="false">Owner ID :</string>
+    <string name="equi_details" translatable="false">Equipment Details :</string>
+    <string name="company" translatable="false">Company :</string>
+    <string name="equipment_colon" translatable="false">Equipment :</string>
+    <string name="model_year_colon" translatable="false">Model Year :</string>
+    <string name="fill_user_details" translatable="false">Fill User Details :</string>
+    <string name="address" translatable="false">Address</string>
+    <string name="city" translatable="false">City</string>
+    <string name="city_code" translatable="false">City Code</string>
+    <string name="payment1" translatable="false">Payment</string>
+    <string name="done" translatable="false">Done</string>
+    <string name="cultivator" translatable="false">Cultivator</string>
+    <string name="hi" translatable="false">Hi,</string>
+    <string name="user" translatable="false">User</string>
+    <string name="register" translatable="false">Register</string>
+    <string name="rent_price" translatable="false">Rent Price :</string>
+    <string name="shipping_charges" translatable="false">Shipping Charges :</string>
+    <string name="total_price" translatable="false">Total Price :</string>
+    <string name="payment_methods" translatable="false">Payment Methods :</string>
+    <string name="cash_on_delivery" translatable="false">Cash On Delivery</string>
+    <string name="upi" translatable="false">UPI</string>
+    <string name="debit_credit" translatable="false">Debit/Credit Card</string>
+    <string name="book_equi" translatable="false">Book Equipment</string>
+    <string name="resend_otp" translatable="false">RESEND OTP</string>
+    <string name="renting_price" translatable="false">Renting Price :</string>
+    <string name="desc" translatable="false">Description</string>
+    <string name="equi_name_and_more" translatable="false">Equipment Name and more</string>
+    <string name="search_elements" translatable="false">Search elements</string>
+    <string name="min" translatable="false">Min</string>
+    <string name="max" translatable="false">Max</string>
+    <string name="humidity" translatable="false">humidity</string>
+    <string name="wind" translatable="false">wind</string>
+    <string name="reload" translatable="false">Reload</string>
+    <string name="income" translatable="false">Income</string>
+    <string name="request" translatable="false">Request</string>
+    <string name="move_to_user" translatable="false">Move to User Activity</string>
+    <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
 </resources>
