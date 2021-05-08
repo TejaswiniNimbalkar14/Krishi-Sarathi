@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.OwnerContainer;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class OwnerLoginActivity extends AppCompatActivity {
@@ -88,6 +89,9 @@ public class OwnerLoginActivity extends AppCompatActivity {
                         Toast.makeText(OwnerLoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.GONE);
                         //moveToContainerActivity();
+                        Intent intent = new Intent(OwnerLoginActivity.this, OwnerContainer.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
                     } else {
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(OwnerLoginActivity.this, "Password does not match", Toast.LENGTH_SHORT).show();
