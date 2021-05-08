@@ -22,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
 import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.Owner.Adapter.Equip_add_adapter;
+import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.OwnerContainer;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Equipment_add_model;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -74,14 +75,16 @@ public class Equipment_Add extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent i = new Intent(getApplicationContext(), OwnerContainer.class);
+                startActivity(i);
+                finish();
             }
         });
 
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                onBackPressed();
             }
         });
 

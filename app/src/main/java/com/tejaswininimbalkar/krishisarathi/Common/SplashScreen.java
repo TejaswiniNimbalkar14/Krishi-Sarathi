@@ -66,7 +66,7 @@ public class SplashScreen extends AppCompat {
             public void run() {
                 if (!isFirst) {
                     if (isOwner) {
-                        startActivity(new Intent(SplashScreen.this, OwnerLoginActivity.class));
+                        startActivity(new Intent(SplashScreen.this, OwnerContainer.class));
                     } else {
                         startActivity(new Intent(SplashScreen.this, ContainerActivity.class));
                     }

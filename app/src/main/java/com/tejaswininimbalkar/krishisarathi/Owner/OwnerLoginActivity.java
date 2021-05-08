@@ -95,6 +95,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
                         Intent intent = new Intent(OwnerLoginActivity.this, OwnerContainer.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
+                        finish();
                     } else {
                         progressBar.setVisibility(View.GONE);
                         Toast.makeText(OwnerLoginActivity.this, "Password does not match", Toast.LENGTH_SHORT).show();
