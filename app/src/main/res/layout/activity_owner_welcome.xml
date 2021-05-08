@@ -29,7 +29,7 @@
             android:id="@+id/hi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hi,"
+            android:text="@string/hi"
             android:textColor="@color/black"
             android:textSize="20dp" />
 
@@ -40,7 +40,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@id/hi"
-            android:text="User"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="22dp" />
 
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/purple_500"
-        android:text="Register"
+        android:text="@string/register"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

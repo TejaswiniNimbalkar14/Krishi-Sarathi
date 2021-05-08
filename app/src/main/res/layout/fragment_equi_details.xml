@@ -102,7 +102,7 @@
                     android:layout_marginRight="10dp"
                     android:fontFamily="@font/roboto_medium"
                     android:gravity="fill"
-                    android:text="Equipment Name and more"
+                    android:text="@string/equi_name_and_more"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
 

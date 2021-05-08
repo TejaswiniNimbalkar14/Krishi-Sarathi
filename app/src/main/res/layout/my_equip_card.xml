@@ -56,7 +56,7 @@
                     android:id="@+id/myEquipName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Equip_Name"
+                    android:text="@string/equipment"
                     android:textColor="@color/black"
                     android:textSize="18dp"
                     android:textStyle="bold"/>
@@ -65,7 +65,7 @@
                     android:id="@+id/myEquipCompName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Equip_Company_Name"
+                    android:text="@string/company"
                     android:textColor="@color/black"
                     android:textSize="16dp"/>
 
@@ -73,7 +73,7 @@
                     android:id="@+id/myEquipModelYear"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Model_year"
+                    android:text="@string/model_year_colon"
                     android:textColor="@color/black"
                     android:textSize="16dp"/>
 
@@ -86,7 +86,7 @@
                         android:id="@+id/myEquipRentTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rent Rs. : "
+                        android:text="@string/renting_price"
                         android:textColor="@color/black"
                         android:textSize="16dp"/>
 
