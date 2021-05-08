@@ -88,37 +88,6 @@
                     android:text="@string/enter_your_country_code_and_phone"
                     android:textSize="16dp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/massage"
-                    android:gravity="center_horizontal"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingBottom="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli"
-                        android:gravity="center_horizontal"
-                        android:text="@string/number_to"
-                        android:textSize="16dp" />
-
-                    <TextView
-                        android:id="@+id/create_massage"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/muli"
-                        android:gravity="center_horizontal"
-                        android:paddingLeft="5dp"
-                        android:text="@string/create_massage"
-                        android:textColor="@color/black"
-                        android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:visibility="visible" />
-
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout

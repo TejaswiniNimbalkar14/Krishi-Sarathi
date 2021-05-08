@@ -11,7 +11,9 @@ public class IntroPref {
     private static final String IS_FIRST_TIME_LAUNCH = "firstTimeLaunch";
     private static final String IS_FIRST_TIME_SELECT = "firstTimeSelect";
     private static final String IS_FIRST_TIME_SEND_OTP = "firstTimeSendOtp";
+    private static final String IS_FIRST_TIME_ADD_EQUI = "firstTimeAddEqui";
     private static final String IS_CANCEL = "isCancel";
+    private static final String IS_OWNER = "isOwner";
     private static final String LANGUAGE_CODE = "languageCode";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -39,8 +41,18 @@ public class IntroPref {
         editor.commit();
     }
 
+    public void setIsFirstTimeAddEqui(boolean firstTimeAddEqui) {
+        editor.putBoolean(IS_FIRST_TIME_ADD_EQUI, firstTimeAddEqui);
+        editor.commit();
+    }
+
     public void setIsCancel(boolean cancel) {
         editor.putBoolean(IS_CANCEL, cancel);
+        editor.commit();
+    }
+
+    public void setIsOwner(boolean isOwner) {
+        editor.putBoolean(IS_OWNER, isOwner);
         editor.commit();
     }
 
@@ -61,11 +73,15 @@ public class IntroPref {
         return preferences.getBoolean(IS_FIRST_TIME_SELECT, true);
     }
 
+    public boolean isFirstTimeAddEqui() {
+        return preferences.getBoolean(IS_FIRST_TIME_ADD_EQUI, true);
+    }
+
     public boolean isFirstTimeSendOtp() {
         return preferences.getBoolean(IS_FIRST_TIME_SEND_OTP, true);
     }
 
-    public boolean isCancel() {
-        return preferences.getBoolean(IS_CANCEL, true);
+    public boolean isOwner() {
+        return preferences.getBoolean(IS_OWNER, false);
     }
 }

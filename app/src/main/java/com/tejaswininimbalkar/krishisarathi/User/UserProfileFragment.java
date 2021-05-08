@@ -36,12 +36,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
+import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 public class UserProfileFragment extends Fragment {
 
     String uid;
-    private Button settings, editProfile, myEquipment;
+    private Button settings, editProfile, moveBtn;
     private TextView fullName, phoneNo;
     private ImageView profileImage;
     private ProgressBar imageProgress, infoProgress;
@@ -59,7 +60,7 @@ public class UserProfileFragment extends Fragment {
         profileImage = (ImageView) view.findViewById(R.id.profileImage);
         imageProgress = (ProgressBar) view.findViewById(R.id.imageProgressBar);
         infoProgress = (ProgressBar) view.findViewById(R.id.infoProgress);
-        myEquipment = (Button) view.findViewById(R.id.myEquipBtn);
+        moveBtn = (Button) view.findViewById(R.id.moveToOwnerActivity);
 
         imageProgress.setVisibility(View.VISIBLE);
         infoProgress.setVisibility(View.VISIBLE);
@@ -83,10 +84,11 @@ public class UserProfileFragment extends Fragment {
             }
         });
 
-        myEquipment.setOnClickListener(new View.OnClickListener() {
+        moveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new MyEquipmentFragment()).addToBackStack(null).commit();
+                Intent i = new Intent(getActivity(), OwnerLoginActivity.class);
+                startActivity(i);
             }
         });
 
@@ -109,7 +111,7 @@ public class UserProfileFragment extends Fragment {
                 String phone = (String) snapshot.child("phone_num").getValue();
                 String url = (String) snapshot.child("profile_img").getValue();
                 boolean equiOwner = (boolean) snapshot.child("equipment_owner").getValue();
-                if (equiOwner) myEquipment.setVisibility(View.VISIBLE);
+                if (equiOwner) moveBtn.setVisibility(View.VISIBLE);
 
                 fullName.setText(name);
                 phoneNo.setText(phone);

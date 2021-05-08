@@ -165,16 +165,16 @@
         app:layout_constraintTop_toBottomOf="@+id/materialCardView">
 
         <Button
-            android:id="@+id/myEquipBtn"
+            android:id="@+id/moveToOwnerActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:background="#00000000"
-            android:drawableStart="@drawable/icon_equipment"
-            android:drawableLeft="@drawable/icon_equipment"
+            android:drawableStart="@drawable/icon_equipment_owner"
+            android:drawableLeft="@drawable/icon_equipment_owner"
             android:drawablePadding="10dp"
             android:drawableTint="@color/black"
-            android:text="@string/my_equipment"
+            android:text="@string/move_to_owner"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
