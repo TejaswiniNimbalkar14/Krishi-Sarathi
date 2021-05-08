@@ -16,6 +16,15 @@
             android:layout_height="match_parent"
             android:layout_marginBottom="60dp"/>
 
+        <ProgressBar
+            android:id="@+id/equiProgress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:visibility="gone"/>
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

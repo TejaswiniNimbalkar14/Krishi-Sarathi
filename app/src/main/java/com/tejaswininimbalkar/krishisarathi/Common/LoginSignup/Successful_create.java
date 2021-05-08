@@ -25,7 +25,6 @@ import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.UserSettings;
 
-
 public class Successful_create extends AppCompat {
 
     TextView textUpdate, massage;
