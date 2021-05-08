@@ -13,6 +13,7 @@ public class IntroPref {
     private static final String IS_FIRST_TIME_SEND_OTP = "firstTimeSendOtp";
     private static final String IS_FIRST_TIME_ADD_EQUI = "firstTimeAddEqui";
     private static final String IS_CANCEL = "isCancel";
+    private static final String IS_OWNER = "isOwner";
     private static final String LANGUAGE_CODE = "languageCode";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
@@ -50,6 +51,11 @@ public class IntroPref {
         editor.commit();
     }
 
+    public void setIsOwner(boolean isOwner) {
+        editor.putBoolean(IS_OWNER, isOwner);
+        editor.commit();
+    }
+
     public String getLanguageCode() {
         return preferences.getString(LANGUAGE_CODE, "en");
     }
@@ -73,5 +79,9 @@ public class IntroPref {
 
     public boolean isFirstTimeSendOtp() {
         return preferences.getBoolean(IS_FIRST_TIME_SEND_OTP, true);
+    }
+
+    public boolean isOwner() {
+        return preferences.getBoolean(IS_OWNER, false);
     }
 }

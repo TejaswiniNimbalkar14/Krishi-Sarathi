@@ -178,6 +178,10 @@
     <string name="humidity" translatable="false">humidity</string>
     <string name="wind" translatable="false">wind</string>
     <string name="reload" translatable="false">Reload</string>
+    <string name="income" translatable="false">Income</string>
+    <string name="request" translatable="false">Request</string>
+    <string name="move_to_user" translatable="false">Move to User Activity</string>
+    <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
 
 
 </resources>

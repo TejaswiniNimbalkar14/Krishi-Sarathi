@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.OwnerContainer;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -36,9 +37,11 @@ public class OwnerLoginActivity extends AppCompatActivity {
     TextInputLayout owner_id, owner_pass;
     ProgressBar progressBar;
     String ownerId, pass, uid;
+    private IntroPref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        pref = new IntroPref(this);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_login);
@@ -62,8 +65,8 @@ public class OwnerLoginActivity extends AppCompatActivity {
                 if (!validOwner() | !validPass()) {
                     return;
                 }
-
-                signInAuth();
+                userOwnerChoiceDialog();
+                //signInAuth();
             }
         });
 
@@ -166,6 +169,28 @@ public class OwnerLoginActivity extends AppCompatActivity {
 
             }
         });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
+    }
+
+    private void userOwnerChoiceDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(OwnerLoginActivity.this);
+        alertDialog.setMessage("Do you want to stay logged in as Owner?");
+        alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                pref.setIsOwner(true);
+                signInAuth();
+            }
+        });
+        alertDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                pref.setIsOwner(false);
+                signInAuth();
+            }
+        });
+
         AlertDialog dialog = alertDialog.create();
         dialog.show();
     }

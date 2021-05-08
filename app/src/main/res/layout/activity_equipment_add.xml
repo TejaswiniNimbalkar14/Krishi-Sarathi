@@ -24,6 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="#00000000"
+        android:padding="10dp"
         android:drawableLeft="@drawable/icon_back_arrow"
         android:drawableTint="@color/black"
         android:visibility="invisible"
@@ -34,7 +35,6 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="@string/add_equipment"
         android:textColor="@color/black"
         android:textSize="25dp"
