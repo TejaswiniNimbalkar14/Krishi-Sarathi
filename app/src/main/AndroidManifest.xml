@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.tejaswininimbalkar.krishisarathi" >
+    package="com.tejaswininimbalkar.krishisarathi">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,7 +13,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KrishiSarathi" >
+        android:theme="@style/Theme.KrishiSarathi">
+        <activity android:name=".Owner.Dashbord.OwnerContainer"></activity>
         <activity android:name=".ResetPassUsingCurrentPass" />
         <activity android:name=".Common.LoginSignup.User_Forgot_Page" />
         <activity android:name=".Common.LoginSignup.Successful_create" />
@@ -31,7 +32,7 @@
         <activity android:name=".User.UserSettings" />
         <activity android:name=".Common.Dashboard.GridItemActivity" />
         <activity android:name=".Common.OnBoarding.OnBoarding" />
-        <activity android:name=".Common.SplashScreen" >
+        <activity android:name=".Common.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
