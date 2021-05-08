@@ -1,27 +1,37 @@
 package com.tejaswininimbalkar.krishisarathi.Owner;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.User_SignUp;
 import com.tejaswininimbalkar.krishisarathi.Owner.Equipment.Equipment_Add;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.OwnerData;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -40,6 +50,7 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
     Button next;
     RadioGroup trac_r, equi_r;
     DatePicker dob;
+    ProgressBar progressBar;
 
     DatabaseReference reference;
 
@@ -70,6 +81,7 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         equi_info = findViewById(R.id.equi_info);
         next = findViewById(R.id.next);
         password = findViewById(R.id.password);
+        progressBar.findViewById(R.id.ownerRegisterProgress);
 
         reference = FirebaseDatabase.getInstance().getReference();
 
@@ -101,6 +113,10 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (!isConnected(Owner_RegistrationActivity.this)) {
+                    showConnectionDialog();
+                    progressBar.setVisibility(View.GONE);
+                }
                 if (!validateUserName() | !validateTractor() | !validateEquipment() | !validateDateOfBirth() | !validatePassword()) {
                     return;
                 }
@@ -159,8 +175,8 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
 
     private void createOwner() {
         //OwnerData data1 = ;
+        progressBar.setVisibility(View.VISIBLE);
         DatabaseReference root = FirebaseDatabase.getInstance().getReference();
-
 
         root.child("Owner").child(uid).setValue(new OwnerData(
                 true,
@@ -177,11 +193,18 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
                 root.child("User").child(uid).updateChildren(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        progressBar.setVisibility(View.GONE);
                         Toast.makeText(Owner_RegistrationActivity.this, "To Equipment Add", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Owner_RegistrationActivity.this, Equipment_Add.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent);
                         finish();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(Owner_RegistrationActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        progressBar.setVisibility(View.GONE);
                     }
                 });
 
@@ -255,5 +278,37 @@ public class Owner_RegistrationActivity extends AppCompatActivity {
         }
         equi_yes.setError("Please Check");
         return false;
+    }
+
+    private boolean isConnected(Owner_RegistrationActivity ownerRegistrationActivity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) ownerRegistrationActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        NetworkInfo wifiConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobileConnection = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+
+        if ((wifiConnection != null && wifiConnection.isConnected()) || (mobileConnection != null && mobileConnection.isConnected())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void showConnectionDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Owner_RegistrationActivity.this);
+        alertDialog.setMessage("Please connect to the internet to move further!");
+        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
+            }
+        });
+        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        AlertDialog dialog = alertDialog.create();
+        dialog.show();
     }
 }
