@@ -1,16 +1,17 @@
 package com.tejaswininimbalkar.krishisarathi.Owner.Model;
 
-public class Request_model {
+public class Booking_request_model {
+
     String Booking_Id;
     String Equipment_name;
     String Working_Date;
     String Working_Time;
     String Requester_Id;
 
-    public Request_model() {
+    public Booking_request_model() {
     }
 
-    public Request_model(String booking_Id, String equipment_name, String working_Date, String working_Time, String requester_Id) {
+    public Booking_request_model(String booking_Id, String equipment_name, String working_Date, String working_Time, String requester_Id) {
         Booking_Id = booking_Id;
         Equipment_name = equipment_name;
         Working_Date = working_Date;

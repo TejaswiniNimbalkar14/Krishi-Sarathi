@@ -52,7 +52,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:src="@drawable/image_cultivator" />
+                    android:src="@drawable/icon_equipment" />
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -65,7 +65,7 @@
                 android:fontFamily="@font/muli"
                 android:text="Requester Name"
                 android:textColor="@color/purple_500"
-                android:textSize="25dp"
+                android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/materialCardView2"
                 app:layout_constraintTop_toBottomOf="@id/booking_id" />
@@ -121,22 +121,19 @@
                     android:textColor="#673AB7"
                     android:textSize="18dp" />
 
-                <TextView
-                    android:id="@+id/work"
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/equip_name"
-                    android:text="Working Time :" />
+                    android:layout_below="@id/equip_name">
+                    <TextView
+                        android:id="@+id/work_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="05/05/2021 13:00"
+                        android:textColor="@color/red"
+                        />
+                </androidx.cardview.widget.CardView>
 
-                <TextView
-                    android:id="@+id/work_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/equip_name"
-                    android:layout_marginLeft="5dp"
-                    android:layout_toRightOf="@id/work"
-                    android:text="05/05/2021 13:00"
-                    android:textColor="@color/red" />
 
 
             </RelativeLayout>

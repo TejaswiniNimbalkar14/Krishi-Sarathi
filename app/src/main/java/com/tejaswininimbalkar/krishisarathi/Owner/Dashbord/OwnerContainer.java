@@ -22,7 +22,7 @@ import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.UserProfileFragment;
 
-public class OwnerContainer extends AppCompatActivity  {
+public class OwnerContainer extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
 
@@ -33,37 +33,63 @@ public class OwnerContainer extends AppCompatActivity  {
         setContentView(R.layout.activity_owner_container);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        getSupportFragmentManager().beginTransaction().replace(R.id.ownerContainer, new Equipment_Menu()).commit();
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment selectedFragment = null;
-                switch (item.getItemId()) {
-                    case R.id.equipment_req:
-                        selectedFragment = new Equipment_Request_To_Owner();
-                        break;
-                    case R.id.equipment_add:
-                        selectedFragment = new MyEquipmentFragment();
-                        break;
-                    case R.id.total_income:
-                        selectedFragment = new Income_status();
-                        break;
-                    case R.id.history:
-                        selectedFragment = new History_Of_Working();
-                        break;
-                    case R.id.settings:
-                        selectedFragment = new OwnerSettingsFragment();
-                        break;
-                }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new Equipment_Request_To_Owner()).commit();
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        //bottomNavigationView.setSelectedItemId(R.id.equipment_req);
 
-                getSupportFragmentManager().beginTransaction().replace(R.id.ownerContainer, selectedFragment).commit();
+//         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//             @Override
+//             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                 Fragment selectedFragment = null;
+//                 switch (item.getItemId()) {
+//                     case R.id.equipment_req:
+//                         selectedFragment = new Equipment_Request_To_Owner();
+//                         break;
+//                     case R.id.equipment_add:
+//                         selectedFragment = new MyEquipmentFragment();
+//                         break;
+//                     case R.id.total_income:
+//                         selectedFragment = new Income_status();
+//                         break;
+//                     case R.id.history:
+//                         selectedFragment = new History_Of_Working();
+//                         break;
+//                     case R.id.settings:
+//                         selectedFragment = new OwnerSettingsFragment();
+//                         break;
+//                 }
 
-                return true;
-            }
-        });
+//                 getSupportFragmentManager().beginTransaction().replace(R.id.ownerContainer, selectedFragment).commit();
+
+//                 return true;
+//             }
+//         });
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        Fragment selectedFragment = null;
+        switch (item.getItemId()) {
+            case R.id.equipment_req:
+                selectedFragment = new Equipment_Request_To_Owner();
+                break;
+            case R.id.equipment_add:
+                selectedFragment = new Equipment_Menu();
+                break;
+            case R.id.total_income:
+                selectedFragment = new Income_status();
+                break;
+            case R.id.history:
+                selectedFragment = new History_Of_Working();
+                break;
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, selectedFragment).commit();
+
+        return true;
+    }
 
 }
