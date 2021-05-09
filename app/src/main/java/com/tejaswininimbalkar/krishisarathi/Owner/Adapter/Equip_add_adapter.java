@@ -60,8 +60,8 @@ public class Equip_add_adapter extends RecyclerView.Adapter<Equip_add_adapter.Vi
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            equip_img = itemView.findViewById(R.id.equip_img);
-            equip_name = itemView.findViewById(R.id.equip_name);
+            equip_img = itemView.findViewById(R.id.equipment_image);
+            equip_name = itemView.findViewById(R.id.equipment_Name);
             floatingActionButton = itemView.findViewById(R.id.floating_button);
 
             floatingActionButton.setOnClickListener(new View.OnClickListener() {

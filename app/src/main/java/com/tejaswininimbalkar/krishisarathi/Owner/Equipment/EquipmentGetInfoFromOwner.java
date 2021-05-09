@@ -41,8 +41,8 @@ public class EquipmentGetInfoFromOwner extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_equipment_get_info_from_owner);
 
-        equipImg = findViewById(R.id.equip_img);
-        equipName = findViewById(R.id.equip_name);
+        equipImg = findViewById(R.id.equipment_image);
+        equipName = findViewById(R.id.equipment_Name);
         back_btn = findViewById(R.id.back_btn);
         companyName = findViewById(R.id.model_company_name);
         submit_data = findViewById(R.id.submit);

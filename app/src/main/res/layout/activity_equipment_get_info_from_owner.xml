@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/equip_img"
+        android:id="@+id/equipment_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="10dp"
@@ -26,7 +26,7 @@
         app:layout_constraintTop_toBottomOf="@+id/back_btn" />
 
     <TextView
-        android:id="@+id/equip_name"
+        android:id="@+id/equipment_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -35,7 +35,7 @@
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/equip_img" />
+        app:layout_constraintTop_toBottomOf="@+id/equipment_image" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -47,7 +47,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/equip_name">
+        app:layout_constraintTop_toBottomOf="@id/equipment_Name">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/model_company_name"

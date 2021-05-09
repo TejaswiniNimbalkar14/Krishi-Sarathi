@@ -2,7 +2,7 @@ package com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model;
 
 public class PendingModel {
 
-    String Booking_Id,Equipment_name,Requester_Id,Working_Date,Working_Time,owner_Id;
+    String Booking_Id,Equipment_name,Requester_Id,Working_Date,Working_Time,Owner_ID;
 
     public PendingModel() {
     }
@@ -16,7 +16,7 @@ public class PendingModel {
         Requester_Id = requester_Id;
         Working_Date = working_Date;
         Working_Time = working_Time;
-        this.owner_Id = owner_Id;
+        this.Owner_ID = owner_Id;
     }
 
     public String getBooking_Id() {
@@ -60,10 +60,10 @@ public class PendingModel {
     }
 
     public String getOwner_Id() {
-        return owner_Id;
+        return Owner_ID;
     }
 
     public void setOwner_Id(String owner_Id) {
-        this.owner_Id = owner_Id;
+        this.Owner_ID = owner_Id;
     }
 }
