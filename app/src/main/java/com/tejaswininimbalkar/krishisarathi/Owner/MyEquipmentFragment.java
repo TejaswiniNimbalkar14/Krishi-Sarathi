@@ -58,6 +58,7 @@ public class MyEquipmentFragment extends Fragment {
 
         adapter = new MyEquiAdapter(mList, getContext());
         recyclerView.setAdapter(adapter);
+        recyclerView.setHasFixedSize(true);
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
@@ -68,6 +69,7 @@ public class MyEquipmentFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 if (snapshot.exists()) {
+                    mList.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         String id = dataSnapshot.getKey();
                         databaseReference.child("Owner")
