@@ -1,22 +1,19 @@
 package com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model;
 
-public class PendingModel {
+public class AcceptedModel {
 
     String Booking_Id,Equipment_name,Requester_Id,Working_Date,Working_Time,Owner_ID;
 
-    public PendingModel() {
+    public AcceptedModel() {
     }
 
-    public PendingModel(String booking_Id, String equipment_name,
-                        String requester_Id, String working_Date,
-                        String working_Time, String owner_Id) {
-
+    public AcceptedModel(String booking_Id, String equipment_name, String requester_Id, String working_Date, String working_Time, String owner_ID) {
         Booking_Id = booking_Id;
         Equipment_name = equipment_name;
         Requester_Id = requester_Id;
         Working_Date = working_Date;
         Working_Time = working_Time;
-        Owner_ID = owner_Id;
+        Owner_ID = owner_ID;
     }
 
     public String getBooking_Id() {
