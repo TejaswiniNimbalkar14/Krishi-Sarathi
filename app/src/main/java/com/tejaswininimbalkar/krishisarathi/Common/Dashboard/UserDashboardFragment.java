@@ -1,9 +1,14 @@
 package com.tejaswininimbalkar.krishisarathi.Common.Dashboard;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -11,15 +16,23 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -27,7 +40,12 @@ import com.smarteist.autoimageslider.SliderView;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+
+import static androidx.constraintlayout.motion.widget.Debug.getLocation;
 
 /*
  * @author Leena Bhadane and Tejaswini Nimbalkar
@@ -46,11 +64,14 @@ public class UserDashboardFragment extends Fragment {
     };
     //private TextView wlcmMsg;
     private ImageView enterSession, notification;
+    FusedLocationProviderClient fusedLocationProviderClient;
+    private TextView locationEt;
     private GridviewAdapter mAdapter;
     private ArrayList<String> listTitle;
     private ArrayList<Integer> listImage;
 
     private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -60,6 +81,14 @@ public class UserDashboardFragment extends Fragment {
         //wlcmMsg = (TextView) view.findViewById(R.id.wlcmMsg);
         enterSession = (ImageView) view.findViewById(R.id.enterUserSession);
         notification = (ImageView) view.findViewById(R.id.icon_notification);
+        locationEt = (TextView) view.findViewById(R.id.locationTv);
+        progressBar = (ProgressBar) view.findViewById(R.id.dasboardProgress);
+
+        progressBar.setVisibility(View.VISIBLE);
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+        //getLocationAndSetToView();
 
         if (!isConnected(getActivity())) {
             showConnectionDialog();
@@ -102,6 +131,33 @@ public class UserDashboardFragment extends Fragment {
         return view;
     }
 
+    private void getLocationAndSetToView() {
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            return;
+        }
+
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null) {
+                    Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                    try {
+                        List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                        locationEt.setText(addressList.get(0).getLocality() + ", " + addressList.get(0).getCountryName());
+                        progressBar.setVisibility(View.GONE);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    progressBar.setVisibility(View.GONE);
+                    Toast.makeText(getContext(), "Please turn on location service", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
     private void enterUserSession() {
         enterSession.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,18 +170,18 @@ public class UserDashboardFragment extends Fragment {
 
     public void prepareList() {
         listTitle = new ArrayList<>();
-        listTitle.add("Farmer");
-        listTitle.add("Equipments");
-        listTitle.add("Fertilisers");
-        listTitle.add("Market price");
-        listTitle.add("Seeds");
-        listTitle.add("Transportation");
+        listTitle.add(getResources().getString(R.string.farmer));
+        listTitle.add(getResources().getString(R.string.equipment));
+        listTitle.add(getResources().getString(R.string.fertilizer));
+        listTitle.add(getResources().getString(R.string.market_price));
+        listTitle.add(getResources().getString(R.string.seeds));
+        listTitle.add(getResources().getString(R.string.transport));
 
         listImage = new ArrayList<>();
         listImage.add(R.drawable.image_farmer);
-        listImage.add(R.drawable.image_equipment);
-        listImage.add(R.drawable.image_fertilizer);
-        listImage.add(R.drawable.image_market_price);
+        listImage.add(R.drawable.image__equipments);
+        listImage.add(R.drawable.image_fertiliser);
+        listImage.add(R.drawable.image_marketpr);
         listImage.add(R.drawable.image_seed);
         listImage.add(R.drawable.image_transportation);
     }
