@@ -17,20 +17,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.AcceptedModel;
 import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.PendingModel;
 
 import java.util.ArrayList;
 
 public class AcceptedAdapter extends RecyclerView.Adapter<AcceptedAdapter.ViewHolder> {
 
-    ArrayList<PendingModel> mList;
+    ArrayList<AcceptedModel> mList;
     Context context;
     String OwnerId;
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = db.getReference();
 
-    public  AcceptedAdapter (Context context ,ArrayList<PendingModel> mList) {
+    public  AcceptedAdapter (Context context ,ArrayList<AcceptedModel> mList) {
         this.mList = mList;
         this.context = context;
     }
@@ -45,19 +46,19 @@ public class AcceptedAdapter extends RecyclerView.Adapter<AcceptedAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull AcceptedAdapter.ViewHolder holder, int position) {
-        PendingModel pendingModel = mList.get(position);
+        AcceptedModel acceptedModel = mList.get(position);
 
 
-        holder.booking_id.setText( pendingModel.getBooking_Id());
+        holder.booking_id.setText( acceptedModel.getBooking_Id());
 
-        String equipmentName = pendingModel.getEquipment_name();
+        String equipmentName = acceptedModel.getEquipment_name();
         holder.equipname.setText(equipmentName);
 
         /*holder.workingdate.setText(pendingModel.getWorking_Date());
         holder.workingtime.setText(pendingModel.getWorking_Time());*/
-        OwnerId = pendingModel.getOwner_Id();
+        String ownerId = acceptedModel.getOwner_ID();
 
-        databaseReference.child("User").child(OwnerId)
+        databaseReference.child("User").child(ownerId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -6,12 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -28,6 +31,8 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
     ArrayList<PendingModel> mList;
     Context context;
     String OwnerId;
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    String userId = auth.getUid();
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = db.getReference();
@@ -57,7 +62,7 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
 
         /*holder.workingdate.setText(pendingModel.getWorking_Date());
         holder.workingtime.setText(pendingModel.getWorking_Time());*/
-        OwnerId = pendingModel.getOwner_Id();
+        OwnerId = pendingModel.getOwner_ID();
 
         databaseReference.child("User").child(OwnerId)
                 .addValueEventListener(new ValueEventListener() {
@@ -84,13 +89,6 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
 
                     }
                 });
-        holder.RequestCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
 
     }
 
@@ -109,7 +107,6 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            RequestCancel = itemView.findViewById(R.id.request_cancel2);
             booking_id = itemView.findViewById(R.id.booking_id);
             equipname = itemView.findViewById(R.id.equipment_Name);
             OwnerName = itemView.findViewById(R.id.Owner_name);

@@ -23,6 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Adapter.AcceptedAdapter;
 import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Adapter.PendingAdapter;
+import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.AcceptedModel;
 import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.PendingModel;
 
 import java.util.ArrayList;
@@ -34,7 +35,7 @@ public class AcceptedFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     RecyclerView recyclerView;
-    ArrayList<PendingModel> mList;
+    ArrayList<AcceptedModel> mList;
     AcceptedAdapter acceptedAdapter;
     TextView OwnerName;
     String requesterId;
@@ -100,7 +101,7 @@ public class AcceptedFragment extends Fragment {
                                         requesterId = snapshot.child("Requester_Id").getValue().toString();
 
                                         if(userId.equals(requesterId)){
-                                            PendingModel model = snapshot.getValue(PendingModel.class);
+                                            AcceptedModel model = snapshot.getValue(AcceptedModel.class);
                                             mList.add(model);
                                             acceptedAdapter.notifyDataSetChanged();
 
