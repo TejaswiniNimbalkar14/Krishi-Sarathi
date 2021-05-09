@@ -108,8 +108,6 @@ public class PendingFragment extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                        PendingModel model = snapshot.getValue(PendingModel.class);
-                                       OwnerId = snapshot.child("Owner_ID").getValue().toString();
-
                                        mList.add(model);
                                        pendingAdapter.notifyDataSetChanged();
 
@@ -122,7 +120,7 @@ public class PendingFragment extends Fragment {
                                 });
 
 
-                       /* */
+
 
                     }
 

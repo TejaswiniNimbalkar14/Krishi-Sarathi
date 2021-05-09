@@ -43,7 +43,7 @@ public class EquiDetailsFragment extends Fragment {
 
 
     ImageView backBtn, cartBtn, equiImage;
-    TextView equiName;
+    TextView equiName,ownerCount;
     OwnerAdapter ownerAdapter;
 
     RecyclerView recyclerView;
@@ -90,7 +90,7 @@ public class EquiDetailsFragment extends Fragment {
         backBtn = (ImageView) view.findViewById(R.id.backArrowCard);
         equiImage = (ImageView) view.findViewById(R.id.cardEquiImage);
         equiName = (TextView) view.findViewById(R.id.equipmentName);
-
+        ownerCount = (TextView) view.findViewById(R.id.owner_count);
         equiName.setText(Machine_name);
         Glide.with(getContext()).load(imageUri).into(equiImage);
 
@@ -107,19 +107,27 @@ public class EquiDetailsFragment extends Fragment {
 
         recyclerView.setAdapter(ownerAdapter);
 
+
         databaseReference.child("Equipment").child(Machine_name).child("Owner Name")
                 .addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                int o_Count=(int)snapshot.getChildrenCount();
                 mList.clear();
                 if(snapshot.exists()){
+                    ownerCount.setText(o_Count+"");
+
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+
                         String ID = dataSnapshot.getKey();
                         databaseReference.child("Owner")
                                 .child(ID)
                                 .addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+
                                         OwnerModel model = snapshot.getValue(OwnerModel.class);
                                         mList.add(model);
                                         ownerAdapter.notifyDataSetChanged();

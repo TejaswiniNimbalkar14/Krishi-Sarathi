@@ -127,7 +127,7 @@
     <!--//Leena_code-->
     <!-- <string name="app_name">Dashboard</string>-->
 
-    <string name="krishi_sarthi" translatable="false">Krishi sarthi</string>
+    <string name="krishi_sarthi" translatable="false">Krishi sarathi</string>
     <string name="textview" translatable="false">TextView</string>
     <string name="farmer" translatable="false">Farmer</string>
     <string name="add_location" translatable="false">Add Location</string>
@@ -148,6 +148,9 @@
     <string name="registration" translatable="false">Registration</string>
     <string name="hi_do_you_want_to_be_a_partner_in_krishi_sarathi_if_yes_registration_process_as_below" translatable="false">Hi, do you want to be a partner in Krishi Sarathi? If yes, registration process as below</string>
     <string name="my_equipment">My Equipment</string>
+    <string name="title_activity_tabbed" translatable="false">TabbedActivity</string>
+    <string name="tab_text_1" translatable="false">Tab 1</string>
+    <string name="tab_text_2" translatable="false">Tab 2</string>
     <string name="owner_details" translatable="false">Owner Details :</string>
     <string name="owner_id" translatable="false">Owner ID :</string>
     <string name="equi_details" translatable="false">Equipment Details :</string>
@@ -168,7 +171,7 @@
     <string name="shipping_charges" translatable="false">Shipping Charges :</string>
     <string name="total_price" translatable="false">Total Price :</string>
     <string name="payment_methods" translatable="false">Payment Methods :</string>
-    <string name="cash_on_delivery" translatable="false">Cash On Delivery</string>
+    <string name="cash_on_delivery" translatable="false">Cash on Delivery :</string>
     <string name="upi" translatable="false">UPI</string>
     <string name="debit_credit" translatable="false">Debit/Credit Card</string>
     <string name="book_equi" translatable="false">Book Equipment</string>
@@ -189,4 +192,8 @@
     <string name="start_work">Start Work</string>
     <string name="booking_id">Booking ID :</string>
     <string name="work_finish">Work Finish</string>
+    <string name="fertilizer" translatable="false">Fertilizers</string>
+    <string name="market_price" translatable="false">Market Price</string>
+    <string name="seeds" translatable="false">Seeds</string>
+    <string name="transport" translatable="false">Transport</string>
 </resources>

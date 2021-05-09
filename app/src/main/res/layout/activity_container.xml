@@ -31,8 +31,8 @@
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:background="@drawable/background_bottom_nav"
+            android:layout_height="50dp"
+            android:background="@drawable/background_dashboard_header"
             app:itemIconTint="@color/item_color"
             app:itemRippleColor="@color/white"
             app:itemTextColor="@color/item_color"

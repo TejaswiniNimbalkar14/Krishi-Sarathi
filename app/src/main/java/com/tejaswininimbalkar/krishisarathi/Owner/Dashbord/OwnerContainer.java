@@ -37,35 +37,6 @@ public class OwnerContainer extends AppCompatActivity implements BottomNavigatio
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new Req_accpt_com()).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        //bottomNavigationView.setSelectedItemId(R.id.equipment_req);
-
-//         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//             @Override
-//             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                 Fragment selectedFragment = null;
-//                 switch (item.getItemId()) {
-//                     case R.id.equipment_req:
-//                         selectedFragment = new Equipment_Request_To_Owner();
-//                         break;
-//                     case R.id.equipment_add:
-//                         selectedFragment = new MyEquipmentFragment();
-//                         break;
-//                     case R.id.total_income:
-//                         selectedFragment = new Income_status();
-//                         break;
-//                     case R.id.history:
-//                         selectedFragment = new History_Of_Working();
-//                         break;
-//                     case R.id.settings:
-//                         selectedFragment = new OwnerSettingsFragment();
-//                         break;
-//                 }
-
-//                 getSupportFragmentManager().beginTransaction().replace(R.id.ownerContainer, selectedFragment).commit();
-
-//                 return true;
-//             }
-//         });
     }
 
 
