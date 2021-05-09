@@ -127,7 +127,7 @@
     <!--//Leena_code-->
     <!-- <string name="app_name">Dashboard</string>-->
 
-    <string name="krishi_sarthi" translatable="false">Krishi sarthi</string>
+    <string name="krishi_sarthi" translatable="false">Krishi sarathi</string>
     <string name="textview" translatable="false">TextView</string>
     <string name="farmer" translatable="false">Farmer</string>
     <string name="add_location" translatable="false">Add Location</string>
@@ -189,4 +189,8 @@
     <string name="request" translatable="false">Request</string>
     <string name="move_to_user" translatable="false">Move to User Activity</string>
     <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
+    <string name="fertilizer" translatable="false">Fertilizers</string>
+    <string name="market_price" translatable="false">Market Price</string>
+    <string name="seeds" translatable="false">Seeds</string>
+    <string name="transport" translatable="false">Transport</string>
 </resources>
