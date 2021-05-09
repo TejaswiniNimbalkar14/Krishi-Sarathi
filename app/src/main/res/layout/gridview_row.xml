@@ -6,13 +6,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout1"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="140dp"
     android:layout_below="@+id/imageSlider"
     android:layout_marginLeft="20dp"
-
     android:layout_marginRight="20dp"
     android:layout_marginBottom="20dp"
-    android:background="@color/colorDivider"
+    android:background="@drawable/background_dashboard"
     android:padding="20dp"
     app:layout_constraintCircleRadius="88dp">
 
@@ -36,7 +35,6 @@
         android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="2dp"
-        android:ellipsize="marquee"
         android:fontFamily="serif"
         android:text="@string/textview"
         android:textColor="@color/black"
@@ -44,7 +42,6 @@
         android:textStyle="bold">
 
     </TextView>
-
 
 </RelativeLayout>
 

@@ -123,9 +123,9 @@ public class UserDashboardFragment extends Fragment {
 
         listImage = new ArrayList<>();
         listImage.add(R.drawable.image_farmer);
-        listImage.add(R.drawable.image_equipment);
-        listImage.add(R.drawable.image_fertilizer);
-        listImage.add(R.drawable.image_market_price);
+        listImage.add(R.drawable.image__equipments);
+        listImage.add(R.drawable.image_fertiliser);
+        listImage.add(R.drawable.image_marketpr);
         listImage.add(R.drawable.image_seed);
         listImage.add(R.drawable.image_transportation);
     }

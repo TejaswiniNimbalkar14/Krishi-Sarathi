@@ -77,7 +77,7 @@ public class OwnerContainer extends AppCompatActivity implements BottomNavigatio
                 selectedFragment = new Equipment_Request_To_Owner();
                 break;
             case R.id.equipment_add:
-                selectedFragment = new Equipment_Menu();
+                selectedFragment = new MyEquipmentFragment();
                 break;
             case R.id.total_income:
                 selectedFragment = new Income_status();

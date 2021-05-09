@@ -30,25 +30,22 @@
             android:id="@+id/layoutHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorTrendingEnd"
+            android:background="@drawable/background_dashboard_header"
             android:padding="15dp">
 
-
             <TextView
-                android:id="@+id/location"
-                android:layout_width="200dp"
+                android:id="@+id/krishiSarathi"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
                 android:text="@string/krishi_sarthi"
-                android:drawableStart="@drawable/icon_location"
-                android:drawableLeft="@drawable/icon_location"
                 android:textColor="@color/colorWhite"
-                android:textSize="25sp"
-                android:drawablePadding="5dp"
+                android:textSize="30sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toStartOf="@+id/icon_notification"
                 app:layout_constraintStart_toStartOf="parent"
-                tools:ignore="MissingConstraints"
-                android:drawableTint="@color/white"
-                tools:layout_editor_absoluteY="-6dp" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/icon_notification"
@@ -57,8 +54,8 @@
                 android:contentDescription="@string/app_name"
                 android:src="@drawable/icon_notifications"
                 android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/location"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_goneMarginEnd="10dp"
                 app:tint="@color/black"
                 tools:ignore="MissingConstraints">
@@ -69,31 +66,65 @@
                 android:id="@+id/enterUserSession"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/icon_person"
+                android:src="@drawable/icon_profile"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@id/location"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_goneMarginEnd="10dp"
                 app:tint="@color/black" />
 
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/icon_add_location"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/editText"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginStart="14dp"
+                app:tint="#423E3E"
+                tools:ignore="ContentDescription,MissingConstraints" />
+
+            <EditText
+                android:id="@+id/locationEt"
+                android:layout_width="200dp"
+                android:layout_height="35dp"
+                android:background="@null"
+                android:hint="Add Location"
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textColor="@color/colorAccent"
+                android:textSize="15sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.327"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/krishiSarathi"
+                app:layout_constraintVertical_bias="0.957"
+                tools:ignore="HardcodedText,MissingConstraints,RtlSymmetry" />
+
             <LinearLayout
                 android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="60dp"
                 android:background="@drawable/backgorund_white_round_corners"
+                android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location"
+                app:layout_constraintCircleRadius="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintVertical_bias="0.09"
-                tools:ignore="UnknownId"
-                tools:layout_editor_absoluteX="9dp">
+                tools:ignore="MissingConstraints,UnknownId">
 
                 <ImageView
                     android:layout_width="63dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/backgound_for_icon"
-
+                    android:background="@null"
                     android:contentDescription="@string/todo"
                     android:padding="6dp"
                     android:src="@drawable/icon_search"
@@ -104,7 +135,8 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@null"
-                    android:hint="@string/search_elements"
+                    android:gravity="center"
+                    android:hint="Search For...."
                     android:imeOptions="actionSearch"
                     android:importantForAutofill="no"
                     android:inputType="text"
@@ -119,8 +151,7 @@
                 <ImageView
                     android:layout_width="63dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/backgound_for_icon"
-
+                    android:background="@null"
                     android:contentDescription="@string/todo"
                     android:padding="6dp"
                     android:src="@drawable/icon_mic"
@@ -134,7 +165,6 @@
             android:id="@+id/imageSlider"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:layout_below="@id/layoutHeader"
             app:sliderAnimationDuration="3000"
             app:sliderAutoCycleDirection="back_and_forth"
             app:sliderAutoCycleEnabled="true"
@@ -147,28 +177,41 @@
             app:sliderIndicatorSelectedColor="#5A5A5A"
             app:sliderIndicatorUnselectedColor="#FFF"
             app:sliderScrollTimeInSec="1"
+            android:layout_below="@id/layoutHeader"
+            android:background="@drawable/background_dashboard"
             app:sliderStartAutoCycle="true" />
 
         <LinearLayout
+            android:background="@drawable/background_dashboard"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_below="@id/imageSlider"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="10dp">
+
+
+            <TextView
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="@string/categories"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
             <GridView
                 android:id="@+id/gridView1"
+                android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="15dp"
-                android:layout_marginBottom="60dp"
-                android:backgroundTint="@color/colorTrendingEnd"
+                android:numColumns="3"
                 android:elevation="8dp"
-                android:horizontalSpacing="10dp"
-                android:numColumns="2"
-                android:verticalSpacing="10dp"
-                tools:ignore="UnusedAttribute"/>
+                android:paddingTop="15dp"
+                android:paddingBottom="10dp"
+                tools:ignore="UnusedAttribute">
+            </GridView>
+
+
 
         </LinearLayout>
 
