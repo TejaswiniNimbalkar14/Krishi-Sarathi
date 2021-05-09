@@ -35,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
+import com.tejaswininimbalkar.krishisarathi.Common.Navigation.YourOrdersActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -42,7 +43,7 @@ import com.tejaswininimbalkar.krishisarathi.R;
 public class UserProfileFragment extends Fragment {
 
     String uid;
-    private Button settings, editProfile, moveBtn;
+    private Button settings, editProfile, moveBtn, myOrders;
     private TextView fullName, phoneNo;
     private ImageView profileImage;
     private ProgressBar imageProgress, infoProgress;
@@ -61,6 +62,7 @@ public class UserProfileFragment extends Fragment {
         imageProgress = (ProgressBar) view.findViewById(R.id.imageProgressBar);
         infoProgress = (ProgressBar) view.findViewById(R.id.infoProgress);
         moveBtn = (Button) view.findViewById(R.id.moveToOwnerActivity);
+        myOrders = (Button) view.findViewById(R.id.myOrdersBtn);
 
         imageProgress.setVisibility(View.VISIBLE);
         infoProgress.setVisibility(View.VISIBLE);
@@ -88,6 +90,14 @@ public class UserProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), OwnerLoginActivity.class);
+                startActivity(i);
+            }
+        });
+
+        myOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), YourOrdersActivity.class);
                 startActivity(i);
             }
         });

@@ -4,41 +4,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <!--        <item-->
-        <!--            android:id="@+id/home"-->
-        <!--            android:icon="@drawable/home_icon"-->
-        <!--            android:title="@string/Home">-->
-
-        <!--        </item>-->
-
-        <!--        <item-->
-        <!--            android:id="@+id/profile"-->
-        <!--            android:icon="@drawable/profile_icon"-->
-        <!--            android:title="@string/Profile">-->
-
-        <!--        </item>-->
-
-        <!--        <item-->
-        <!--            android:id="@+id/location"-->
-        <!--            android:icon="@drawable/location_icon"-->
-        <!--            android:title="@string/location">-->
-
-        <!--        </item>-->
-
-
-        <!--        <item-->
-        <!--            android:id="@+id/orders"-->
-        <!--            android:icon="@drawable/orders_icon"-->
-        <!--            android:title="@string/orders">-->
-
-        <!--        </item>-->
-
-        <item
-            android:id="@+id/your_Order"
-            android:icon="@drawable/image_tracking"
-            android:title="@string/YourOrders">
-
-        </item>
 
         <item
             android:id="@+id/farmer_guide"
@@ -87,13 +52,7 @@
             android:id="@+id/feedback"
             android:icon="@drawable/icon_feedback"
             android:title="@string/feedback">
-
         </item>
-
-
-
-
-
 
     </group>
 
@@ -105,9 +64,7 @@
                 android:id="@+id/share"
                 android:icon="@drawable/icon_share"
                 android:title="@string/share">
-
             </item>
-
         </menu>
     </item>
 
