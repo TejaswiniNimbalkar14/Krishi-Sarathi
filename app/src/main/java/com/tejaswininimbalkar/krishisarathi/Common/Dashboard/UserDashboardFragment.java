@@ -73,6 +73,15 @@ public class UserDashboardFragment extends Fragment {
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
+        getLocationAndSetToView();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -86,9 +95,7 @@ public class UserDashboardFragment extends Fragment {
 
         progressBar.setVisibility(View.VISIBLE);
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
 
-        //getLocationAndSetToView();
 
         if (!isConnected(getActivity())) {
             showConnectionDialog();
