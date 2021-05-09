@@ -189,6 +189,9 @@
     <string name="request" translatable="false">Request</string>
     <string name="move_to_user" translatable="false">Move to User Activity</string>
     <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
+    <string name="start_work">Start Work</string>
+    <string name="booking_id">Booking ID :</string>
+    <string name="work_finish">Work Finish</string>
     <string name="fertilizer" translatable="false">Fertilizers</string>
     <string name="market_price" translatable="false">Market Price</string>
     <string name="seeds" translatable="false">Seeds</string>

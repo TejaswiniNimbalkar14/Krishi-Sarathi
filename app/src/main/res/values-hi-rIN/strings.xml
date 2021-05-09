@@ -63,4 +63,7 @@
     <string name="current_pass">वर्तमान पासवर्ड</string>
     <string name="forgot_current_pass">वर्तमान पासवर्ड भूल गए?</string>
     <string name="my_equipment">मेरे उपकरण</string>
+    <string name="start_work">Start Work</string>
+    <string name="booking_id">Booking ID :</string>
+    <string name="work_finish">Work Finish</string>
 </resources>

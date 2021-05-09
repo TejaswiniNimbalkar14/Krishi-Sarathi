@@ -18,6 +18,7 @@ import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.Fragment.Equipment_Re
 import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.Fragment.History_Of_Working;
 import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.Fragment.Income_status;
 import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.Fragment.OwnerSettingsFragment;
+import com.tejaswininimbalkar.krishisarathi.Owner.Dashbord.Fragment.Req_accpt_com;
 import com.tejaswininimbalkar.krishisarathi.Owner.MyEquipmentFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.UserProfileFragment;
@@ -34,7 +35,7 @@ public class OwnerContainer extends AppCompatActivity implements BottomNavigatio
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new Equipment_Request_To_Owner()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new Req_accpt_com()).commit();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
@@ -45,7 +46,7 @@ public class OwnerContainer extends AppCompatActivity implements BottomNavigatio
         Fragment selectedFragment = null;
         switch (item.getItemId()) {
             case R.id.equipment_req:
-                selectedFragment = new Equipment_Request_To_Owner();
+                selectedFragment = new Req_accpt_com();
                 break;
             case R.id.equipment_add:
                 selectedFragment = new MyEquipmentFragment();
