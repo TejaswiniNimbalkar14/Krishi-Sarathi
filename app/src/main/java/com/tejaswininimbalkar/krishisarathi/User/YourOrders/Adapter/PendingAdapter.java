@@ -1,27 +1,23 @@
 package com.tejaswininimbalkar.krishisarathi.User.YourOrders.Adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.Model.OwnerModel;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.Booking.BookingActivity;
 import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.PendingModel;
 
 import java.util.ArrayList;
@@ -52,8 +48,12 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull PendingAdapter.ViewHolder holder, int position) {
         PendingModel pendingModel = mList.get(position);
-        holder.booking_id.setText(pendingModel.getBooking_Id());
-        holder.equipname.setText(pendingModel.getEquipment_name());
+
+
+        holder.booking_id.setText( pendingModel.getBooking_Id());
+
+        String equipmentName = pendingModel.getEquipment_name();
+        holder.equipname.setText(equipmentName);
 
         /*holder.workingdate.setText(pendingModel.getWorking_Date());
         holder.workingtime.setText(pendingModel.getWorking_Time());*/
@@ -72,6 +72,26 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
                     }
                 });
 
+        databaseReference.child("Equipment").child(equipmentName)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                         String imgUri= snapshot.child("equip_img_Url").getValue().toString();
+                        Glide.with(holder.equip_img.getContext()).load(imgUri).into(holder.equip_img);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+        holder.RequestCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
     }
 
     @Override
@@ -83,16 +103,17 @@ public class PendingAdapter extends RecyclerView.Adapter<PendingAdapter.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView booking_id,workingdate,workingtime,equipname,owner_name;
         TextView OwnerName;
+        FloatingActionButton RequestCancel;
 
         ImageView equip_img;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            RequestCancel = itemView.findViewById(R.id.request_cancel2);
             booking_id = itemView.findViewById(R.id.booking_id);
             equipname = itemView.findViewById(R.id.equipment_Name);
             OwnerName = itemView.findViewById(R.id.Owner_name);
-
-            //equip_img = itemView.findViewById(R.id.equipment_image);
+            equip_img = itemView.findViewById(R.id.equipment_image);
             /*workingdate = itemView.findViewById(R.id.working_Date);
             workingtime = itemView.findViewById(R.id.working_Time);*/
 

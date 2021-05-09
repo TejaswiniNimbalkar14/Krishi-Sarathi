@@ -130,9 +130,7 @@
     <string name="krishi_sarthi" translatable="false">Krishi sarthi</string>
     <string name="textview" translatable="false">TextView</string>
     <string name="farmer" translatable="false">Farmer</string>
-    <string name="location" tools:ignore="DuplicateDefinition">Location</string>
     <string name="add_location" translatable="false">Add Location</string>
-    <string name="krishi_sarathi" translatable="false" tools:ignore="DuplicateDefinition">Krishi sarathi</string>
     <string name="categories" translatable="false">Categories</string>
     <string name="updates" translatable="false">Updates</string>
 
@@ -150,9 +148,6 @@
     <string name="registration" translatable="false">Registration</string>
     <string name="hi_do_you_want_to_be_a_partner_in_krishi_sarathi_if_yes_registration_process_as_below" translatable="false">Hi, do you want to be a partner in Krishi Sarathi? If yes, registration process as below</string>
     <string name="my_equipment">My Equipment</string>
-    <string name="title_activity_tabbed">TabbedActivity</string>
-    <string name="tab_text_1">Tab 1</string>
-    <string name="tab_text_2">Tab 2</string>
     <string name="owner_details" translatable="false">Owner Details :</string>
     <string name="owner_id" translatable="false">Owner ID :</string>
     <string name="equi_details" translatable="false">Equipment Details :</string>

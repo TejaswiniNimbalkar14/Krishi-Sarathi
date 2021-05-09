@@ -2,43 +2,54 @@ package com.tejaswininimbalkar.krishisarathi.User.YourOrders;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
+import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Adapter.AcceptedAdapter;
+import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Adapter.PendingAdapter;
+import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.PendingModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AcceptedFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
+
 public class AcceptedFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    RecyclerView recyclerView;
+    ArrayList<PendingModel> mList;
+    AcceptedAdapter acceptedAdapter;
+    TextView OwnerName;
+    String requesterId;
+    String userId;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+    DatabaseReference databaseReference = db.getReference();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser user;
+
     private String mParam1;
     private String mParam2;
 
     public AcceptedFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment SecondFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static AcceptedFragment newInstance(String param1, String param2) {
         AcceptedFragment fragment = new AcceptedFragment();
         Bundle args = new Bundle();
@@ -60,7 +71,68 @@ public class AcceptedFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_accepted, container, false);
+        View  view = inflater.inflate(R.layout.fragment_accepted, container, false);
+
+        recyclerView = view.findViewById(R.id.acceptedRec);
+        OwnerName = view.findViewById(R.id.Owner_name);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        mList = new ArrayList<>();
+        acceptedAdapter = new AcceptedAdapter(getContext(), mList);
+
+        recyclerView.setAdapter( acceptedAdapter);
+
+        user = auth.getCurrentUser();
+        userId = user.getUid();
+
+
+        databaseReference.child("Booking").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        String ID = dataSnapshot.getKey();
+                        databaseReference.child("Booking").child(ID)
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        requesterId = snapshot.child("Requester_Id").getValue().toString();
+
+                                        if(userId.equals(requesterId)){
+                                            PendingModel model = snapshot.getValue(PendingModel.class);
+                                            mList.add(model);
+                                            acceptedAdapter.notifyDataSetChanged();
+
+                                        }
+
+
+
+                                    }
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                    }
+
+                                });
+
+
+
+
+                    }
+
+                }else{
+                    Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        return  view;
     }
 }
