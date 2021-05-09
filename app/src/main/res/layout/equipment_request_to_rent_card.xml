@@ -48,16 +48,16 @@
                 app:layout_constraintTop_toBottomOf="@id/booking_id">
 
                 <ImageView
-                    android:id="@+id/equip_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:id="@+id/equipment_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:src="@drawable/icon_equipment" />
 
             </com.google.android.material.card.MaterialCardView>
 
             <TextView
-                android:id="@+id/requester_name"
+                android:id="@+id/Owner_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -78,7 +78,7 @@
                 android:layout_marginTop="5dp"
                 android:src="@drawable/icon_location"
                 app:layout_constraintStart_toEndOf="@+id/materialCardView2"
-                app:layout_constraintTop_toBottomOf="@+id/requester_name" />
+                app:layout_constraintTop_toBottomOf="@+id/Owner_name" />
 
             <TextView
                 android:id="@+id/address"
@@ -113,7 +113,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
 
                 <TextView
-                    android:id="@+id/equip_name"
+                    android:id="@+id/equipment_Name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
@@ -124,7 +124,7 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/equip_name">
+                    android:layout_below="@id/equipment_Name">
                     <TextView
                         android:id="@+id/work_time"
                         android:layout_width="wrap_content"

@@ -101,11 +101,11 @@ public class Equipment_Request_adapter extends RecyclerView.Adapter<Equipment_Re
             super(itemView);
 
             booking_id = itemView.findViewById(R.id.booking_id);
-            equip_name = itemView.findViewById(R.id.equip_name);
-            requester_name = itemView.findViewById(R.id.requester_name);
+            equip_name = itemView.findViewById(R.id.equipment_Name);
+            requester_name = itemView.findViewById(R.id.Owner_name);
             land_address = itemView.findViewById(R.id.address);
             working_time = itemView.findViewById(R.id.work_time);
-            equip_img = itemView.findViewById(R.id.equip_img);
+            equip_img = itemView.findViewById(R.id.equipment_image);
             conform_request = itemView.findViewById(R.id.request_accept);
             cancel_request = itemView.findViewById(R.id.request_cancel);
         }

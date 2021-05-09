@@ -16,7 +16,7 @@
 
 
         <ImageView
-            android:id="@+id/equip_img"
+            android:id="@+id/equipment_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:src="@drawable/image_cultivator" />
@@ -26,8 +26,8 @@
             android:id="@+id/floating_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@id/equip_img"
-            android:layout_alignRight="@id/equip_img"
+            android:layout_alignEnd="@id/equipment_image"
+            android:layout_alignRight="@id/equipment_image"
             android:backgroundTint="@color/white"
             android:clickable="true"
             android:elevation="1dp"
@@ -41,7 +41,7 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/equip_name"
+        android:id="@+id/equipment_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

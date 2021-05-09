@@ -4,7 +4,6 @@ package com.tejaswininimbalkar.krishisarathi.User.Booking;
  */
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -23,27 +22,21 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Model.User_Data;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
-import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.User_SignUp;
-import com.tejaswininimbalkar.krishisarathi.Common.Navigation.YourOrdersActivity;
-import com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment.EquiDetailsFragment;
 import com.tejaswininimbalkar.krishisarathi.R;
-import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.PendingModel;
 import com.tejaswininimbalkar.krishisarathi.User.YourOrders.PendingFragment;
 
-import java.security.acl.Owner;
 import java.util.HashMap;
 import java.util.Random;
 
 public class PaymentActivity extends AppCompatActivity {
     Button book_Equip;
     TextView User_Name,User_Phone;
-    EditText User_Address,working_Date,working_Time;
+    EditText return_Date,working_Date,working_Time;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference ref = database.getReference();
     FirebaseAuth auth = FirebaseAuth.getInstance();
-    String Booking_Id,Equipment_name,Requester_Id,Working_Date,Working_Time,owner_Id;
+    String Booking_Id,Equipment_name,Requester_Id,Working_Date,Working_Time,owner_Id,Return_Date;
 
     FragmentManager fragmentManager = getSupportFragmentManager();
     FragmentTransaction transaction = fragmentManager.beginTransaction();
@@ -64,10 +57,9 @@ public class PaymentActivity extends AppCompatActivity {
         book_Equip = (Button)findViewById(R.id.book_Equipment);
         User_Name = (TextView)findViewById(R.id.U_Name);
         User_Phone = (TextView)findViewById(R.id.U_Phone);
-        User_Address = (EditText)findViewById(R.id.U_Address);
+        return_Date = (EditText)findViewById(R.id.return_Date);
         working_Date = (EditText)findViewById(R.id.working_date);
         working_Time = (EditText)findViewById(R.id.working_time);
-
 
 
 
@@ -104,6 +96,8 @@ public class PaymentActivity extends AppCompatActivity {
 
                 Working_Date = working_Date.getText().toString();
                 Working_Time = working_Time.getText().toString();
+                Return_Date = return_Date.getText().toString();
+
 
                 HashMap<String, String> orderMap = new HashMap<>();
 
@@ -112,13 +106,28 @@ public class PaymentActivity extends AppCompatActivity {
                 orderMap.put("Booking_Id",Booking_Id);
                 orderMap.put("Working_Date",Working_Date);
                 orderMap.put("Working_Time",Working_Time);
+                orderMap.put("Return_Date",Return_Date);
+
+
 
                 ref.child("Owner").child(owner_Id).child("Booking_Request").child(Booking_Id)
                         .setValue(orderMap);
 
 
+                HashMap<String, String> pendingMap = new HashMap<>();
+
+                pendingMap.put("Owner_ID",owner_Id);
+                pendingMap.put("Equipment_name",Equipment_name);
+                pendingMap.put("Booking_Id",Booking_Id);
+                pendingMap.put("Working_Date",Working_Date);
+                pendingMap.put("Working_Time",Working_Time);
+                pendingMap.put("Return_Date",Return_Date);
+
+
+
+
                 ref.child("User").child(Requester_Id).child("Pending Request").child(Booking_Id)
-                        .setValue(orderMap);
+                        .setValue(pendingMap);
 
 
                 Toast.makeText(getApplicationContext(),"You Requested for Equipment",Toast.LENGTH_LONG).show();

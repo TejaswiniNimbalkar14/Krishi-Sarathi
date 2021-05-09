@@ -224,14 +224,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
-            android:text="Sorry We Don't have a Information"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginEnd="274dp"
-            android:layout_marginRight="274dp"
             android:fontFamily="@font/muli"
+            android:text="Sorry We Don't have a Information"
             android:textColor="@color/black"
             android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 

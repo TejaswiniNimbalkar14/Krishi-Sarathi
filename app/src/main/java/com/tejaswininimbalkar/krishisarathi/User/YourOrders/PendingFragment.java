@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,7 +39,11 @@ public class PendingFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<PendingModel> mList;
     PendingAdapter pendingAdapter;
+    TextView OwnerName;
+    String OwnerId;
+
     String userId;
+
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = db.getReference();
@@ -78,6 +83,7 @@ public class PendingFragment extends Fragment {
         View  view = inflater.inflate(R.layout.fragment_pending, container, false);
 
         recyclerView = view.findViewById(R.id.pendingRec);
+        OwnerName = view.findViewById(R.id.Owner_name);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
@@ -102,19 +108,29 @@ public class PendingFragment extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                        PendingModel model = snapshot.getValue(PendingModel.class);
-                                        mList.add(model);
-                                        pendingAdapter.notifyDataSetChanged();
+                                       OwnerId = snapshot.child("Owner_ID").getValue().toString();
+
+                                       mList.add(model);
+                                       pendingAdapter.notifyDataSetChanged();
+
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
 
                                     }
+
                                 });
+
+
+                       /* */
+
                     }
 
                 }else{
                     Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
                 }
+
+
             }
 
             @Override
@@ -122,6 +138,7 @@ public class PendingFragment extends Fragment {
 
             }
         });
+
 
 
 
