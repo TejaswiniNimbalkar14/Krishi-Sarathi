@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,10 +38,12 @@ public class PendingFragment extends Fragment {
     RecyclerView recyclerView;
     ArrayList<PendingModel> mList;
     PendingAdapter pendingAdapter;
+    String userId;
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference = db.getReference();
     FirebaseAuth auth = FirebaseAuth.getInstance();
+    FirebaseUser user;
 
     private String mParam1;
     private String mParam2;
@@ -83,7 +86,8 @@ public class PendingFragment extends Fragment {
 
         recyclerView.setAdapter( pendingAdapter);
 
-        String userId= auth.getUid();
+        user = auth.getCurrentUser();
+        userId = user.getUid();
 
 
         databaseReference.child("User").child(userId).child("Pending Request").addValueEventListener(new ValueEventListener() {
@@ -107,6 +111,7 @@ public class PendingFragment extends Fragment {
                                     }
                                 });
                     }
+
                 }else{
                     Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
                 }

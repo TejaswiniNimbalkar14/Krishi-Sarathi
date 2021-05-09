@@ -194,10 +194,6 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                 activityContainerBinding.menuBtn.setVisibility(View.GONE);
                 break;
 
-            case R.id.your_Order:
-                startActivity(new Intent(ContainerActivity.this, YourOrdersActivity.class));
-                activityContainerBinding.menuBtn.setVisibility(View.GONE);
-                break;
             case R.id.equipment_owner:
                 if (user != null) {
 
@@ -212,12 +208,10 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
                                 Intent intent = new Intent(ContainerActivity.this, OwnerLoginActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                finish();
                             } else {
                                 Intent intent = new Intent(ContainerActivity.this, Owner_Welcome.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
-                                finish();
                             }
 
                         }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
     Button forgot_pass, btn_login;
     TextInputLayout owner_id, owner_pass;
     ProgressBar progressBar;
+    ImageView backBtn;
     String ownerId, pass, uid;
     private IntroPref pref;
 
@@ -51,6 +53,7 @@ public class OwnerLoginActivity extends AppCompatActivity {
         owner_id = findViewById(R.id.owner_id);
         owner_pass = findViewById(R.id.password);
         progressBar = findViewById(R.id.ownerLoginProgress);
+        backBtn = findViewById(R.id.back_btn);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         uid = user.getUid();
@@ -70,6 +73,12 @@ public class OwnerLoginActivity extends AppCompatActivity {
             }
         });
 
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
     }
 
