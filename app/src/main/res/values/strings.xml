@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Krishi Sarathi</string>
     <string name="slide1_title" translatable="false">Slide 1</string>
     <string name="slide2_title" translatable="false">Slide 2</string>
@@ -130,6 +130,11 @@
     <string name="krishi_sarthi" translatable="false">Krishi sarthi</string>
     <string name="textview" translatable="false">TextView</string>
     <string name="farmer" translatable="false">Farmer</string>
+    <string name="location" tools:ignore="DuplicateDefinition">Location</string>
+    <string name="add_location" translatable="false">Add Location</string>
+    <string name="krishi_sarathi" translatable="false" tools:ignore="DuplicateDefinition">Krishi sarathi</string>
+    <string name="categories" translatable="false">Categories</string>
+    <string name="updates" translatable="false">Updates</string>
 
 
     <!--    Owner string-->
