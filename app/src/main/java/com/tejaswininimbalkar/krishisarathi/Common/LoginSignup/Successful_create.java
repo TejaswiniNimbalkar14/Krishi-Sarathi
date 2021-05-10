@@ -20,6 +20,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.Common.AppCompat;
 import com.tejaswininimbalkar.krishisarathi.Common.ContainerActivity;
+import com.tejaswininimbalkar.krishisarathi.Common.GetAddressFormLocation;
 import com.tejaswininimbalkar.krishisarathi.Owner.OwnerLoginActivity;
 import com.tejaswininimbalkar.krishisarathi.Owner.Owner_Welcome;
 import com.tejaswininimbalkar.krishisarathi.R;
@@ -82,7 +83,7 @@ public class Successful_create extends AppCompat {
                         });
                     }
                 } else if (textUpdate.getText().toString().equals("Account Create")) {
-                    Intent intent = new Intent(getApplicationContext(), ContainerActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), GetAddressFormLocation.class);
                     startActivity(intent);
                     finish();
                 } else if (textUpdate.getText().toString().equals("Password\nChanged")) {
