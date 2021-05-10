@@ -33,6 +33,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class GetAddressFormLocation extends AppCompatActivity implements OnMapRe
     FusedLocationProviderClient fusedLocationProviderClient;
     EditText locality, address_line;
     Button confirm_add;
+    private IntroPref pref;
 
     @Override
     protected void onStart() {
@@ -60,6 +62,7 @@ public class GetAddressFormLocation extends AppCompatActivity implements OnMapRe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        pref = new IntroPref(this);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_address_form_location);
@@ -185,6 +188,9 @@ public class GetAddressFormLocation extends AppCompatActivity implements OnMapRe
         if (addressList != null){
             locality.setText(addressList.get(0).getLocality());
             address_line.setText(addressList.get(0).getAddressLine(0));
+
+            //pref.setLocation(addressList.get(0).getLocality() + ", " + addressList.get(0).getCountryName());
+            pref.setLocation("Bhusawal");
         }
     }
 
@@ -235,6 +241,7 @@ public class GetAddressFormLocation extends AppCompatActivity implements OnMapRe
             return false;
         }else {
             locality.setError(null);
+            pref.setLocation(val);
             return true;
         }
     }

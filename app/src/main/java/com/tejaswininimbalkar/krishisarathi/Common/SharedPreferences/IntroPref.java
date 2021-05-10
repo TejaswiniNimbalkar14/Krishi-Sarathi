@@ -15,6 +15,7 @@ public class IntroPref {
     private static final String IS_CANCEL = "isCancel";
     private static final String IS_OWNER = "isOwner";
     private static final String LANGUAGE_CODE = "languageCode";
+    private String LOCATION = "Add Location";
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     Context context;
@@ -56,6 +57,10 @@ public class IntroPref {
         editor.commit();
     }
 
+    public String getLocation() {
+        return preferences.getString(LOCATION, "Add Location");
+    }
+
     public String getLanguageCode() {
         return preferences.getString(LANGUAGE_CODE, "en");
     }
@@ -83,5 +88,10 @@ public class IntroPref {
 
     public boolean isOwner() {
         return preferences.getBoolean(IS_OWNER, false);
+    }
+
+    public void setLocation(String location) {
+        editor.putString(LOCATION, "Add Location");
+        editor.commit();
     }
 }

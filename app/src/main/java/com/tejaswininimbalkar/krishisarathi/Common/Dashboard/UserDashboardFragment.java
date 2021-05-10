@@ -42,6 +42,7 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.tejaswininimbalkar.krishisarathi.Common.GetAddressFormLocation;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
+import com.tejaswininimbalkar.krishisarathi.Common.SharedPreferences.IntroPref;
 import com.tejaswininimbalkar.krishisarathi.R;
 
 import java.io.IOException;
@@ -79,6 +80,9 @@ public class UserDashboardFragment extends Fragment implements LocationListener{
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
+    private IntroPref pref;
+    private String locationFromIntroPref;
+
     public UserDashboardFragment() {
 
     }
@@ -101,6 +105,7 @@ public class UserDashboardFragment extends Fragment implements LocationListener{
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user_dashboard, container, false);
+        pref = new IntroPref(getContext());
 
         //wlcmMsg = (TextView) view.findViewById(R.id.wlcmMsg);
         enterSession = (ImageView) view.findViewById(R.id.enterUserSession);
@@ -108,6 +113,9 @@ public class UserDashboardFragment extends Fragment implements LocationListener{
         locationEt = (TextView) view.findViewById(R.id.locationTv);
         progressBar = (ProgressBar) view.findViewById(R.id.dasboardProgress);
         locationAdd = view.findViewById(R.id.loctionAdd);
+
+        locationFromIntroPref = pref.getLocation();
+        locationEt.setText(locationFromIntroPref);
 
         if (!isConnected(getActivity())) {
             showConnectionDialog();
