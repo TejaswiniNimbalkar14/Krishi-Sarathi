@@ -207,6 +207,7 @@
     <string name="pimpri_khurd" translatable="false">Pimpri Khurd.</string>
     <string name="_05_05_2021_13_00" translatable="false">05/05/2021 13:00</string>
     <string name="oops_no_data" translatable="false">Oops no Data!!</string>
+    <string name="user_information" translatable="false">user_information</string>
 
 
 </resources>

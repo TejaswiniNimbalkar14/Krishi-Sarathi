@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="144dp"
     >
@@ -36,7 +37,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="InefficientWeight">
 
                 <TextView
                     android:id="@+id/owner_name"
@@ -45,10 +47,10 @@
                     android:layout_marginLeft="12dp"
                     android:layout_marginBottom="5dp"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="Name"
                     android:textColor="@color/black"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_marginStart="12dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -64,9 +66,10 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="User Information"
+                        android:text="@string/user_information"
                         android:textColor="@color/colorAccent"
-                        android:textSize="10sp" />
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
 
                 </LinearLayout>
 
