@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -79,7 +80,8 @@ public class GetAddressFormLocation extends AppCompatActivity implements OnMapRe
                 if (!validateAddress()){
                     return;
                 }
-
+                Intent intent = new Intent(getApplicationContext(),ContainerActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -89,9 +91,9 @@ public class GetAddressFormLocation extends AppCompatActivity implements OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        mMap.setOnCameraMoveListener(this);
-//        mMap.setOnCameraMoveStartedListener(this);
-//        mMap.setOnCameraIdleListener(this);
+        mMap.setOnCameraMoveListener(this);
+        mMap.setOnCameraMoveStartedListener(this);
+        mMap.setOnCameraIdleListener(this);
         //googleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
 //        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 //        googleMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
@@ -230,10 +232,10 @@ public class GetAddressFormLocation extends AppCompatActivity implements OnMapRe
         String val = locality.getText().toString();
         if (val.isEmpty()){
             locality.setError("Field can not be empty");
-            return true;
+            return false;
         }else {
             locality.setError(null);
-            return false;
+            return true;
         }
     }
 }
