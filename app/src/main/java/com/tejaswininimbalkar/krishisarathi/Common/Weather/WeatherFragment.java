@@ -75,6 +75,13 @@ public class WeatherFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+        getLocation();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -90,13 +97,11 @@ public class WeatherFragment extends Fragment {
         progressBar = view.findViewById(R.id.weatherProgress);
         reload = view.findViewById(R.id.weatherReload);
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+
 
         if (!isConnected(getActivity())) {
             showConnectionDialog();
         }
-
-        getLocation();
 
         reload.setOnClickListener(new View.OnClickListener() {
             @Override
