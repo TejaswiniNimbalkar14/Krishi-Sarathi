@@ -122,7 +122,7 @@
     <string name="add_location">स्थान जोडा</string>
     <string name="categories">कॅटेगरीज</string>
     <string name="updates">"अपडेट "</string>
-    <string name="add_equipment" translatable="false">उपकरण मालक</string>
+    <string name="add_equipment" translatable="false">उपकरण ऐड करा</string>
     <string name="choose_the_equipment_that_you_rent" translatable="false">"आपण भाड्याने घेतलेली उपकरणे निवडा "</string>
     <string name="machine_company_name" translatable="false">मशीन कंपनीचे नाव</string>
     <string name="which_year_of_model" translatable="false">"कोणत्या मॉडेलचे वर्ष "</string>
@@ -171,4 +171,7 @@
     <string name="request" translatable="false">विनंती</string>
     <string name="move_to_user" translatable="false">" वापरकर्ता क्रियापटलावर जाणे"</string>
     <string name="move_to_owner" translatable="false">मालक क्रियापटलावर जाणे</string>
+    <string name="track_notifications">ट्रॅक अधिसूचना</string>
+    <string name="account_activity">अकाऊंट अॅक्टिविटी</string>
+    <string name="new_for_you">तुमच्यासाठी नवीन</string>
 </resources>

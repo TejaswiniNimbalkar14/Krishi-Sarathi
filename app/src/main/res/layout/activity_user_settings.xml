@@ -183,7 +183,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="New for you"
+            android:text="@string/new_for_you"
             android:textSize="20sp"
             android:thumb="@drawable/switch_thumb"
             app:track="@drawable/switch_track" />
@@ -192,7 +192,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Account Activity"
+            android:text="@string/account_activity"
             android:textSize="20sp"
             android:thumb="@drawable/switch_thumb"
             app:track="@drawable/switch_track" />
@@ -201,7 +201,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Track notifications"
+            android:text=""
             android:textSize="20sp"
             android:thumb="@drawable/switch_thumb"
             app:track="@drawable/switch_track" />
