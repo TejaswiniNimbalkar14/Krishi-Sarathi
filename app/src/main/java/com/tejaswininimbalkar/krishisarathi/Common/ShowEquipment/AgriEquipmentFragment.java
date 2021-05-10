@@ -5,7 +5,6 @@ package com.tejaswininimbalkar.krishisarathi.Common.ShowEquipment;
  */
 import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -81,17 +80,9 @@ public class AgriEquipmentFragment extends Fragment {
     private void showConnectionDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
         alertDialog.setMessage("Please connect to the internet to move further!");
-        alertDialog.setPositiveButton("Connect", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS));
-            }
-        });
-        alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
+        alertDialog.setPositiveButton("Connect", (dialogInterface, i) -> startActivity(new Intent(Settings.ACTION_WIRELESS_SETTINGS)));
+        alertDialog.setNegativeButton("Cancel", (dialogInterface, i) -> {
 
-            }
         });
         AlertDialog dialog = alertDialog.create();
         dialog.show();

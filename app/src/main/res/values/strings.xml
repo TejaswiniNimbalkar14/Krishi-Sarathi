@@ -186,17 +186,27 @@
     <string name="request" translatable="false">Request</string>
     <string name="move_to_user" translatable="false">Move to User Activity</string>
     <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
+    <string name="model_year" translatable="false">Model Year :</string>
+    <string name="sorry_we_don_t_have_a_information" translatable="false">Sorry We Don\'t have a Information</string>
 
     <!-- Equipment Details string-->
     <string name="result_available" translatable="false">Result Available</string>
     <string name="per_one_acre" translatable="false">Per One Acre</string>
-    <string name="_4_4">4.4</string>
-    <string name="_20_in_used">20+ In used</string>
-    <string name="u20b9100">₹100/-</string>
+    <string name="_4_4" translatable="false">4.4</string>
+    <string name="_20_in_used" translatable="false">20+ In used</string>
+    <string name="u20b9100" translatable="false">₹100/-</string>
 
-
-    Per One Acre
-
+    <!-- Payment string-->
+    <string name="user_details" translatable="false">User Details :</string>
+    <string name="name" translatable="false">Name :</string>
+    <string name="return_date" translatable="false">Return Date :</string>
+    <string name="select_time" translatable="false">Select Time :</string>
+    <string name="select_date" translatable="false">Select Date :</string>
+    <string name="_00_00" translatable="false">00.00</string>
+    <string name="booking_id" translatable="false">Booking ID :</string>
+    <string name="pimpri_khurd" translatable="false">Pimpri Khurd.</string>
+    <string name="_05_05_2021_13_00" translatable="false">05/05/2021 13:00</string>
+    <string name="oops_no_data" translatable="false">Oops no Data!!</string>
 
 
 </resources>

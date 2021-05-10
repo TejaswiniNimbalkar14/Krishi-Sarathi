@@ -18,7 +18,8 @@
         android:outlineSpotShadowColor="@color/purple_200"
         app:cardBackgroundColor="#E3C4FF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UnusedAttribute">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/parent1"
@@ -44,7 +45,7 @@
                 android:layout_marginLeft="12dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/muli"
-                android:text="Booking ID :"
+                android:text="@string/booking_id"
                 android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -68,7 +69,8 @@
                     android:layout_height="51dp"
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_equipment" />
+                    android:src="@drawable/icon_equipment"
+                    android:contentDescription="@string/todo"/>
 
             </com.google.android.material.card.MaterialCardView>
 
@@ -80,10 +82,12 @@
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/muli"
                 android:textColor="@color/purple_500"
-                android:textSize="20dp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/materialCardView2"
-                app:layout_constraintTop_toBottomOf="@id/booking_id" />
+                app:layout_constraintTop_toBottomOf="@id/booking_id"
+                android:layout_marginStart="10dp"
+               />
 
             <ImageView
                 android:id="@+id/location_marker"
@@ -93,19 +97,22 @@
                 android:layout_marginTop="5dp"
                 android:src="@drawable/icon_location"
                 app:layout_constraintStart_toEndOf="@+id/materialCardView2"
-                app:layout_constraintTop_toBottomOf="@+id/Owner_name" />
+                app:layout_constraintTop_toBottomOf="@+id/Owner_name"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:text="Pimpri Khurd."
-                android:textSize="18dp"
+                android:text="@string/pimpri_khurd"
+                android:textSize="18sp"
                 android:textStyle="italic"
                 app:layout_constraintBottom_toBottomOf="@+id/location_marker"
                 app:layout_constraintStart_toEndOf="@+id/location_marker"
-                app:layout_constraintTop_toTopOf="@+id/location_marker" />
+                app:layout_constraintTop_toTopOf="@+id/location_marker"
+                android:layout_marginStart="5dp" />
 
             <View
                 android:id="@+id/divider"
@@ -125,7 +132,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView2">
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView2"
+                android:layout_marginStart="10dp">
 
                 <TextView
                     android:id="@+id/equipment_Name"
@@ -133,9 +141,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
                     android:fontFamily="@font/muli"
-                    android:text="Cultivator"
+                    android:text="@string/cultivator"
                     android:textColor="#673AB7"
-                    android:textSize="18dp" />
+                    android:textSize="18sp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -146,7 +154,7 @@
                         android:id="@+id/work_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="05/05/2021 13:00"
+                        android:text="@string/_05_05_2021_13_00"
                         android:textColor="@color/red" />
                 </androidx.cardview.widget.CardView>
 
