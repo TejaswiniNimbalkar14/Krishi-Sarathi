@@ -122,4 +122,53 @@
     <string name="add_location">स्थान जोड़ना</string>
     <string name="categories">कॅटेगरीज</string>
     <string name="updates">"अपडेट "</string>
+    <string name="add_equipment" translatable="false">" उपकरण का मालिक"</string>
+    <string name="choose_the_equipment_that_you_rent" translatable="false">उन उपकरणों को चुनें जिन्हें आप किराए पर लेते हैं</string>
+    <string name="machine_company_name" translatable="false">" मशीन कंपनी का नाम"</string>
+    <string name="which_year_of_model" translatable="false">किस वर्ष का मॉडल</string>
+    <string name="submit" translatable="false">"सबमिट "</string>
+    <string name="do_you_have_tractor" translatable="false">क्या आपके पास ट्रैक्टर है?</string>
+    <string name="yes" translatable="false">हा</string>
+    <string name="how_many" translatable="false">कितने?</string>
+    <string name="do_you_have_equipment" translatable="false">" क्या आपके पास उपकरण हैं?"</string>
+    <string name="registration" translatable="false">पंजीकरण</string>
+    <string name="hi_do_you_want_to_be_a_partner_in_krishi_sarathi_if_yes_registration_process_as_below" translatable="false">नमस्ते, क्या आप कृषि सारथी में भागीदार बनना चाहते हैं?  यदि हाँ, नीचे के रूप में पंजीकरण प्रक्रिया</string>
+    <string name="owner_details" translatable="false">" मालीक का विवरण:"</string>
+    <string name="owner_id" translatable="false">" मालीक आईडी:"</string>
+    <string name="equi_details" translatable="false">" उपकरण विवरण:"</string>
+    <string name="company" translatable="false">कंपनी</string>
+    <string name="equipment_colon" translatable="false">उपकरण</string>
+    <string name="model_year_colon" translatable="false">मॉडेल वर्ष</string>
+    <string name="fill_user_details" translatable="false">उपयोगकर्ता विवरण भरें:</string>
+    <string name="address" translatable="false">पता</string>
+    <string name="city" translatable="false">शहर</string>
+    <string name="city_code" translatable="false">शहर का कोड</string>
+    <string name="payment1" translatable="false">भुगतान</string>
+    <string name="done" translatable="false">किया हुआ</string>
+    <string name="cultivator" translatable="false">खेतिहर</string>
+    <string name="hi" translatable="false">" नमस्ते"</string>
+    <string name="user" translatable="false">उपयोगकर्ता</string>
+    <string name="register" translatable="false">रजिस्टर करें</string>
+    <string name="rent_price" translatable="false">किराया मूल्य</string>
+    <string name="shipping_charges" translatable="false">" भेजने का शुल्क"</string>
+    <string name="total_price" translatable="false">कुल कीमत</string>
+    <string name="payment_methods" translatable="false">भुगतान की विधि :</string>
+    <string name="cash_on_delivery" translatable="false">" डिलवरी पर नकदी: "</string>
+    <string name="upi" translatable="false">यूपीआय</string>
+    <string name="debit_credit" translatable="false">"डेबिट / क्रेडिट कार्ड "</string>
+    <string name="book_equi" translatable="false">बुक उपकरण</string>
+    <string name="resend_otp" translatable="false">ओटीपी पुनः भेजें</string>
+    <string name="renting_price" translatable="false">किराये की कीमत:</string>
+    <string name="desc" translatable="false">विवरण</string>
+    <string name="equi_name_and_more" translatable="false">उपकरण का नाम और अधिक</string>
+    <string name="search_elements" translatable="false">" येलीमेंत को खोजें"</string>
+    <string name="min" translatable="false">मिन</string>
+    <string name="max" translatable="false">मैक्स</string>
+    <string name="humidity" translatable="false">नमी</string>
+    <string name="wind" translatable="false">हवा</string>
+    <string name="reload" translatable="false">पुनः लोड करें</string>
+    <string name="income" translatable="false">" आय"</string>
+    <string name="request" translatable="false">निवेदन</string>
+    <string name="move_to_user" translatable="false">उपयोगकर्ता गतिविधि पर जाएँ</string>
+    <string name="move_to_owner" translatable="false">" मालीक गतिविधि पर जाएं"</string>
 </resources>
