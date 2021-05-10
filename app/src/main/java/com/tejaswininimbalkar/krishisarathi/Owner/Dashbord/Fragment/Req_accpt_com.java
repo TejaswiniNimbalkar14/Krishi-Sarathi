@@ -45,8 +45,8 @@ public class Req_accpt_com extends Fragment {
         viewPager.setAdapter(new ViewPagerAdapter(getFragmentManager(), getLifecycle()));
 
         tabLayout = view.findViewById(R.id.tapview);
-        tabLayout.addTab(tabLayout.newTab().setText("REQUEST"));
-        tabLayout.addTab(tabLayout.newTab().setText("CONFORM"));
+        tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.request)));
+        tabLayout.addTab(tabLayout.newTab().setText(getResources().getString(R.string.confirm)));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

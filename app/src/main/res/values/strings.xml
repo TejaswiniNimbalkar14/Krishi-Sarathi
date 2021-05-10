@@ -203,17 +203,19 @@
     <string name="select_time" translatable="false">Select Time :</string>
     <string name="select_date" translatable="false">Select Date :</string>
     <string name="_00_00" translatable="false">00.00</string>
-    <string name="booking_id" translatable="false">Booking ID :</string>
+    <string name="booking_id">Booking ID :</string>
     <string name="pimpri_khurd" translatable="false">Pimpri Khurd.</string>
     <string name="_05_05_2021_13_00" translatable="false">05/05/2021 13:00</string>
     <string name="oops_no_data" translatable="false">Oops no Data!!</string>
     <string name="user_information" translatable="false">user_information</string>
 
     <string name="start_work">Start Work</string>
-    <string name="booking_id">Booking ID :</string>
     <string name="work_finish">Work Finish</string>
     <string name="fertilizer" translatable="false">Fertilizers</string>
     <string name="market_price" translatable="false">Market Price</string>
     <string name="seeds" translatable="false">Seeds</string>
     <string name="transport" translatable="false">Transport</string>
+    <string name="confirm" translatable="false">Confirm</string>
+    <string name="enable_gps_sevice" translatable="false">Enable GPS Service</string>
+    <string name="enable" translatable="false">Enable</string>
 </resources>

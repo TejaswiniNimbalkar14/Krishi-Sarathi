@@ -38,7 +38,7 @@ public class YourOrdersActivity extends AppCompatActivity {
         pager2.setAdapter(adapter);
 
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.image_wallclock));
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.image_correction));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.image_correction).setText(getResources().getString(R.string.orders)));
         tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.image_history));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {

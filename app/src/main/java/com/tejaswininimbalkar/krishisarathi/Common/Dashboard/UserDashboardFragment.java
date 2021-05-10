@@ -9,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -28,6 +30,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -45,13 +48,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-import static androidx.constraintlayout.motion.widget.Debug.getLocation;
-
 /*
  * @author Leena Bhadane and Tejaswini Nimbalkar
  */
 
-public class UserDashboardFragment extends Fragment {
+public class UserDashboardFragment extends Fragment implements LocationListener{
 
     int[] images = {
 
@@ -70,17 +71,19 @@ public class UserDashboardFragment extends Fragment {
     private ArrayList<String> listTitle;
     private ArrayList<Integer> listImage;
 
+    private LocationManager locManager;
+
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
-
-        getLocationAndSetToView();
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getActivity());
+//
+//        getLocationAndSetToView();
+//    }
 
     @Nullable
     @Override
@@ -93,13 +96,12 @@ public class UserDashboardFragment extends Fragment {
         locationEt = (TextView) view.findViewById(R.id.locationTv);
         progressBar = (ProgressBar) view.findViewById(R.id.dasboardProgress);
 
-        progressBar.setVisibility(View.VISIBLE);
-
-
-
         if (!isConnected(getActivity())) {
             showConnectionDialog();
         }
+
+        isLocationEnabled(getActivity());
+        getLocation1(getActivity());
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -138,6 +140,49 @@ public class UserDashboardFragment extends Fragment {
         return view;
     }
 
+    private void getLocation1(Activity activity) {
+        try {
+            locManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
+            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                locManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 500, 5, (LocationListener) getActivity());
+                return;
+            }
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void isLocationEnabled(Activity activity) {
+        LocationManager locationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
+        boolean gpsEnabled = false;
+        boolean networkEnabled = false;
+
+        try {
+            gpsEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        try {
+            networkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if (!gpsEnabled && !networkEnabled) {
+            new AlertDialog.Builder(getContext())
+                    .setTitle(getResources().getString(R.string.enable_gps_sevice))
+                    .setCancelable(false)
+                    .setPositiveButton(getResources().getString(R.string.enable), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    }).setNegativeButton(getResources().getString(R.string.cancel), null)
+                    .show();
+        }
+    }
+
     private void getLocationAndSetToView() {
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
@@ -149,8 +194,8 @@ public class UserDashboardFragment extends Fragment {
             public void onComplete(@NonNull Task<Location> task) {
                 Location location = task.getResult();
                 if (location != null) {
-                    Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                     try {
+                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                         List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
                         locationEt.setText(addressList.get(0).getLocality() + ", " + addressList.get(0).getCountryName());
                         progressBar.setVisibility(View.GONE);
@@ -219,5 +264,31 @@ public class UserDashboardFragment extends Fragment {
         });
         AlertDialog dialog = alertDialog.create();
         dialog.show();
+    }
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+        try {
+            Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+            List<Address> addressList = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+            locationEt.setText(addressList.get(0).getLocality() + ", " + addressList.get(0).getCountryName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
     }
 }

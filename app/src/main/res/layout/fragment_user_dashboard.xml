@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="@string/krishi_sarthi"
+                android:text="@string/app_name"
                 android:textColor="@color/colorWhite"
                 android:textSize="20sp"
                 android:textStyle="bold"

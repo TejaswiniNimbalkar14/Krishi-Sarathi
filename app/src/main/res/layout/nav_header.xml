@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="10dp"
         android:layout_gravity="center_horizontal"
-        android:text="@string/krishi_sarathi"
+        android:text="@string/app_name"
         android:fontFamily="@font/muli"
         android:textColor="@color/purple_700"
         android:textSize="25sp"
