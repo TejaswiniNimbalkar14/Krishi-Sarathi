@@ -186,4 +186,17 @@
     <string name="request" translatable="false">Request</string>
     <string name="move_to_user" translatable="false">Move to User Activity</string>
     <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
+
+    <!-- Equipment Details string-->
+    <string name="result_available" translatable="false">Result Available</string>
+    <string name="per_one_acre" translatable="false">Per One Acre</string>
+    <string name="_4_4">4.4</string>
+    <string name="_20_in_used">20+ In used</string>
+    <string name="u20b9100">₹100/-</string>
+
+
+    Per One Acre
+
+
+
 </resources>

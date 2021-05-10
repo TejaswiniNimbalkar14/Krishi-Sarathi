@@ -79,7 +79,6 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/muli"
-                android:text="Owner Name"
                 android:textColor="@color/purple_500"
                 android:textSize="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
