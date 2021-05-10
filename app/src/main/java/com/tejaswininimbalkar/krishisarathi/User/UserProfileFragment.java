@@ -120,8 +120,12 @@ public class UserProfileFragment extends Fragment {
                 String name = (String) snapshot.child("fullName").getValue();
                 String phone = (String) snapshot.child("phone_num").getValue();
                 String url = (String) snapshot.child("profile_img").getValue();
+                try{
                 boolean equiOwner = (boolean) snapshot.child("equipment_owner").getValue();
                 if (equiOwner) moveBtn.setVisibility(View.VISIBLE);
+                }catch (Exception e){
+                    Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
 
                 fullName.setText(name);
                 phoneNo.setText(phone);

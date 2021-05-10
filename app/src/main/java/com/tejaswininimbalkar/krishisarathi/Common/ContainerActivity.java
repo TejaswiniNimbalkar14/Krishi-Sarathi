@@ -65,6 +65,8 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
 
     private DatabaseReference reference;
 
+//    String address, activityTransaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -119,6 +121,17 @@ public class ContainerActivity extends AppCompat implements NavigationView.OnNav
         //Add fragment to frame of container activity
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+
+//        address = getIntent().getStringExtra("address");
+//        activityTransaction = getIntent().getStringExtra("activity");
+//        if (activityTransaction.equals("GetAddress")){
+//            fragmentTransaction.replace(R.id.fragmentContainer, new UserDashboardFragment(address,activityTransaction)).addToBackStack(null).commit();
+//            activityContainerBinding.menuBtn.setVisibility(View.VISIBLE);
+//        }else if (activityTransaction.equals("Verify")){
+//            fragmentTransaction.replace(R.id.fragmentContainer, new UserDashboardFragment()).commit();
+//            activityContainerBinding.menuBtn.setVisibility(View.VISIBLE);
+//        }
 
         fragmentTransaction.replace(R.id.fragmentContainer, new UserDashboardFragment()).commit();
         activityContainerBinding.menuBtn.setVisibility(View.VISIBLE);

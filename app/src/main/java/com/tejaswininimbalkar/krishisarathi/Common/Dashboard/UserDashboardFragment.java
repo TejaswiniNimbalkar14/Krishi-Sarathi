@@ -40,6 +40,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+import com.tejaswininimbalkar.krishisarathi.Common.GetAddressFormLocation;
 import com.tejaswininimbalkar.krishisarathi.Common.LoginSignup.Send_Otp_Page;
 import com.tejaswininimbalkar.krishisarathi.R;
 
@@ -54,6 +55,8 @@ import java.util.Locale;
 
 public class UserDashboardFragment extends Fragment implements LocationListener{
 
+    String address, activityTransaction;
+
     int[] images = {
 
             R.drawable.image_slider_one,
@@ -64,7 +67,7 @@ public class UserDashboardFragment extends Fragment implements LocationListener{
             R.drawable.image_slider_six
     };
     //private TextView wlcmMsg;
-    private ImageView enterSession, notification;
+    private ImageView enterSession, notification,locationAdd;
     FusedLocationProviderClient fusedLocationProviderClient;
     private TextView locationEt;
     private GridviewAdapter mAdapter;
@@ -76,7 +79,16 @@ public class UserDashboardFragment extends Fragment implements LocationListener{
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
 
-//    @Override
+    public UserDashboardFragment() {
+
+    }
+
+    public UserDashboardFragment(String address, String activityTransaction) {
+        this.address = address;
+        this.activityTransaction = activityTransaction;
+    }
+
+    //    @Override
 //    public void onStart() {
 //        super.onStart();
 //
@@ -95,13 +107,30 @@ public class UserDashboardFragment extends Fragment implements LocationListener{
         notification = (ImageView) view.findViewById(R.id.icon_notification);
         locationEt = (TextView) view.findViewById(R.id.locationTv);
         progressBar = (ProgressBar) view.findViewById(R.id.dasboardProgress);
+        locationAdd = view.findViewById(R.id.loctionAdd);
 
         if (!isConnected(getActivity())) {
             showConnectionDialog();
         }
 
         isLocationEnabled(getActivity());
-        getLocation1(getActivity());
+        //getLocation1(getActivity());
+
+        locationEt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAddress();
+            }
+        });
+
+        locationAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getAddress();
+            }
+        });
+
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -138,6 +167,14 @@ public class UserDashboardFragment extends Fragment implements LocationListener{
         });
 
         return view;
+    }
+
+    private void getAddress() {
+        try {
+            startActivity(new Intent(getContext(), GetAddressFormLocation.class));
+        }catch (Exception e){
+            Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void getLocation1(Activity activity) {
