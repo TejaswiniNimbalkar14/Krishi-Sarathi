@@ -37,7 +37,7 @@
     <string name="enter_password">पासवर्ड</string>
     <string name="remember_me">मुजे याद रखें</string>
     <string name="mobile_verification">मोबाईल सत्यापन</string>
-    <string name="enter_your_country_code_and_phone" translatable="false">अपना देश कोड और फ़ोन दर्ज करें</string>
+    <string name="enter_your_country_code_and_phone" translatable="false">साइन अप या लॉगिन करने के लिए अपना देश कोड और फ़ोन नंबर दर्ज करें</string>
     <string name="create_massage">खाता बनाएं या लॉगिन करें</string>
     <string name="Login_massage">अकाउंट मे लॉगिन करें</string>
     <string name="enter_mobile_number">मोबाईल नंबर दर्ज करें</string>
@@ -63,7 +63,63 @@
     <string name="current_pass">वर्तमान पासवर्ड</string>
     <string name="forgot_current_pass">वर्तमान पासवर्ड भूल गए?</string>
     <string name="my_equipment">मेरे उपकरण</string>
-    <string name="start_work">Start Work</string>
-    <string name="booking_id">Booking ID :</string>
-    <string name="work_finish">Work Finish</string>
+    <string name="start_work">काम शुरु करें</string>
+    <string name="booking_id">बुकिंग आईडी :</string>
+    <string name="work_finish">काम खत्म</string>
+    <string name="locaization">एप्लिकेशन भाषा को अपनी ज्ञात भाषा में बदलें</string>
+    <string name="location_weather" translatable="false">अपना स्थान निर्धारित करें और मौसम का विवरण प्राप्त करें!</string>
+    <string name="owner_feature" translatable="false">खुद को मालिक के रूप में पंजीकृत करें, अपने उपकरण जोड़ें और उन्हें किसानों को किराए पर दें!</string>
+    <string name="find_equipment" translatable="false">किराए पर उपकरण लें, इसका उपयोग करें और मालिक को वापस करें!</string>
+    <string name="orders_history" translatable="false">यहां आप अपने द्वारा सेवित आदेशों का इतिहास देख सकते हैं</string>
+    <string name="income_status" translatable="false">यहां आप ऑर्डर से अपनी कुल आय देख सकते हैं</string>
+    <string name="enable" translatable="false">सक्षम करें</string>
+    <string name="enable_gps_sevice" translatable="false">GPS सेवा सक्षम करें</string>
+    <string name="confirm" translatable="false">पुष्टि करें</string>
+    <string name="transport" translatable="false">ट्रांसपोर्ट</string>
+    <string name="seeds" translatable="false">बीज</string>
+    <string name="market_price" translatable="false">बाजार मूल्य</string>
+    <string name="fertilizer" translatable="false">उर्वरक</string>
+    <string name="user_information" translatable="false">यूजर की जानकारी</string>
+    <string name="oops_no_data" translatable="false">ऊप्स नो डेटा !!</string>
+    <string name="pimpri_khurd" translatable="false">"पिंपरी खुर्द "</string>
+    <string name="select_date" translatable="false">तारीख़ चुनें :</string>
+    <string name="select_time">समय का चयन करें :</string>
+    <string name="return_date" translatable="false">वापसी दिनांक :</string>
+    <string name="name" translatable="false">नाम :</string>
+    <string name="user_details" translatable="false">उपयोगकर्ता विवरण :</string>
+    <string name="_20_in_used" translatable="false">20+ उपयोग में</string>
+    <string name="result_available" translatable="false">उपलब्ध परिणाम</string>
+    <string name="sorry_we_don_t_have_a_information" translatable="false">क्षमा करें, हमारे पास जानकारी नहीं है</string>
+    <string name="model_year" translatable="false">"मॉडेल वर्ष : "</string>
+    <string name="government_scheme" translatable="false">सरकारी योजना</string>
+    <string name="farmer_guide" translatable="false">किसान गाइड</string>
+    <string name="orders">"ऑर्डर्स "</string>
+    <string name="help">मदद</string>
+    <string name="about_us">हमारे बारे में</string>
+    <string name="rate_us">हमें रेटिंग दें</string>
+    <string name="feedback">प्रतिपुष्टि</string>
+    <string name="Home">मुखपृष्ठ</string>
+    <string name="Profile" translatable="false">प्रोफ़ाइल</string>
+    <string name="communicate">संवाद</string>
+    <string name="share">शेयर</string>
+    <string name="krishi_sarathi" translatable="false">कृषी सारथी</string>
+    <string name="government_scheme_fragment" translatable="false">सरकारी योजना फ्रेगमेंट</string>
+    <string name="about_us_fragment">हमारे बारे में  फ्रेगमेंट</string>
+    <string name="farmer_guide_fragment">किसान गाइड फ्रेगमेंट</string>
+    <string name="feedback_fragment">प्रतिपुष्टि फ्रेगमेंट</string>
+    <string name="YourOrders">तुम्हारे ऑर्डर</string>
+    <string name="help_fragment">मदद फ्रेगमेंट</string>
+    <string name="location_fragment">स्थान फ्रेगमेंट</string>
+    <string name="orders_fragment">ऑर्डर्स फ्रेगमेंट</string>
+    <string name="rate_us_fragment">" हमें रेटिंग दें फ्रेगमेंट"</string>
+    <string name="share_fragment">शेयर फ्रेगमेंट</string>
+    <string name="Home_fragment">मुख्यपृष्ठ फ्रेगमेंट</string>
+    <string name="profile_fragment">प्रोफ़ाइल फ्रेगमेंट</string>
+    <string name="equipment_owner">उपकरण का मालिक</string>
+    <string name="equipment_owner_fragment" translatable="false">" उपकरण का मालिक फ्रेगमेंट"</string>
+    <string name="textview" translatable="false">मजकूर दृश्य</string>
+    <string name="farmer">किसान</string>
+    <string name="add_location">स्थान जोड़ना</string>
+    <string name="categories">कॅटेगरीज</string>
+    <string name="updates">"अपडेट "</string>
 </resources>

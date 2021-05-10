@@ -33,10 +33,10 @@ public class SliderAdapter extends PagerAdapter {
             R.drawable.image_onboarding4
     };
     int[] headings = {
-            R.string.slide1_title,
-            R.string.slide2_title,
-            R.string.slide3_title,
-            R.string.slide4_title
+            R.string.find_equipment,
+            R.string.owner_feature,
+            R.string.location_weather,
+            R.string.locaization
     };
 
     public SliderAdapter(Context context) {

@@ -88,51 +88,51 @@
 
     <string name="navigation_draw_open" translatable="false">open navigation drawer</string>
     <string name="navigation_draw_close" translatable="false">close navigation drawer</string>
-    <string name="government_scheme" translatable="false">Government scheme</string>
-    <string name="farmer_guide" translatable="false">Farmer guide</string>
+    <string name="government_scheme">Government scheme</string>
+    <string name="farmer_guide">Farmer guide</string>
     <!--<string name="location">Location</string>-->
-    <string name="orders" translatable="false">Orders</string>
-    <string name="help" translatable="false">Help</string>
-    <string name="about_us" translatable="false">About us</string>
-    <string name="rate_us" translatable="false">Rate us</string>
-    <string name="feedback" translatable="false">Feedback</string>
-    <string name="Home" translatable="false">Home</string>
-    <string name="Profile" translatable="false">Profile</string>
-    <string name="communicate" translatable="false">Communicate</string>
-    <string name="share" translatable="false">Share</string>
+    <string name="orders">Orders</string>
+    <string name="help">Help</string>
+    <string name="about_us">About us</string>
+    <string name="rate_us">Rate us</string>
+    <string name="feedback">Feedback</string>
+    <string name="Home">Home</string>
+    <string name="Profile">Profile</string>
+    <string name="communicate">Communicate</string>
+    <string name="share">Share</string>
     <string name="krishisarathi_com" translatable="false">krishisarathi.com</string>
-    <string name="krishi_sarathi" translatable="false">Krishi Sarathi</string>
+    <string name="krishi_sarathi">Krishi Sarathi</string>
     <string name="krishisarathigmail.con" translatable="false">krishisarathi@gmail.com</string>
     <string name="todo" translatable="false">TODO</string>
     <string name="krishisarathi_gmail_con" translatable="false">krishisarathi@gmail.con</string>
-    <string name="government_scheme_fragment" translatable="false">Government scheme fragment</string>
-    <string name="about_us_fragment" translatable="false">About us Fragment</string>
-    <string name="farmer_guide_fragment" translatable="false">Farmer guide fragment</string>
-    <string name="feedback_fragment" translatable="false">Feedback Fragment</string>
-    <string name="YourOrders" translatable="false">Your Orders</string>
-    <string name="help_fragment" translatable="false">Help Fragment</string>
-    <string name="location_fragment" translatable="false">Location Fragment</string>
-    <string name="orders_fragment" translatable="false">Orders Fragment</string>
-    <string name="rate_us_fragment" translatable="false">Rate us Fragment</string>
-    <string name="share_fragment" translatable="false">Share Fragment</string>
-    <string name="Home_fragment" translatable="false">Home Fragment</string>
-    <string name="profile_fragment" translatable="false">profile Fragment </string>
+    <string name="government_scheme_fragment">Government scheme fragment</string>
+    <string name="about_us_fragment">About us Fragment</string>
+    <string name="farmer_guide_fragment">Farmer guide fragment</string>
+    <string name="feedback_fragment">Feedback Fragment</string>
+    <string name="YourOrders">Your Orders</string>
+    <string name="help_fragment">Help Fragment</string>
+    <string name="location_fragment">Location Fragment</string>
+    <string name="orders_fragment">Orders Fragment</string>
+    <string name="rate_us_fragment">Rate us Fragment</string>
+    <string name="share_fragment">Share Fragment</string>
+    <string name="Home_fragment">Home Fragment</string>
+    <string name="profile_fragment">profile Fragment </string>
     <string name="krishisarathi_gmail_com" translatable="false" />
     <string name="Location" translatable="false" />
-    <string name="equipment_owner" translatable="false">Equipment owner</string>
+    <string name="equipment_owner">Equipment owner</string>
     <string name="equipment_ownerfragment" translatable="false" />
-    <string name="equipment_owner_fragment" translatable="false">Equipment owner fragment</string>
+    <string name="equipment_owner_fragment">Equipment owner fragment</string>
     <string name="krishisarathigmail_com" translatable="false">krishisarathigmail.com</string>
 
     <!--//Leena_code-->
     <!-- <string name="app_name">Dashboard</string>-->
 
     <string name="krishi_sarthi" translatable="false">Krishi sarthi</string>
-    <string name="textview" translatable="false">TextView</string>
-    <string name="farmer" translatable="false">Farmer</string>
-    <string name="add_location" translatable="false">Add Location</string>
-    <string name="categories" translatable="false">Categories</string>
-    <string name="updates" translatable="false">Updates</string>
+    <string name="textview">TextView</string>
+    <string name="farmer">Farmer</string>
+    <string name="add_location">Add Location</string>
+    <string name="categories">Categories</string>
+    <string name="updates">Updates</string>
 
 
     <!--    Owner string-->
@@ -186,36 +186,42 @@
     <string name="request" translatable="false">Request</string>
     <string name="move_to_user" translatable="false">Move to User Activity</string>
     <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
-    <string name="model_year" translatable="false">Model Year :</string>
-    <string name="sorry_we_don_t_have_a_information" translatable="false">Sorry We Don\'t have a Information</string>
+    <string name="model_year">Model Year :</string>
+    <string name="sorry_we_don_t_have_a_information">Sorry We Don\'t have a Information</string>
 
     <!-- Equipment Details string-->
-    <string name="result_available" translatable="false">Result Available</string>
+    <string name="result_available">Result Available</string>
     <string name="per_one_acre" translatable="false">Per One Acre</string>
     <string name="_4_4" translatable="false">4.4</string>
-    <string name="_20_in_used" translatable="false">20+ In used</string>
+    <string name="_20_in_used">20+ In used</string>
     <string name="u20b9100" translatable="false">₹100/-</string>
 
     <!-- Payment string-->
     <string name="user_details" translatable="false">User Details :</string>
     <string name="name" translatable="false">Name :</string>
-    <string name="return_date" translatable="false">Return Date :</string>
-    <string name="select_time" translatable="false">Select Time :</string>
-    <string name="select_date" translatable="false">Select Date :</string>
+    <string name="return_date">Return Date :</string>
+    <string name="select_time">Select Time :</string>
+    <string name="select_date">Select Date :</string>
     <string name="_00_00" translatable="false">00.00</string>
     <string name="booking_id">Booking ID :</string>
-    <string name="pimpri_khurd" translatable="false">Pimpri Khurd.</string>
+    <string name="pimpri_khurd">Pimpri Khurd.</string>
     <string name="_05_05_2021_13_00" translatable="false">05/05/2021 13:00</string>
-    <string name="oops_no_data" translatable="false">Oops no Data!!</string>
-    <string name="user_information" translatable="false">user_information</string>
+    <string name="oops_no_data">Oops no Data!!</string>
+    <string name="user_information">user_information</string>
 
     <string name="start_work">Start Work</string>
     <string name="work_finish">Work Finish</string>
-    <string name="fertilizer" translatable="false">Fertilizers</string>
-    <string name="market_price" translatable="false">Market Price</string>
-    <string name="seeds" translatable="false">Seeds</string>
-    <string name="transport" translatable="false">Transport</string>
-    <string name="confirm" translatable="false">Confirm</string>
-    <string name="enable_gps_sevice" translatable="false">Enable GPS Service</string>
-    <string name="enable" translatable="false">Enable</string>
+    <string name="fertilizer">Fertilizers</string>
+    <string name="market_price">Market Price</string>
+    <string name="seeds">Seeds</string>
+    <string name="transport">Transport</string>
+    <string name="confirm">Confirm</string>
+    <string name="enable_gps_sevice">Enable GPS Service</string>
+    <string name="enable">Enable</string>
+    <string name="income_status">Here you can see your total income from orders</string>
+    <string name="orders_history">Here you can see history of orders you serviced</string>
+    <string name="find_equipment">Take equipment on rent, use it and return to the owner!</string>
+    <string name="owner_feature">Register yourself as owner, add your equipment and rent them to the farmers!</string>
+    <string name="location_weather">Set your location and get weather details!</string>
+    <string name="locaization">Change app language to your known language</string>
 </resources>

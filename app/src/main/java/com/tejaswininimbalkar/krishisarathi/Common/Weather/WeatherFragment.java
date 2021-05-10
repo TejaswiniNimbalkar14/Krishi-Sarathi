@@ -149,17 +149,21 @@ public class WeatherFragment extends Fragment {
         call.enqueue(new Callback<Example>() {
             @Override
             public void onResponse(Call<Example> call, Response<Example> response) {
-                minTemp.setText(response.body().getMain().getTemp_min() + "\u00B0" + "C");
-                maxTemp.setText(response.body().getMain().getTemp_max() + "\u00B0" + "C");
-                wind.setText(response.body().getWind().getWind() + " m/s");
-                humidity.setText(response.body().getMain().getHumidity() + " %");
+                try {
+                    minTemp.setText(response.body().getMain().getTemp_min() + "\u00B0" + "C");
+                    maxTemp.setText(response.body().getMain().getTemp_max() + "\u00B0" + "C");
+                    wind.setText(response.body().getWind().getWind() + " m/s");
+                    humidity.setText(response.body().getMain().getHumidity() + " %");
 
-                id = response.body().getWeatherList().get(0).getId();
-                String updateWeatherInfo = updateWeatherInfo(id);
-                updateWeatherImage(updateWeatherInfo);
+                    id = response.body().getWeatherList().get(0).getId();
+                    String updateWeatherInfo = updateWeatherInfo(id);
+                    updateWeatherImage(updateWeatherInfo);
 
-                desc.setText(response.body().getWeatherList().get(0).getDescription());
-                progressBar.setVisibility(View.GONE);
+                    desc.setText(response.body().getWeatherList().get(0).getDescription());
+                    progressBar.setVisibility(View.GONE);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
