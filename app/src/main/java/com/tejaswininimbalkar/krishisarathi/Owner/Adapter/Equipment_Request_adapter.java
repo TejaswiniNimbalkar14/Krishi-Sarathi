@@ -11,7 +11,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -21,12 +24,15 @@ import com.squareup.picasso.Picasso;
 import com.tejaswininimbalkar.krishisarathi.Owner.Model.Booking_request_model;
 import com.tejaswininimbalkar.krishisarathi.R;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class Equipment_Request_adapter extends RecyclerView.Adapter<Equipment_Request_adapter.RequestHolder> {
 
     Context context;
     List<Booking_request_model> list;
+    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    String uid = user.getUid();
 
     public Equipment_Request_adapter(Context context, List<Booking_request_model> list) {
         this.context = context;
@@ -108,6 +114,41 @@ public class Equipment_Request_adapter extends RecyclerView.Adapter<Equipment_Re
             equip_img = itemView.findViewById(R.id.equipment_image);
             conform_request = itemView.findViewById(R.id.request_accept);
             cancel_request = itemView.findViewById(R.id.request_cancel);
+
+            conform_request.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Booking_request_model position = list.get(getAdapterPosition());
+                    HashMap<String,Object> map = new HashMap<>();
+                    map.put("Booking_Id",position.getBooking_Id());
+                    map.put("Equipment_name",position.getEquipment_name());
+                    map.put("Requester_Id",position.getRequester_Id());
+                    map.put("Working_Date",position.getWorking_Date());
+                    map.put("Working_Time",position.getWorking_Time());
+                    map.put("Working_Address",land_address.getText().toString());
+                    map.put("Owner_Id",uid);
+
+                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+                    reference.child("Booking").child(position.getBooking_Id()).setValue(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Toast.makeText(context, "Booking Conform", Toast.LENGTH_SHORT).show();
+
+                            reference.child("Owner").child(uid).child("Booking_Request").child(position.getBooking_Id()).removeValue();
+                            reference.child("User").child(position.getRequester_Id()).child("Pending Request").child(position.getBooking_Id()).removeValue();
+                        }
+                    });
+
+
+                }
+            });
+
+            cancel_request.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context,"Cancel",Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 }
