@@ -67,7 +67,6 @@ public class MyAdapter extends FirebaseRecyclerAdapter<MyModel, MyAdapter.MyView
             cardView = itemView.findViewById(R.id.cardView);
             img = itemView.findViewById(R.id.machineImg);
             name = itemView.findViewById(R.id.Name);
-            price = itemView.findViewById(R.id.Price);
             description = itemView.findViewById(R.id.Description);
 
         }

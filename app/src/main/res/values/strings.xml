@@ -127,7 +127,7 @@
     <!--//Leena_code-->
     <!-- <string name="app_name">Dashboard</string>-->
 
-    <string name="krishi_sarthi" translatable="false">Krishi sarathi</string>
+    <string name="krishi_sarthi" translatable="false">Krishi sarthi</string>
     <string name="textview" translatable="false">TextView</string>
     <string name="farmer" translatable="false">Farmer</string>
     <string name="add_location" translatable="false">Add Location</string>
@@ -148,9 +148,6 @@
     <string name="registration" translatable="false">Registration</string>
     <string name="hi_do_you_want_to_be_a_partner_in_krishi_sarathi_if_yes_registration_process_as_below" translatable="false">Hi, do you want to be a partner in Krishi Sarathi? If yes, registration process as below</string>
     <string name="my_equipment">My Equipment</string>
-    <string name="title_activity_tabbed" translatable="false">TabbedActivity</string>
-    <string name="tab_text_1" translatable="false">Tab 1</string>
-    <string name="tab_text_2" translatable="false">Tab 2</string>
     <string name="owner_details" translatable="false">Owner Details :</string>
     <string name="owner_id" translatable="false">Owner ID :</string>
     <string name="equi_details" translatable="false">Equipment Details :</string>
@@ -171,7 +168,7 @@
     <string name="shipping_charges" translatable="false">Shipping Charges :</string>
     <string name="total_price" translatable="false">Total Price :</string>
     <string name="payment_methods" translatable="false">Payment Methods :</string>
-    <string name="cash_on_delivery" translatable="false">Cash on Delivery :</string>
+    <string name="cash_on_delivery" translatable="false">Cash On Delivery</string>
     <string name="upi" translatable="false">UPI</string>
     <string name="debit_credit" translatable="false">Debit/Credit Card</string>
     <string name="book_equi" translatable="false">Book Equipment</string>
@@ -189,6 +186,29 @@
     <string name="request" translatable="false">Request</string>
     <string name="move_to_user" translatable="false">Move to User Activity</string>
     <string name="move_to_owner" translatable="false">Move to Owner Activity</string>
+    <string name="model_year" translatable="false">Model Year :</string>
+    <string name="sorry_we_don_t_have_a_information" translatable="false">Sorry We Don\'t have a Information</string>
+
+    <!-- Equipment Details string-->
+    <string name="result_available" translatable="false">Result Available</string>
+    <string name="per_one_acre" translatable="false">Per One Acre</string>
+    <string name="_4_4" translatable="false">4.4</string>
+    <string name="_20_in_used" translatable="false">20+ In used</string>
+    <string name="u20b9100" translatable="false">₹100/-</string>
+
+    <!-- Payment string-->
+    <string name="user_details" translatable="false">User Details :</string>
+    <string name="name" translatable="false">Name :</string>
+    <string name="return_date" translatable="false">Return Date :</string>
+    <string name="select_time" translatable="false">Select Time :</string>
+    <string name="select_date" translatable="false">Select Date :</string>
+    <string name="_00_00" translatable="false">00.00</string>
+    <string name="booking_id" translatable="false">Booking ID :</string>
+    <string name="pimpri_khurd" translatable="false">Pimpri Khurd.</string>
+    <string name="_05_05_2021_13_00" translatable="false">05/05/2021 13:00</string>
+    <string name="oops_no_data" translatable="false">Oops no Data!!</string>
+    <string name="user_information" translatable="false">user_information</string>
+
     <string name="start_work">Start Work</string>
     <string name="booking_id">Booking ID :</string>
     <string name="work_finish">Work Finish</string>

@@ -14,7 +14,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/muli"
-        android:text="User Details : "
+        android:text="@string/user_details"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +46,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/muli"
-                android:text="Phone No :"
+                android:text="@string/phone_no"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/muli"
-                android:text="Name :"
+                android:text="@string/name"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/muli"
-                android:text="Return Date :"
+                android:text="@string/return_date"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -122,7 +122,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView17"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView17"
-                app:layout_constraintTop_toTopOf="@+id/textView17" />
+                app:layout_constraintTop_toTopOf="@+id/textView17"
+                tools:ignore="Autofill,LabelFor,TextFields" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -132,7 +133,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/muli"
-                android:text="Select Time :"
+                android:text="@string/select_time"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -146,7 +147,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/muli"
-                android:text="Select Date :"
+                android:text="@string/select_date"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -168,7 +169,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView10"
-                app:layout_constraintTop_toTopOf="@+id/textView10" />
+                app:layout_constraintTop_toTopOf="@+id/textView10"
+                tools:ignore="Autofill,LabelFor" />
 
             <EditText
                 android:id="@+id/working_time"
@@ -186,7 +188,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/textView16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/textView16"
-                app:layout_constraintTop_toTopOf="@+id/textView16" />
+                app:layout_constraintTop_toTopOf="@+id/textView16"
+                tools:ignore="Autofill,LabelFor" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
@@ -228,7 +231,7 @@
                 android:layout_marginEnd="75dp"
                 android:layout_marginRight="75dp"
                 android:fontFamily="@font/muli"
-                android:text="00.00"
+                android:text="@string/_00_00"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView6"
@@ -257,7 +260,7 @@
                 android:layout_marginEnd="75dp"
                 android:layout_marginRight="75dp"
                 android:fontFamily="@font/muli"
-                android:text="00.00"
+                android:text="@string/_00_00"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView8"
@@ -290,7 +293,7 @@
                 android:layout_marginRight="75dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/muli"
-                android:text="00.00"
+                android:text="@string/_00_00"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -379,7 +382,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.501"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:focusable="true" />
 
                 <RadioButton
                     android:id="@+id/UPI"
@@ -434,5 +438,6 @@
         android:text="@string/book_equi"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UnusedAttribute" />
 </androidx.constraintlayout.widget.ConstraintLayout>

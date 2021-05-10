@@ -99,16 +99,11 @@ public class AcceptedFragment extends Fragment {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                                         requesterId = snapshot.child("Requester_Id").getValue().toString();
-
                                         if(userId.equals(requesterId)){
                                             AcceptedModel model = snapshot.getValue(AcceptedModel.class);
                                             mList.add(model);
                                             acceptedAdapter.notifyDataSetChanged();
-
                                         }
-
-
-
                                     }
                                     @Override
                                     public void onCancelled(@NonNull DatabaseError error) {
@@ -116,19 +111,11 @@ public class AcceptedFragment extends Fragment {
                                     }
 
                                 });
-
-
-
-
                     }
-
                 }else{
                     Toast.makeText(getActivity(),"Data is not exist",Toast.LENGTH_LONG).show();
                 }
-
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,7 +19,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.tejaswininimbalkar.krishisarathi.R;
 import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.AcceptedModel;
-import com.tejaswininimbalkar.krishisarathi.User.YourOrders.Model.PendingModel;
 
 import java.util.ArrayList;
 
@@ -48,17 +48,17 @@ public class AcceptedAdapter extends RecyclerView.Adapter<AcceptedAdapter.ViewHo
     public void onBindViewHolder(@NonNull AcceptedAdapter.ViewHolder holder, int position) {
         AcceptedModel acceptedModel = mList.get(position);
 
-
+        OwnerId = acceptedModel.getOwner_ID();
         holder.booking_id.setText( acceptedModel.getBooking_Id());
 
         String equipmentName = acceptedModel.getEquipment_name();
-        holder.equipname.setText(equipmentName);
+        holder.equip_name.setText(equipmentName);
 
-        /*holder.workingdate.setText(pendingModel.getWorking_Date());
-        holder.workingtime.setText(pendingModel.getWorking_Time());*/
-        String ownerId = acceptedModel.getOwner_ID();
+        /*holder.working_date.setText(pendingModel.getWorking_Date());
+        holder.working_time.setText(pendingModel.getWorking_Time());*/
 
-        databaseReference.child("User").child(ownerId)
+
+        databaseReference.child("User").child(OwnerId)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -94,7 +94,7 @@ public class AcceptedAdapter extends RecyclerView.Adapter<AcceptedAdapter.ViewHo
 
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView booking_id,workingdate,workingtime,equipname,owner_name;
+        TextView booking_id,working_date,working_time,equip_name,owner_name;
         TextView OwnerName;
 
         ImageView equip_img;
@@ -102,11 +102,11 @@ public class AcceptedAdapter extends RecyclerView.Adapter<AcceptedAdapter.ViewHo
             super(itemView);
 
             booking_id = itemView.findViewById(R.id.booking_id);
-            equipname = itemView.findViewById(R.id.equipment_Name);
+            equip_name = itemView.findViewById(R.id.equipment_Name);
             OwnerName = itemView.findViewById(R.id.Owner_name);
             equip_img = itemView.findViewById(R.id.equipment_image);
-            /*workingdate = itemView.findViewById(R.id.working_Date);
-            workingtime = itemView.findViewById(R.id.working_Time);*/
+            /*working_date = itemView.findViewById(R.id.working_Date);
+            working_time = itemView.findViewById(R.id.working_Time);*/
 
 
         }

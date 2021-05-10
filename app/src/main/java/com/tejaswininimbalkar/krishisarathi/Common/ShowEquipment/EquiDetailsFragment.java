@@ -42,7 +42,8 @@ public class EquiDetailsFragment extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
 
-    ImageView backBtn, cartBtn, equiImage;
+    ImageView backBtn;
+    ImageView equiImage;
     TextView equiName,ownerCount;
     OwnerAdapter ownerAdapter;
 
