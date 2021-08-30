@@ -68,6 +68,8 @@ This app is for two types of users namely farmers who need the equipment and own
 
 [App Screen Recording](https://drive.google.com/file/d/1LxQPV-utq39t85pwzh25pgztDdIy265I/view?usp=sharing)
 
+[Localization](https://drive.google.com/file/d/1Ygrzos2g_DUC00wy76xdYA3WJyCeIuvJ/view?usp=sharing)
+
   
 ## Deployment
 
